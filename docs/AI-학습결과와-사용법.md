@@ -79,7 +79,7 @@ Lognormal의 예측 80% 반경에 실제 포함된 평가 사건은 **72.3%**다
 .venv/bin/python -m pytest backend/tests -q
 ```
 
-학습 환경을 새로 만드는 경우 Python 3.12 환경에서 `pipeline/ml-requirements.lock`으로 설치한다. 실행에는 sklearn이 필요하지 않다. 모델은 JSON으로 내보내며 sklearn 원본 예측과 **전체 학습 입력에서 최대 차이 0**을 확인했다. 외부 pickle 파일을 불러오지 않는다.
+학습 환경을 새로 만드는 경우 Python 3.12에서 `python3.12 -m venv .venv-ml && .venv-ml/bin/python -m pip install -r pipeline/ml-requirements.lock`으로 설치한다(학습 스크립트가 `backend.core`를 불러오므로 실행 서버 의존성까지 들어 있다). 실행에는 sklearn이 필요하지 않다. 모델은 JSON으로 내보내며 sklearn 원본 예측과 **전체 학습 입력에서 최대 차이 0**을 확인했다. 외부 pickle 파일을 불러오지 않는다.
 
 첫 명령은 기존 65건/61트랙 모델을 새 묶음으로 만든다. YOSAR를 포함하려면 다음 두 명령도 실행한다. 마지막 명령만 반복 학습할 때는 이미 준비된 입력의 SHA-256·계획 해시가 일치해야 한다. 각 실행은 새 불변 묶음을 만들며 예전 기록을 지우지 않는다. 학습용 합성 값은 수학 단위 테스트에만 쓰고 실제 모델 아티팩트에 넣지 않는다.
 

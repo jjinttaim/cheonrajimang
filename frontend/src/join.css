@@ -14,3 +14,4 @@
 .checkin .overdue{color:#a2412f}
 .progress-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.progress-grid div{background:#f5f8f8;border-radius:8px;padding:10px 12px}.progress-grid span{display:block;font-size:11px;color:#6d7c88}.progress-grid strong{font-size:20px;color:#13315a}
 .join .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:5}
+.join-attribution{font-size:10px;color:#616e5f;line-height:1.5;padding:3px 2px 0;text-align:right}.join-attribution a{color:inherit}

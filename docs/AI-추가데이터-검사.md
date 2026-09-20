@@ -64,6 +64,6 @@ LAS의 `OffsetTime` 설명에는 밀리초가 기재되어 있다. 그러나 이
 .venv/bin/python -m pytest backend/tests/test_offtrail_profile.py backend/tests/test_research_qa.py -q
 ```
 
-의존성은 `pipeline/offtrail-requirements.lock`에 고정했다. 웹앱 환경에는 LAS 해석 라이브러리가 필요 없다. 원본·manifest 해시가 달라지면 파일 읽기/보고서 생성을 거절한다. 속도 변환 오류의 반례는 합성 단위 테스트에서만 사용하며 학습 데이터나 모델에 넣지 않는다.
+의존성(laspy 포함)은 `pipeline/ml-requirements.lock`에 고정했다. 웹앱 환경에는 LAS 해석 라이브러리가 필요 없다. 원본·manifest 해시가 달라지면 파일 읽기/보고서 생성을 거절한다. 속도 변환 오류의 반례는 합성 단위 테스트에서만 사용하며 학습 데이터나 모델에 넣지 않는다.
 
 산출물은 `data/research/offtrail_lidar_2025/quality_report.json`이다. 원본 파일별 통계 및 검사 코드 해시로 재검사할 수 있다. 이 보고서는 새로운 데이터 품질 근거이며 현장 발견 성능·모델 정확도 평가 결과가 아니다.

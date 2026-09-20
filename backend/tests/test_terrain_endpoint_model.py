@@ -2,6 +2,7 @@
 import numpy as np
 import hashlib
 import json
+import pytest
 from scipy.optimize._numdiff import approx_derivative
 
 from pipeline.terrain_endpoint_model import (
@@ -67,6 +68,9 @@ def test_failed_evaluation_cannot_be_adopted_by_mean_improvement_alone():
     assert not adoption_gate(primary, {'interval': [-.2, -.01]}, 65)['passed']
 
 
+# GLO-90 원본 타일·제공자 문서(assets/)는 로컬 전용이라 깃허브 저장소에 없다(LICENSES.md §1·§6).
+# load_data()가 타일 해시까지 검증하므로 자료가 있는 컴퓨터에서만 재생 검사를 실행한다.
+@pytest.mark.skipif(not (OUT/'assets').exists(), reason='GLO-90 원본 타일(assets/) 없음 — 로컬 전용, 저장소 미포함')
 def test_actual_research_artifact_replays_all_held_out_cases():
     from pipeline.terrain_endpoint_model import evaluate_one
     pointer = json.loads((OUT/'latest_run.json').read_text())

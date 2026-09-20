@@ -6,7 +6,7 @@
 
 ## 2026-09-20 변경 요약
 
-- **제주도 전체로 확장**: `pipeline/prepare_jeju.py`가 섬 전체(우도·비양도·가파도·마라도 포함)를 30 m 격자 3,200×2,368셀로 전처리해 `data/jeju/`에 둡니다. 임무를 만들면 마지막 확인 위치를 중심으로 512×512셀(15.36 km) 창을 64셀 격자점에 맞춰 잘라 계산하므로(`core.Master.window_origin`), 계산량·메모리·응답 시간은 종전 한림읍 창과 같습니다. 원래의 한림읍 창은 마스터 격자의 (704, 448)에 그대로 들어 있어, 창 정보가 없는 옛 임무는 자동으로 그 창을 씁니다. 시설 스냅숏은 섬 전체 POI 12,906곳이며 시설 영향 격자는 창마다(64셀 여유를 두고) 계산합니다. 화면의 지역 이름(한림읍·성산읍 등)은 가까운 읍면 기준점으로 붙인 표시용 라벨입니다. 백엔드 회귀 테스트에 `test_island_windows.py`가 추가되었습니다(총 119개).
+- **제주도 전체로 확장**: `pipeline/prepare_jeju.py`가 섬 전체(우도·비양도·가파도·마라도 포함)를 30 m 격자 3,200×2,368셀로 전처리해 `data/jeju/`에 둡니다. 임무를 만들면 마지막 확인 위치를 중심으로 512×512셀(15.36 km) 창을 64셀 격자점에 맞춰 잘라 계산하므로(`core.Master.window_origin`), 계산량·메모리·응답 시간은 종전 한림읍 창과 같습니다. 원래의 한림읍 창은 마스터 격자의 (704, 448)에 그대로 들어 있어, 창 정보가 없는 옛 임무는 자동으로 그 창을 씁니다. 시설 스냅숏은 섬 전체 POI 12,906곳이며 시설 영향 격자는 창마다(64셀 여유를 두고) 계산합니다. 화면의 지역 이름(한림읍·성산읍 등)은 가까운 읍면 기준점으로 붙인 표시용 라벨입니다. 백엔드 회귀 테스트에 `test_island_windows.py`가 추가되었습니다.
 - **학습 거리 분포가 기본 지도의 거리 시나리오(A)가 되었습니다.** 실제 실종 사건 65건의 lognormal을 경과시간 안의 도달 가능 반경(5 km/h 가정)으로 잘라 씁니다. 새 임무 폼에서 종전의 700·√시간 가정도 선택할 수 있습니다. 구역 순위는 세 시나리오의 최소값 대신 **기하평균(로그 선형 합의)**으로 정하고, 카드에 합의도(최소/최대)를 표시합니다.
 - **모형 밖 잔여확률(ROW)**: 새 임무는 기본 10%(0~50% 조절)를 지도 밖·도보 가설 밖 몫으로 예약합니다. 미발견 결과가 반영될수록 자동으로 커집니다.
 - **팀 인원·대원 간격**: GPX 반영과 AI 계획 모두 n명·s m 간격 입력을 받아 탐지 노력을 n배, (n−1)·s 폭 밴드로 분산합니다. AI 계획은 밴드 폭만큼 행을 건너뛰는 잔디깎기 패턴과 왕복 가능 구역만 후보로 씁니다.
@@ -14,7 +14,7 @@
 - **AI 구성요소 표**: `/api/ai/status`의 `components`와 AI 계획 패널에서 무엇이 학습이고 무엇이 연구·미채택이고 무엇이 가정인지 보여 줍니다. 인계 보고서에도 같은 표가 들어갑니다.
 - **배포 프로필**: `SEARCHPROOF_DEPLOY_PROFILE=commercial-ready`로 실행하면 비상업 조건 자료(YOSAR·EOX 위성·GeoLife 실험실)를 끕니다. 이용 조건 전체는 [LICENSES.md](LICENSES.md).
 - 로고·팔레트 적용, 보고서 개편(로고·상태·팀 구성·참여자·계산 요소), 기획서 전면 개정([docs/기획서.md](docs/기획서.md)), [데모 영상 대본](docs/데모영상-대본.md), [기술 Q&A 대비 자료](docs/기술-QnA-대비.md), [생성형 AI 활용 공개문](docs/생성형AI-활용-공개.md).
-- 회귀 테스트 114개(새 파일 `test_team_band.py`, `test_row_distance.py`, `test_roles.py`). 기존 임무·영수증은 변경하지 않으며, 이전 임무는 종전 규칙(ROW 0, 700·√시간)으로 만들어졌음을 파라미터에서 구분할 수 있습니다. 실제 사건 65건의 발견 거리 모델과 수색대 61트랙의 속도 회귀 모델을 학습했고, **AI 계획**에서 팀·시간을 입력해 경로를 추천받을 수 있습니다. 실종자 시간별 이동·시설·야간·탐지율은 아직 가정이며 현장 사용 수준의 검증은 끝나지 않았습니다. [실제 학습 결과와 사용법](docs/AI-학습결과와-사용법.md)을 먼저 확인하세요.
+- 회귀 테스트 123개(새 파일 `test_team_band.py`, `test_row_distance.py`, `test_roles.py`; 로컬 전용 자료가 없는 컴퓨터에서는 11개가 skipped). 기존 임무·영수증은 변경하지 않으며, 이전 임무는 종전 규칙(ROW 0, 700·√시간)으로 만들어졌음을 파라미터에서 구분할 수 있습니다. 실제 사건 65건의 발견 거리 모델과 수색대 61트랙의 속도 회귀 모델을 학습했고, **AI 계획**에서 팀·시간을 입력해 경로를 추천받을 수 있습니다. 실종자 시간별 이동·시설·야간·탐지율은 아직 가정이며 현장 사용 수준의 검증은 끝나지 않았습니다. [실제 학습 결과와 사용법](docs/AI-학습결과와-사용법.md)을 먼저 확인하세요.
 
 추가로 **YOSAR 132개 단일 발견점 사건 키**의 좌표 오차 구간 모델을 학습했습니다. AI 계획 → 학습 발견점 참고 → 학습 자료에서 별도로 선택합니다. 기존 65건과 합치거나 기본 모델을 교체하지 않았습니다. 이 추가 모델은 CC BY-NC-SA 4.0의 비상업적 연구 참고이며 시간별 위치 예측 모델이 아닙니다.
 
@@ -30,7 +30,38 @@
 
 이 Mac에서는 **`start.command`를 더블클릭**하면 됩니다. 브라우저 주소는 [http://127.0.0.1:8000](http://127.0.0.1:8000)입니다. 터미널 창을 닫거나 Control+C를 누르면 서버가 종료됩니다.
 
-이미 필요한 개발 환경과 제주도 지형 데이터가 준비되어 있습니다. 다른 컴퓨터에서는 Python 3.12, Node.js 22, npm이 필요합니다. 최초 의존성 설치·데이터 준비에는 인터넷이 필요합니다. 서버는 외부에 공개하지 않습니다.
+이미 필요한 개발 환경과 제주도 지형 데이터가 준비되어 있습니다. 서버는 외부에 공개하지 않습니다.
+
+### 다른 컴퓨터에서 처음 실행
+
+Python 3.12, Node.js 22, npm이 필요하고 최초 설치에는 인터넷이 필요합니다. 제주도 지형 격자(`data/jeju/`)와 학습 모델(`models/`)은 저장소에 들어 있어 별도 데이터 준비 없이 바로 실행됩니다.
+
+```sh
+git clone https://github.com/jjinttaim/cheonrajimang.git
+cd cheonrajimang
+python3.12 -m venv .venv
+.venv/bin/python -m pip install -r backend/requirements.lock
+(cd frontend && npm ci && npm run build)
+.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+macOS에서는 `sh start.command`(또는 더블클릭)가 위 과정을 대신합니다. 가상환경과 의존성은 없을 때만 설치하고, 프런트엔드는 매번 다시 빌드한 뒤 서버를 띄우고 브라우저를 엽니다. `python3.12`가 없으면 안내 문구를 내고 멈춥니다. Linux에서도 같은 스크립트가 동작하며 브라우저는 `xdg-open`이 있을 때만 자동으로 열립니다.
+
+Windows에서는 `start.command`를 쓸 수 없습니다. 아래 순서로 같은 작업을 합니다(Windows에서는 아직 실제로 검증하지 않았습니다).
+
+```bat
+py -3.12 -m venv .venv
+.venv\Scripts\python -m pip install -r backend\requirements.lock
+cd frontend
+npm ci
+npm run build
+cd ..
+.venv\Scripts\python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+선택 환경 변수: `SEARCHPROOF_DB`(SQLite 파일 경로, 기본 `data/runtime/searchproof.sqlite3`), `SEARCHPROOF_DEPLOY_PROFILE`(`research` 기본, `commercial-ready`는 비상업 조건 자료 기능을 끔).
+
+저장소에 포함되지 않은 로컬 전용 자료(GeoLife 보행 모델, GLO-90 원본 타일, 탐지 연구 PDF — [LICENSES.md](LICENSES.md) §6)가 없는 컴퓨터에서도 서버는 정상 동작하며, 해당 기능은 503 응답 또는 `UNKNOWN` 상태로 표시됩니다. 이 자료를 읽는 백엔드 테스트는 파일이 없으면 자동으로 건너뜁니다.
 
 ## 바로 체험하는 순서
 
@@ -95,7 +126,7 @@ npm run dev
 개발 화면은 5173번 포트에서 열립니다. 배포용 빌드는 `frontend`에서 `npm run build`입니다. 빌드 후 서버를 다시 시작하면 8000번 포트에서 웹 화면까지 제공합니다.
 
 ```sh
-.venv/bin/python -m pytest backend/tests -q   # 114개 (팀 밴드·ROW·역할 테스트 포함)
+.venv/bin/python -m pytest backend/tests -q   # 로컬 전용 자료(GeoLife·GLO-90 타일·탐지 PDF)가 없는 컴퓨터에서는 해당 테스트가 skipped로 표시됩니다
 cd frontend
 npx playwright install chromium
 node browser-check.mjs
@@ -111,11 +142,13 @@ node daylight-check.mjs
 node ai-check.mjs
 ```
 
+pytest 실행 시 나오는 starlette·anyio deprecation 경고 2건은 고정된 의존성 버전의 내부 경고이며 무시해도 됩니다.
+
 브라우저 검사는 5173번 개발 서버가 필요합니다. `SEARCHPROOF_TEST_URL=http://127.0.0.1:8000 node browser-check.mjs`로 빌드 버전도 검사할 수 있습니다. 매번 이름에 '브라우저 검사'가 붙은 독립 모의 임무를 만들며 기존 임무를 변경하지 않습니다. 이는 소프트웨어 동작 검사이고 수색 성능 검증이 아닙니다.
 
 ## 데이터와 개인정보 경계
 
-- 지도는 [Copernicus GLO-30](https://registry.opendata.aws/copernicus-dem/), [ESA WorldCover](https://esa-worldcover.org/en/data-access), [OpenStreetMap](https://www.openstreetmap.org/copyright)의 실제 공개 자료를 지역 격자로 가공했습니다. 원본 URL·추출물 해시는 `data/hallim/meta.json`에 있습니다.
+- 지도는 [Copernicus GLO-30](https://registry.opendata.aws/copernicus-dem/), [ESA WorldCover](https://esa-worldcover.org/en/data-access), [OpenStreetMap](https://www.openstreetmap.org/copyright)의 실제 공개 자료를 지역 격자로 가공했습니다. 원본 URL·추출물 해시는 `data/jeju/meta.json`·`data/hallim/meta.json`에 있고, 유지해야 하는 출처 표시 문구는 [LICENSES.md](LICENSES.md)에 있습니다.
 - 표시용 지도는 [OpenFreeMap 공식 공개 서비스](https://openfreemap.org/quick_start/)의 벡터 타일을 사용합니다. 현재 화면의 타일 범위가 외부 제공자에게 요청됩니다. OSM 표준 타일 대량 다운로드·오프라인 사전 수집은 하지 않습니다. 연결 실패 시에만 자체 로컬 분석 지도를 사용합니다. 표시 상세도와 수색 계산의 30 m 해상도는 별개입니다.
 - 위성사진은 [EOX::Maps](https://maps.eox.at/)의 `s2cloudless-2025_3857` 타일입니다. [Viewing Basic 사양](https://cloudless.eox.at/documentation/product-list)에 따라 약 10 m, 원본 줌 14까지만 요청하며 이후는 확대 표시합니다. [EOxCloudless 라이선스](https://cloudless.eox.at/documentation/license)의 비상업 교육 이용 조건(CC BY-NC-SA 4.0)에 맞춰 EOX·Copernicus 출처를 화면에 표시합니다. 상업 배포에는 별도 이용 조건 검토가 필요합니다. 영상은 선택한 화면의 타일만 요청하고 대량 수집·오프라인 캐시·AI 학습·인계 ZIP에는 사용하지 않습니다. 서비스는 무보증이며 현장 안전 채널이 아닙니다.
 - 실제 교통정보에는 별도 공급자 연동이 필요합니다. [ITS 공식 안내](https://www.its.go.kr/opendata/intro)는 인증키를 사용하는 교통소통정보 API를 제공합니다. 현재 앱은 키를 수집·전송하지 않으며 차량 정체를 반영했다고 주장하지 않습니다.
@@ -131,12 +164,21 @@ node ai-check.mjs
 frontend/          React + MapLibre 웹 화면
 backend/           FastAPI, 수치 계산, SQLite, 인계 API
 backend/tests/     계산·승인·보안 경계 회귀 테스트
-pipeline/          제주도 지형·시설 전처리 (prepare_jeju.py, prepare_facilities.py)
+pipeline/          제주도 지형·시설 전처리(prepare_jeju.py, prepare_facilities.py), 학습(train_models.py, train_yosar.py)
 data/jeju/         제주도 전체 30 m 격자(dem·landcover·slope·road_distance .npz), 도로, 시설 스냅숏
 data/hallim/       2026-09-18 한림읍 창 원본(옛 임무의 시설 스냅숏 호환용, 계산에는 미사용)
-data/runtime/      로컬 모의 임무 저장소
+data/research/     공개 연구 원본·가공 CSV·NOTICE (재배포 금지 원본은 로컬 전용, 저장소 미포함)
+data/runtime/      로컬 모의 임무 저장소 (저장소 미포함)
+models/            학습 모델 묶음(models/current.json이 현재 묶음), 해시·출처·평가 포함
 docs/              기존 문서 및 구현 현황
-artifacts/         브라우저 검사 스크린샷·샘플 인계물
+artifacts/         브라우저 검사 스크린샷·샘플 인계물 (저장소 미포함)
+LICENSES.md        자료·모델·의존성 이용 조건과 저장소 포함 범위
 ```
 
 변경 시 테스트를 먼저 추가하고, 문헌 근거와 팀 가정을 구분하세요. 민감한 실제 사건 데이터는 테스트 자료로 커밋하지 마세요.
+
+## 라이선스
+
+- 코드·문서·로고·학습 스크립트는 팀 저작물입니다. 공모전 규정에 따른 주최 측 이용 범위를 확인하기 전까지 별도의 오픈소스 라이선스를 부여하지 않았습니다(All rights reserved).
+- 저장소에 포함된 지형·연구 데이터와 학습 모델은 각 원 출처의 조건을 따릅니다. Copernicus DEM(출처·면책 문구 유지), ESA WorldCover(CC BY 4.0), OpenStreetMap 파생물(ODbL 1.0), 실종·수색 연구 자료(CC BY 4.0), YOSAR 파생 파라미터(CC BY-NC-SA 4.0). 항목별 조건, 유지해야 하는 출처 문구, 저장소 포함 범위는 [LICENSES.md](LICENSES.md)에 있습니다.
+- GeoLife(MSR-LA, 재배포 금지)와 탐지 연구 PDF(재배포 조건 미확인)는 이용 조건 때문에, GLO-90 원본 타일 31개(약 149 MB)는 용량 때문에 저장소에 넣지 않았습니다. GLO-90에서 만든 파생 특성(`data/research/endpoint_terrain_2026/<해시>/features.npz`)은 Copernicus 조건에 따라 포함되어 있습니다.

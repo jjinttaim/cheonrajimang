@@ -39,7 +39,7 @@ function ZoneMap({assignment}) {
     return()=>{disposed=true;abort.abort();map?.remove();};
   },[assignment?.zone_id]);
   if(!assignment?.geometry)return null;
-  return <div className="join-map" ref={ref}/>;
+  return <div><div className="join-map" ref={ref}/><div className="join-attribution"><a href="https://openfreemap.org/" target="_blank" rel="noreferrer">OpenFreeMap</a>, <a href="https://openmaptiles.org/" target="_blank" rel="noreferrer">© OpenMapTiles</a>, <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">© OpenStreetMap contributors</a></div></div>;
 }
 
 export default function JoinView() {

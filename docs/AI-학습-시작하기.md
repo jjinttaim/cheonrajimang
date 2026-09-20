@@ -30,8 +30,8 @@ GPS 45,202점은 독립적인 실종 사건 45,202건이 아니다. 수색대 �
 처음에는 **Python + pandas + scikit-learn, CPU**로 충분한 규모의 실험을 설계할 수 있다. GPU 대여나 ChatGPT 미세조정부터 시작할 이유는 없다. 다음은 프로젝트 루트에서 별도 학습 환경을 만들 때의 예시이며, 현재 실행 환경에 자동 설치하지 않았다.
 
 ```sh
-python3 -m venv .venv-ml
-.venv-ml/bin/python -m pip install pandas scikit-learn
+python3.12 -m venv .venv-ml
+.venv-ml/bin/python -m pip install -r pipeline/ml-requirements.lock
 ```
 
 핵심 학습 예시(아직 실행하지 않은 시작 코드). 아래 점수로 설정을 반복 튜닝하면 최종 검증이 아니라 개발 검증이 된다. 본선용 확정 결과에는 별도 보류 집단 또는 중첩 그룹 검증을 둔다.

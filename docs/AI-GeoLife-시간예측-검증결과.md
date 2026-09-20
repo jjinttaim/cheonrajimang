@@ -44,6 +44,8 @@
 
 ## 증거와 재현
 
+`data/ml/geolife/` 아래 파일은 MSR-LA 조건 때문에 로컬 전용이며 깃허브 저장소에 포함하지 않는다. 이를 읽는 테스트(`backend/tests/test_geolife_horizons.py`)는 파일이 없으면 건너뛴다.
+
 - `data/ml/geolife/duplicate_audit.json`: 같은 시각의 중복/충돌 감사.
 - `data/ml/geolife/conflict_time_check.json`: 충돌 기록의 두 시각 필드 대조.
 - `data/ml/geolife/horizon_evaluation.json`: 시점별·사람별 결과, 시드 반복, 창 식별자(로컬 전용).

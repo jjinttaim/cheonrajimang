@@ -1,3 +1,8 @@
-numpy>=2,<3
-scipy>=1.13,<2
+# 학습·연구 파이프라인 환경(.venv-ml). 학습 스크립트가 backend.ml_models → backend.core 를 불러오므로
+# 실행 서버 의존성(backend/requirements.txt)을 포함한다. pandas·openpyxl은 profile_research.py, laspy는 profile_offtrail.py용.
+# 고정 버전은 ml-requirements.lock: 새 Python 3.12 venv에 이 파일을 설치한 뒤 pip freeze 한 결과다.
+-r ../backend/requirements.txt
 scikit-learn>=1.6,<2
+pandas>=2
+openpyxl>=3.1,<4
+laspy>=2.5,<3

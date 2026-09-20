@@ -1,7 +1,13 @@
 // Screenshot walkthrough of the new features against a running 8000 server (isolated DB).
-import { chromium } from 'playwright';
+// 서버의 local_boundary(backend/main.py)가 브라우저 Origin을 8000·5173 포트로 제한하므로 SEARCHPROOF_TEST_URL은 그 두 포트만 쓴다.
+import { chromium } from '@playwright/test';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 const base = process.env.SEARCHPROOF_TEST_URL || 'http://127.0.0.1:8000';
-const out = process.env.SHOT_DIR || '/tmp/claude-0/-home-claude/59d38daf-b735-519e-be8d-2d8fc3791780/scratchpad/shots';
+// 기본 저장 위치는 저장소 밖으로 나가지 않는 artifacts/shots (gitignore 대상). SHOT_DIR로 바꿀 수 있다.
+const out = process.env.SHOT_DIR || path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../artifacts/shots');
+fs.mkdirSync(out, { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
 const errors = [];
 async function page(width, height) {

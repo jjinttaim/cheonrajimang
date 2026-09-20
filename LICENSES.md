@@ -15,15 +15,23 @@
 
 | 자료 | 이용 조건 | 프로젝트 내 사용 | 상용 확산 시 |
 |---|---|---|---|
-| Copernicus DEM GLO-30 (표고) | Copernicus 이용 조건 — 출처 표시 유지 시 상업 이용 가능 | `data/hallim/dem.npy`, 경사·이동비용 | 가능. 출처 문구 유지 |
-| ESA WorldCover 2021 (토지피복) | CC BY 4.0 | `data/hallim/landcover.npy` | 가능. 출처 표시 |
-| OpenStreetMap 도로·시설 추출물 | ODbL 1.0 | `data/hallim/roads.geojson`, 시설 630곳 | 가능. 파생 DB 공개 의무(ODbL share-alike)를 검토하고 출처 표시 |
+| Copernicus DEM GLO-30 (표고) | Copernicus DEM 이용 조건(COP-DEM-GLO-30-F) — 아래 출처·면책 문구를 유지하면 재배포·상업 이용 가능 | `data/jeju/dem.npz`, `data/hallim/dem.npy`, 경사·이동비용 | 가능. 출처·면책 문구 유지 |
+| ESA WorldCover 2021 v200 (토지피복) | CC BY 4.0 | `data/jeju/landcover.npz`, `data/hallim/landcover.npy` | 가능. 아래 출처 문구·DOI 표시 |
+| OpenStreetMap 도로·시설 추출물 | ODbL 1.0 | `data/jeju/roads.geojson.gz`·`road_distance.npz`·`road_mask.npz`·`facilities/*/facilities.geojson`(섬 전체 POI 12,906곳), `data/hallim/roads.geojson`·`road_distance.npy`·`facilities/*/facilities.geojson`·`potential.npy`(한림 창 630곳) | 가능. 이 파생 DB는 아래 선언대로 ODbL 1.0으로 공개하고 출처 표시 |
 | OpenFreeMap 벡터 타일 (표시용 지도) | 공개 무료 서비스, OSM ODbL 데이터 | 화면 배경 지도 | 대량 트래픽·SLA가 필요하면 자체 타일 서버 또는 유료 타일 공급자로 교체 |
 | 실제 실종 하이커 65건 (Hashimoto et al. 2022, Sci. Rep. 부록) | CC BY 4.0 | 거리 시나리오 A 학습 모델(기본), 발견점 참고 모드 | 가능. 논문·부록 출처 표시. ISRID 전체 DB 권한은 아님 |
 | 수색대 GPS 61트랙 (Hashimoto et al. 2026, Zenodo 18637221) | CC BY 4.0 | 수색대 속도 Random Forest | 가능. 출처 표시 |
 | 키프로스 수색 훈련 GPS (KIOS, Zenodo 6592419) | CC BY 4.0 | 품질검사만, 학습 미사용 | 가능 |
-| Copernicus GLO-90 타일 31개 | Copernicus 이용 조건 | 연구용 지형 계수 모델(미채택) | 앱 미포함 |
-| LiDAR 보행 궤적 (offtrail 2025) | CC BY 4.0 | 검사만, 학습 미사용 | 앱 미포함 |
+| Copernicus GLO-90 타일 31개 | Copernicus DEM 이용 조건 | 연구용 지형 계수 모델(미채택). 원본 타일·제공자 문서(`assets/`)는 로컬 전용, 파생 특성 `data/research/endpoint_terrain_2026/<해시>/features.npz`와 실행 기록(`runs/*.json`, `latest_run.json`, `prepared.json`)만 저장소 포함 | 앱 미포함 |
+| LiDAR 보행 궤적 (offtrail 2025, Zenodo 17081136) | CC BY 4.0 | 검사만, 학습 미사용. 원본 ZIP `data/research/offtrail_lidar_2025/trajectories.zip`은 저장소 포함 | 앱 미포함 |
+
+### 출처 표시 문구 (저장소 문서 기준)
+
+- **Copernicus DEM GLO-30**: "Produced using Copernicus WorldDEM-30 © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018 provided under COPERNICUS by the European Union and ESA; all rights reserved." 면책: "The organisations in charge of the Copernicus programme by law or by delegation do not incur any liability for any use of the Copernicus WorldDEM-30." 공식 보증을 받은 것처럼 표현하지 않으며, 재배포 받는 쪽에도 같은 의무가 전달된다(6조 d·e). 배포처: [AWS Open Data — Copernicus DEM](https://registry.opendata.aws/copernicus-dem/).
+- **Copernicus DEM GLO-90 파생물**(`data/research/endpoint_terrain_2026/<해시>/features.npz`): 문구는 `data/research/endpoint_terrain_2026/NOTICE.md`의 WorldDEM™-90 고지를 그대로 사용한다.
+- **ESA WorldCover 2021 v200**: "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium." 인용: Zanaga, D. et al. (2022) *ESA WorldCover 10 m 2021 v200*, [doi:10.5281/zenodo.7254221](https://doi.org/10.5281/zenodo.7254221). 라이선스 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **OpenStreetMap 파생 DB (ODbL 1.0 선언)**: 위 표의 OSM 파생 파일은 "© OpenStreetMap contributors" 자료를 가공한 파생 데이터베이스이며, 이 저장소에서 [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/)으로 공개한다. 변경 내용(추출 범위·태그·격자화 방법)은 `pipeline/prepare_jeju.py`, `pipeline/prepare.py`, 각 `facilities/<해시>/manifest.json`의 Overpass 질의에 기록돼 있다. 화면 지도(OpenFreeMap 벡터 타일)는 조정자 화면과 참여자 화면 모두에 "OpenFreeMap, © OpenMapTiles, © OpenStreetMap contributors"를 표시한다.
+- `data/jeju/meta.json`·`data/hallim/meta.json`의 `attribution` 값은 위 문구의 요약본이며, 화면의 자료 출처 창과 인계 보고서에는 이 요약본이 실린다. 전문과 ODbL URI를 화면·보고서·meta.json에도 싣는 것은 남은 과제다.
 
 ## 2. 비상업 조건 자료 (`research` 프로필에서만 활성)
 
@@ -57,3 +65,17 @@
 ## 5. 기획서 확산 계획과의 정합
 
 기획서는 훈련용 배포 → 등록 단체 실사용 → 지자체 협력 실증 순의 확산을 적는다. 등록 단체 실사용부터는 상업 여부가 모호해질 수 있으므로 그 단계에서 `commercial-ready` 프로필로 전환하고, 위성 배경과 YOSAR 모델을 위 대체 경로로 바꾼다. 이 전환은 기본 지도·수색 기록·인계 기능에 영향을 주지 않는다(모두 CC BY·ODbL·Copernicus 자료).
+
+## 6. 깃허브 저장소 포함 범위 (2026-09-20)
+
+저장소 [github.com/jjinttaim/cheonrajimang](https://github.com/jjinttaim/cheonrajimang)에는 아래 표의 "저장소 포함" 열에 적은 항목만 들어 있다. 로컬 전용 항목은 `.gitignore`로 제외했고, 이를 읽는 백엔드 테스트는 파일이 없으면 자동으로 건너뛴다(`pytest` 결과의 `skipped`).
+
+| 구분 | 저장소 포함 | 로컬 전용(미포함) |
+|---|---|---|
+| 지형·시설 격자 | `data/jeju/*`, `data/hallim/*` (Copernicus·WorldCover·OSM 파생, §1 문구 유지) | — |
+| 학습 모델 | `models/current.json`(현재 묶음 포인터), `models/<해시>/` 3묶음 (65건·61트랙 모델은 CC BY 파생; 두 묶음 `e070…`·`fa9c…`의 `endpoint.json`에 든 YOSAR 파라미터 `yosar_interval_lognorm`은 CC BY-NC-SA 4.0) | GeoLife 보행 모델 `data/models/walking_reference/` (MSR-LA) |
+| 연구 원본 | `data/research/lost_hikers_2022/` CSV 3개·부록 PDF 1개 (CC BY 4.0), `sar_searchers_2026/` (CC BY 4.0), `cyprus_exercise_2022/` (CC BY 4.0), `offtrail_lidar_2025/trajectories.zip` (CC BY 4.0), `yosar_endpoints_2000_2010/` JSON (CC BY-NC-SA 4.0) | GeoLife 1.3 원본·정제 자료 `data/research/geolife_2012/`·`data/ml/geolife/` (MSR-LA, 재배포 금지), 탐지 연구 PDF `data/research/detection_sources_2026/objects/` (재배포 조건 미확인), GLO-90 타일·제공자 문서 `data/research/endpoint_terrain_2026/assets/` (약 149 MB, 용량 때문에 제외 — 이용 조건상 재배포는 가능) |
+| 연구 파생물·기록 | `data/research/prepared/*.csv`, `endpoint_terrain_2026/<해시>/features.npz`·`manifest.json`·`runs/*.json`·`latest_run.json`·`prepared.json`, `detection_sources_2026/receipts/*.json`(페이지 목록·해시만), 각 폴더의 `NOTICE.md`·`README.md`·`manifest.json`·`record.json`·`quality_report.json` (GeoLife 폴더 `geolife_2012/`는 NOTICE 포함 통째로 제외) | — |
+| 실행·검사 산출물 | — | `data/runtime/`(임무 DB), `artifacts/`(스크린샷·샘플 인계물), `.venv*/`, `frontend/node_modules/`, `frontend/dist/`, `data/raw/`, `_handoff/`·`_claude_backup_2026-09-20/`(옛 원본·인계 사본) |
+
+로컬 전용 자료가 없어도 서버와 기본 기능은 그대로 동작한다. 해당 기능은 503 응답 또는 구성요소 표의 `UNKNOWN` 상태로 표시된다.

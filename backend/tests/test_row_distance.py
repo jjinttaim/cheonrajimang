@@ -1,7 +1,7 @@
 """Rest-of-world share, learned distance prior and geometric-mean consensus."""
 import numpy as np
 import pytest
-from backend import core, main, ml_models, planner
+from backend import core, main, ml_models, planner, walking_reference
 from backend.tests.test_searchproof import client, current
 
 
@@ -81,7 +81,10 @@ def test_status_lists_learned_and_assumed_components(client):
     st=client.get("/api/ai/status").json()
     keys={c["key"]:c["status"] for c in st["components"]}
     assert keys["distance_prior"]=="LEARNED" and keys["searcher_speed"]=="LEARNED"
-    assert keys["terrain_endpoint"]=="NOT_ADOPTED" and keys["walking_reference"]=="NOT_ADOPTED"
+    assert keys["terrain_endpoint"]=="NOT_ADOPTED"
+    # GeoLife 모델은 로컬 전용(저장소 미포함). 파일이 없는 컴퓨터에서는 구성요소 표가 UNKNOWN을 보여야 한다.
+    walking_local=(walking_reference.MODELS/"current.json").exists()
+    assert keys["walking_reference"]==("NOT_ADOPTED" if walking_local else "UNKNOWN")
     assert keys["detection"]=="ASSUMPTION" and keys["row"]=="ASSUMPTION"
     assert st["default_distance_model"]=="learned_lognormal"
     base=client.get("/api/base").json()

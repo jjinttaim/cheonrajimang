@@ -1,4 +1,4 @@
-.venv/
+.venv*/
 node_modules/
 frontend/dist/
 data/raw/
@@ -8,8 +8,7 @@ __pycache__/
 .DS_Store
 artifacts/
 
-# 로컬 전용 (백업·인계 사본·ML 실험 venv)
-.venv-ml/
+# 로컬 전용 (백업·인계 사본)
 _handoff/
 _claude_backup_2026-09-20/
 # 재배포 금지 또는 대용량 원자료 — LICENSES.md 참고 (GeoLife MSR-LA, 탐지 연구 PDF, 연구용 DEM 타일)
