@@ -1,0 +1,30 @@
+{
+  "retrieved_at": "2026-09-19T05:39:45.665282+00:00",
+  "source": "https://services5.arcgis.com/ZY2TU3F6m1lSbSrn/ArcGIS/rest/services/YOSAR_MissingPersonData_v1/FeatureServer",
+  "attribution": "Paul J. Doherty and Jared Doke, NSF #1031914",
+  "license": "CC-BY-NC-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "changes": "Selected numeric/location/time fields only; derived QA flags and hashed case keys.",
+  "files": [
+    {
+      "path": "service.json",
+      "url": "https://services5.arcgis.com/ZY2TU3F6m1lSbSrn/ArcGIS/rest/services/YOSAR_MissingPersonData_v1/FeatureServer?f=json",
+      "bytes": 5768,
+      "sha256": "ea2a5baa0833dacaaade8946b9520d571cc30f8cbc8587d19527cac67c4e7f1d"
+    },
+    {
+      "path": "layer.json",
+      "url": "https://services5.arcgis.com/ZY2TU3F6m1lSbSrn/ArcGIS/rest/services/YOSAR_MissingPersonData_v1/FeatureServer/2?f=json",
+      "bytes": 24709,
+      "sha256": "b56725121354ee7dfbd4b48e9f9dbf44532b89d54262f456cd050bc9124b94b4"
+    },
+    {
+      "path": "endpoint_links.minimized.json",
+      "url": "https://services5.arcgis.com/ZY2TU3F6m1lSbSrn/ArcGIS/rest/services/YOSAR_MissingPersonData_v1/FeatureServer/2/query?f=json&where=1%3D1&outFields=OBJECTID%2CCaseNumb%2CCaseNumb_1%2CType%2CType_1%2CLat%2CLong%2CLat_1%2CLong_1%2CGeoref_U%2CGeoref_U_1%2CDateTime%2CDateTime_1%2CDateTime_2%2CDateTIme_3%2CTotalTim%2CTotalSea&returnGeometry=true&outSR=4326&orderByFields=OBJECTID",
+      "bytes": 99960,
+      "sha256": "f0b396a5db20b0cb23bcad04f3d062315a2a810a9d0c0d8e0303cfd493a02dd2"
+    }
+  ],
+  "trained_bundle_modified": false,
+  "status": "QUARANTINED_NOT_USED_TO_FIT_OR_SELECT_MODEL"
+}

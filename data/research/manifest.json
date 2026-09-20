@@ -1,0 +1,100 @@
+{
+  "retrieved_at": "2026-09-18T11:42:46.413211+00:00",
+  "datasets": [
+    {
+      "id": "sar_searchers_2026",
+      "role": "SEARCHER_MOVEMENT",
+      "source": "https://zenodo.org/records/18637221",
+      "license": "CC-BY-4.0",
+      "files": [
+        {
+          "path": "sar_searchers_2026/metadata.json",
+          "url": "https://zenodo.org/api/records/18637221",
+          "bytes": 5594,
+          "sha256": "42bb31e41606d873617fb5425769308d6bf862299dcd11a603fdc0928aea0e0a",
+          "publisher_checksum": null
+        },
+        {
+          "path": "sar_searchers_2026/SARsearchertracks.csv",
+          "url": "https://zenodo.org/api/records/18637221/files/SARsearchertracks.csv/content",
+          "bytes": 3267636,
+          "sha256": "7e3e625e7972032706499b5f0f703485b1c0736eb35fcb59010bb305fa43e06d",
+          "publisher_checksum": "md5:6edbbf3b2200bd382f34ea771993b83f"
+        },
+        {
+          "path": "sar_searchers_2026/README.md",
+          "url": "https://zenodo.org/api/records/18637221/files/README.md/content",
+          "bytes": 1724,
+          "sha256": "4eebef34942df2259d6570efe70a631a856ad6013909d52c5a17cd860db0473b",
+          "publisher_checksum": "md5:52a47487dc11d32f5a2123a1104d8ca9"
+        }
+      ]
+    },
+    {
+      "id": "cyprus_exercise_2022",
+      "role": "SEARCH_EXERCISE",
+      "source": "https://zenodo.org/records/6592419",
+      "license": "CC-BY-4.0",
+      "files": [
+        {
+          "path": "cyprus_exercise_2022/metadata.json",
+          "url": "https://zenodo.org/api/records/6592419",
+          "bytes": 5104,
+          "sha256": "264831389d56fc02d5d3e34433b5294d8a9a5fcfbf0c8742bef3feeaa0a25f28",
+          "publisher_checksum": null
+        },
+        {
+          "path": "cyprus_exercise_2022/info.txt",
+          "url": "https://zenodo.org/api/records/6592419/files/info.txt/content",
+          "bytes": 1034,
+          "sha256": "1269ae4d92982e8653667e82252e690afd2f733756d4fba6b51e57971fe3ba0c",
+          "publisher_checksum": "md5:cdc934453b4ccf45fc153772069eb7cd"
+        },
+        {
+          "path": "cyprus_exercise_2022/traces.xlsx",
+          "url": "https://zenodo.org/api/records/6592419/files/traces.xlsx/content",
+          "bytes": 134285,
+          "sha256": "af6698650af73f08ea108b40b42448d800fd0dafa57557d882e191b0570838c6",
+          "publisher_checksum": "md5:e446144d96613ffe34714e0eda45825b"
+        }
+      ]
+    },
+    {
+      "id": "lost_hikers_2022",
+      "role": "INCIDENT_ENDPOINTS_AND_SEPARATE_SIMULATION",
+      "source": "https://www.nature.com/articles/s41598-022-09502-4",
+      "license": "Article CC-BY-4.0; supplementary material included unless separately credited. No separate restriction found in inspected supplement.",
+      "files": [
+        {
+          "path": "lost_hikers_2022/41598_2022_9502_MOESM1_ESM.csv",
+          "url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fs41598-022-09502-4/MediaObjects/41598_2022_9502_MOESM1_ESM.csv",
+          "bytes": 1880403,
+          "sha256": "0433049033733c655439d4c27c058de1cb01705697dd7d93bcee60b9aa00e935",
+          "publisher_checksum": null
+        },
+        {
+          "path": "lost_hikers_2022/41598_2022_9502_MOESM2_ESM.csv",
+          "url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fs41598-022-09502-4/MediaObjects/41598_2022_9502_MOESM2_ESM.csv",
+          "bytes": 2431,
+          "sha256": "543d469196ba9e488b49e08f5501dd50529d69806cf60b8ae1252a11fd23f210",
+          "publisher_checksum": null
+        },
+        {
+          "path": "lost_hikers_2022/41598_2022_9502_MOESM3_ESM.csv",
+          "url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fs41598-022-09502-4/MediaObjects/41598_2022_9502_MOESM3_ESM.csv",
+          "bytes": 2868,
+          "sha256": "d769869dd835618278d05a2a0edf37c8516ffc4b2ee81770211993af16c05ea8",
+          "publisher_checksum": null
+        },
+        {
+          "path": "lost_hikers_2022/41598_2022_9502_MOESM4_ESM.pdf",
+          "url": "https://media.springernature.com/original/springer-static/esm/art:10.1038%2Fs41598-022-09502-4/MediaObjects/41598_2022_9502_MOESM4_ESM.pdf",
+          "bytes": 139022,
+          "sha256": "94dc45cc3f7e07c673688bd3abe7da57183aa2eadfbb3e0c98bddcbf91e9d7b5",
+          "publisher_checksum": null
+        }
+      ]
+    }
+  ],
+  "warning": "No fitted model. Searchers, exercise participants and lost-person endpoints must not be pooled as one target."
+}

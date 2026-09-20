@@ -1,0 +1,32 @@
+{
+  "available": true,
+  "snapshot": "25dd53c9b7e0125975f3479ca2738a558011a7db14b8f60a4f6bdbf53497d129",
+  "count": 630,
+  "eligible_count": 619,
+  "categories": {
+    "쉼터·숙박": 53,
+    "식당·카페": 81,
+    "정류장·터미널": 411,
+    "음수대": 4,
+    "편의점·마트": 44,
+    "병원·약국": 31,
+    "경찰·소방": 6
+  },
+  "retrieved_at": "2026-09-18T11:41:35.322953+00:00",
+  "osm_timestamp": "2026-09-18T11:40:16Z",
+  "source": "https://overpass-api.de/api/interpreter",
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "source_url": "https://www.openstreetmap.org/copyright",
+  "query": "[out:json][timeout:40];(\n      nwr[\"shop\"~\"^(convenience|supermarket)$\"](33.32404104325712,126.18023327367861,33.46606551898785,126.34954872170272);\n      nwr[\"amenity\"~\"^(restaurant|cafe|fast_food|drinking_water|bus_station|shelter|hospital|clinic|pharmacy|police|fire_station)$\"](33.32404104325712,126.18023327367861,33.46606551898785,126.34954872170272);\n      nwr[\"highway\"=\"bus_stop\"](33.32404104325712,126.18023327367861,33.46606551898785,126.34954872170272);\n      nwr[\"tourism\"~\"^(hotel|hostel|guest_house)$\"](33.32404104325712,126.18023327367861,33.46606551898785,126.34954872170272);\n    );out center tags;",
+  "potential_scale_seconds": 900.0,
+  "category_weights": "equal, nearest facility only",
+  "status": "UNCALIBRATED_ASSUMPTION",
+  "opening_status": "UNKNOWN_NOT_LIVE",
+  "terrain_sha256": {
+    "dem.npy": "ba789c7c0fc6105c50f61b3924d053c1091c5ece43fb7788cf6f5b8ce8642df0",
+    "landcover.npy": "2405ab4744b4de859817c787feeb31f113fcd6eed5257c754e5c009b0a08c828",
+    "slope.npy": "3c6d50b3e18a87e0b57c6cead6eb09ea448d369fe681431f88af7f0e3c14ec36",
+    "road_distance.npy": "d5760d47b71361f50aa166397220fb7e3673e10526878f468b717196c886251a"
+  }
+}

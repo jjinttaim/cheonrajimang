@@ -1,0 +1,1 @@
+{"kind":"endpoint_distance","models":{"lognorm":{"params":[0.6948210011941159,0.0,2436.895404538548]},"rayleigh":{"params":[0.0,2705.7983572656194]}},"reference_model":"lognorm","unit":"m"}

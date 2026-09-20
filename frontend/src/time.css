@@ -1,0 +1,17 @@
+.time-controls{padding:14px;background:#f5f7f1;border:1px solid #dce5d4;border-radius:8px;margin:12px 0;color:#53694f}
+.time-controls .time-enable{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:12px}
+.time-enable input{width:15px;height:15px;accent-color:#316749}
+.time-enable span{font-size:10px;margin-left:auto;color:#917345}
+.time-controls p{font-size:11px;line-height:1.8;margin:9px 0}
+.time-controls .form-grid label{min-width:0;font-size:11px}
+.time-controls input[type=datetime-local]{width:100%;min-width:0;padding:8px 5px;font-size:12px}
+.time-duration{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;font-size:10px;margin:8px 0 14px}
+.time-duration button{text-decoration:underline;font-size:10px;color:#346547}
+.time-controls .time-invalid{color:#a24c30}
+.night-factor{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:11px}
+.night-factor strong{margin-left:auto}.night-factor input{width:100%;accent-color:#426d44;padding:0}
+.daylight-summary{display:flex;flex-wrap:wrap;gap:5px 14px;font-size:10px;color:#64765c;margin:8px 0 0;line-height:1.6}
+.daylight-assumption{color:#937345}
+@media(max-width:760px){.time-controls .form-grid{grid-template-columns:1fr}.daylight-summary{font-size:9px;gap:3px 8px}.time-controls{padding:11px}}
+
+.time-controls .time-enable{padding-right:26px}

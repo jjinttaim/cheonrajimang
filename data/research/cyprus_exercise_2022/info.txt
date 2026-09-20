@@ -1,0 +1,18 @@
+This dataset is collected during a search-and-rescue exercise scenario in the framework of the ARTION project. 
+
+The operation took place on the 22nd of May 2022 in Paphos district (near the beach at Mandria village). 
+The exercise was organized and conducted by the Cyprus Civil Defence and data collection was performed by the 
+KIOS Research and Innovation Center of Excellence of the University of Cyprus. 
+
+The data is saved in an .xlsx file. It consists of 9 first responders' traces captured during a search-and-rescue 
+operation. The responders were moving on foot holding their mobile phones, which were used for capturing their traces. 
+By means of the ARTION mobile app, the locations of the mobile phones were captured by the build-in GPS receiver of 
+the phone approximately every 5 seconds. 
+
+The columns in the .xlsx file are the following:
+column A: first responder ID
+column B: location (latitude longitude)
+column C: timestamp - date and time ( dd/m(m)/yyyy h(h):mm:ss πμ* ) 
+
+*πμ is am
+

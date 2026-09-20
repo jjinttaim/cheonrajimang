@@ -1,0 +1,6334 @@
+{
+  "clock_diagnostic": {
+    "assumption": "GpsTime is seconds rounded with at most 64 seconds error per point; time is affine in OffsetTime.",
+    "assumption_verified": false,
+    "compatible_under_assumption": true,
+    "interpretation": "Consistency diagnostic only. Not a confidence interval, unit confirmation, or conversion permission.",
+    "milliseconds_compatible_under_assumption": false,
+    "necessary_scale_lower": 0.9988851727982163,
+    "necessary_scale_upper": 1.0011173184357542,
+    "pair_error_bound": 128,
+    "pairs_checked": 7086965,
+    "seconds_compatible_under_assumption": true,
+    "units_verified": false
+  },
+  "column_roles": {
+    "identifier": [
+      "archive_member",
+      "point_index"
+    ],
+    "orientation_measurements": [
+      "Pitch",
+      "Roll",
+      "yaw",
+      "rot.z"
+    ],
+    "spatial_measurements": [
+      "x",
+      "y",
+      "z"
+    ],
+    "temporal_unverified": [
+      "GpsTime",
+      "OffsetTime"
+    ],
+    "unverified_dimensions": [
+      "course_token",
+      "letter_token",
+      "direction"
+    ]
+  },
+  "consecutive_pairs": 39797,
+  "crs_counts": {
+    "EPSG:26912": 165
+  },
+  "dependencies": {
+    "laspy": "2.7.0",
+    "numpy": "2.5.3",
+    "pyproj": "3.8.0"
+  },
+  "doi": "10.5281/zenodo.17081136",
+  "exact_duplicate_files": [],
+  "extra_dimension_schemas": [
+    {
+      "dimensions": [
+        {
+          "description": "GPS time that the point was acqu",
+          "dtype": "float64",
+          "name": "GpsTime"
+        },
+        {
+          "description": "Milliseconds from first acquired",
+          "dtype": "float64",
+          "name": "OffsetTime"
+        },
+        {
+          "description": "Pitch in degrees",
+          "dtype": "float64",
+          "name": "Pitch"
+        },
+        {
+          "description": "Roll in degrees",
+          "dtype": "float64",
+          "name": "Roll"
+        },
+        {
+          "description": "",
+          "dtype": "float64",
+          "name": "yaw"
+        },
+        {
+          "description": "",
+          "dtype": "float64",
+          "name": "rot.z"
+        }
+      ],
+      "files": 165
+    }
+  ],
+  "filename_token_counts": {
+    "course_token": {
+      "1": 14,
+      "2": 16,
+      "3": 18,
+      "4a": 16,
+      "4b": 12,
+      "5a": 12,
+      "5b": 12,
+      "6": 18,
+      "7": 16,
+      "8": 16,
+      "9": 15
+    },
+    "direction": {
+      "down": 83,
+      "up": 82
+    },
+    "letter_token": {
+      "A": 16,
+      "B": 21,
+      "C": 17,
+      "D": 22,
+      "E": 14,
+      "F": 16,
+      "G": 19,
+      "H": 20,
+      "I": 20
+    }
+  },
+  "files": 165,
+  "gates": [
+    {
+      "id": "TIME_UNITS",
+      "passed": false,
+      "reason": "OffsetTime description says milliseconds; its relation to GpsTime requires author or processing-code confirmation."
+    },
+    {
+      "id": "INDEPENDENT_TERRAIN_INPUTS",
+      "passed": false,
+      "reason": "Trajectory LAS contains no independent airborne terrain, vegetation-density or surface-roughness predictors. Future trajectory differences must not replace independent inputs."
+    },
+    {
+      "id": "PERSON_COURSE_GROUPS",
+      "passed": false,
+      "reason": "Filename tokens are observed, but a participant/transect dictionary and analysis-file inclusion list are not verified."
+    },
+    {
+      "id": "LOST_PERSON_TARGET",
+      "passed": false,
+      "reason": "Source is a controlled walking experiment, not lost-person paths, facility choices, or search detection outcomes."
+    }
+  ],
+  "gps_deltas": {
+    "count": 39797,
+    "max": 128.0,
+    "mean": 1.0195743397743549,
+    "median": 0.0,
+    "min": 0.0,
+    "negative": 0,
+    "nonfinite": 0,
+    "percentiles": {
+      "1": 0.0,
+      "25": 0.0,
+      "5": 0.0,
+      "50": 0.0,
+      "75": 0.0,
+      "95": 0.0,
+      "99": 0.0
+    },
+    "population_std": 11.378311986265413,
+    "unique_finite": 2,
+    "zero": 39480
+  },
+  "grain": "One scanner trajectory point, keyed by archive member and zero-based point index.",
+  "las_formats": {
+    "1.2/point-format-0": 165
+  },
+  "numeric_fields": {
+    "GpsTime": {
+      "count": 39962,
+      "max": 1693530752.0,
+      "mean": 1692278182.4140935,
+      "median": 1691807232.0,
+      "min": 1691625344.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 1691625856.0,
+        "25": 1691717376.0,
+        "5": 1691633152.0,
+        "50": 1691807232.0,
+        "75": 1692926464.0,
+        "95": 1693522304.0,
+        "99": 1693530368.0
+      },
+      "population_std": 714599.8116070837,
+      "unique_finite": 408,
+      "zero": 0
+    },
+    "OffsetTime": {
+      "count": 39962,
+      "max": 2029.0,
+      "mean": 405.47229868374956,
+      "median": 301.0,
+      "min": 15.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 47.0,
+        "25": 167.0,
+        "5": 68.0,
+        "50": 301.0,
+        "75": 534.0,
+        "95": 1067.0,
+        "99": 1715.3899999999994
+      },
+      "population_std": 342.3290716247768,
+      "unique_finite": 2015,
+      "zero": 0
+    },
+    "Pitch": {
+      "count": 39962,
+      "max": 178.92196655273438,
+      "mean": 3.5033928370718628,
+      "median": 3.237368583679199,
+      "min": -176.7120819091797,
+      "negative": 16761,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": -45.78754901885986,
+        "25": -7.907326698303223,
+        "5": -27.403913116455076,
+        "50": 3.237368583679199,
+        "75": 14.646967649459839,
+        "95": 35.03068408966061,
+        "99": 54.8472393035888
+      },
+      "population_std": 20.122236311933314,
+      "unique_finite": 39910,
+      "zero": 0
+    },
+    "Roll": {
+      "count": 39962,
+      "max": 23.01923942565918,
+      "mean": -64.13956443801162,
+      "median": -66.04087448120117,
+      "min": -89.63861846923828,
+      "negative": 39915,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": -82.25976890563965,
+        "25": -71.63071250915527,
+        "5": -78.11435089111328,
+        "50": -66.04087448120117,
+        "75": -58.82771587371826,
+        "95": -44.61814937591554,
+        "99": -24.203793869018558
+      },
+      "population_std": 11.240522616557014,
+      "unique_finite": 39751,
+      "zero": 0
+    },
+    "X": {
+      "count": 39962,
+      "max": 11989249.0,
+      "mean": 3575488.8280616584,
+      "median": 3632540.0,
+      "min": -26594095.0,
+      "negative": 6554,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": -6501370.93,
+        "25": 1953918.75,
+        "5": -4454070.6,
+        "50": 3632540.0,
+        "75": 6711715.25,
+        "95": 9596983.35,
+        "99": 11173584.41
+      },
+      "population_std": 4415312.76287393,
+      "unique_finite": 39829,
+      "zero": 0
+    },
+    "Y": {
+      "count": 39962,
+      "max": 52645776.0,
+      "mean": 4892779.696862019,
+      "median": 4987497.0,
+      "min": -7843295.0,
+      "negative": 10725,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": -7204161.36,
+        "25": -378382.75,
+        "5": -5212021.449999999,
+        "50": 4987497.0,
+        "75": 9578869.0,
+        "95": 14266030.799999999,
+        "99": 17480815.83
+      },
+      "population_std": 7057825.988146332,
+      "unique_finite": 39873,
+      "zero": 0
+    },
+    "Z": {
+      "count": 39962,
+      "max": 290051465.0,
+      "mean": 240697942.50175166,
+      "median": 234271972.5,
+      "min": 196693958.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 196879397.25,
+        "25": 213419964.5,
+        "5": 197268744.3,
+        "50": 234271972.5,
+        "75": 254054889.0,
+        "95": 288492060.7,
+        "99": 289685402.02
+      },
+      "population_std": 27585939.08657697,
+      "unique_finite": 39062,
+      "zero": 0
+    },
+    "classification": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "edge_of_flight_line": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "intensity": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "key_point": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "number_of_returns": {
+      "count": 39962,
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 1.0,
+        "25": 1.0,
+        "5": 1.0,
+        "50": 1.0,
+        "75": 1.0,
+        "95": 1.0,
+        "99": 1.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 0
+    },
+    "point_source_id": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "return_number": {
+      "count": 39962,
+      "max": 1.0,
+      "mean": 1.0,
+      "median": 1.0,
+      "min": 1.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 1.0,
+        "25": 1.0,
+        "5": 1.0,
+        "50": 1.0,
+        "75": 1.0,
+        "95": 1.0,
+        "99": 1.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 0
+    },
+    "rot.z": {
+      "count": 39962,
+      "max": 0.9945791959762573,
+      "mean": 0.09941277346927826,
+      "median": 0.10579539835453033,
+      "min": -0.9936182498931885,
+      "negative": 17339,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": -0.8579708629846573,
+        "25": -0.35833705216646194,
+        "5": -0.8068233221769333,
+        "50": 0.10579539835453033,
+        "75": 0.6844072043895721,
+        "95": 0.8302619963884353,
+        "99": 0.8873618972301484
+      },
+      "population_std": 0.5623380832426195,
+      "unique_finite": 39886,
+      "zero": 0
+    },
+    "scan_angle_rank": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "scan_direction_flag": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "synthetic": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "user_data": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "withheld": {
+      "count": 39962,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 0.0,
+        "25": 0.0,
+        "5": 0.0,
+        "50": 0.0,
+        "75": 0.0,
+        "95": 0.0,
+        "99": 0.0
+      },
+      "population_std": 0.0,
+      "unique_finite": 1,
+      "zero": 39962
+    },
+    "x": {
+      "count": 39962,
+      "max": 458097.58314,
+      "mean": 452635.8875142753,
+      "median": 454522.36332,
+      "min": 438663.85834,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 438684.8101655,
+        "25": 446575.846765,
+        "5": 438752.19696100004,
+        "50": 454522.36332,
+        "75": 457432.4100175,
+        "95": 458080.003325,
+        "99": 458092.6881823
+      },
+      "population_std": 5714.445125262568,
+      "unique_finite": 39871,
+      "zero": 0
+    },
+    "y": {
+      "count": 39962,
+      "max": 4499226.5849,
+      "mean": 4494586.673655533,
+      "median": 4495624.48306,
+      "min": 4490472.68085,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 4490477.0900984,
+        "25": 4491377.98228,
+        "5": 4490496.7291089995,
+        "50": 4495624.48306,
+        "75": 4497302.3124375,
+        "95": 4499194.736255,
+        "99": 4499218.747366999
+      },
+      "population_std": 3131.1780830688417,
+      "unique_finite": 39898,
+      "zero": 0
+    },
+    "yaw": {
+      "count": 39962,
+      "max": 359.9890441894531,
+      "mean": 174.36666866538326,
+      "median": 167.4546661376953,
+      "min": 0.0020655691623687744,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 6.495354242324829,
+        "25": 86.49893951416016,
+        "5": 26.62520208358765,
+        "50": 167.4546661376953,
+        "75": 263.17327880859375,
+        "95": 332.03368072509767,
+        "99": 354.0081002807617
+      },
+      "population_std": 99.46754585578806,
+      "unique_finite": 39881,
+      "zero": 0
+    },
+    "z": {
+      "count": 39962,
+      "max": 2900.51465,
+      "mean": 2406.979425017517,
+      "median": 2342.719725,
+      "min": 1966.9395800000002,
+      "negative": 0,
+      "nonfinite": 0,
+      "percentiles": {
+        "1": 1968.7939725,
+        "25": 2134.199645,
+        "5": 1972.6874430000003,
+        "50": 2342.719725,
+        "75": 2540.5488900000005,
+        "95": 2884.920607,
+        "99": 2896.8540202000004
+      },
+      "population_std": 275.8593908657697,
+      "unique_finite": 39062,
+      "zero": 0
+    }
+  },
+  "offset_deltas": {
+    "count": 39797,
+    "max": 1.0,
+    "mean": 1.0,
+    "median": 1.0,
+    "min": 1.0,
+    "negative": 0,
+    "nonfinite": 0,
+    "percentiles": {
+      "1": 1.0,
+      "25": 1.0,
+      "5": 1.0,
+      "50": 1.0,
+      "75": 1.0,
+      "95": 1.0,
+      "99": 1.0
+    },
+    "population_std": 0.0,
+    "unique_finite": 1,
+    "zero": 0
+  },
+  "points": 39962,
+  "profiler_sha256": "e1c0aee1f41579372ed3769d7d72bc77266e228f60a924bd6364a2ffb27cbce4",
+  "recommended_next_actions": [
+    "Obtain a verified OffsetTime unit and GpsTime epoch/precision explanation.",
+    "Obtain file-to-participant/course mapping and the paper analysis inclusion list.",
+    "Join independent terrain rasters with source date, CRS and license; do not derive predictor slope from future path.",
+    "Only then preregister grouped person and course evaluation for a walking-speed component, not a lost-person policy."
+  ],
+  "schema": "offtrail-quality-v1",
+  "source_files": [
+    {
+      "path": "record.json",
+      "sha256": "d1d81233123f4e62d0ea8b6c0720548fa3a08b5089037d58f0fdb1c85ae4f43a"
+    },
+    {
+      "path": "trajectories.zip",
+      "sha256": "d746bd179821f9d5b8c18aba6dcb04bffe7b9b49f7fcb90a0304ed5ff4bf21a1"
+    },
+    {
+      "path": "manifest.json",
+      "sha256": "1bf32741ff133f97bae6d709762385e2b961a63217db5346e49dd1498f98fad6"
+    }
+  ],
+  "status": "QUARANTINED_TIME_UNITS_AND_FEATURES_UNVERIFIED",
+  "token_semantics_verified": false,
+  "tracks": [
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 2628,
+        "upper": 2.56
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691729024.0,
+        1691729152.0
+      ],
+      "gps_nonincreasing_pairs": 71,
+      "horizontal_path_length_crs_units": 99.38211431493156,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        114.0,
+        186.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1A_down.las.las",
+      "points": 73,
+      "sha256": "dfb0d890aa2ef3c3daa8db806fbd2c13b555e75717d2d2f4e8c4cc94f9d4410a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 2701,
+        "upper": 1.7534246575342465
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691729024.0,
+        1691729024.0
+      ],
+      "gps_nonincreasing_pairs": 73,
+      "horizontal_path_length_crs_units": 101.51832966831121,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        114.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1A_up.las.las",
+      "points": 74,
+      "sha256": "843a9f95987bddb6e85492a05c060592359cec4ae7943b55942ae969cf8ea9f9",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3655,
+        "upper": 1.641025641025641
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691727872.0,
+        1691728000.0
+      ],
+      "gps_nonincreasing_pairs": 84,
+      "horizontal_path_length_crs_units": 99.78930344999253,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        126.0,
+        211.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1B_down.las.las",
+      "points": 86,
+      "sha256": "8ea2de2b6be6335689180377e231b40a8a162a7e56f5e3dfc8181e40082d9d2e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 2346,
+        "upper": 1.8823529411764706
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691728768.0,
+        1691728768.0
+      ],
+      "gps_nonincreasing_pairs": 68,
+      "horizontal_path_length_crs_units": 100.68501570900952,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        113.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1C_up.las.las",
+      "points": 69,
+      "sha256": "5f9d872f1fde35c4e3656d6e00e9dad127275efbd54686f98c7ad336bbe152ce",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3081,
+        "upper": 1.641025641025641
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691728256.0,
+        1691728256.0
+      ],
+      "gps_nonincreasing_pairs": 78,
+      "horizontal_path_length_crs_units": 100.6729402058091,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        121.0,
+        199.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1D_down.las.las",
+      "points": 79,
+      "sha256": "e4f5ba82b0e536488b1d5049442382f869c51d7b25144751db22b9c4e54fd80e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 2926,
+        "upper": 2.909090909090909
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691728128.0,
+        1691728256.0
+      ],
+      "gps_nonincreasing_pairs": 75,
+      "horizontal_path_length_crs_units": 101.49566434648496,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        118.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1D_up.las.las",
+      "points": 77,
+      "sha256": "61a69d13a41a22946aef0723a6600e7ebeabcf843b9ec6bf59852f00375f57d5",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 4278,
+        "upper": 2.723404255319149
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691728512.0,
+        1691728640.0
+      ],
+      "gps_nonincreasing_pairs": 91,
+      "horizontal_path_length_crs_units": 103.74555477038042,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        131.0,
+        223.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1E_down.las.las",
+      "points": 93,
+      "sha256": "258ff9a2028e7e5a18e52b8e238018ceed0bcc5f6a629c6b1b4905b8367073d7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3655,
+        "upper": 1.620253164556962
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691728384.0,
+        1691728512.0
+      ],
+      "gps_nonincreasing_pairs": 84,
+      "horizontal_path_length_crs_units": 101.84538680685823,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        130.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1E_up.las.las",
+      "points": 86,
+      "sha256": "94f63e5aba9cbfea2ff0a9a53cd134a307222eed6102cbd49925e94eeec9fcf8",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3655,
+        "upper": 2.723404255319149
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692848768.0,
+        1692848896.0
+      ],
+      "gps_nonincreasing_pairs": 84,
+      "horizontal_path_length_crs_units": 101.03835215273607,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        131.0,
+        216.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1G_down.las.las",
+      "points": 86,
+      "sha256": "c70e8603a74c2444bdb11e2a4a79d0b1d0e1a34044de1fb7c7cca68dbbf7f237",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 2926,
+        "upper": 1.9104477611940298
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692848640.0,
+        1692848768.0
+      ],
+      "gps_nonincreasing_pairs": 75,
+      "horizontal_path_length_crs_units": 100.66478153814397,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        118.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1G_up.las.las",
+      "points": 77,
+      "sha256": "0787d6c526dabe7d9b251433e85ba60414d905b2dac44a1dd9e20a32c7fab6f4",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3486,
+        "upper": 2.169491525423729
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692849408.0,
+        1692849536.0
+      ],
+      "gps_nonincreasing_pairs": 82,
+      "horizontal_path_length_crs_units": 100.14310142533871,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        135.0,
+        218.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1H_down.las.las",
+      "points": 84,
+      "sha256": "f3c45f836e27b2e369d249434f0959213119db9255d19e8d0b1cf9b6a9e282f7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3240,
+        "upper": 1.6
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692849408.0,
+        1692849408.0
+      ],
+      "gps_nonincreasing_pairs": 80,
+      "horizontal_path_length_crs_units": 100.00851403730695,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        123.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1H_up.las.las",
+      "points": 81,
+      "sha256": "65ec34dcf970e23d8de209322af550d8dc6f129553e9904f82def25e8f08d763",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3240,
+        "upper": 1.6
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692849152.0,
+        1692849152.0
+      ],
+      "gps_nonincreasing_pairs": 80,
+      "horizontal_path_length_crs_units": 101.82688036086518,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        144.0,
+        224.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1I_down.las.las",
+      "points": 81,
+      "sha256": "b85595fe76a80066a08dcae8022fc68ef1b9faf62ec06df9051b655af257718d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 3003,
+        "upper": 1.6623376623376624
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "1",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692849024.0,
+        1692849024.0
+      ],
+      "gps_nonincreasing_pairs": 77,
+      "horizontal_path_length_crs_units": 101.67967021076655,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        122.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t1I_up.las.las",
+      "points": 78,
+      "sha256": "1911aee255fe8e24a4af876841aceaee3728de136077878f22570545366b7109",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8128,
+        "upper": 1.103448275862069
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691627776.0,
+        1691627904.0
+      ],
+      "gps_nonincreasing_pairs": 126,
+      "horizontal_path_length_crs_units": 132.80031680585932,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        207.0,
+        334.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2A_down.las.las",
+      "points": 128,
+      "sha256": "fff56cd2476378db3bed7967b2f4286f46b02b28b99727770f89f4a6053234a7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 12720,
+        "upper": 1.1636363636363636
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691627648.0,
+        1691627776.0
+      ],
+      "gps_nonincreasing_pairs": 158,
+      "horizontal_path_length_crs_units": 150.69681854063415,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        200.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2A_up.las.las",
+      "points": 160,
+      "sha256": "215dcf64e4f19694c02c0437f8f979f2952c8cc42c39cf9aa3f6342cfefce5ff",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 15051,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691625856.0,
+        1691626112.0
+      ],
+      "gps_nonincreasing_pairs": 171,
+      "horizontal_path_length_crs_units": 132.63466818658424,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        213.0,
+        386.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2B_down.las.las",
+      "points": 174,
+      "sha256": "3e9a4e57906faaae5444904aa1859872b5d1429801449886e4f96514821ea045",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 14878,
+        "upper": 1.1531531531531531
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691625728.0,
+        1691625856.0
+      ],
+      "gps_nonincreasing_pairs": 171,
+      "horizontal_path_length_crs_units": 130.44409166599857,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        212.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2B_up.las.las",
+      "points": 173,
+      "sha256": "f2f736ec7d647e2bfb91598042376c16389ba423ce6ee30bfdcd766f1efa5dcb",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6786,
+        "upper": 1.1327433628318584
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691626880.0,
+        1691627008.0
+      ],
+      "gps_nonincreasing_pairs": 115,
+      "horizontal_path_length_crs_units": 129.91954085056054,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        181.0,
+        297.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2C_down.las.las",
+      "points": 117,
+      "sha256": "cf6b33eef325b8e86e9f5099a547ca1adf44fcedd1e320633142f8e1033b93f6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7626,
+        "upper": 1.1851851851851851
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691626752.0,
+        1691626880.0
+      ],
+      "gps_nonincreasing_pairs": 122,
+      "horizontal_path_length_crs_units": 128.2304859997788,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        164.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2C_up.las.las",
+      "points": 124,
+      "sha256": "1970b9296af761b27792f17d36108dc10d0a444f48a9e3426450a4798a75c378",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6555,
+        "upper": 2.1333333333333333
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691625472.0,
+        1691625600.0
+      ],
+      "gps_nonincreasing_pairs": 113,
+      "horizontal_path_length_crs_units": 128.613439432017,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        166.0,
+        280.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2D_down.las.las",
+      "points": 115,
+      "sha256": "cc481093476bfdcd070da73ceb7d4ae340e4197a15e81b88865f281f62598d4e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7140,
+        "upper": 1.855072463768116
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691625344.0,
+        1691625472.0
+      ],
+      "gps_nonincreasing_pairs": 118,
+      "horizontal_path_length_crs_units": 125.89549080013944,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        161.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2D_up.las.las",
+      "points": 120,
+      "sha256": "9b362aa971ecfe69a8f60a399b89418b81e214ba25e4bb2f3aaa890ca3709a71",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 16290,
+        "upper": 1.391304347826087
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691626496.0,
+        1691626624.0
+      ],
+      "gps_nonincreasing_pairs": 179,
+      "horizontal_path_length_crs_units": 138.82051614830766,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        287.0,
+        467.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2E_down.las.las",
+      "points": 181,
+      "sha256": "fb4999e158caa45482d0555528247c065b6a7601894f2c60ceb97673de651acb",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 26335,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691626240.0,
+        1691626496.0
+      ],
+      "gps_nonincreasing_pairs": 227,
+      "horizontal_path_length_crs_units": 162.28818695514335,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        274.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2E_up.las.las",
+      "points": 230,
+      "sha256": "b012821fb031412a8ae404109aba275854414b1aecea290726d1cd3b3e706992",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9453,
+        "upper": 1.4545454545454546
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691627392.0,
+        1691627520.0
+      ],
+      "gps_nonincreasing_pairs": 136,
+      "horizontal_path_length_crs_units": 138.9281260203338,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        185.0,
+        322.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2F_down.las.las",
+      "points": 138,
+      "sha256": "90f347a0739386664e28b18bcbfbc45d271c8b893547213d013f2d0f97ca601e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9180,
+        "upper": 1.28
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691627264.0,
+        1691627392.0
+      ],
+      "gps_nonincreasing_pairs": 134,
+      "horizontal_path_length_crs_units": 128.71645357138374,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        180.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2F_up.las.las",
+      "points": 136,
+      "sha256": "ca958b76a57118a16b8ecd94aa84a0386eef2c0c8466ef0cebde9d0a39acd024",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7021,
+        "upper": 1.1327433628318584
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693522176.0,
+        1693522304.0
+      ],
+      "gps_nonincreasing_pairs": 117,
+      "horizontal_path_length_crs_units": 127.55729124828252,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        173.0,
+        291.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2H_down.las.las",
+      "points": 119,
+      "sha256": "bb7175bc5767f94f60d398c18c5322d425a5742765ad9ed1a540ae4dadefb5d4",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8911,
+        "upper": 1.0578512396694215
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693522048.0,
+        1693522176.0
+      ],
+      "gps_nonincreasing_pairs": 132,
+      "horizontal_path_length_crs_units": 134.31140768224336,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        38.0,
+        171.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2H_up.las.las",
+      "points": 134,
+      "sha256": "1524a9a1917901fee5a0a5e569c4b9326b8393097f860c61ca19551d4262ce70",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 52003,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692754176.0,
+        1692754560.0
+      ],
+      "gps_nonincreasing_pairs": 319,
+      "horizontal_path_length_crs_units": 209.6175776653953,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        171.0,
+        493.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2I_down.las.las",
+      "points": 323,
+      "sha256": "cccbd4402bb1dc5180af74ccf81f88b385fd0c4a0fb5ced462e86e020e450664",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7140,
+        "upper": 1.0940170940170941
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "2",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692754048.0,
+        1692754176.0
+      ],
+      "gps_nonincreasing_pairs": 118,
+      "horizontal_path_length_crs_units": 76.63423748181593,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        163.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t2I_up.las.las",
+      "points": 120,
+      "sha256": "4b40c1126a0536a85ce602a73d93d98f33faa9a37145559468d29873667b7668",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11175,
+        "upper": 1.4382022471910112
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691722368.0,
+        1691722496.0
+      ],
+      "gps_nonincreasing_pairs": 148,
+      "horizontal_path_length_crs_units": 138.05367848526095,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        206.0,
+        355.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3A_down.las.las",
+      "points": 150,
+      "sha256": "cc35d236f3a6db25edbf9a949a1bf0541ed81b47800d4c672dec2a12164914eb",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 13366,
+        "upper": 1.3473684210526315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691722240.0,
+        1691722368.0
+      ],
+      "gps_nonincreasing_pairs": 162,
+      "horizontal_path_length_crs_units": 136.27370100524345,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        205.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3A_up.las.las",
+      "points": 164,
+      "sha256": "fa43d37bbb72e858474b7a30ca893221a7e280154b2806bcf6f658e3fad44ed4",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11026,
+        "upper": 1.3617021276595744
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691724672.0,
+        1691724800.0
+      ],
+      "gps_nonincreasing_pairs": 147,
+      "horizontal_path_length_crs_units": 128.4914195643783,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        187.0,
+        335.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3B_down.las.las",
+      "points": 149,
+      "sha256": "8baf2b7b8cd7f622e97274d256e39a2ef6e61612892166914a155935feadb1d3",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 10878,
+        "upper": 1.1228070175438596
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691724544.0,
+        1691724672.0
+      ],
+      "gps_nonincreasing_pairs": 146,
+      "horizontal_path_length_crs_units": 127.51922828274371,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        39.0,
+        186.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3B_up.las.las",
+      "points": 148,
+      "sha256": "22835f942dd61d5139d65fed79116cdcbd78f275c51002ab532869db666d4504",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6903,
+        "upper": 2.169491525423729
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691724288.0,
+        1691724416.0
+      ],
+      "gps_nonincreasing_pairs": 116,
+      "horizontal_path_length_crs_units": 140.67024671291932,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        175.0,
+        292.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3C_down.las.las",
+      "points": 118,
+      "sha256": "1cc23d794a4c50c8171ccead76b60fc9e5b85b3e2bde460c71d8a3cb5be06193",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8646,
+        "upper": 1.9393939393939394
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691724160.0,
+        1691724288.0
+      ],
+      "gps_nonincreasing_pairs": 130,
+      "horizontal_path_length_crs_units": 138.69878890944494,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        171.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3C_up.las.las",
+      "points": 132,
+      "sha256": "f835c396ec8914452327a5f9a41196d66094d2aac02f07da341867d995af7056",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 13366,
+        "upper": 1.5238095238095237
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691723392.0,
+        1691723520.0
+      ],
+      "gps_nonincreasing_pairs": 162,
+      "horizontal_path_length_crs_units": 139.023234589943,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        192.0,
+        355.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3D_down.las.las",
+      "points": 164,
+      "sha256": "cb9bc43daaf75ccfa711812cbff970bfdc0e68cedbc605e82762271ed4fba46c",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11476,
+        "upper": 1.2549019607843137
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691723264.0,
+        1691723392.0
+      ],
+      "gps_nonincreasing_pairs": 150,
+      "horizontal_path_length_crs_units": 132.30935043521634,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        191.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3D_up.las.las",
+      "points": 152,
+      "sha256": "aea89affbb91e86c1928dd30c4911280806c1f3ebf6a2e9a9408ed526feec7b6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 21528,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691722880.0,
+        1691723136.0
+      ],
+      "gps_nonincreasing_pairs": 205,
+      "horizontal_path_length_crs_units": 136.890295587389,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        255.0,
+        462.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3E_down.las.las",
+      "points": 208,
+      "sha256": "7bdc2798a74d3b8a08c88d631d9b7abe97b26b99d929fa94f3e195eed40694b6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 21321,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691722624.0,
+        1691722880.0
+      ],
+      "gps_nonincreasing_pairs": 204,
+      "horizontal_path_length_crs_units": 137.15846328920685,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        249.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3E_up.las.las",
+      "points": 207,
+      "sha256": "d2ae9d42aca396b2e00862cda2b75e466fb7488df305ce185c80a8f5c9750c39",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 18145,
+        "upper": 1.0756302521008403
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691723904.0,
+        1691724032.0
+      ],
+      "gps_nonincreasing_pairs": 189,
+      "horizontal_path_length_crs_units": 143.87752431239147,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        239.0,
+        429.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3F_down.las.las",
+      "points": 191,
+      "sha256": "5e69e4f82f235c2a702843512bb5df34986f0f6e46efaa076f83fa03028426f6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 19900,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691723648.0,
+        1691723904.0
+      ],
+      "gps_nonincreasing_pairs": 197,
+      "horizontal_path_length_crs_units": 138.14619560644417,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        239.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3F_up.las.las",
+      "points": 200,
+      "sha256": "3ce60cef1fb92e70afa29424f06314a1bc47221d217e626d67c8c9018301f5ec",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 14706,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692844160.0,
+        1692844416.0
+      ],
+      "gps_nonincreasing_pairs": 169,
+      "horizontal_path_length_crs_units": 139.49360748949772,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        208.0,
+        379.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3G_down.las.las",
+      "points": 172,
+      "sha256": "1e604e43bb6edf476b4715744ecf5e2313a84f55fdd4a20864c5f2f8d69972ff",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 14028,
+        "upper": 1.4545454545454546
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692844032.0,
+        1692844160.0
+      ],
+      "gps_nonincreasing_pairs": 166,
+      "horizontal_path_length_crs_units": 144.30260782577017,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        207.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3G_up.las.las",
+      "points": 168,
+      "sha256": "66091a559a330b7645c5d433654136bc3bc134e11ca4ac5781117dc4b9d3bd08",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9870,
+        "upper": 1.1636363636363636
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692844672.0,
+        1692844800.0
+      ],
+      "gps_nonincreasing_pairs": 139,
+      "horizontal_path_length_crs_units": 133.94736439227506,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        188.0,
+        328.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3H_down.las.las",
+      "points": 141,
+      "sha256": "b63cba263d113fb6e0064e60fcf70b249c8bb0938798ab6283053108940e1cbf",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 10731,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692844416.0,
+        1692844672.0
+      ],
+      "gps_nonincreasing_pairs": 144,
+      "horizontal_path_length_crs_units": 135.54868831606802,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        187.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3H_up.las.las",
+      "points": 147,
+      "sha256": "071f1652673eb28086e25eb576ee0d650ff6adfc079368feae7cd68b9691eb62",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 23220,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692843648.0,
+        1692843904.0
+      ],
+      "gps_nonincreasing_pairs": 213,
+      "horizontal_path_length_crs_units": 147.13785718695442,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        300.0,
+        515.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3I_down.las.las",
+      "points": 216,
+      "sha256": "ca8d09e6574b32284fd58136ed801f4b8c796e9d2adedc6d7cb15ddec4c55420",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 30135,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "3",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692843392.0,
+        1692843648.0
+      ],
+      "gps_nonincreasing_pairs": 243,
+      "horizontal_path_length_crs_units": 151.30299171766768,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        47.0,
+        292.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t3I_up.las.las",
+      "points": 246,
+      "sha256": "6ca5f88ee97887ffec4f79b5a467fffc8ee40defb070b61eee1ebb1dffe2bba0",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 5050,
+        "upper": 2.5098039215686274
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691733632.0,
+        1691733760.0
+      ],
+      "gps_nonincreasing_pairs": 99,
+      "horizontal_path_length_crs_units": 114.06936747769896,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        156.0,
+        256.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aA_down.las.las",
+      "points": 101,
+      "sha256": "9d50ad0fe9127ede79224521104122ea12bd05ebdb534a169cf4b3632fb2d42e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6328,
+        "upper": 1.620253164556962
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691733504.0,
+        1691733632.0
+      ],
+      "gps_nonincreasing_pairs": 111,
+      "horizontal_path_length_crs_units": 113.48048326765954,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        156.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aA_up.las.las",
+      "points": 113,
+      "sha256": "27980315c29004b3588c0d3a2898a73fc765df0cfab2d85e275a3198d40fa2bf",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7260,
+        "upper": 1.8823529411764706
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691733248.0,
+        1691733376.0
+      ],
+      "gps_nonincreasing_pairs": 119,
+      "horizontal_path_length_crs_units": 111.2309217337806,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        190.0,
+        310.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aB_down.las.las",
+      "points": 121,
+      "sha256": "2c8f5b3d59de544612688e1386083925c81bc8e83556dc321ffdf64edf2be452",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11628,
+        "upper": 1.6623376623376624
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691733120.0,
+        1691733248.0
+      ],
+      "gps_nonincreasing_pairs": 151,
+      "horizontal_path_length_crs_units": 113.30743263308717,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        39.0,
+        191.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aB_up.las.las",
+      "points": 153,
+      "sha256": "a93f9ef7751c8296b290319ca35c56d7635eeeafd009504d5963806c1a0bf3fd",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6441,
+        "upper": 2.0
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691731840.0,
+        1691731968.0
+      ],
+      "gps_nonincreasing_pairs": 112,
+      "horizontal_path_length_crs_units": 114.89738914542944,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        153.0,
+        266.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aC_down.las.las",
+      "points": 114,
+      "sha256": "8077bf9dca541545a4acf1d9b438d323f6767d579d52b5e93b112d77b2159f4d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6105,
+        "upper": 2.098360655737705
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691731712.0,
+        1691731840.0
+      ],
+      "gps_nonincreasing_pairs": 109,
+      "horizontal_path_length_crs_units": 112.65939302020675,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        151.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aC_up.las.las",
+      "points": 111,
+      "sha256": "d3b329b9949782a6f7563412ccb657fe0c0a0c660648f7191befaac211bb9ce5",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8256,
+        "upper": 1.6842105263157894
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691732864.0,
+        1691732992.0
+      ],
+      "gps_nonincreasing_pairs": 127,
+      "horizontal_path_length_crs_units": 116.78208612096194,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        179.0,
+        307.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aD_down.las.las",
+      "points": 129,
+      "sha256": "fa034cf680d711abedbd08593d781940c10295c61db583563df2346c9ff45b95",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9180,
+        "upper": 1.5238095238095237
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691732736.0,
+        1691732864.0
+      ],
+      "gps_nonincreasing_pairs": 134,
+      "horizontal_path_length_crs_units": 116.91530020240205,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        178.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aD_up.las.las",
+      "points": 136,
+      "sha256": "c8474e273f1404425eb28b1bc42b264fb2e76fc2b6c1c8268961766d034d1d56",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8128,
+        "upper": 1.3061224489795917
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691734016.0,
+        1691734144.0
+      ],
+      "gps_nonincreasing_pairs": 126,
+      "horizontal_path_length_crs_units": 116.52362620542618,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        202.0,
+        329.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aF_down.las.las",
+      "points": 128,
+      "sha256": "beee018249aaa9429dac1c421b33d862014a23a177512122343b35837311e115",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 12403,
+        "upper": 1.3333333333333333
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691733888.0,
+        1691734016.0
+      ],
+      "gps_nonincreasing_pairs": 156,
+      "horizontal_path_length_crs_units": 118.85133922215849,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        199.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aF_up.las.las",
+      "points": 158,
+      "sha256": "b1e055c3979e3a8471e46e53a2a943ee5aa527a6e532dfc5b9fbd4da4656953a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 10731,
+        "upper": 1.1327433628318584
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692851200.0,
+        1692851328.0
+      ],
+      "gps_nonincreasing_pairs": 145,
+      "horizontal_path_length_crs_units": 120.25734365551749,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        177.0,
+        323.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aG_down.las.las",
+      "points": 147,
+      "sha256": "4cacbdf8e0124d70c13e18d9e47839d27130bc20097212b61f0e8060b8ac6a87",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9453,
+        "upper": 1.3617021276595744
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692851072.0,
+        1692851200.0
+      ],
+      "gps_nonincreasing_pairs": 136,
+      "horizontal_path_length_crs_units": 121.5219661914672,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        39.0,
+        176.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aG_up.las.las",
+      "points": 138,
+      "sha256": "48ab206bb720b23a6140b41fa264f9d1a00f681bb06b0f31daaf08ab2a8a8833",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7140,
+        "upper": 1.3473684210526315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692852224.0,
+        1692852352.0
+      ],
+      "gps_nonincreasing_pairs": 118,
+      "horizontal_path_length_crs_units": 119.64896166934317,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        189.0,
+        308.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aH_down.las.las",
+      "points": 120,
+      "sha256": "940144f2e94b1f580de38a883c7dd55fff0df7d4d542a26f9586c0802217a40f",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11026,
+        "upper": 1.2307692307692308
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692852096.0,
+        1692852224.0
+      ],
+      "gps_nonincreasing_pairs": 147,
+      "horizontal_path_length_crs_units": 123.19120209635358,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        189.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aH_up.las.las",
+      "points": 149,
+      "sha256": "404a67c221cb91d33418e7ff9df9c8b9f92e21da46ba771b30a1acc91732761e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 16653,
+        "upper": 1.2549019607843137
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692851840.0,
+        1692851968.0
+      ],
+      "gps_nonincreasing_pairs": 181,
+      "horizontal_path_length_crs_units": 124.74766963605516,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        232.0,
+        414.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aI_down.las.las",
+      "points": 183,
+      "sha256": "62dddaf2ba1affdf3453641087f33a19771a6c289e05e36e9b4c6b02a925a9fa",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 16471,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4a",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692851584.0,
+        1692851840.0
+      ],
+      "gps_nonincreasing_pairs": 179,
+      "horizontal_path_length_crs_units": 123.03629349336458,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        224.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4aI_up.las.las",
+      "points": 182,
+      "sha256": "0720272d0daac84ecb01d86a3f91e02002e8ba176b7f3477f5a228b254b68cee",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11476,
+        "upper": 1.5421686746987953
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691646976.0,
+        1691647104.0
+      ],
+      "gps_nonincreasing_pairs": 150,
+      "horizontal_path_length_crs_units": 115.66863943420472,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        180.0,
+        331.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bB_down.las.las",
+      "points": 152,
+      "sha256": "77a9368708767cdb6e2e01e1276c77ed987331815a529fc96779f54473dc87d9",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9453,
+        "upper": 1.6
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691646848.0,
+        1691646976.0
+      ],
+      "gps_nonincreasing_pairs": 136,
+      "horizontal_path_length_crs_units": 113.33653854686031,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        39.0,
+        176.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bB_up.las.las",
+      "points": 138,
+      "sha256": "11cc7e0ca13a814997d90d9944c824ef8f0794a2ccf53920f561f5512004bd33",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8778,
+        "upper": 1.4545454545454546
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691645056.0,
+        1691645184.0
+      ],
+      "gps_nonincreasing_pairs": 131,
+      "horizontal_path_length_crs_units": 115.87262701995681,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        174.0,
+        306.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bD_down.las.las",
+      "points": 133,
+      "sha256": "eeaa58bda0bc10104f96707e248d6254afc4db2e567e8d0cfec4870b94b00a71",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7875,
+        "upper": 1.620253164556962
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691644928.0,
+        1691645056.0
+      ],
+      "gps_nonincreasing_pairs": 124,
+      "horizontal_path_length_crs_units": 117.59185005244186,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        169.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bD_up.las.las",
+      "points": 126,
+      "sha256": "9fc7ce6aa663187b4f7b81b4b10f522804c21c21d6c6239957f37ff5061a394f",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 10731,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691645440.0,
+        1691645696.0
+      ],
+      "gps_nonincreasing_pairs": 144,
+      "horizontal_path_length_crs_units": 117.64057697917971,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        205.0,
+        351.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bE_down.las.las",
+      "points": 147,
+      "sha256": "686ea444496619a3ff4c38f98b3b85bc55203f42a6b179d2cc283d4fc0a6d05f",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 12561,
+        "upper": 1.0756302521008403
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691645312.0,
+        1691645440.0
+      ],
+      "gps_nonincreasing_pairs": 157,
+      "horizontal_path_length_crs_units": 118.56396462714605,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        202.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bE_up.las.las",
+      "points": 159,
+      "sha256": "0f81a8c51317c247b9ff3687179f295113360bec069e9fd5554ffda9f6d45c6d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8911,
+        "upper": 1.0756302521008403
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691645952.0,
+        1691646080.0
+      ],
+      "gps_nonincreasing_pairs": 132,
+      "horizontal_path_length_crs_units": 119.4562377874243,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        168.0,
+        301.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bF_down.las.las",
+      "points": 134,
+      "sha256": "c0be1d9569cfb38f6f7cfeb74c1507a2e232299ead75d3dd681c32d4bed08009",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 7381,
+        "upper": 1.1130434782608696
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691645824.0,
+        1691645952.0
+      ],
+      "gps_nonincreasing_pairs": 120,
+      "horizontal_path_length_crs_units": 115.23659965774907,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        165.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bF_up.las.las",
+      "points": 122,
+      "sha256": "c2daa7e1bbf1e3b496abcf3780c51709a6072e5280ef9dd927b06758f89e9ceb",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 17955,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692932480.0,
+        1692932736.0
+      ],
+      "gps_nonincreasing_pairs": 187,
+      "horizontal_path_length_crs_units": 128.0867494498461,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        203.0,
+        392.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bG_down.las.las",
+      "points": 190,
+      "sha256": "e7d042aae147e8a8c9c4b07a9c5e3c6436a716ccc15cd913e0d17e2c26a244ac",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11935,
+        "upper": 1.1962616822429906
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692932352.0,
+        1692932480.0
+      ],
+      "gps_nonincreasing_pairs": 153,
+      "horizontal_path_length_crs_units": 120.71274233578995,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        199.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bG_up.las.las",
+      "points": 155,
+      "sha256": "839508e03a1162621c8386c1dc363d6a6fcc401e294c437d6988aa0df00aa07d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 19110,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692931968.0,
+        1692932224.0
+      ],
+      "gps_nonincreasing_pairs": 193,
+      "horizontal_path_length_crs_units": 120.00272852908677,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        270.0,
+        465.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bI_down.las.las",
+      "points": 196,
+      "sha256": "8b50ffba59d207d6bdfe8e9999c7e4fe62606fe36191a76501ebd8d76f8eaa81",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 24310,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "4b",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692931712.0,
+        1692931968.0
+      ],
+      "gps_nonincreasing_pairs": 218,
+      "horizontal_path_length_crs_units": 134.74903711278725,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        260.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t4bI_up.las.las",
+      "points": 221,
+      "sha256": "e01fc5589ffa27bc4c920bc94fd236a7bc1a8ef0294b14460db55eb7af6df419",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 16110,
+        "upper": 1.1531531531531531
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691816448.0,
+        1691816576.0
+      ],
+      "gps_nonincreasing_pairs": 178,
+      "horizontal_path_length_crs_units": 112.4792792103433,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        230.0,
+        409.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aB_down.las.las",
+      "points": 180,
+      "sha256": "ee2a6a4fb9ba0c317087b3eb2a1906c495c5d8b619af9231307c876fd365fb38",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 16290,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691816192.0,
+        1691816448.0
+      ],
+      "gps_nonincreasing_pairs": 178,
+      "horizontal_path_length_crs_units": 123.21438105542894,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        220.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aB_up.las.las",
+      "points": 181,
+      "sha256": "f3d38694af43f51eb22ef2526ccd6bf22b0857265a90cdc165d57982c7d9b337",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8515,
+        "upper": 1.2549019607843137
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691816832.0,
+        1691816960.0
+      ],
+      "gps_nonincreasing_pairs": 129,
+      "horizontal_path_length_crs_units": 88.29675378675759,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        200.0,
+        330.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aC_down.las.las",
+      "points": 131,
+      "sha256": "d27d265aeafdbe704d773582e3c8c7a1795c7f2d5a7b751cfc08192890f28efe",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 9870,
+        "upper": 1.6
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691816704.0,
+        1691816832.0
+      ],
+      "gps_nonincreasing_pairs": 139,
+      "horizontal_path_length_crs_units": 110.5963812343658,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        180.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aC_up.las.las",
+      "points": 141,
+      "sha256": "951f6b9a2f3d4929c69b4a2407b845179f7914fd7c1607cf3dac45a6126c17e1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 15400,
+        "upper": 1.2427184466019416
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691815936.0,
+        1691816064.0
+      ],
+      "gps_nonincreasing_pairs": 174,
+      "horizontal_path_length_crs_units": 111.9977855451607,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        200.0,
+        375.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aD_down.las.las",
+      "points": 176,
+      "sha256": "905bef6ad33d7a56072cea0eca97b0e8e53e5d795a4b20cb280e9ad9de87f594",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 11325,
+        "upper": 1.2427184466019416
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691815808.0,
+        1691815936.0
+      ],
+      "gps_nonincreasing_pairs": 149,
+      "horizontal_path_length_crs_units": 110.60218045985017,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        190.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aD_up.las.las",
+      "points": 151,
+      "sha256": "a5ff3b496a323b60e1b93f116feabd76a260c22b86e3a2b2257c10dbb172e710",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 18915,
+        "upper": 1.1531531531531531
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693360896.0,
+        1693361024.0
+      ],
+      "gps_nonincreasing_pairs": 193,
+      "horizontal_path_length_crs_units": 123.33762922925094,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        238.0,
+        432.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aG_down.las.las",
+      "points": 195,
+      "sha256": "460a89b50f1e4d47bd3c17839f0cb3a5b4bf29c923c18f3f4592274cf80b2448",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 16110,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693360640.0,
+        1693360896.0
+      ],
+      "gps_nonincreasing_pairs": 177,
+      "horizontal_path_length_crs_units": 124.89516572172664,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        48.0,
+        227.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aG_up.las.las",
+      "points": 180,
+      "sha256": "f12f95fc5586f339b3077d11067718ce2a27d5561eccb87800e92b1d4508ccae",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 14706,
+        "upper": 1.2427184466019416
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693362048.0,
+        1693362176.0
+      ],
+      "gps_nonincreasing_pairs": 170,
+      "horizontal_path_length_crs_units": 118.24691659377592,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        197.0,
+        368.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aH_down.las.las",
+      "points": 172,
+      "sha256": "2d37b48a786f49de813b9f853d4d609db011d5838d63a1ef6d3d298cd701747a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 11325,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693361792.0,
+        1693362048.0
+      ],
+      "gps_nonincreasing_pairs": 148,
+      "horizontal_path_length_crs_units": 123.26260365313377,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        42.0,
+        192.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aH_up.las.las",
+      "points": 151,
+      "sha256": "f38ad7e4a6b9be690bb63f1206f8cce2f05de648e8c0fe6aabd8a51a60036814",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 19110,
+        "upper": 1.2673267326732673
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693361536.0,
+        1693361664.0
+      ],
+      "gps_nonincreasing_pairs": 194,
+      "horizontal_path_length_crs_units": 115.07900182271675,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        297.0,
+        492.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aI_down.las.las",
+      "points": 196,
+      "sha256": "4e6c4c82897cd9c33af97278a3b774c6ac6bd7c4b8ae124132798ffa0644d534",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 27495,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5a",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693361280.0,
+        1693361536.0
+      ],
+      "gps_nonincreasing_pairs": 232,
+      "horizontal_path_length_crs_units": 126.50941088161967,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        46.0,
+        280.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5aI_up.las.las",
+      "points": 235,
+      "sha256": "0cc27308c01c1b0af51cc24da9e64cee8f4a2def93446b80f084e4ef59322f5a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 8515,
+        "upper": 1.3061224489795917
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691639808.0,
+        1691639936.0
+      ],
+      "gps_nonincreasing_pairs": 129,
+      "horizontal_path_length_crs_units": 105.65915628003134,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        270.0,
+        400.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bA_down.las.las",
+      "points": 131,
+      "sha256": "d3fee47994fc45465e1ee6f406bf4b5bca3bc26048839c25f3a460dc95cd12fe",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 24310,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691639552.0,
+        1691639808.0
+      ],
+      "gps_nonincreasing_pairs": 218,
+      "horizontal_path_length_crs_units": 135.02918141837083,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        260.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bA_up.las.las",
+      "points": 221,
+      "sha256": "934be4d0df51fdc05412eb825c24927ec05b5735dad45c40c022c726402f6832",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 21115,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691641472.0,
+        1691641728.0
+      ],
+      "gps_nonincreasing_pairs": 203,
+      "horizontal_path_length_crs_units": 116.75595892489628,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        290.0,
+        495.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bB_down.las.las",
+      "points": 206,
+      "sha256": "0ec09f80e4b8ce0aa83586b0af36f48b6888514496ba6060309396dc5d57a216",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 25425,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691641216.0,
+        1691641472.0
+      ],
+      "gps_nonincreasing_pairs": 223,
+      "horizontal_path_length_crs_units": 117.59365833233952,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        35.0,
+        260.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bB_up.las.las",
+      "points": 226,
+      "sha256": "9f3f8ac59bff9ab339ab57a4a185305d0010a41c9ba0811a0cfc6897de7deb47",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 6216,
+        "upper": 1.4545454545454546
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691642112.0,
+        1691642240.0
+      ],
+      "gps_nonincreasing_pairs": 110,
+      "horizontal_path_length_crs_units": 69.2116790689544,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        270.0,
+        381.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bD_down.las.las",
+      "points": 112,
+      "sha256": "6d678ffa7eca60717de55ec5eeb274ffc414ebe6b17bbe1dc733b536f567e7e1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 23220,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691641856.0,
+        1691642112.0
+      ],
+      "gps_nonincreasing_pairs": 213,
+      "horizontal_path_length_crs_units": 136.18864006215097,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        35.0,
+        250.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bD_up.las.las",
+      "points": 216,
+      "sha256": "790283cc2916105a3f23d9098bddd54a041811c63b2cd8f371f954ed991a9d55",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 13695,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691642752.0,
+        1691643008.0
+      ],
+      "gps_nonincreasing_pairs": 163,
+      "horizontal_path_length_crs_units": 115.67510234412049,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        280.0,
+        445.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bE_down.las.las",
+      "points": 166,
+      "sha256": "dd467d8d287f38e0a5d7284b940aa3232595acb2a02c2c36f22ff26fc53537f0",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 12880,
+        "upper": 1.103448275862069
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691642624.0,
+        1691642752.0
+      ],
+      "gps_nonincreasing_pairs": 159,
+      "horizontal_path_length_crs_units": 100.78574234009685,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        110.0,
+        270.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bE_up.las.las",
+      "points": 161,
+      "sha256": "25bb1a37f2fe5440e0ef8836a4c008f79fbedf4269913bd9c8cc8ad83b112b94",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 17578,
+        "upper": 1.2190476190476192
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692935296.0,
+        1692935424.0
+      ],
+      "gps_nonincreasing_pairs": 186,
+      "horizontal_path_length_crs_units": 108.66222975642604,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        270.0,
+        457.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bG_down.las.las",
+      "points": 188,
+      "sha256": "657d8e506399742377ea8edb72e3beecbc83f96f7de1c0f8277da67e1e67d3f6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 30135,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692935040.0,
+        1692935296.0
+      ],
+      "gps_nonincreasing_pairs": 243,
+      "horizontal_path_length_crs_units": 133.9712130744982,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        15.0,
+        260.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bG_up.las.las",
+      "points": 246,
+      "sha256": "958ac996bfd8dfef443cd365ebbd9c0c580d6c3a5cb1324d9286221f8d2d9de0",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 12090,
+        "upper": 1.0756302521008403
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692936704.0,
+        1692936832.0
+      ],
+      "gps_nonincreasing_pairs": 154,
+      "horizontal_path_length_crs_units": 125.4095355106684,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        226.0,
+        381.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bH_down.las.las",
+      "points": 156,
+      "sha256": "be80be69486e26b5b63ed047968652a2d2be7eae1840595c6cac1af772872b61",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 17578,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "5b",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692936448.0,
+        1692936704.0
+      ],
+      "gps_nonincreasing_pairs": 185,
+      "horizontal_path_length_crs_units": 124.4327696768477,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        36.0,
+        223.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t5bH_up.las.las",
+      "points": 188,
+      "sha256": "0f8ddb1295e5ac0763f517d273078c34a7b893f6e78f6bfc00d280a03ff98ea9",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 18528,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691634944.0,
+        1691635200.0
+      ],
+      "gps_nonincreasing_pairs": 190,
+      "horizontal_path_length_crs_units": 132.52391829967922,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        240.0,
+        432.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6A_down.las.las",
+      "points": 193,
+      "sha256": "0633b92af6a7b3c7125e6f0b15651ff6704551769b5a97559b47d5586c437174",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 22578,
+        "upper": 1.2075471698113207
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691634816.0,
+        1691634944.0
+      ],
+      "gps_nonincreasing_pairs": 211,
+      "horizontal_path_length_crs_units": 121.11003444664689,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        21.0,
+        233.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6A_up.las.las",
+      "points": 213,
+      "sha256": "b7675c60371679aae2d65be8f28b26290cd3bb4dba254b4b8e9dd8fd2e5d0ab8",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 33670,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691633152.0,
+        1691633408.0
+      ],
+      "gps_nonincreasing_pairs": 257,
+      "horizontal_path_length_crs_units": 123.23323679345002,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        326.0,
+        585.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6B_down.las.las",
+      "points": 260,
+      "sha256": "3e32ab12e776071cac87e0de64b992ca14111d919e7649551a5b99e4a2802e2d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 38781,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691632896.0,
+        1691633152.0
+      ],
+      "gps_nonincreasing_pairs": 276,
+      "horizontal_path_length_crs_units": 126.60772613002567,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        321.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6B_up.las.las",
+      "points": 279,
+      "sha256": "8c2e0a4fea7b4c542b73b87434bf6fa0710c27260c2856c1de3f0789147c38a1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 17020,
+        "upper": 1.024
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691633792.0,
+        1691633920.0
+      ],
+      "gps_nonincreasing_pairs": 183,
+      "horizontal_path_length_crs_units": 127.2553584413909,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        273.0,
+        457.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6C_down.las.las",
+      "points": 185,
+      "sha256": "9bd6eb4a0cc6b7a644c0e6abb667a10bd76d4dd26393572324b988d3a94792a1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 22791,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691633536.0,
+        1691633792.0
+      ],
+      "gps_nonincreasing_pairs": 211,
+      "horizontal_path_length_crs_units": 128.53312773119683,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        47.0,
+        260.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6C_up.las.las",
+      "points": 214,
+      "sha256": "f0e6ab830e15e34fa144027146d66c2b675824b00975359dcb93d3e607995a2d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 33153,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691636224.0,
+        1691636480.0
+      ],
+      "gps_nonincreasing_pairs": 255,
+      "horizontal_path_length_crs_units": 139.39015738935322,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        295.0,
+        552.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6D_down.las.las",
+      "points": 258,
+      "sha256": "a85f16e1701c815d7825b9f5059aba2076aed9880201c8cd15c4080e02133de6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 30876,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691635968.0,
+        1691636224.0
+      ],
+      "gps_nonincreasing_pairs": 246,
+      "horizontal_path_length_crs_units": 131.40546386355692,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        46.0,
+        294.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6D_up.las.las",
+      "points": 249,
+      "sha256": "b71e678e18431450a54792f2e7ee4cd8c64fdc31100c619ca899685f5c236c01",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 32896,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691634432.0,
+        1691634688.0
+      ],
+      "gps_nonincreasing_pairs": 254,
+      "horizontal_path_length_crs_units": 123.5478068843204,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        375.0,
+        631.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6E_down.las.las",
+      "points": 257,
+      "sha256": "a4651dfef691baff16653bc3547e4c895f0bcd67d22bec33083d8a12daf4246e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 52003,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691634176.0,
+        1691634432.0
+      ],
+      "gps_nonincreasing_pairs": 320,
+      "horizontal_path_length_crs_units": 138.0787420092318,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        371.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6E_up.las.las",
+      "points": 323,
+      "sha256": "1b6238226dc98a41da72040059cca0b3d0d41637fb7199b414be6fc7d78366d7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 25200,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691635584.0,
+        1691635840.0
+      ],
+      "gps_nonincreasing_pairs": 222,
+      "horizontal_path_length_crs_units": 133.2465354466011,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        311.0,
+        535.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6F_down.las.las",
+      "points": 225,
+      "sha256": "17cf6c1c4a54641e6b76b27889f0fdb03b727ef8251e158f49673391406e41fe",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 32896,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691635328.0,
+        1691635584.0
+      ],
+      "gps_nonincreasing_pairs": 254,
+      "horizontal_path_length_crs_units": 130.60766265401244,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        305.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6F_up.las.las",
+      "points": 257,
+      "sha256": "a78d4580ea1d6dea2660a91bb560d0011140e78bbfced87de4ec3004b980c107",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 25878,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693366784.0,
+        1693366912.0
+      ],
+      "gps_nonincreasing_pairs": 226,
+      "horizontal_path_length_crs_units": 129.43475882057544,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        292.0,
+        519.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6G_down.las.las",
+      "points": 228,
+      "sha256": "c47253b3089f8bd968536f7b638eeaaefab5b155c8cab6d25f6e6243544c48ac",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 22578,
+        "upper": 1.1228070175438596
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693366528.0,
+        1693366656.0
+      ],
+      "gps_nonincreasing_pairs": 211,
+      "horizontal_path_length_crs_units": 123.97954175329531,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        261.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6G_up.las.las",
+      "points": 213,
+      "sha256": "22e1ec4070c613bbd5fb51cf4795f1688509fc2ac1c0d995a609f059d14686f3",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 14365,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693368192.0,
+        1693368448.0
+      ],
+      "gps_nonincreasing_pairs": 167,
+      "horizontal_path_length_crs_units": 126.20166923834573,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        256.0,
+        425.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6H_down.las.las",
+      "points": 170,
+      "sha256": "234eae8dec76b549e65af11927b2eb41ff8f5b3b024d42dd3c18fb7f71dcd3a1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 22578,
+        "upper": 1.0756302521008403
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693368064.0,
+        1693368192.0
+      ],
+      "gps_nonincreasing_pairs": 211,
+      "horizontal_path_length_crs_units": 123.17277089375531,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        253.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6H_up.las.las",
+      "points": 213,
+      "sha256": "4607872bbebd51e94ea6d476a5b6ade2b10a91af15654b30c3a9e31add7bdb44",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 56953,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693367552.0,
+        1693367936.0
+      ],
+      "gps_nonincreasing_pairs": 334,
+      "horizontal_path_length_crs_units": 142.59266516031366,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        459.0,
+        796.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6I_down.las.las",
+      "points": 338,
+      "sha256": "9826d9dddc20c0fef61cebb85e316f25c6cbbc20dedac21d173f45118db579de",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 84255,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "6",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693367168.0,
+        1693367552.0
+      ],
+      "gps_nonincreasing_pairs": 407,
+      "horizontal_path_length_crs_units": 155.74295481244064,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        40.0,
+        450.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t6I_up.las.las",
+      "points": 411,
+      "sha256": "e93316048e684553ec8b26ad20a06143caf0f0753ea3b8f8507ba8e9f7ce7142",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 21945,
+        "upper": 1.0940170940170941
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691797888.0,
+        1691798016.0
+      ],
+      "gps_nonincreasing_pairs": 208,
+      "horizontal_path_length_crs_units": 136.4882100207422,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        414.0,
+        623.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7A_down.las.las",
+      "points": 210,
+      "sha256": "52d6d7a04d70d40ec1dd43de1423de290122ed6e9a78bceb5e167c0bca97f679",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 61075,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691797504.0,
+        1691797760.0
+      ],
+      "gps_nonincreasing_pairs": 347,
+      "horizontal_path_length_crs_units": 137.8128280896055,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        47.0,
+        396.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7A_up.las.las",
+      "points": 350,
+      "sha256": "7213aa6630af277c9e7ae2a482126352bebad6e5194e2a9cafaa69ca114f1723",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 122760,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691796096.0,
+        1691796480.0
+      ],
+      "gps_nonincreasing_pairs": 492,
+      "horizontal_path_length_crs_units": 144.32717349647936,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        575.0,
+        1070.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7B_down.las.las",
+      "points": 496,
+      "sha256": "bd0435143c6ae80f1550deb747a139d26a30569b18e89f630c1aeb0babcb3489",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 131841,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691795456.0,
+        1691795968.0
+      ],
+      "gps_nonincreasing_pairs": 509,
+      "horizontal_path_length_crs_units": 157.09029515249574,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        556.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7B_up.las.las",
+      "points": 514,
+      "sha256": "2bf43f23680ff7a6ab0494241375b6ea39874028cad4ccf090c1980fabb5f105",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 33930,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691796992.0,
+        1691797248.0
+      ],
+      "gps_nonincreasing_pairs": 258,
+      "horizontal_path_length_crs_units": 131.48441125155546,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        407.0,
+        667.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7C_down.las.las",
+      "points": 261,
+      "sha256": "335e8bcd635dace2dd312870d0c5dcbddbcb4de34a05b7ab493aa4b447281db5",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 61075,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691796608.0,
+        1691796992.0
+      ],
+      "gps_nonincreasing_pairs": 346,
+      "horizontal_path_length_crs_units": 153.3022645854179,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        393.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7C_up.las.las",
+      "points": 350,
+      "sha256": "f4178f5e9558df63071a03adffe75ccaccdf29d60dbdd99a97da44e265f40c37",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 56616,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691798784.0,
+        1691799168.0
+      ],
+      "gps_nonincreasing_pairs": 333,
+      "horizontal_path_length_crs_units": 142.2283300602234,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        653.0,
+        989.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7D_down.las.las",
+      "points": 337,
+      "sha256": "88cc432b78216995c4bed5c5fa8140cd88e9cfc65c34a2cdd449eac20cec4953",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 172578,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691798272.0,
+        1691798784.0
+      ],
+      "gps_nonincreasing_pairs": 583,
+      "horizontal_path_length_crs_units": 177.1204490405641,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        44.0,
+        631.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7D_up.las.las",
+      "points": 588,
+      "sha256": "a2e027904045727e73dcd535e38db21cc90a2712d46909edf8b66045076d6343",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 107416,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691799936.0,
+        1691800320.0
+      ],
+      "gps_nonincreasing_pairs": 460,
+      "horizontal_path_length_crs_units": 162.23165053087408,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        620.0,
+        1083.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7F_down.las.las",
+      "points": 464,
+      "sha256": "7867a55fe4d5060620b69eb55c872ba8f4601a7b3fc73c851273344dd0f377d7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 161596,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691799296.0,
+        1691799808.0
+      ],
+      "gps_nonincreasing_pairs": 564,
+      "horizontal_path_length_crs_units": 161.722762003774,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        613.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7F_up.las.las",
+      "points": 569,
+      "sha256": "b760543ae1b9af2c2eb2994675373aa0c841ebe734d214674ff968c3f7a62c2a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 72771,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692924160.0,
+        1692924544.0
+      ],
+      "gps_nonincreasing_pairs": 378,
+      "horizontal_path_length_crs_units": 154.83342364940205,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        514.0,
+        895.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7G_down.las.las",
+      "points": 382,
+      "sha256": "5f59fd4410e153bb7b8c6ad80b29a9c3366dfe01ad917e7e6e2ffc922fb10c1a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 75078,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1692923648.0,
+        1692924032.0
+      ],
+      "gps_nonincreasing_pairs": 384,
+      "horizontal_path_length_crs_units": 144.72844419560957,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        53.0,
+        440.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7G_up.las.las",
+      "points": 388,
+      "sha256": "4b218a7092d6874c8d9ffee7a431477cffe6c258f2c8454793d23740e98f9588",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 32896,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692927104.0,
+        1692927360.0
+      ],
+      "gps_nonincreasing_pairs": 254,
+      "horizontal_path_length_crs_units": 148.4669624570771,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        381.0,
+        637.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7H_down.las.las",
+      "points": 257,
+      "sha256": "ebdb2c15afebc3af5248a40b019eea73d90ecb99499abb67e4aa94b8d99d712d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 51681,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1692926720.0,
+        1692927104.0
+      ],
+      "gps_nonincreasing_pairs": 318,
+      "horizontal_path_length_crs_units": 129.63963311438658,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        366.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7H_up.las.las",
+      "points": 322,
+      "sha256": "0d1482a032b6b59054c15099a22953893bfa423cb2455e5b269188232f3597b1",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9984399375975039,
+        "pairs_checked": 324415,
+        "upper": 1.001564945226917
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692925696.0,
+        1692926464.0
+      ],
+      "gps_nonincreasing_pairs": 799,
+      "horizontal_path_length_crs_units": 175.21804067423992,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        996.0,
+        1801.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7I_down.las.las",
+      "points": 806,
+      "sha256": "103ba0a7654bf699de3934a57886f4f44c68a4d803143784e56b7a0b21ece4f8",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9986996098829649,
+        "pairs_checked": 383250,
+        "upper": 1.001303780964798
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "7",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1692924672.0,
+        1692925568.0
+      ],
+      "gps_nonincreasing_pairs": 868,
+      "horizontal_path_length_crs_units": 182.16161014278083,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        47.0,
+        922.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t7I_up.las.las",
+      "points": 876,
+      "sha256": "5c8f70058ec51daa852f911d5513fea043654240be66baf6ac2c6abd8baafc6d",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 141778,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691715200.0,
+        1691715712.0
+      ],
+      "gps_nonincreasing_pairs": 528,
+      "horizontal_path_length_crs_units": 155.0995025532565,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        491.0,
+        1023.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8B_down.las.las",
+      "points": 533,
+      "sha256": "f5151b79c27501c9103ea87068085f97a138dad91c64b7df8d939900e3613591",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 93528,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691714688.0,
+        1691715200.0
+      ],
+      "gps_nonincreasing_pairs": 428,
+      "horizontal_path_length_crs_units": 124.38516097760582,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        477.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8B_up.las.las",
+      "points": 433,
+      "sha256": "0d6e01dad4085e2271155be610d1bb7e05ce9f9c0a985d3435a0d03ee9267167",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.0,
+        "pairs_checked": 20503,
+        "upper": 1.1428571428571428
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691714432.0,
+        1691714560.0
+      ],
+      "gps_nonincreasing_pairs": 201,
+      "horizontal_path_length_crs_units": 108.92037172485132,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        318.0,
+        520.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8C_down.las.las",
+      "points": 203,
+      "sha256": "6ec144135c675ebc85b9c5e2799300c77779ca3afc29400fb5af784482ae69be",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 33153,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691714048.0,
+        1691714432.0
+      ],
+      "gps_nonincreasing_pairs": 254,
+      "horizontal_path_length_crs_units": 115.33956684973141,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        46.0,
+        303.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8C_up.las.las",
+      "points": 258,
+      "sha256": "dccc2e47dc6f9c7a76b3ac13fad56b9cdc6a2dad35aad9f2b7db8feaa2bf1203",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 52975,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691716224.0,
+        1691716608.0
+      ],
+      "gps_nonincreasing_pairs": 322,
+      "horizontal_path_length_crs_units": 135.1093799461322,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        424.0,
+        749.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8D_down.las.las",
+      "points": 326,
+      "sha256": "9bc19b5e860f33c9663651d90197ea6d44c1b42877532c40ef7daa2d9f79d9ff",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 68635,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691715840.0,
+        1691716224.0
+      ],
+      "gps_nonincreasing_pairs": 367,
+      "horizontal_path_length_crs_units": 123.96032716702291,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        48.0,
+        418.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8D_up.las.las",
+      "points": 371,
+      "sha256": "ca009fecb8ffd283d5142db160fa9a287cfe420a37bf51616d682f01ea2a4c68",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 42195,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691717120.0,
+        1691717376.0
+      ],
+      "gps_nonincreasing_pairs": 288,
+      "horizontal_path_length_crs_units": 136.36635229791602,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        436.0,
+        726.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8E_down.las.las",
+      "points": 291,
+      "sha256": "2d58d9405bad917744eb63076c50fbe2ceba5d1493a7e205829f4f4fcabb5f68",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 61776,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "E"
+      },
+      "gps_first_last": [
+        1691716736.0,
+        1691716992.0
+      ],
+      "gps_nonincreasing_pairs": 349,
+      "horizontal_path_length_crs_units": 125.47851567138851,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        52.0,
+        403.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8E_up.las.las",
+      "points": 352,
+      "sha256": "c9a4a4fbb86751e83b8d1586fde2f0969aff02f8427f1b83f60eed0cac232768",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 61075,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691717888.0,
+        1691718272.0
+      ],
+      "gps_nonincreasing_pairs": 346,
+      "horizontal_path_length_crs_units": 148.26455623793677,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        457.0,
+        806.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8F_down.las.las",
+      "points": 350,
+      "sha256": "7a7f485794c51ae1d5613df53b4886d21a878d07b8885c7ee33114a7554f4272",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 77815,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691717504.0,
+        1691717888.0
+      ],
+      "gps_nonincreasing_pairs": 391,
+      "horizontal_path_length_crs_units": 133.16444006955018,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        45.0,
+        439.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8F_up.las.las",
+      "points": 395,
+      "sha256": "09007cc26bad249cfa80eadcd8cefe0384c8b09317ac80d0461964b5d4346ef6",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 31125,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693529856.0,
+        1693530112.0
+      ],
+      "gps_nonincreasing_pairs": 247,
+      "horizontal_path_length_crs_units": 131.4164355728473,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        336.0,
+        585.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8G_down.las.las",
+      "points": 250,
+      "sha256": "b0b47c792131051350409973887c5b25dc384483e595813ab03a539be8093c4a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 24310,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693529600.0,
+        1693529856.0
+      ],
+      "gps_nonincreasing_pairs": 218,
+      "horizontal_path_length_crs_units": 124.59646668933715,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        269.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8G_up.las.las",
+      "points": 221,
+      "sha256": "d44e82b0511e384fd37e17dd8e008b884dba59018fb5f0b7356445fc873974b3",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 19110,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693530496.0,
+        1693530752.0
+      ],
+      "gps_nonincreasing_pairs": 193,
+      "horizontal_path_length_crs_units": 125.72108607494853,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        308.0,
+        503.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8H_down.las.las",
+      "points": 196,
+      "sha256": "c54c34510baccdba30ddc4c0e131544a52e79b52b0e40b7b43b0a26c74d4e3cd",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 30628,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693530240.0,
+        1693530496.0
+      ],
+      "gps_nonincreasing_pairs": 245,
+      "horizontal_path_length_crs_units": 124.47828853861239,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        43.0,
+        290.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8H_up.las.las",
+      "points": 248,
+      "sha256": "8be788b0e2ca51eec14d274b24cc9892c05f8467355004047402f78c5414e6e4",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9980506822612085,
+        "pairs_checked": 150975,
+        "upper": 1.0019569471624266
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693528704.0,
+        1693529344.0
+      ],
+      "gps_nonincreasing_pairs": 544,
+      "horizontal_path_length_crs_units": 154.50659482480756,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        568.0,
+        1117.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8I_down.las.las",
+      "points": 550,
+      "sha256": "ce40d7dfb2a29db4e9dd74d30bfe184c9823c05229b0fe22fe6be4eea5da6aa7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 105570,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "8",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693528192.0,
+        1693528704.0
+      ],
+      "gps_nonincreasing_pairs": 455,
+      "horizontal_path_length_crs_units": 136.94360664676213,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        64.0,
+        523.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t8I_up.las.las",
+      "points": 460,
+      "sha256": "c09cacb97de5ff5cc8deec67c2bb80bfd66571876fa74a384289f5a883652a79",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 53301,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691806336.0,
+        1691806720.0
+      ],
+      "gps_nonincreasing_pairs": 323,
+      "horizontal_path_length_crs_units": 158.1364580074723,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        485.0,
+        811.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9A_down.las.las",
+      "points": 327,
+      "sha256": "6901e5d9eed304ef506e13933f0e2f73b0dcaff54520a737d77f281d419178c7",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 112575,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "A"
+      },
+      "gps_first_last": [
+        1691805952.0,
+        1691806464.0
+      ],
+      "gps_nonincreasing_pairs": 470,
+      "horizontal_path_length_crs_units": 156.82492135207883,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        52.0,
+        526.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9A_up.las.las",
+      "points": 475,
+      "sha256": "5b315db6383fca6e5e0302323c8abbcc6e028a45ff8025833b5d37176c318c0a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 90525,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691807488.0,
+        1691807872.0
+      ],
+      "gps_nonincreasing_pairs": 422,
+      "horizontal_path_length_crs_units": 153.052917759184,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        644.0,
+        1069.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9B_down.las.las",
+      "points": 426,
+      "sha256": "4a3d3f5304dc86ce5cec025cb09010c910a088c0f1bac0547acef2bfa1dfb56e",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9980506822612085,
+        "pairs_checked": 179101,
+        "upper": 1.0019569471624266
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "B"
+      },
+      "gps_first_last": [
+        1691806848.0,
+        1691807488.0
+      ],
+      "gps_nonincreasing_pairs": 593,
+      "horizontal_path_length_crs_units": 164.03889972599083,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        41.0,
+        639.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9B_up.las.las",
+      "points": 599,
+      "sha256": "f22c867e05e72b251fa1eb0632ecf2fb8bf6ec0b821602752926e6ce946d38db",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 74305,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691810048.0,
+        1691810432.0
+      ],
+      "gps_nonincreasing_pairs": 382,
+      "horizontal_path_length_crs_units": 160.55891994409834,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        456.0,
+        841.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9C_down.las.las",
+      "points": 386,
+      "sha256": "7482f69c0b1beae67aaa150d43c733b22b75c54abaa1117ff42c9f1b6f155675",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 79800,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "C"
+      },
+      "gps_first_last": [
+        1691809536.0,
+        1691809920.0
+      ],
+      "gps_nonincreasing_pairs": 396,
+      "horizontal_path_length_crs_units": 145.70330089056063,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        48.0,
+        447.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9C_up.las.las",
+      "points": 400,
+      "sha256": "4c408e253edf45369c9261d3a787d290d045f404c7f5ae1c500d4c0c5d5c6322",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 87153,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691811200.0,
+        1691811712.0
+      ],
+      "gps_nonincreasing_pairs": 413,
+      "horizontal_path_length_crs_units": 155.3349975105184,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        732.0,
+        1149.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9D_down.las.las",
+      "points": 418,
+      "sha256": "168b199ce7e91b1d3011e3fe69c174eb7fe2b2dbf28c782daa72e8f644ccdf84",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9980506822612085,
+        "pairs_checked": 203203,
+        "upper": 1.0019569471624266
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "D"
+      },
+      "gps_first_last": [
+        1691810560.0,
+        1691811200.0
+      ],
+      "gps_nonincreasing_pairs": 632,
+      "horizontal_path_length_crs_units": 170.8626007921996,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        61.0,
+        698.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9D_up.las.las",
+      "points": 638,
+      "sha256": "40d3fd6d9f27f311fba20274ccb50a6b94473bc9aeb103f371caa709a3fb80a2",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 93096,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691808768.0,
+        1691809280.0
+      ],
+      "gps_nonincreasing_pairs": 427,
+      "horizontal_path_length_crs_units": 135.38302377325772,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        808.0,
+        1239.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9F_down.las.las",
+      "points": 432,
+      "sha256": "1b81a501ac1dab6c281f044c1f36c3160e2c1fbee27c8d940155056e1976a36f",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9984399375975039,
+        "pairs_checked": 269011,
+        "upper": 1.001564945226917
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "F"
+      },
+      "gps_first_last": [
+        1691808000.0,
+        1691808768.0
+      ],
+      "gps_nonincreasing_pairs": 727,
+      "horizontal_path_length_crs_units": 181.95155591338622,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        68.0,
+        801.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9F_up.las.las",
+      "points": 734,
+      "sha256": "4ceec286317148a5575aacd3284a7a4ddd36ea7855ddc617888470b63b2c410b",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9974025974025974,
+        "pairs_checked": 82621,
+        "upper": 1.0026109660574412
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "G"
+      },
+      "gps_first_last": [
+        1693353088.0,
+        1693353600.0
+      ],
+      "gps_nonincreasing_pairs": 402,
+      "horizontal_path_length_crs_units": 143.16274570337583,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        535.0,
+        941.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9G_down.las.las",
+      "points": 407,
+      "sha256": "41b3c63d4651093a361ea0177e08337223ac5063938612c147f00a6e8e447c17",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9922480620155039,
+        "pairs_checked": 29161,
+        "upper": 1.0078740157480315
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693356416.0,
+        1693356672.0
+      ],
+      "gps_nonincreasing_pairs": 239,
+      "horizontal_path_length_crs_units": 139.09768400618378,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        434.0,
+        675.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9H_down.las.las",
+      "points": 242,
+      "sha256": "4771bb1a8554d146518cfaf8528c4bee3e20792ebf7e6bce1c870546fcb27d96",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9961089494163424,
+        "pairs_checked": 72010,
+        "upper": 1.003921568627451
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "H"
+      },
+      "gps_first_last": [
+        1693356032.0,
+        1693356416.0
+      ],
+      "gps_nonincreasing_pairs": 376,
+      "horizontal_path_length_crs_units": 145.45304140954806,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        428.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9H_up.las.las",
+      "points": 380,
+      "sha256": "6e96c56fc84baf8359b9a525dba0aa567531ecdc71f17b75097fad950b2ab150",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9988851727982163,
+        "pairs_checked": 421821,
+        "upper": 1.0011173184357542
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "down",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693354880.0,
+        1693355904.0
+      ],
+      "gps_nonincreasing_pairs": 910,
+      "horizontal_path_length_crs_units": 203.59370958737395,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        1111.0,
+        2029.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9I_down.las.las",
+      "points": 919,
+      "sha256": "e1f300af9b0f34527af5207ba8799d115634f5f2843fd6b1f9dc0d2a047f6c1a",
+      "speed_training_eligible": false
+    },
+    {
+      "clock_scale_diagnostic": {
+        "compatible_under_assumption": true,
+        "lower": 0.9988851727982163,
+        "pairs_checked": 535095,
+        "upper": 1.0011173184357542
+      },
+      "coordinate_axis_units": [
+        "metre",
+        "metre"
+      ],
+      "crs": "EPSG:26912",
+      "filename_tokens": {
+        "course_token": "9",
+        "direction": "up",
+        "letter_token": "I"
+      },
+      "gps_first_last": [
+        1693353856.0,
+        1693354880.0
+      ],
+      "gps_nonincreasing_pairs": 1026,
+      "horizontal_path_length_crs_units": 200.97597643962015,
+      "lost_person_training_eligible": false,
+      "offset_first_last": [
+        49.0,
+        1083.0
+      ],
+      "offset_nonincreasing_pairs": 0,
+      "path": "trajectories/t9I_up.las.las",
+      "points": 1035,
+      "sha256": "b3fec544279e836dde6344181b9f04c43ef908fe3c8212f26340d62b2f16c9e6",
+      "speed_training_eligible": false
+    }
+  ],
+  "trained_bundle_modified": false,
+  "training_rows_emitted": 0,
+  "unparsed_filenames": []
+}

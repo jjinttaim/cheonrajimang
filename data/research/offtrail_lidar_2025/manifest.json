@@ -1,0 +1,1017 @@
+{
+  "retrieved_at": "2026-09-19T06:10:29.338109+00:00",
+  "doi": "10.5281/zenodo.17081136",
+  "paper": "https://doi.org/10.1080/15481603.2026.2626632",
+  "attribution": "Sierra Lynn Cutler, Michael J. Campbell, Philip E. Dennison (2025)",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "files": [
+    {
+      "path": "record.json",
+      "url": "https://zenodo.org/api/records/17081136",
+      "sha256": "d1d81233123f4e62d0ea8b6c0720548fa3a08b5089037d58f0fdb1c85ae4f43a"
+    },
+    {
+      "path": "trajectories.zip",
+      "url": "https://zenodo.org/api/records/17081136/files/trajectories.zip/content",
+      "sha256": "d746bd179821f9d5b8c18aba6dcb04bffe7b9b49f7fcb90a0304ed5ff4bf21a1",
+      "author_checksum": "md5:16a39497789570adeea1895d564bedf5"
+    }
+  ],
+  "archive_inventory": [
+    {
+      "name": "trajectories/t1A_down.las.las",
+      "bytes": 6467,
+      "sha256": "dfb0d890aa2ef3c3daa8db806fbd2c13b555e75717d2d2f4e8c4cc94f9d4410a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1A_up.las.las",
+      "bytes": 6535,
+      "sha256": "843a9f95987bddb6e85492a05c060592359cec4ae7943b55942ae969cf8ea9f9",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1B_down.las.las",
+      "bytes": 7351,
+      "sha256": "8ea2de2b6be6335689180377e231b40a8a162a7e56f5e3dfc8181e40082d9d2e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1C_up.las.las",
+      "bytes": 6195,
+      "sha256": "5f9d872f1fde35c4e3656d6e00e9dad127275efbd54686f98c7ad336bbe152ce",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1D_down.las.las",
+      "bytes": 6875,
+      "sha256": "e4f5ba82b0e536488b1d5049442382f869c51d7b25144751db22b9c4e54fd80e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1D_up.las.las",
+      "bytes": 6739,
+      "sha256": "61a69d13a41a22946aef0723a6600e7ebeabcf843b9ec6bf59852f00375f57d5",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1E_down.las.las",
+      "bytes": 7827,
+      "sha256": "258ff9a2028e7e5a18e52b8e238018ceed0bcc5f6a629c6b1b4905b8367073d7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1E_up.las.las",
+      "bytes": 7351,
+      "sha256": "94f63e5aba9cbfea2ff0a9a53cd134a307222eed6102cbd49925e94eeec9fcf8",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1G_down.las.las",
+      "bytes": 7351,
+      "sha256": "c70e8603a74c2444bdb11e2a4a79d0b1d0e1a34044de1fb7c7cca68dbbf7f237",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1G_up.las.las",
+      "bytes": 6739,
+      "sha256": "0787d6c526dabe7d9b251433e85ba60414d905b2dac44a1dd9e20a32c7fab6f4",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1H_down.las.las",
+      "bytes": 7215,
+      "sha256": "f3c45f836e27b2e369d249434f0959213119db9255d19e8d0b1cf9b6a9e282f7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1H_up.las.las",
+      "bytes": 7011,
+      "sha256": "65ec34dcf970e23d8de209322af550d8dc6f129553e9904f82def25e8f08d763",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1I_down.las.las",
+      "bytes": 7011,
+      "sha256": "b85595fe76a80066a08dcae8022fc68ef1b9faf62ec06df9051b655af257718d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t1I_up.las.las",
+      "bytes": 6807,
+      "sha256": "1911aee255fe8e24a4af876841aceaee3728de136077878f22570545366b7109",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2A_down.las.las",
+      "bytes": 10207,
+      "sha256": "fff56cd2476378db3bed7967b2f4286f46b02b28b99727770f89f4a6053234a7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2A_up.las.las",
+      "bytes": 12383,
+      "sha256": "215dcf64e4f19694c02c0437f8f979f2952c8cc42c39cf9aa3f6342cfefce5ff",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2B_down.las.las",
+      "bytes": 13335,
+      "sha256": "3e9a4e57906faaae5444904aa1859872b5d1429801449886e4f96514821ea045",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2B_up.las.las",
+      "bytes": 13267,
+      "sha256": "f2f736ec7d647e2bfb91598042376c16389ba423ce6ee30bfdcd766f1efa5dcb",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2C_down.las.las",
+      "bytes": 9459,
+      "sha256": "cf6b33eef325b8e86e9f5099a547ca1adf44fcedd1e320633142f8e1033b93f6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2C_up.las.las",
+      "bytes": 9935,
+      "sha256": "1970b9296af761b27792f17d36108dc10d0a444f48a9e3426450a4798a75c378",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2D_down.las.las",
+      "bytes": 9323,
+      "sha256": "cc481093476bfdcd070da73ceb7d4ae340e4197a15e81b88865f281f62598d4e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2D_up.las.las",
+      "bytes": 9663,
+      "sha256": "9b362aa971ecfe69a8f60a399b89418b81e214ba25e4bb2f3aaa890ca3709a71",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2E_down.las.las",
+      "bytes": 13811,
+      "sha256": "fb4999e158caa45482d0555528247c065b6a7601894f2c60ceb97673de651acb",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2E_up.las.las",
+      "bytes": 17143,
+      "sha256": "b012821fb031412a8ae404109aba275854414b1aecea290726d1cd3b3e706992",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2F_down.las.las",
+      "bytes": 10887,
+      "sha256": "90f347a0739386664e28b18bcbfbc45d271c8b893547213d013f2d0f97ca601e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2F_up.las.las",
+      "bytes": 10751,
+      "sha256": "ca958b76a57118a16b8ecd94aa84a0386eef2c0c8466ef0cebde9d0a39acd024",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2H_down.las.las",
+      "bytes": 9595,
+      "sha256": "bb7175bc5767f94f60d398c18c5322d425a5742765ad9ed1a540ae4dadefb5d4",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2H_up.las.las",
+      "bytes": 10615,
+      "sha256": "1524a9a1917901fee5a0a5e569c4b9326b8393097f860c61ca19551d4262ce70",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2I_down.las.las",
+      "bytes": 23467,
+      "sha256": "cccbd4402bb1dc5180af74ccf81f88b385fd0c4a0fb5ced462e86e020e450664",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t2I_up.las.las",
+      "bytes": 9663,
+      "sha256": "4b40c1126a0536a85ce602a73d93d98f33faa9a37145559468d29873667b7668",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3A_down.las.las",
+      "bytes": 11703,
+      "sha256": "cc35d236f3a6db25edbf9a949a1bf0541ed81b47800d4c672dec2a12164914eb",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3A_up.las.las",
+      "bytes": 12655,
+      "sha256": "fa43d37bbb72e858474b7a30ca893221a7e280154b2806bcf6f658e3fad44ed4",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3B_down.las.las",
+      "bytes": 11635,
+      "sha256": "8baf2b7b8cd7f622e97274d256e39a2ef6e61612892166914a155935feadb1d3",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3B_up.las.las",
+      "bytes": 11567,
+      "sha256": "22835f942dd61d5139d65fed79116cdcbd78f275c51002ab532869db666d4504",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3C_down.las.las",
+      "bytes": 9527,
+      "sha256": "1cc23d794a4c50c8171ccead76b60fc9e5b85b3e2bde460c71d8a3cb5be06193",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3C_up.las.las",
+      "bytes": 10479,
+      "sha256": "f835c396ec8914452327a5f9a41196d66094d2aac02f07da341867d995af7056",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3D_down.las.las",
+      "bytes": 12655,
+      "sha256": "cb9bc43daaf75ccfa711812cbff970bfdc0e68cedbc605e82762271ed4fba46c",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3D_up.las.las",
+      "bytes": 11839,
+      "sha256": "aea89affbb91e86c1928dd30c4911280806c1f3ebf6a2e9a9408ed526feec7b6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3E_down.las.las",
+      "bytes": 15647,
+      "sha256": "7bdc2798a74d3b8a08c88d631d9b7abe97b26b99d929fa94f3e195eed40694b6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3E_up.las.las",
+      "bytes": 15579,
+      "sha256": "d2ae9d42aca396b2e00862cda2b75e466fb7488df305ce185c80a8f5c9750c39",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3F_down.las.las",
+      "bytes": 14491,
+      "sha256": "5e69e4f82f235c2a702843512bb5df34986f0f6e46efaa076f83fa03028426f6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3F_up.las.las",
+      "bytes": 15103,
+      "sha256": "3ce60cef1fb92e70afa29424f06314a1bc47221d217e626d67c8c9018301f5ec",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3G_down.las.las",
+      "bytes": 13199,
+      "sha256": "1e604e43bb6edf476b4715744ecf5e2313a84f55fdd4a20864c5f2f8d69972ff",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3G_up.las.las",
+      "bytes": 12927,
+      "sha256": "66091a559a330b7645c5d433654136bc3bc134e11ca4ac5781117dc4b9d3bd08",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3H_down.las.las",
+      "bytes": 11091,
+      "sha256": "b63cba263d113fb6e0064e60fcf70b249c8bb0938798ab6283053108940e1cbf",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3H_up.las.las",
+      "bytes": 11499,
+      "sha256": "071f1652673eb28086e25eb576ee0d650ff6adfc079368feae7cd68b9691eb62",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3I_down.las.las",
+      "bytes": 16191,
+      "sha256": "ca8d09e6574b32284fd58136ed801f4b8c796e9d2adedc6d7cb15ddec4c55420",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t3I_up.las.las",
+      "bytes": 18231,
+      "sha256": "6ca5f88ee97887ffec4f79b5a467fffc8ee40defb070b61eee1ebb1dffe2bba0",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aA_down.las.las",
+      "bytes": 8371,
+      "sha256": "9d50ad0fe9127ede79224521104122ea12bd05ebdb534a169cf4b3632fb2d42e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aA_up.las.las",
+      "bytes": 9187,
+      "sha256": "27980315c29004b3588c0d3a2898a73fc765df0cfab2d85e275a3198d40fa2bf",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aB_down.las.las",
+      "bytes": 9731,
+      "sha256": "2c8f5b3d59de544612688e1386083925c81bc8e83556dc321ffdf64edf2be452",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aB_up.las.las",
+      "bytes": 11907,
+      "sha256": "a93f9ef7751c8296b290319ca35c56d7635eeeafd009504d5963806c1a0bf3fd",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aC_down.las.las",
+      "bytes": 9255,
+      "sha256": "8077bf9dca541545a4acf1d9b438d323f6767d579d52b5e93b112d77b2159f4d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aC_up.las.las",
+      "bytes": 9051,
+      "sha256": "d3b329b9949782a6f7563412ccb657fe0c0a0c660648f7191befaac211bb9ce5",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aD_down.las.las",
+      "bytes": 10275,
+      "sha256": "fa034cf680d711abedbd08593d781940c10295c61db583563df2346c9ff45b95",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aD_up.las.las",
+      "bytes": 10751,
+      "sha256": "c8474e273f1404425eb28b1bc42b264fb2e76fc2b6c1c8268961766d034d1d56",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aF_down.las.las",
+      "bytes": 10207,
+      "sha256": "beee018249aaa9429dac1c421b33d862014a23a177512122343b35837311e115",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aF_up.las.las",
+      "bytes": 12247,
+      "sha256": "b1e055c3979e3a8471e46e53a2a943ee5aa527a6e532dfc5b9fbd4da4656953a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aG_down.las.las",
+      "bytes": 11499,
+      "sha256": "4cacbdf8e0124d70c13e18d9e47839d27130bc20097212b61f0e8060b8ac6a87",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aG_up.las.las",
+      "bytes": 10887,
+      "sha256": "48ab206bb720b23a6140b41fa264f9d1a00f681bb06b0f31daaf08ab2a8a8833",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aH_down.las.las",
+      "bytes": 9663,
+      "sha256": "940144f2e94b1f580de38a883c7dd55fff0df7d4d542a26f9586c0802217a40f",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aH_up.las.las",
+      "bytes": 11635,
+      "sha256": "404a67c221cb91d33418e7ff9df9c8b9f92e21da46ba771b30a1acc91732761e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aI_down.las.las",
+      "bytes": 13947,
+      "sha256": "62dddaf2ba1affdf3453641087f33a19771a6c289e05e36e9b4c6b02a925a9fa",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4aI_up.las.las",
+      "bytes": 13879,
+      "sha256": "0720272d0daac84ecb01d86a3f91e02002e8ba176b7f3477f5a228b254b68cee",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bB_down.las.las",
+      "bytes": 11839,
+      "sha256": "77a9368708767cdb6e2e01e1276c77ed987331815a529fc96779f54473dc87d9",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bB_up.las.las",
+      "bytes": 10887,
+      "sha256": "11cc7e0ca13a814997d90d9944c824ef8f0794a2ccf53920f561f5512004bd33",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bD_down.las.las",
+      "bytes": 10547,
+      "sha256": "eeaa58bda0bc10104f96707e248d6254afc4db2e567e8d0cfec4870b94b00a71",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bD_up.las.las",
+      "bytes": 10071,
+      "sha256": "9fc7ce6aa663187b4f7b81b4b10f522804c21c21d6c6239957f37ff5061a394f",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bE_down.las.las",
+      "bytes": 11499,
+      "sha256": "686ea444496619a3ff4c38f98b3b85bc55203f42a6b179d2cc283d4fc0a6d05f",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bE_up.las.las",
+      "bytes": 12315,
+      "sha256": "0f81a8c51317c247b9ff3687179f295113360bec069e9fd5554ffda9f6d45c6d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bF_down.las.las",
+      "bytes": 10615,
+      "sha256": "c0be1d9569cfb38f6f7cfeb74c1507a2e232299ead75d3dd681c32d4bed08009",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bF_up.las.las",
+      "bytes": 9799,
+      "sha256": "c2daa7e1bbf1e3b496abcf3780c51709a6072e5280ef9dd927b06758f89e9ceb",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bG_down.las.las",
+      "bytes": 14423,
+      "sha256": "e7d042aae147e8a8c9c4b07a9c5e3c6436a716ccc15cd913e0d17e2c26a244ac",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bG_up.las.las",
+      "bytes": 12043,
+      "sha256": "839508e03a1162621c8386c1dc363d6a6fcc401e294c437d6988aa0df00aa07d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bI_down.las.las",
+      "bytes": 14831,
+      "sha256": "8b50ffba59d207d6bdfe8e9999c7e4fe62606fe36191a76501ebd8d76f8eaa81",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t4bI_up.las.las",
+      "bytes": 16531,
+      "sha256": "e01fc5589ffa27bc4c920bc94fd236a7bc1a8ef0294b14460db55eb7af6df419",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aB_down.las.las",
+      "bytes": 13743,
+      "sha256": "ee2a6a4fb9ba0c317087b3eb2a1906c495c5d8b619af9231307c876fd365fb38",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aB_up.las.las",
+      "bytes": 13811,
+      "sha256": "f3d38694af43f51eb22ef2526ccd6bf22b0857265a90cdc165d57982c7d9b337",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aC_down.las.las",
+      "bytes": 10411,
+      "sha256": "d27d265aeafdbe704d773582e3c8c7a1795c7f2d5a7b751cfc08192890f28efe",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aC_up.las.las",
+      "bytes": 11091,
+      "sha256": "951f6b9a2f3d4929c69b4a2407b845179f7914fd7c1607cf3dac45a6126c17e1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aD_down.las.las",
+      "bytes": 13471,
+      "sha256": "905bef6ad33d7a56072cea0eca97b0e8e53e5d795a4b20cb280e9ad9de87f594",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aD_up.las.las",
+      "bytes": 11771,
+      "sha256": "a5ff3b496a323b60e1b93f116feabd76a260c22b86e3a2b2257c10dbb172e710",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aG_down.las.las",
+      "bytes": 14763,
+      "sha256": "460a89b50f1e4d47bd3c17839f0cb3a5b4bf29c923c18f3f4592274cf80b2448",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aG_up.las.las",
+      "bytes": 13743,
+      "sha256": "f12f95fc5586f339b3077d11067718ce2a27d5561eccb87800e92b1d4508ccae",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aH_down.las.las",
+      "bytes": 13199,
+      "sha256": "2d37b48a786f49de813b9f853d4d609db011d5838d63a1ef6d3d298cd701747a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aH_up.las.las",
+      "bytes": 11771,
+      "sha256": "f38ad7e4a6b9be690bb63f1206f8cce2f05de648e8c0fe6aabd8a51a60036814",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aI_down.las.las",
+      "bytes": 14831,
+      "sha256": "4e6c4c82897cd9c33af97278a3b774c6ac6bd7c4b8ae124132798ffa0644d534",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5aI_up.las.las",
+      "bytes": 17483,
+      "sha256": "0cc27308c01c1b0af51cc24da9e64cee8f4a2def93446b80f084e4ef59322f5a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bA_down.las.las",
+      "bytes": 10411,
+      "sha256": "d3fee47994fc45465e1ee6f406bf4b5bca3bc26048839c25f3a460dc95cd12fe",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bA_up.las.las",
+      "bytes": 16531,
+      "sha256": "934be4d0df51fdc05412eb825c24927ec05b5735dad45c40c022c726402f6832",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bB_down.las.las",
+      "bytes": 15511,
+      "sha256": "0ec09f80e4b8ce0aa83586b0af36f48b6888514496ba6060309396dc5d57a216",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bB_up.las.las",
+      "bytes": 16871,
+      "sha256": "9f3f8ac59bff9ab339ab57a4a185305d0010a41c9ba0811a0cfc6897de7deb47",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bD_down.las.las",
+      "bytes": 9119,
+      "sha256": "6d678ffa7eca60717de55ec5eeb274ffc414ebe6b17bbe1dc733b536f567e7e1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bD_up.las.las",
+      "bytes": 16191,
+      "sha256": "790283cc2916105a3f23d9098bddd54a041811c63b2cd8f371f954ed991a9d55",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bE_down.las.las",
+      "bytes": 12791,
+      "sha256": "dd467d8d287f38e0a5d7284b940aa3232595acb2a02c2c36f22ff26fc53537f0",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bE_up.las.las",
+      "bytes": 12451,
+      "sha256": "25bb1a37f2fe5440e0ef8836a4c008f79fbedf4269913bd9c8cc8ad83b112b94",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bG_down.las.las",
+      "bytes": 14287,
+      "sha256": "657d8e506399742377ea8edb72e3beecbc83f96f7de1c0f8277da67e1e67d3f6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bG_up.las.las",
+      "bytes": 18231,
+      "sha256": "958ac996bfd8dfef443cd365ebbd9c0c580d6c3a5cb1324d9286221f8d2d9de0",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bH_down.las.las",
+      "bytes": 12111,
+      "sha256": "be80be69486e26b5b63ed047968652a2d2be7eae1840595c6cac1af772872b61",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t5bH_up.las.las",
+      "bytes": 14287,
+      "sha256": "0f8ddb1295e5ac0763f517d273078c34a7b893f6e78f6bfc00d280a03ff98ea9",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6A_down.las.las",
+      "bytes": 14627,
+      "sha256": "0633b92af6a7b3c7125e6f0b15651ff6704551769b5a97559b47d5586c437174",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6A_up.las.las",
+      "bytes": 15987,
+      "sha256": "b7675c60371679aae2d65be8f28b26290cd3bb4dba254b4b8e9dd8fd2e5d0ab8",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6B_down.las.las",
+      "bytes": 19183,
+      "sha256": "3e32ab12e776071cac87e0de64b992ca14111d919e7649551a5b99e4a2802e2d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6B_up.las.las",
+      "bytes": 20475,
+      "sha256": "8c2e0a4fea7b4c542b73b87434bf6fa0710c27260c2856c1de3f0789147c38a1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6C_down.las.las",
+      "bytes": 14083,
+      "sha256": "9bd6eb4a0cc6b7a644c0e6abb667a10bd76d4dd26393572324b988d3a94792a1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6C_up.las.las",
+      "bytes": 16055,
+      "sha256": "f0e6ab830e15e34fa144027146d66c2b675824b00975359dcb93d3e607995a2d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6D_down.las.las",
+      "bytes": 19047,
+      "sha256": "a85f16e1701c815d7825b9f5059aba2076aed9880201c8cd15c4080e02133de6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6D_up.las.las",
+      "bytes": 18435,
+      "sha256": "b71e678e18431450a54792f2e7ee4cd8c64fdc31100c619ca899685f5c236c01",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6E_down.las.las",
+      "bytes": 18979,
+      "sha256": "a4651dfef691baff16653bc3547e4c895f0bcd67d22bec33083d8a12daf4246e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6E_up.las.las",
+      "bytes": 23467,
+      "sha256": "1b6238226dc98a41da72040059cca0b3d0d41637fb7199b414be6fc7d78366d7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6F_down.las.las",
+      "bytes": 16803,
+      "sha256": "17cf6c1c4a54641e6b76b27889f0fdb03b727ef8251e158f49673391406e41fe",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6F_up.las.las",
+      "bytes": 18979,
+      "sha256": "a78d4580ea1d6dea2660a91bb560d0011140e78bbfced87de4ec3004b980c107",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6G_down.las.las",
+      "bytes": 17007,
+      "sha256": "c47253b3089f8bd968536f7b638eeaaefab5b155c8cab6d25f6e6243544c48ac",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6G_up.las.las",
+      "bytes": 15987,
+      "sha256": "22e1ec4070c613bbd5fb51cf4795f1688509fc2ac1c0d995a609f059d14686f3",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6H_down.las.las",
+      "bytes": 13063,
+      "sha256": "234eae8dec76b549e65af11927b2eb41ff8f5b3b024d42dd3c18fb7f71dcd3a1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6H_up.las.las",
+      "bytes": 15987,
+      "sha256": "4607872bbebd51e94ea6d476a5b6ade2b10a91af15654b30c3a9e31add7bdb44",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6I_down.las.las",
+      "bytes": 24487,
+      "sha256": "9826d9dddc20c0fef61cebb85e316f25c6cbbc20dedac21d173f45118db579de",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t6I_up.las.las",
+      "bytes": 29451,
+      "sha256": "e93316048e684553ec8b26ad20a06143caf0f0753ea3b8f8507ba8e9f7ce7142",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7A_down.las.las",
+      "bytes": 15783,
+      "sha256": "52d6d7a04d70d40ec1dd43de1423de290122ed6e9a78bceb5e167c0bca97f679",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7A_up.las.las",
+      "bytes": 25303,
+      "sha256": "7213aa6630af277c9e7ae2a482126352bebad6e5194e2a9cafaa69ca114f1723",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7B_down.las.las",
+      "bytes": 35231,
+      "sha256": "bd0435143c6ae80f1550deb747a139d26a30569b18e89f630c1aeb0babcb3489",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7B_up.las.las",
+      "bytes": 36455,
+      "sha256": "2bf43f23680ff7a6ab0494241375b6ea39874028cad4ccf090c1980fabb5f105",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7C_down.las.las",
+      "bytes": 19251,
+      "sha256": "335e8bcd635dace2dd312870d0c5dcbddbcb4de34a05b7ab493aa4b447281db5",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7C_up.las.las",
+      "bytes": 25303,
+      "sha256": "f4178f5e9558df63071a03adffe75ccaccdf29d60dbdd99a97da44e265f40c37",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7D_down.las.las",
+      "bytes": 24419,
+      "sha256": "88cc432b78216995c4bed5c5fa8140cd88e9cfc65c34a2cdd449eac20cec4953",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7D_up.las.las",
+      "bytes": 41487,
+      "sha256": "a2e027904045727e73dcd535e38db21cc90a2712d46909edf8b66045076d6343",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7F_down.las.las",
+      "bytes": 33055,
+      "sha256": "7867a55fe4d5060620b69eb55c872ba8f4601a7b3fc73c851273344dd0f377d7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7F_up.las.las",
+      "bytes": 40195,
+      "sha256": "b760543ae1b9af2c2eb2994675373aa0c841ebe734d214674ff968c3f7a62c2a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7G_down.las.las",
+      "bytes": 27479,
+      "sha256": "5f59fd4410e153bb7b8c6ad80b29a9c3366dfe01ad917e7e6e2ffc922fb10c1a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7G_up.las.las",
+      "bytes": 27887,
+      "sha256": "4b218a7092d6874c8d9ffee7a431477cffe6c258f2c8454793d23740e98f9588",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7H_down.las.las",
+      "bytes": 18979,
+      "sha256": "ebdb2c15afebc3af5248a40b019eea73d90ecb99499abb67e4aa94b8d99d712d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7H_up.las.las",
+      "bytes": 23399,
+      "sha256": "0d1482a032b6b59054c15099a22953893bfa423cb2455e5b269188232f3597b1",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7I_down.las.las",
+      "bytes": 56311,
+      "sha256": "103ba0a7654bf699de3934a57886f4f44c68a4d803143784e56b7a0b21ece4f8",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t7I_up.las.las",
+      "bytes": 61071,
+      "sha256": "5c8f70058ec51daa852f911d5513fea043654240be66baf6ac2c6abd8baafc6d",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8B_down.las.las",
+      "bytes": 37747,
+      "sha256": "f5151b79c27501c9103ea87068085f97a138dad91c64b7df8d939900e3613591",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8B_up.las.las",
+      "bytes": 30947,
+      "sha256": "0d6e01dad4085e2271155be610d1bb7e05ce9f9c0a985d3435a0d03ee9267167",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8C_down.las.las",
+      "bytes": 15307,
+      "sha256": "6ec144135c675ebc85b9c5e2799300c77779ca3afc29400fb5af784482ae69be",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8C_up.las.las",
+      "bytes": 19047,
+      "sha256": "dccc2e47dc6f9c7a76b3ac13fad56b9cdc6a2dad35aad9f2b7db8feaa2bf1203",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8D_down.las.las",
+      "bytes": 23671,
+      "sha256": "9bc19b5e860f33c9663651d90197ea6d44c1b42877532c40ef7daa2d9f79d9ff",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8D_up.las.las",
+      "bytes": 26731,
+      "sha256": "ca009fecb8ffd283d5142db160fa9a287cfe420a37bf51616d682f01ea2a4c68",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8E_down.las.las",
+      "bytes": 21291,
+      "sha256": "2d58d9405bad917744eb63076c50fbe2ceba5d1493a7e205829f4f4fcabb5f68",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8E_up.las.las",
+      "bytes": 25439,
+      "sha256": "c9a4a4fbb86751e83b8d1586fde2f0969aff02f8427f1b83f60eed0cac232768",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8F_down.las.las",
+      "bytes": 25303,
+      "sha256": "7a7f485794c51ae1d5613df53b4886d21a878d07b8885c7ee33114a7554f4272",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8F_up.las.las",
+      "bytes": 28363,
+      "sha256": "09007cc26bad249cfa80eadcd8cefe0384c8b09317ac80d0461964b5d4346ef6",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8G_down.las.las",
+      "bytes": 18503,
+      "sha256": "b0b47c792131051350409973887c5b25dc384483e595813ab03a539be8093c4a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8G_up.las.las",
+      "bytes": 16531,
+      "sha256": "d44e82b0511e384fd37e17dd8e008b884dba59018fb5f0b7356445fc873974b3",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8H_down.las.las",
+      "bytes": 14831,
+      "sha256": "c54c34510baccdba30ddc4c0e131544a52e79b52b0e40b7b43b0a26c74d4e3cd",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8H_up.las.las",
+      "bytes": 18367,
+      "sha256": "8be788b0e2ca51eec14d274b24cc9892c05f8467355004047402f78c5414e6e4",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8I_down.las.las",
+      "bytes": 38903,
+      "sha256": "ce40d7dfb2a29db4e9dd74d30bfe184c9823c05229b0fe22fe6be4eea5da6aa7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t8I_up.las.las",
+      "bytes": 32783,
+      "sha256": "c09cacb97de5ff5cc8deec67c2bb80bfd66571876fa74a384289f5a883652a79",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9A_down.las.las",
+      "bytes": 23739,
+      "sha256": "6901e5d9eed304ef506e13933f0e2f73b0dcaff54520a737d77f281d419178c7",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9A_up.las.las",
+      "bytes": 33803,
+      "sha256": "5b315db6383fca6e5e0302323c8abbcc6e028a45ff8025833b5d37176c318c0a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9B_down.las.las",
+      "bytes": 30471,
+      "sha256": "4a3d3f5304dc86ce5cec025cb09010c910a088c0f1bac0547acef2bfa1dfb56e",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9B_up.las.las",
+      "bytes": 42235,
+      "sha256": "f22c867e05e72b251fa1eb0632ecf2fb8bf6ec0b821602752926e6ce946d38db",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9C_down.las.las",
+      "bytes": 27751,
+      "sha256": "7482f69c0b1beae67aaa150d43c733b22b75c54abaa1117ff42c9f1b6f155675",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9C_up.las.las",
+      "bytes": 28703,
+      "sha256": "4c408e253edf45369c9261d3a787d290d045f404c7f5ae1c500d4c0c5d5c6322",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9D_down.las.las",
+      "bytes": 29927,
+      "sha256": "168b199ce7e91b1d3011e3fe69c174eb7fe2b2dbf28c782daa72e8f644ccdf84",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9D_up.las.las",
+      "bytes": 44887,
+      "sha256": "40d3fd6d9f27f311fba20274ccb50a6b94473bc9aeb103f371caa709a3fb80a2",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9F_down.las.las",
+      "bytes": 30879,
+      "sha256": "1b81a501ac1dab6c281f044c1f36c3160e2c1fbee27c8d940155056e1976a36f",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9F_up.las.las",
+      "bytes": 51415,
+      "sha256": "4ceec286317148a5575aacd3284a7a4ddd36ea7855ddc617888470b63b2c410b",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9G_down.las.las",
+      "bytes": 29179,
+      "sha256": "41b3c63d4651093a361ea0177e08337223ac5063938612c147f00a6e8e447c17",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9H_down.las.las",
+      "bytes": 17959,
+      "sha256": "4771bb1a8554d146518cfaf8528c4bee3e20792ebf7e6bce1c870546fcb27d96",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9H_up.las.las",
+      "bytes": 27343,
+      "sha256": "6e96c56fc84baf8359b9a525dba0aa567531ecdc71f17b75097fad950b2ab150",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9I_down.las.las",
+      "bytes": 63995,
+      "sha256": "e1f300af9b0f34527af5207ba8799d115634f5f2843fd6b1f9dc0d2a047f6c1a",
+      "las_signature": true
+    },
+    {
+      "name": "trajectories/t9I_up.las.las",
+      "bytes": 71883,
+      "sha256": "b3fec544279e836dde6344181b9f04c43ef908fe3c8212f26340d62b2f16c9e6",
+      "las_signature": true
+    }
+  ],
+  "las_files": 165,
+  "status": "COLLECTED_NOT_USED_FOR_TRAINING",
+  "reason": "Controlled off-trail walking, not lost subjects. CRS, time fields, person/transect groups and independent terrain inputs require validation.",
+  "trained_bundle_modified": false
+}

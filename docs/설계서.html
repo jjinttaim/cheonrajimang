@@ -1,0 +1,1515 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>:root{color-scheme:light}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>SearchProof 개발 설계서</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #F3F5F7; --surface: #FFFFFF; --ink: #16202A; --muted: #5B6B7A;
+    --line: #D6DEE5; --line-soft: #E6ECF1; --accent: #D9541E; --accent-ink: #FFFFFF;
+    --accent-soft: #FFF1E8; --teal: #1F7A8C; --teal-soft: #E4F2F5; --code-bg: #EEF2F5;
+    --contour: rgba(31, 122, 140, 0.22); --shadow: 0 1px 2px rgba(22, 32, 42, 0.06);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0F1519; --surface: #171F26; --ink: #E6ECF1; --muted: #93A3B1;
+      --line: #2A3641; --line-soft: #202A33; --accent: #F0793F; --accent-ink: #14100D;
+      --accent-soft: #2C1D14; --teal: #4FB3C4; --teal-soft: #14282E; --code-bg: #10171C;
+      --contour: rgba(79, 179, 196, 0.22); --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0F1519; --surface: #171F26; --ink: #E6ECF1; --muted: #93A3B1;
+    --line: #2A3641; --line-soft: #202A33; --accent: #F0793F; --accent-ink: #14100D;
+    --accent-soft: #2C1D14; --teal: #4FB3C4; --teal-soft: #14282E; --code-bg: #10171C;
+    --contour: rgba(79, 179, 196, 0.22); --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    font-size: 15.5px; line-height: 1.75; word-break: keep-all; overflow-wrap: anywhere;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .masthead { position: relative; border-bottom: 1px solid var(--line); background: var(--surface); overflow: hidden; }
+  .masthead canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  .masthead-inner { position: relative; max-width: 1120px; margin: 0 auto; padding: 40px 28px 28px; display: grid; gap: 14px; }
+  .eyebrow { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+  .masthead h1 { margin: 0; font-family: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 40px); line-height: 1.2; letter-spacing: -0.01em; text-wrap: balance; }
+  .masthead h1 .en { color: var(--teal); }
+  .lede { max-width: 62ch; margin: 0; color: var(--muted); font-size: 15px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+  .chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; background: var(--ground); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12.5px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .chip b { font-weight: 500; color: var(--muted); }
+  .chip.hot { border-color: var(--accent); background: var(--accent-soft); }
+  .chip.hot b { color: var(--accent); }
+  .page { max-width: 1120px; margin: 0 auto; padding: 28px 28px 80px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; align-items: start; }
+  nav.toc { position: sticky; top: 20px; max-height: calc(100vh - 40px); overflow-y: auto; padding-right: 6px; }
+  nav.toc .toc-title { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 10px 12px; }
+  nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  nav.toc a { display: block; padding: 5px 12px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; font-size: 13px; line-height: 1.4; }
+  nav.toc a:hover { color: var(--ink); }
+  nav.toc a.active { color: var(--ink); border-left-color: var(--accent); }
+  main { min-width: 0; }
+  article { max-width: 74ch; }
+  article > h1 { display: none; }
+  article h2 { font-family: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif; font-weight: 700; font-size: 23px; line-height: 1.3; letter-spacing: -0.01em; text-wrap: balance; margin: 56px 0 14px; padding-top: 18px; border-top: 1px solid var(--line); scroll-margin-top: 24px; }
+  article > h2:first-of-type { margin-top: 8px; border-top: 0; padding-top: 0; }
+  article h3 { font-family: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif; font-weight: 700; font-size: 17px; margin: 30px 0 8px; scroll-margin-top: 24px; }
+  article h4 { font-family: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif; font-weight: 500; font-size: 15.5px; color: var(--muted); margin: 22px 0 6px; }
+  article p { margin: 0 0 14px; }
+  article ul, article ol { margin: 0 0 14px; padding-left: 22px; }
+  article li { margin: 3px 0; }
+  article li > ul, article li > ol { margin: 4px 0 4px; }
+  article strong { font-weight: 700; }
+  article hr { border: 0; border-top: 1px solid var(--line); margin: 28px 0; }
+  article code { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86em; background: var(--code-bg); border: 1px solid var(--line-soft); border-radius: 4px; padding: 1px 5px; }
+  article pre { margin: 0 0 18px; padding: 14px 16px; background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; line-height: 1.55; }
+  article pre code { background: none; border: 0; padding: 0; font-size: 12.8px; white-space: pre; }
+  article blockquote { margin: 0 0 18px; padding: 12px 16px 12px 18px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; }
+  article blockquote p:last-child { margin-bottom: 0; }
+  .table-wrap { overflow-x: auto; margin: 0 0 18px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); box-shadow: var(--shadow); }
+  article table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 13.8px; line-height: 1.55; }
+  article th, article td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line-soft); }
+  article th { font-family: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif; font-weight: 500; font-size: 12.5px; letter-spacing: 0.02em; color: var(--muted); background: var(--ground); white-space: nowrap; }
+  article tr:last-child td { border-bottom: 0; }
+  article td { font-variant-numeric: tabular-nums; }
+  article td code { white-space: normal; overflow-wrap: anywhere; }
+  article th code { white-space: nowrap; }
+  article table { table-layout: auto; max-width: 1400px; }
+  .notice { margin: 40px 0 0; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); font-size: 13px; }
+  @media (max-width: 860px) {
+    .page { grid-template-columns: 1fr; gap: 20px; padding: 20px 18px 60px; }
+    nav.toc { position: static; max-height: none; border: 1px solid var(--line); border-radius: 6px; padding: 12px 8px; background: var(--surface); }
+    nav.toc ol { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+    .masthead-inner { padding: 28px 18px 22px; }
+    article { max-width: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<header class="masthead">
+  <canvas id="contour" aria-hidden="true"></canvas>
+  <div class="masthead-inner">
+    <div class="eyebrow">제5회 2026 대한민국 고등학생 AI·SW 개발 공모전 · 개발 설계서 v2</div>
+    <h1><span class="en">SearchProof</span> 개발 설계서</h1>
+    <p class="lede">민간 실종자 수색을 기록·검증·인계하는 수색 의사결정 도구. 이 문서는 기획서를 실제로 만들기 위한 구조, 모듈, 일정, 잘라내기 순서를 정한다. v2는 2026-09-02 외부 검토 12개 항목을 검증해 반영한 판이다(16절).</p>
+    <div class="chips">
+      <span class="chip"><b>개정</b> 2026-09-04 (v2)</span>
+      <span class="chip hot"><b>예선·90초 데모</b> 2026-09-27</span>
+      <span class="chip"><b>본선</b> 2026-11-24</span>
+      <span class="chip"><b>대상 지역</b> 제주 한림읍</span>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+  <nav class="toc" aria-label="목차">
+    <p class="toc-title">목차</p>
+    <ol id="toc-list"></ol>
+  </nav>
+  <main>
+    <article id="doc"></article>
+    <p class="notice">본 문서는 판단 보조용 개발 설계서다. 수색과 수사의 최종 판단은 기관과 현장 책임자가 한다. 기획서 원문: <code>docs/기획서.md</code> · 설계서 원본: <code>docs/설계서.md</code></p>
+  </main>
+</div>
+
+<script type="text/markdown" id="src"># SearchProof 개발 설계서
+
+기준일 2026-09-02(수). 범위의 유일한 기준은 `docs/기획서.md`다. 이 문서는 심사 1위 제안(#0 데모 마감 우선)의 골격 위에 #1(알고리즘), #3(리스크 회피), #2(개인정보·안전·장부)에서 심사위원이 이식하라고 한 것을 붙이고, 심사위원이 지적한 오류를 전부 반영한 단일 실행 계획이다. 2026-09-02 외부 검토 12개 항목에 대한 검증 판정 12건을 16절 기록대로 반영했다.
+
+**제안 간 충돌 해소(결정과 이유 한 줄씩)**
+
+| # | 쟁점 | 결정 | 이유 |
+|---|---|---|---|
+| 1 | 계산 격자 CRS: UTM 32652(#0·#1) vs 경위도 원본 격자(#3) | **UTM 32652 30 m 정방 격자 + 서버에 pyproj** | 비정방 셀(31×26 m)은 거리·면적·EDT마다 축별 보정이 필요해 초보자가 한 곳씩 빠뜨린다. pyproj는 휠 설치 한 줄이고 서버에서 쓰는 코드는 Transformer 하나뿐 |
+| 2 | 모델 B 이동: 연속좌표 Δt=300 s(#0) vs 8방향 셀 + 시간 예산(#1·#3) | **8방향 셀 이동 + 초 단위 시간 예산** | Δt=300 s는 한 스텝에 16셀을 건너뛰어 수역·급경사를 관통한다. 셀 이동은 방향 경사를 dem 차분으로 직접 얻어 부호 문제도 없다 |
+| 3 | 대원 간격: 빈틈 플래그만(#1) vs W_eff=s(#2) — 심사위원끼리도 갈림 | **같은 소티(±60 s 동시) 안에서는 띠 합집합, 소티 간에는 합산. 점별 계수 f_sync = (min(s_L,W)+min(s_R,W))/(2W)로 합집합 몫을 나누고, `team_overlap`(union/sum) 파라미터 + 빈틈 플래그** | 지수 탐지 모형은 무작위·반복 중복만 흡수한다. 나란히 걷는 상관 중복은 합집합(하한)과 독립 합(상한) 사이에 있으므로 기본은 보수적 합집합, 민감도에서 sum과 비교. (구 식 min(1,s/W)는 s=0에서 두 사람 기여가 0이 되는 오류라 폐기) |
+| 4 | 갱신 저장: POD_lo 단일 갱신(#0) vs C_cum 3벌(#1) | **셀별 누적 커버리지 래스터 `C_cum_{low,mid,high}.npy` (512,512) float32 저장, 사후 = 현재 사전 × exp(−C_cum(x)) (셀 단위). 구역 C_i·POD_i는 래스터에서 집계만 한다** | 트랙이 구역 모서리만 지나도 구역 전체가 할인되는 오류 제거. 순서 무관·모델 사후 유지·사후 POA 구간은 그대로. `track_zone`은 보고서용 파생 통계로 남긴다 |
+| 5 | 구역 크기 480(#0)/300(#1·#3)/500 m(#2) | **480 m = 16×16 셀, `zone_px` 파라미터** | 512는 16의 배수라 reshape 집계가 한 줄. 500 m는 30 m 배수가 아님 |
+| 6 | 합의 기준 상위 30%(#0·#2) vs 50%(#1·#3) 질량 | **상위 50% 질량 마스크, 합(0~3)으로 분류** | params.json에 고정 기록. '두 모델만' 셀도 정의됨 |
+| 7 | 인증: JWT(#2) vs 임무별 역할 코드(#0·#3) | **역할 코드(bearer). URL fragment로만 전달, 서버 rate limit + 폐기** | 로그인 화면·비밀번호 해시는 11/24 범위 밖. 코드를 아는 사람이 곧 그 역할이므로 '링크 소지자 인증'임을 서류에 명시하고 무차별 대입만 막는다 |
+| 8 | 실시간: WebSocket(#2) vs 폴링 | **버전 번호 폴링(조정자 5 s, 봉사자 10 s)** | 지도 갱신에는 손해 없음. 안전 기능(중지·체크인)은 전송 방식과 무관하게 **보조 채널**이다 — 화면 꺼짐·통신 음영에서는 어느 방식도 닿지 않으므로 정본은 전화·무전(9절) |
+| 9 | PDF: fpdf2(#2) vs 브라우저 인쇄(#0·#3) | **인쇄용 React 페이지 + 인쇄→PDF 저장 → 서버에 첨부** | 한글 폰트·시스템 라이브러리 함정 제거. 저장한 PDF를 업로드해 zip에 넣는다(6.9). 첨부가 없어도 패키지는 만들되 경고를 남긴다 |
+| 10 | 토지피복 폴백: OSM landuse(#2) vs ESA WorldCover | **WorldCover 10 m** | 제주 농촌 OSM 폴리곤은 구멍이 많다 |
+| 11 | DB: SQLModel(#0·#2) vs sqlite3 표준 라이브러리(#3) | **sqlite3 + `db.py` 헬퍼 30줄** | 표 12개 이하, SQL 직접 작성이 디버깅이 쉽다 |
+| 12 | 모델 A의 바다 셀 질량: 잔여 vs 육지 재배분 | **잔여로 두되 사유를 '해상(모델 밖)'으로 분리 표시(`sea_mass: "outside"` 기본). `"to_land"`는 민감도 비교용 옵션으로만 유지. 잔여 = q95 밖 꼬리 0.05 + 격자 밖 잘림 + 해상, 사유별로 따로 기록** | 육지 재배분은 해안 IPP에서 해경 영역 질량을 화면에서 지운다(기획서 6절 잔여 표시 원칙 위반). '잔여 과대평가' 우려는 잔여를 세 사유로 나눠 표시하면 해소 |
+| 13 | 추천 점수의 (1−POD_cum) 곱(#1) | **제거** | 사후 POA가 이미 (1−d)로 줄어 있어 이중 벌점 |
+| 14 | Zenodo 적합: 컷 가능(#3) vs 필수 | **회귀 1개(경사 계수 + hasty/sweep 절편)는 필수, 실패 시에만 문헌 상수 + 각주** | 기획서 3·5.2·6절의 약속. 단 회귀는 속도·경사만 검증하고 탐지폭은 검증하지 않는다(6.6) |
+| 15 | 입자 애니메이션 Tier 1(#0) | **Tier 2로 강등, 기본은 히트맵 페이드인** | 심사 점수와 무관한 연출 |
+| 16 | 상태기계 10단계(#2) | **mission.status 5개 + zone.status 5개(PROPOSED/APPROVED/ASSIGNED/SEARCHED/EXCLUDED) + tracks.status 4개(UPLOADED/APPLIED/REJECTED/FOUND; 요청 처리 중 임시값 APPLYING — 응답 전 반드시 APPLIED 또는 UPLOADED로 복귀, 서버 시작 시 남은 APPLYING은 UPLOADED로 되돌린다)** | 게이트는 유지하되 코드는 컬럼 하나씩 |
+| 17 | TypeScript(#0) vs JavaScript(#3) | **JavaScript(JSX)** | 팀 숙련도 기준 |
+| 18 | 마스크 `passable` 한 장(외부 검토: 네 층 분리) | **`traversable`(지나갈 수 있음)과 `terminal`(있을 수 있음) 두 장 + 구역 `access` 라벨(10월 W8)** | 내륙 수역·절벽은 못 지나가지만 추락·익수로 있을 수는 있다. 확률 0은 바다뿐. 수색대 위험은 확률이 아니라 라벨·점수로 다룬다(기획서 5.2·9절). 네 층 구조는 과설계 |
+| 19 | 버전 쓰기 동시성: 락·UNIQUE·CAS·BEGIN IMMEDIATE·상태 컬럼(외부 검토) vs 없음(현재) | **프로세스 전역 `VERSION_LOCK` + `UNIQUE(mission_id, version_no)` + `pending_*` 디렉터리 → `os.rename` + GPX SHA-256 UNIQUE. CAS·`BEGIN IMMEDIATE`·범용 idempotency key·PREPARING/READY/FAILED 컬럼은 넣지 않는다** | 단일 프로세스(uvicorn 워커 1)에서는 Python 락 하나가 writer를 직렬화하므로 DB 단 잠금·CAS는 중복. 다중 임무 동시 계산은 범위 밖(1절). 행은 rename 뒤에만 생기므로 상태 컬럼 없이 '존재 = READY' |
+| 20 | 결합 가중치 (1/3,1/3,1/3) vs 계층화 | **A 1/2, B 1/4, B′ 1/4(`consensus.json`, 팀 선언 가정)** | B′는 B의 파라미터 변형(기획서 5.1)이라 B 계열 합 = 1/2. 평균을 없애는 안은 기획서 8절 '다중모델' 비교에 단일 순위장이 필요해 기각 |
+| 21 | 트랙 업로드 즉시 갱신 vs 6단계 상태기계(외부 검토) | **업로드(저장·검증·POD 미리보기)와 반영(조정자 [완료·미발견 확정] → 버전)을 분리. 상태 컬럼 1개, `sha256` UNIQUE 1개** | exp(−C)는 '수색했는데 못 찾았다'의 우도라 결과 확정이 필요하다. VALIDATED·ABORTED·COORDINATOR_APPROVED 별도 상태는 과잉(걸은 만큼은 이미 미발견 증거) |
+
+---
+
+## 1. 한눈에 보기
+
+SearchProof는 제주 한림읍 15 km 사각형 하나를 대상으로, 실종자 이동 가설 3개(A 동심원, B 몬테카를로, B′ 행동 규칙)를 같은 30 m 격자 위에서 실제로 계산해 합의·불일치·잔여확률을 보여 주고, 수색 GPS 트랙을 **30 m 셀 단위 커버리지**로 래스터화해 구역별 탐지확률(POD) 구간으로 집계하고, 조정자가 미발견을 확정할 때 베이지안 갱신하며, 그 근거를 장부와 인계 패키지로 남기는 웹앱이다. 9/27(일) 예선까지는 **화면 1개(MissionMap)·엔드포인트 8개(`base` 정적 4경로는 1개로 셈: base, missions, compute, tracks, tracks/apply, versions/files, state, versions)·커밋된 전처리 데이터 1세트**의 수직 슬라이스만 만든다. 지형 데이터와 모델 A·B·B′·POD·갱신은 실제 계산이고 GPS 트랙만 팀이 만든 GPX 재생이다. 11/24(화) 본선까지 역할 코드·봉사자/가족 화면·안전 기능·근거 장부·인계 패키지·모의 수색 실험·모델 비교를 붙이되, 9월 코드는 `map_versions` 체인에 트리거 종류를 추가하는 방식으로 확장하고 재작성하지 않는다. rasterio·GeoPandas는 1회 전처리에서만 쓰고 서버 런타임은 NumPy·SciPy·pyproj·Pillow만 읽는다.
+
+본선 안전 기능(체크인·위험구역·일괄 중지)은 조정자 전화 연락을 보조하는 채널이며 안전필수 채널이 아니다. 화면과 서류에 같은 문구를 쓴다. 확률 상태는 항상 `Distribution(grid, outside)` 하나로 다니며 모든 함수가 `grid.sum() + outside == 1`을 검사한다(6절).
+
+| 만드는 것(9/27) | 만드는 것(11/24 추가) | 만들지 않는 것 |
+|---|---|---|
+| 한림읍 512×512 30 m 지형 격자(DEM·경사·토지피복·도로 거리·수역 거리·`traversable`·`terminal`·`sea`·구역) 커밋 | Zenodo [9] 속도–경사 회귀 → `searcher_speed.json`(속도·경사만 검증, 탐지폭은 미검증) | 실시간 CCTV, 드론 자동 탐지, 실제 실종자 개인정보, 기지국 위치, 경찰 시스템 연동(기획서 7절) |
+| 모델 A 동심원 + 사유별 잔여확률(격자 밖·꼬리·해상) | POD 전체 인자(속도·경사·일몰·정지·간격·GPS 정확도) 구간, 같은 소티 합집합(`team_overlap`) | WebSocket, JWT 로그인, Docker, PostGIS, 벡터 타일, 서버 PDF 라이브러리, 상태관리 라이브러리 |
+| 모델 B 몬테카를로(2만 입자) + B′ 스위치(팀 가정 행동 비율) + 이탈 방향 통계 | 다중 트랙 누적 갱신, 버전 타임라인 + 결정 델타, 단서·파라미터 변경이 보존되는 사전 체인, 단서 반영 전/후 토글 | 백그라운드 GPS(iOS 불가), 임무 bbox 밖 광역 캐시, **OSM 표준 타일 서버(tile.openstreetmap.org)의 사전 다운로드·오프라인 사용(OSMF 정책 금지)** |
+| 합의/불일치 래스터(가중 결합 A 1/2·B 1/4·B′ 1/4), 모델별 잔여확률 배지, 해안 인접 경고, 3단계 계산 진행 표시 | 근거 장부 + 조정자 승인 반영, 구역 승인 게이트, 배정, 추천 점수(위험 게이트 + 연성 항), 가정 스트레스 투표 | 전국 처리, 다중 임무 동시 계산 최적화, 버전 체인의 `BEGIN IMMEDIATE`·부모 CAS·범용 idempotency key·PREPARING/READY/FAILED 컬럼(단일 프로세스 락 + UNIQUE + rename으로 대체) |
+| 480 m 구역 POA 표(`terminal` 면적 기준) + POA·POS 구간 | 역할 코드(조정자·봉사자·가족, URL fragment), 봉사자·가족 화면, 동의 화면, **임무 지역 자체 렌더 베이스맵 PNG + 도로·구역 GeoJSON의 PWA 오프라인 캐시** | 딥러닝·GPU, 클라우드 배포(현장 실험용 터널 제외) |
+| 모의 GPX 업로드(sha256 중복 차단) → 셀 커버리지 → 구역 POD 구간(임시 W) → 조정자 [완료·미발견 확정] → 갱신 → 다음 구역 3개(+추천 변화 한 줄은 Tier 1) → 수색 그림자 레이어(Tier 1) → 재생 연출 | 체크인 타이머(조정자 통보), 위험구역 경고, 일괄 중지 — 모두 '보조 채널' 문구 | 국내 실종자 통계 생성(없는 것을 만들지 않는다) |
+| 고정 문구, 출처 표기, '팀 가정' 배지, 90초 영상 | 인계 패키지(첨부 PDF·GPX·GeoJSON·CSV·zip + 재현 매니페스트 + `verify` 명령), 인계 시 **서버의** 원본 트랙·zip 삭제(가명 트랙은 인계 패키지로 기관에 전달) | 자동 단서 반영, SMS·전화 발신, SOS 버튼·`alerts.type=SOS`(기획서 9절에 없음. 긴급 상황은 전화 119·조정자 전화) |
+| | 모의 수색 실험 1회(+예비, 라틴 방진·봉인), 모델 비교 4종(leave-one-generator-out), ±20% 민감도, 인터뷰 3~5명(+사전 인터뷰 1~2명) | 실시간 폰 GPS `POST /api/tracks/{id}/points`·`track_points` 표(**선택**: W9에 시간이 남을 때만, 정본은 GPX 업로드), 도로 경계 구역, 입자 애니메이션·1시간 스냅샷·hillshade 레이어, 체크인 소리·진동, 위험구역 서버 사후 검사, zip의 `report.html` **중복** 사본(PDF가 첨부된 경우; PDF 미첨부 시에는 6.9대로 `report.html`만 대체본으로 넣고 `pdf_missing=1`) |
+
+---
+
+## 2. 전체 구조
+
+```
+┌─ 0층 오프라인 전처리 (Mac 1회 실행, 10분, rasterio·GeoPandas·pyproj 여기만) ────────────────┐
+│ pipeline/00_grid → 01_dem → 02_landcover → 03_roads → 04_cost → 05_zones → 06_hazards → 07_check │
+│          → 10_basemap(오프라인 베이스맵 PNG)                                                   │
+│ 입력: Copernicus GLO-30 COG, 환경부 중분류 shp 또는 ESA WorldCover, Overpass GeoJSON           │
+│ 출력: data/hallim/{meta.json, *.npy(512×512), roads.geojson, zones.geojson, hazards.geojson}   │
+│       frontend/public/basemap/hallim_basemap.png                                               │
+└──────────────────────────────┬──────────────────────────────────────────────────────────────┘
+                               │ git 커밋(약 20 MB). 서버는 np.load만 한다
+┌─ 1층 백엔드 FastAPI (NumPy·SciPy·pyproj·Pillow·gpxpy, 전부 동기 처리, uvicorn 워커 1개) ──────┐
+│ core/dist      Distribution(grid, outside, detail) + check()  — 모든 확률 상태의 유일한 형태   │
+│ core/grid      meta.json + pyproj Transformer(경위도↔UTM↔row/col)                            │
+│ core/model_a   동심원 사전확률           core/model_b  8방향 셀 몬테카를로(B′=플래그)         │
+│ core/consensus 상위 50% 질량 마스크 합 + 가중 결합   core/zones  reshape 집계 POA(terminal 면적)│
+│ core/tracks    GPX→5 s 재표본(KST 변환)·정지·차량·소티·간격   core/pod  점별 W → 셀 래스터 C   │
+│ core/bayes     현재 사전×exp(−C_cum(x)), 가상 구역 0   core/recommend 게이트+점수   core/ledger │
+│ core/versions  VERSION_LOCK 안에서 pending_→rename→행 등록   core/render 확률장·그림자→PNG     │
+│ core/handover  보고서 데이터·PDF 첨부·zip·manifest·verify                                      │
+│ routers/{missions, compute, tracks, zones, members, ledger, safety, handover, base, files}    │
+│ SQLite 1파일 + data/missions/<id>/v<N>/{prior_*,post_*,C_cum_*}.npy, residuals.json, *.png     │
+│   (data/missions/는 StaticFiles로 마운트하지 않는다 — files 라우터의 화이트리스트로만 제공)   │
+└──────────────────────────────┬──────────────────────────────────────────────────────────────┘
+                               │ JSON · PNG(파일 엔드포인트) · GeoJSON · 5~10 s 폴링
+┌─ 2층 프런트엔드 Vite + React(JS) + maplibre-gl ────────────────────────────────────────────┐
+│ /m/:id#code=…(11월; 9/27은 /m/:id)  MissionMap(조정자, 9/27 유일 화면) — 지도 + 좌측 패널 + 고정 문구 │
+│ /m/:id/ledger Ledger   /m/:id/report Report(인쇄·PDF 첨부)   /join#code=… Join(봉사자·가족 공통, │
+│   경로에 코드 없음)                                                                           │
+│ api.js: localStorage의 역할 코드를 모든 요청에 X-Role-Code 헤더로 붙인다. dangerouslySetInnerHTML 금지 │
+│ 베이스맵: 온라인 OpenFreeMap 벡터 → 오프라인/실패 시 자체 렌더 hillshade+도로 PNG(image source)      │
+│           촬영일 폴백만 OSM 래스터(보는 타일만 요청, prefetch 없음)                                    │
+└──────────────────────────────┬──────────────────────────────────────────────────────────────┘
+┌─ 3층 데이터 저장 ────────────────────────────────────────────────────────────────────────────┐
+│ data/hallim/  지형(커밋)  │ searchproof.db(SQLite, WAL)  │ data/missions/<id>/  버전별 래스터·GPX·PDF │
+│ params/  subject_profiles.json, model_b.json, pod.json, hazard.json, recommend.json, ledger.json, │
+│          consensus.json, landcover_table.csv, searcher_speed.json                                │
+└──────────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+| 구성요소 | 한 줄 설명 |
+|---|---|
+| `pipeline/` | 원천 데이터를 512×512 float32/uint8/bool 배열로 굳힌다. 소스가 바뀌어도(국토지리정보원 5 m, 환경부 shp) 입력 경로만 바뀐다 |
+| `core/dist.py` | `Distribution(grid, outside, detail)`. 모델·결합·갱신 함수는 이것을 받고 돌려주며 반환 직전 `.check()`로 `grid.sum() + outside == 1`, `sum(detail) == outside`를 검사한다 |
+| `core/grid.py` | 서버에서 유일하게 좌표를 다루는 곳. `lonlat_to_xy`, `xy_to_rc`, `rc_to_lonlat`, `cell_centers`(편의 함수 `lonlat_to_rc = xy_to_rc(*lonlat_to_xy(...))`), 셀 면적 900 m² |
+| `map_versions` 체인 | 모든 확률지도 변화는 새 버전(`parent_id`, `trigger=prior|track:<id>|clue:<id>|manual`)이다. 각 버전 디렉터리는 **현재 사전** `prior_{a,b,b2,c}.npy`, **사후** `post_{a,b,b2,c}.npy`(mid 밴드), `C_cum_{low,mid,high}.npy`(512,512), `residuals.json`(사전·사후 잔여 사유별)을 함께 갖는다. 트랙 확정은 C_cum만, 단서는 사전만, manual은 사전 재계산 + C_cum 재합산 — 규칙은 6.7의 표 한 줄씩. **쓰기 규칙: 새 버전은 항상 `core/versions.py`의 `make_version()` 한 함수가 프로세스 전역 `VERSION_LOCK`(threading.Lock) 안에서 만든다.** 산출물은 `data/missions/<id>/pending_<hex>/`에 쓴 뒤 `os.rename`으로 `v<N>/`이 되고, 그 다음에야 `map_versions` 행이 생긴다. 따라서 `v<N>/` 디렉터리와 행은 항상 짝이 맞고, `pending_*`는 서버 시작 시 지운다. 전제: **uvicorn 워커 1개(기본값), 엔드포인트는 sync `def`**(async def 안에서 NumPy를 돌리면 6 s 동안 `/state` 폴링이 멈춘다) |
+| 렌더 | 확률장을 99퍼센타일로 정규화 → 컬러맵 → 알파 = 값 → PNG. **`shadow.png` = `1 − exp(−C_cum_mid)`를 회색→진청 컬러맵, 알파 = 값(수색 그림자)**; 60 s 이상 점 공백 세그먼트 양끝은 점선(GPS 공백). MapLibre `image` source에 `meta.corners_4326`(TL·TR·BR·BL, 경위도) 4점을 넣는다. UTM 사각형은 경위도에서 약 1.5° 기울지만 image source가 사변형을 지원하므로 그대로 쓴다. PNG·zones.geojson은 `GET /api/missions/{id}/versions/{v}/files/{name}`(png·geojson 확장자만, **조정자만**)로 내려준다 — `tracks/*.gpx`·`evidence/`가 URL만으로 열리는 일이 없도록 폴더 통째 마운트는 금지(기획서 9절) |
+| 폴링 | `GET /api/missions/{id}/state` → `{version, status, overdue, pause_pending}`. 버전이 바뀌면 PNG·zones를 다시 받는다. `version`은 조정자 확정(`apply`)·단서 반영·재계산 때만 오르므로 봉사자 화면이 자기 업로드로 흔들리지 않는다. 봉사자 역할에는 `overdue: []` |
+
+---
+
+## 3. 기술 스택 확정
+
+| 계층 | 선택 | 이유 | 대안(막히면) |
+|---|---|---|---|
+| 프런트 | Vite + React 18 (JavaScript/JSX) + maplibre-gl + react-router | 기획서 7절 유지. TS는 팀 숙련도 고려해 제외(바꾼 것) | React가 막히면 `index.html` + `<script>` 한 장으로 MapLibre 오버레이만(Tier 2) |
+| 베이스맵 | 온라인: OpenFreeMap `liberty`(키 없음). **오프라인 정본: `pipeline/10_basemap.py`가 만든 `hallim_basemap.png`(2048×2048, hillshade+토지피복 담채+OSM 도로, `meta.corners_4326`에 맞춘 image source)** | 히트맵 PNG와 같은 image source 코드 경로라 새 라이브러리 없음. Copernicus·WorldCover·OSM 출처 표기는 `Attribution.jsx`가 이미 담당 | 촬영일: OSM 래스터 스타일(보는 타일만). 본선 stretch(Tier 2): Protomaps 빌드에서 `pmtiles extract … --bbox=126.17,33.31,126.37,33.48 --maxzoom=14`로 뽑은 `hallim.pmtiles`(수 MB) + `pmtiles` npm Protocol |
+| PWA | `vite-plugin-pwa` manifest + 앱 셸 precache에 **`basemap/hallim_basemap.png`·`/api/base/{meta,roads.geojson,zones.geojson}`를 포함**(`includeAssets`, `maximumFileSizeToCacheInBytes: 6_000_000`, runtimeCaching CacheFirst). `precacheTiles()`는 **삭제** | OSMF 타일 정책 원문: "Bulk downloading is any pre-emptive fetching of tiles other than those a user is actively viewing", "Offline use is not permitted on tile.openstreetmap.org". 장수·UA와 무관하게 금지이므로 자체 렌더 이미지로 대체. 기획서 7절 문구는 '오프라인 지도 캐시(임무 지역 자체 렌더 베이스맵)'로 고쳐 제출(16절) | 컷 리스트 2번: 앱 셸 + manifest만(기획서 7절을 '앱 셸 오프라인 캐시(지도는 온라인)'로 고쳐 제출) |
+| 백엔드 | FastAPI + uvicorn(**워커 1개 고정, `--reload`는 개발만**), Python 3.12 venv | 기획서 7절 유지. 3.13/3.14는 휠 부족. 버전 쓰기 직렬화가 `threading.Lock`이므로 멀티 워커 금지 | — |
+| 수치 | NumPy, SciPy(ndimage·sparse.csgraph·stats) | 벡터화 몬테카를로, 가우시안 평활(트랙 커널 포함), EDT, 최소비용(분석용), Poisson-binomial(실험 판정) | — |
+| 서버 GIS | **pyproj만**(경위도↔UTM). rasterio·GeoPandas·shapely는 서버에서 import 금지 | 설치 실패가 서버를 멈추지 않게(바꾼 것: 기획서는 전처리 용도로 명시했으므로 일치) | pyproj 휠 실패 시 miniforge |
+| 전처리·분석 GIS | rasterio, pyproj, shapely, pandas, gpxpy; GeoPandas는 환경부 shp를 쓸 때만. `pipeline/`과 `analysis/`는 둘 다 `.venv-pipeline`에서 실행 | 1회 실행, 한 사람 Mac에서만 되면 됨 | Google Colab(GDAL 사전 설치)에서 `pipeline/` 실행 후 `.npy` 다운로드 |
+| 렌더 | Pillow + matplotlib 컬러맵 | 512×512 PNG 6장(`post_{a,b,b2,c}.png`·`consensus.png`·`shadow.png`; v0는 post = prior), 추정(실측 전) 수십 ms | matplotlib 없이 NumPy 3색 보간 |
+| DB | sqlite3 표준 라이브러리 + `db.py` 헬퍼 30줄(요청마다 `connect(timeout=10)`, 시작 시 `PRAGMA journal_mode=WAL`, `PRAGMA secure_delete=ON`, 쓰기는 `with conn:` 블록) | ORM 학습 비용 제거(바꾼 것: 기획서 SQLite 유지). `BEGIN IMMEDIATE`·`isolation_level=None`은 쓰지 않는다(락이 이미 직렬화한다) | — |
+| GPX | gpxpy(파싱), 문자열 조립(생성) | 표준 라이브러리 `xml.etree`도 가능 | — |
+| PDF | 인쇄용 React 페이지 + `@media print` + 브라우저 "PDF로 저장" → `[PDF 첨부]`로 서버 업로드 | 서버 PDF 라이브러리 함정 제거, zip에 `report.pdf` 포함 | 첨부 없으면 경고 + `report.html`만(6.9) |
+| 실시간 | HTTP 폴링(버전 번호) | WebSocket 불필요. 안전 기능은 보조 채널 | — |
+| 인증 | 임무별 역할 코드(헤더 `X-Role-Code`) + `require_role()`. **코드는 URL fragment(`#code=`)로만 전달**(서버 로그·Referer·기록에 남지 않음) → 진입 즉시 `localStorage`에 저장하고 `history.replaceState`로 제거. 생성 `secrets.token_urlsafe(12)`(봉사자·가족)·`token_urlsafe(16)`(조정자). `/api/join` 실패 IP당 10회/10분 → 429(`deps.py` 메모리 dict). `members.revoked_at`으로 폐기·재발급. `index.html`에 `<meta name="referrer" content="no-referrer">` | 기획서 "역할 기반 접근 제어" 최소형. **정직한 라벨: 링크 소지자 인증이며 코드 배포 채널(단체 채팅 등)의 보안에 의존한다** | — |
+| 현장 HTTPS | `cloudflared tunnel --url http://localhost:8000`(계정 불필요). **Cloudflare 공식 문구: "intended for testing and development only", SLA 없음, 동시 요청 200개 제한.** 따라서 **모의 수색 실험(팀원 참가·합성 사건) 한정**으로 쓰고, 실사용 시 계정 기반 named tunnel 또는 별도 배포가 필요함을 서류에 명시 | 폰 `geolocation`·PWA 설치는 HTTPS 필수 | 터널 단절 시: GPX 로거 앱 기록(정본) + 종이 배정표 + 전화 중지 전파. 실험 절차서(`experiment_plan.md`)에 이 폴백을 적어 둔다 |
+| 협업 | GitHub 1 저장소, `main` + 기능 브랜치, `data/raw/` gitignore, `data/hallim/` 커밋(LFS 없음) | 20 MB는 그냥 커밋 | — |
+
+---
+
+## 4. 폴더 구조
+
+```
+searchproof/
+├─ README.md                      # 실행법 3줄: venv, uvicorn app.main:app --port 8000 (워커 1개, --workers 금지), npm run dev
+├─ params/
+│  ├─ subject_profiles.json       # 유형별 IPP 거리 사분위(출처 필수, 없으면 null) + _assumptions(팀 가정 이동 파라미터)
+│  ├─ model_b.json                # tau0_s, kappa, route_alpha, downhill_gamma, p_reverse, n_particles, max_steps,
+│  │                              #   p_route 0.5, p_downhill 0.5, p_stay 0.1 (팀 가정 행동 비율, _note 포함),
+│  │                              #   p_fall 0.02 / p_fall_water_tag 0.10 (11월 B′, 팀 가정)
+│  ├─ pod.json                    # w0_uncert 0.3, f_s, f_d 표, 정지·차량 임계, team_overlap "union"|"sum"(기본 union),
+│  │                              #   sync_window_s 60, gap_factor 2.0, acc_default_m 10, f_v 경계 + f_v_note
+│  ├─ hazard.json                 # {"slope_caution_deg":25,"slope_severe_deg":35,"cliff_deg":60,"water_buffer_m":60,
+│  │                              #   "agency_walk_frac":0.7,"_note":"팀 가정, 민감도 대상"}  (04·06 스크립트가 같은 값을 읽는다)
+│  ├─ recommend.json              # {"hazard_gate":0.6,"hazard_caution":0.5,"hazard_night":0.4,"hazard_soft":0.5,"spread_w":0.3,"pod_cum_max":0.8,"pod_cum_band":"mid",
+│  │                              #   "_note":"hazard는 팀 정의 지형 위험 지표(경사·수역 거리), 국내 미검증"}
+│  ├─ ledger.json                 # {"clue_weight":{"1":0.3,"2":0.6,"3":0.9},"clue_sigma_min_m":100,
+│  │                              #   "_note":"팀 가정. 출처 없음. 민감도 분석 대상. 화면 배지 '단서 가중치: 팀 가정'"}
+│  ├─ landcover_table.csv         # 내부 클래스 ↔ 환경부 중분류 코드 ↔ WorldCover 코드 ↔ lc_speed ↔ lc_w0
+│  ├─ searcher_speed.json         # 10월 Zenodo 적합 결과(a_hasty, a_sweep, b_slope, rmse_cv, data_doi)
+│  └─ consensus.json              # mass_frac 0.5, weights {"a":0.5,"b":0.25,"b2":0.25}
+│                                 #   _note: "B′는 B의 파라미터 변형(기획서 5.1)이라 B 계열 합 = 1/2. 팀 선언 가정, 11절 민감도 항목"
+├─ data/
+│  ├─ raw/                        # .gitignore — Copernicus tif, WorldCover tif, 환경부 shp, overpass.json, zenodo/
+│  ├─ hallim/                     # 커밋 — 전처리 산출물
+│  │  ├─ meta.json  dem.npy  slope_deg.npy  land_mask.npy  sea_candidate.npy(01)  water.npy(02 정본)  sea.npy(02)
+│  │  ├─ lc_code.npy  lc_speed.npy  lc_w0.npy  road_class.npy  road_dist.npy  road_attract.npy
+│  │  ├─ traversable.npy  terminal.npy  water_dist.npy  hazard.npy  zones_id.npy(블록 인덱스 0~1023)  zone_valid.npy(bool)
+│  │  ├─ roads.geojson  zones.geojson(지형 속성만)  hazards.geojson
+│  │  └─ preview/*.png            # 07_check 육안 확인용(sea.png 포함)
+│  └─ missions/<id>/              # 런타임 생성, .gitignore, StaticFiles 마운트 금지
+│     ├─ v<N>/                    # (pending_<hex>/에 쓴 뒤 rename)
+│     │   prior_{a,b,b2,c}.npy    현재 사전, 지도 안 질량 (512,512) float32
+│     │   post_{a,b,b2,c}.npy     사후 mid 밴드, 지도 렌더 전용 (512,512)
+│     │   C_cum_{low,mid,high}.npy 셀별 누적 커버리지 (512,512) float32
+│     │   residuals.json          {"prior":{"a":{"total","grid_edge","tail_q95","sea"},…}, "post":{…}}  ← 사전·사후 잔여 둘 다
+│     │   prior_base_{a,b,b2,c}.npy  단서 미반영 모델 원출력(마지막 prior/manual 시점, 11월 토글용)
+│     │   stress/poa_{b,b2}_{k}.npy  가정 스트레스 표본(11월, K=12)
+│     │   zones.geojson  *.png(post_{a,b,b2,c}, consensus, shadow)   6장(v0는 post = prior)
+│     ├─ tracks/*.gpx             # 인계 시 삭제(연구 보존 플래그 제외)
+│     ├─ evidence/                # 단서 사진, 인계 시 삭제
+│     └─ packages/ report.pdf  handover_<pid>.zip   # 인계 시 zip 삭제(sha256만 DB에 남김)
+├─ pipeline/
+│  ├─ 00_grid.py  01_dem.py  02_landcover.py  03_roads.py  04_cost.py  05_zones.py
+│  ├─ 06_hazards.py  07_check.py  08_demo_tracks.py  09_fit_speed.py(10월)  10_basemap.py(W10)
+│  ├─ overpass_query.txt  requirements-pipeline.txt   # numpy scipy rasterio pyproj shapely matplotlib pandas gpxpy [geopandas]
+│  └─ DATA_NOTES.md               # 각 소스의 URL·취득일·라이선스·좌표계·Zenodo 파일 구조 메모
+├─ backend/
+│  ├─ requirements.txt            # fastapi uvicorn numpy scipy pyproj pillow matplotlib gpxpy python-multipart
+│  ├─ app/
+│  │  ├─ main.py  config.py  db.py  schema.sql  deps.py(require_role, join rate limit)
+│  │  ├─ core/ dist.py grid.py model_a.py model_b.py consensus.py zones.py tracks.py pod.py
+│  │  │        bayes.py recommend.py ledger.py render.py handover.py profiles.py versions.py
+│  │  ├─ routers/ missions.py compute.py tracks.py zones.py members.py ledger.py safety.py handover.py base.py files.py
+│  │  └─ cli.py                   # python -m app.cli run-demo [--export-a-png out.png] | verify handover.zip
+│  └─ tests/ test_dist.py test_grid.py test_model_a.py test_model_b.py test_consensus.py test_zones.py test_pod.py
+│            test_bayes.py test_recommend.py test_versions.py  (본선: test_roles.py test_handover.py)
+├─ frontend/
+│  ├─ package.json  vite.config.js  index.html(<meta name="referrer" content="no-referrer">)
+│  ├─ public/ demo/{team1.gpx, team2.gpx, scenario_1..3/}  styles/{openfreemap.json, osm-raster.json}  basemap/hallim_basemap.png
+│  └─ src/
+│     ├─ main.jsx  App.jsx  api.js(X-Role-Code 헤더 자동 첨부)  poll.js  constants.js(고정 문구·태그 사전·출처 문구·레이어 이름)
+│     ├─ map/ MapView.jsx  layers/{Heat,Shadow,Zones,Roads,Tracks,Hazards,Ipp}.jsx
+│     ├─ screens/ MissionMap.jsx  Ledger.jsx  Report.jsx  Volunteer.jsx  Family.jsx  Join.jsx(역할 select 포함)
+│     └─ components/ SubjectForm ParamPanel ComputeProgress LayerToggle ResidualBadge ZoneTable TrackReplay
+│                     VersionList DecisionDelta Disclaimer Attribution ConsentForm CheckinTimer HazardBanner PauseOverlay
+├─ analysis/                      # .venv-pipeline에서 실행(shapely·pandas·gpxpy 사용)
+│  ├─ experiment_metrics.py       # 중복률·빈틈·표식 단위 Poisson-binomial + Brier/log score
+│  ├─ place_markers.py            # 코스 구역의 `terminal & traversable` 셀에서 균일 무작위 표식 배치(--seed), 해시 봉인
+│  ├─ compare_models.py           # 생성기 4 × 평가 모델 4 leave-one-generator-out 행렬
+│  ├─ sensitivity.py              # ±20% → 추천 상위 5 Jaccard, POD 구간 폭
+│  └─ experiment_plan.md          # 사전 등록(W8 작성, 실험 전 커밋·태그)
+├─ demo/ storyboard.md  seed_mission.json  run_demo.sh  subtitles.txt
+└─ docs/ 기획서.md  설계서.md(이 문서)  interview_notes/(pre_*.md 포함)  handover_sample/
+```
+
+---
+
+## 5. 데이터 준비 파이프라인
+
+### 5.1 소스와 대체안(로그인 막힐 때)
+
+| 데이터 | 1차 소스(기획서) | 마찰 | **로그인 없는 기본 경로** | 결정 시한 |
+|---|---|---|---|---|
+| DEM | 국토지리정보원 DEM(국토정보플랫폼 가입·승인, 5 m/90 m 도엽, 병합·포맷 변환) | 며칠 걸릴 수 있음 | **Copernicus GLO-30**: `https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N33_00_E126_00_DEM/Copernicus_DSM_COG_10_N33_00_E126_00_DEM.tif` 한 장(첫날 `curl -I` 200 확인). SRTM은 NASA Earthdata 로그인이 필요해 후순위 | 9/6 |
+| 토지피복 | 환경부 환경공간정보서비스(egis.me.go.kr) 중분류 shp(가입·도엽 다운로드, EPSG:5186/5179) | 승인 대기, 코드 대응 | **ESA WorldCover 2021 v200** 타일 `N33E126`: `https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N33E126_Map.tif`. 두 소스 모두 `landcover_table.csv`로 같은 `lc_speed/lc_w0`에 매핑되므로 이후 코드 동일 | 9/6 |
+| 도로·탐방로 | OSM Overpass API bbox 질의 1회(`pipeline/overpass_query.txt`) → `data/raw/overpass.json` 저장, **런타임 재질의 금지** | 과부하 | Geofabrik `south-korea-latest.osm.pbf` + pyrosm, 또는 overpass-turbo.eu에서 GeoJSON 내보내기 | 9/6 |
+| 행동 통계 | Koester, *Lost Person Behavior*(2008) 카테고리별 IPP 거리 25/50/75/95% | 유료 서적, 국내 구하기 어려움 | **오픈액세스 대체**: 기획서 참고문헌 [10] Hashimoto 2022 *Sci Rep*(IPP 거리 분포·ISRID 요약 표)·[11] Lin & Goodrich 2010(ISRID 카테고리별 사분위 인용 표)에서 카테고리별 25/50/75/95% 값을 옮겨 적고 `_source`에 논문·표 번호·페이지를 기록. 어느 쪽이든 팀이 표를 직접 대조하고, **못 구한 카테고리는 null로 비워 두고 화면에서 선택 불가**. 숫자를 지어내지 않는다. 9/6 go/no-go 항목: 치매 노인·성인 탐방객 2개 프로필의 사분위가 채워졌는가 | 9/6 |
+| 수색자 GPS | Zenodo 10.5281/zenodo.18637221 [9] | 파일 구조 미확인 | 10월 W5에 다운로드 → `DATA_NOTES.md`에 구조 기록 → W6 회귀 | 10/11 |
+
+Overpass 질의(한림 일대, 남·서·북·동):
+
+```
+[out:json][timeout:90];
+(way["highway"](33.32,126.18,33.47,126.36););
+out geom;
+```
+
+한계 명시(기획서 12절에 추가): Copernicus GLO-30은 DSM(지표면 모델)이라 산림·건물에서 경사가 과대평가될 수 있다. 모델 B의 평활(σ 30 m)은 얇은 지형 장벽을 인지하지 않는다. 기획서 7절 데이터 문구는 "국토지리정보원 DEM 또는 Copernicus GLO-30(30 m)"로, 행동 통계 문구는 "실종자 행동 문헌의 공개 요약 통계([10][11], 가능하면 Koester 2008)"로 고쳐 제출한다(전체 목록은 16절).
+
+### 5.2 격자 규약(한 번 정하고 안 바꾼다)
+
+| 항목 | 값 |
+|---|---|
+| 계산 CRS | EPSG:32652 (WGS84 / UTM 52N, 미터). 제주는 52구역(126~132°E) 안 |
+| 표시 CRS | EPSG:4326 (GeoJSON, MapLibre) |
+| 격자 | 512 × 512, 30 m → 15.36 km 정사각형, 셀 면적 900 m² |
+| 중심(제안) | 126.265°E, 33.395°N — W1에 geojson.io로 한림항·협재·금악·저지 포함 확인 후 `00_grid.py`에 고정 |
+| 배열 규약 | `arr[row, col]`, row 0 = 북, col 0 = 서. 좌상단 모서리 `(x0, y0)` UTM |
+| 구역 | 16×16 셀 = 480 m, 32×32 = 1,024개(`zone_px` 파라미터). `zone_id = row_block·32 + col_block`(0~1023), 유효성은 `zone_valid.npy` |
+| 바다·수역·절벽 | 마스크 두 장. **`traversable`**(= 옛 `passable`: `land & ~water & slope < cliff_deg(60°)`) = 실종자·입자가 **지나갈 수 있는** 셀. **`terminal`**(= `~sea`) = 실종자가 **최종적으로 있을 수 있는** 셀 — 내륙 수역·절벽 포함, 바다만 제외. 확률 0은 `~terminal`(바다)뿐. 모델 B 이동은 `traversable`, 평활 후 마스크는 `terminal`. `sea.npy`·`water.npy` 정본은 `02_landcover.py` |
+
+`meta.json`:
+
+```json
+{"crs":"EPSG:32652","res_m":30,"nx":512,"ny":512,"x0":0.0,"y0":0.0,
+ "corners_4326":[[lon,lat],[lon,lat],[lon,lat],[lon,lat]],
+ "zone_px":16,
+ "sources":{"dem":{"name":"Copernicus GLO-30","url":"…","date":"2026-09-0x","license":"CC-BY 4.0 ESA"},
+            "landcover":{"name":"ESA WorldCover 2021 v200 | 환경부 중분류","date":"…"},
+            "roads":{"name":"OpenStreetMap via Overpass","date":"…","license":"ODbL"}}}
+```
+
+### 5.3 스크립트별 입력·출력
+
+| 스크립트 | 입력 | 출력(모두 512×512) | 핵심 호출 |
+|---|---|---|---|
+| `00_grid.py` | 중심 경위도, 512, 30 | `meta.json` | `pyproj.Transformer(4326→32652)`로 중심 변환, 좌상단을 30 m 배수로 내림, 4모서리 역변환 |
+| `01_dem.py` | Copernicus COG(또는 국토지리정보원 GeoTIFF, 여러 장이면 `rasterio.merge`) | `dem.npy`(float32), `slope_deg.npy`, `land_mask.npy`(dem>0), `sea_candidate.npy`(dem≤0, **후보일 뿐 정본 아님**) | `rasterio.warp.reproject(dst_crs=32652, dst_transform=from_origin(x0,y0,30,30), resampling=bilinear)`; `dzdy,dzdx = np.gradient(dem,30)`; `slope_deg = degrees(arctan(hypot(dzdx,dzdy)))`. 경사 **크기**만 저장(방향 경사는 모델 B가 dem 차분으로 런타임 계산) |
+| `02_landcover.py` | 환경부 shp(`geopandas.read_file → to_crs(32652) → rasterize`) 또는 WorldCover(`reproject`, nearest), `dem.npy` | `lc_code.npy`(uint8 내부 0~9), `lc_speed.npy`, `lc_w0.npy`, **`water.npy` 정본 = `(lc_code == 수역) | (dem <= 0)`**, **`sea.npy`** = `scipy.ndimage.label(water)` 연결성분 중 `dem <= 0` 셀을 포함하거나 격자 가장자리에 닿는 성분. `water & ~sea` = 내륙 수역(저수지·못) | `landcover_table.csv` 조회. 이후 모든 스크립트는 이 `water.npy`·`sea.npy`만 읽는다 |
+| `03_roads.py` | `overpass.json` | `roads.geojson`(4326, `class` 필드), `road_class.npy`(0 없음/1 주도로/2 소로·농로/3 track·path/4 올레·탐방로), `road_dist.npy`(m), `road_attract.npy` = exp(−dist/120) | shapely `transform` → 1셀 폭 래스터 → `scipy.ndimage.distance_transform_edt(road_class==0)*30` |
+| `04_cost.py` | `land_mask, water, sea, slope_deg`, `params/hazard.json` | **`traversable.npy`** = `land & ~water & (slope_deg < cliff_deg)`; **`terminal.npy`** = `~sea`; **`water_dist.npy`** = `distance_transform_edt(~water)*30`; `hazard.npy` = clip(0.6·[slope>slope_caution_deg]+0.4·[slope>slope_severe_deg]+0.4·[water_dist<water_buffer_m],0,1), `preview/tau_flat.png` | 순수 NumPy + `scipy.ndimage`. 임계값(25°/35°/60°/60 m)은 `hazard.json`에서 읽는다(06과 같은 값) |
+| `05_zones.py` | `meta.json, terminal, traversable, slope_deg, hazard, lc_w0, lc_code` | `zones_id.npy`(int32, **블록 인덱스 0~1023**, `np.arange(1024).reshape(32,32).repeat(16,0).repeat(16,1)`), `zone_valid.npy`(bool, `terminal_frac ≥ 0.2`), `zones.geojson`(4326, **지형 속성만**: `zone_id, valid, area_m2, area_total_m2, terminal_frac, walk_frac, slope_mean, hazard_p90, w0_mean, lc_major`; `access`는 서버 계산이라 여기에 없다, 6.5) | 블록 i마다 `blk = zones_id == i`, `lp = blk & terminal`: `terminal_frac = terminal[blk].mean()`; `area_m2 = terminal[blk].sum()*900`(**실종자가 있을 수 있는 면적**, POA·C_i의 분모); `walk_frac = traversable[lp].mean()`(도보 수색 가능 비율); `area_total_m2 = 230400`; `slope_mean = slope_deg[lp].mean()`; `hazard_p90 = np.percentile(hazard[lp], 90)`(terminal 기준 — 절벽·수역 셀을 빼고 계산하지 않는다); `w0_mean = lc_w0[lp].mean()`; `lc_major = np.bincount(lc_code[lp]).argmax()`; `lp` 비었으면 NaN + `valid=false`. shapely `box` → 4326 변환 |
+| `06_hazards.py`(W9) | `slope_deg, water(02 정본), sea, water_dist`, OSM `natural=cave_entrance`, `params/hazard.json` | `hazards.geojson`(경사>`slope_severe_deg` 셀 폴리곤, 수역·해안선 `water_buffer_m`/2 버퍼, 내륙 수역 폴리곤 `type=water_body`, 동굴 입구 50 m 버퍼, `type, severity`) | `rasterio.features.shapes` + shapely buffer. 임계값은 04와 같은 `hazard.json`(둘이 다른 값을 쓰지 않는다) |
+| `07_check.py` | 전부 | `preview/{dem,slope,lc,road_dist,water_dist,traversable,terminal,sea,hazard,zones}.png` 10장 | matplotlib. **바다가 비어 있나(sea.png: 바다=파랑, 내륙 수역=하늘, 육지=회색), 도로가 보이나, 경사가 오름 쪽에서 커지나 눈으로 확인한 뒤에만 모델 B를 돌린다** |
+| `08_demo_tracks.py` | 구역 2개 선택 | `public/demo/team1.gpx, team2.gpx`(20 m 간격 잔디깎기, 0.45 m/s, 3 m 잡음, 타임스탬프 UTC `Z`, 한국 시각 정오 부근, 중간 정지 90 s 1회, 두 파일은 시간이 겹치지 않는 별개 소티) | 문자열 조립 |
+| `09_fit_speed.py`(10월) | Zenodo 트랙 | `searcher_speed.json` | 6.6절 |
+| `10_basemap.py`(W10) | `dem, lc_code, roads.geojson` | `frontend/public/basemap/hallim_basemap.png`(2048×2048) | `matplotlib.colors.LightSource(315,45).hillshade(dem, dx=30, dy=30)` + `lc_code` 담채 + `roads.geojson`(UTM 변환, class별 선폭), `scipy.ndimage.zoom` order 1. `--export-a-png`의 인쇄물과 같은 합성 함수 재사용 |
+
+`landcover_table.csv` 초안(값은 팀이 선언하는 초기 가정, 민감도·모의 실험 보정 대상):
+
+| 내부 클래스 | 환경부 중분류 | WorldCover | lc_speed | lc_w0 (m, 주간·성인 표적) |
+|---|---|---|---|---|
+| 시가지·나지 | 110~160, 610~620 | 50, 60 | 1.0 | 40 |
+| 밭 | 220 | 40 | 0.8 | 30 |
+| 논 | 210 | 40(논 구분 불가 시 밭) | 0.5 | 30 |
+| 과수원 | 240 | — | 0.6 | 12 |
+| 초지 | 410~430 | 30 | 0.9 | 30 |
+| 관목·곶자왈 | 330 중 수동 지정, 420 | **20(관목)** | 0.4 | 6 |
+| 활엽수림 | 310 | 10 | 0.5 | 10 |
+| 침엽·혼효림 | 320, 330 | 10 | 0.55 | 10 |
+| 습지 | 510~520 | 90, 95 | 0.3 | 15 |
+| 수역 | 710~720 | 80 | 0 | — |
+
+환경 세팅: `python3.12 -m venv .venv-pipeline && pip install -r pipeline/requirements-pipeline.txt` (numpy scipy rasterio pyproj shapely matplotlib pandas gpxpy [geopandas]). `analysis/*.py`도 이 venv에서 실행한다(shapely 버퍼·pandas 사용). conda와 pip을 섞지 않는다. 설치 실패 시 miniforge 또는 Colab에서 실행하고 `data/hallim/`만 내려받아 커밋한다. 서버 venv는 별도(`backend/requirements.txt`)로 rasterio가 없어도 돈다.
+
+---
+
+## 6. 핵심 모듈 설계
+
+공통 규약: **확률 상태는 항상 `Distribution(grid, outside, detail)` 하나로 다닌다.** `grid`는 `(512,512) float32` 지도 안 질량, `outside`는 지도 밖·모델 밖 잔여확률(갱신에서 POD 0인 가상 구역 0번), `detail`은 잔여의 사유별 분해(`grid_edge` 격자 밖 잘림, `tail_q95` 모델링하지 않은 꼬리, `sea` 해상·모델 밖)로 합이 `outside`다. 모든 모델·결합·갱신 함수는 `Distribution`을 받고 `Distribution`을 돌려주며, 돌려주기 직전에 반드시 `.check()`를 통과한다. 지도 안 합만 1로 만든 값은 `in_map_normalized()`가 주는 **임시 사본**이며 저장·결합·갱신에 쓰지 않는다(마스크·렌더 전용). `Terrain` 데이터클래스가 서버 시작 시 `data/hallim/*.npy`를 메모리에 올린다(15 MB).
+
+```python
+# core/dist.py — 모든 확률 상태의 유일한 형태
+from dataclasses import dataclass, field
+import numpy as np
+
+@dataclass
+class Distribution:
+    grid: np.ndarray                      # (512,512) float32, 지도 안 질량
+    outside: float                        # 잔여확률 (가상 구역 0번, d_0 = 0)
+    detail: dict = field(default_factory=dict)   # {"grid_edge","tail_q95","sea"} 합 = outside
+
+    def check(self, tol=1e-4):
+        assert self.grid.min() >= 0, "음수 질량"
+        assert 0 <= self.outside <= 1, "잔여 범위 밖"
+        total = float(self.grid.sum()) + self.outside
+        assert abs(total - 1.0) < tol, f"불변식 위반: grid+outside = {total:.6f}"
+        if self.detail: assert abs(sum(self.detail.values()) - self.outside) < tol, "잔여 사유 합 불일치"
+        return self
+
+    def in_map_normalized(self):          # 마스크·렌더용 임시 사본. 저장·결합·갱신 금지
+        s = float(self.grid.sum()); return self.grid / s if s > 0 else self.grid
+
+    def zone_poa(self, zone_px=16):       # (1024,) 합 = 1 − outside  (6.5의 reshape 집계)
+        n = self.grid.shape[0] // zone_px
+        return self.grid.reshape(n, zone_px, n, zone_px).sum(axis=(1, 3)).ravel()
+```
+
+```python
+# core/grid.py
+class Grid:
+    def __init__(self, meta):
+        self.x0, self.y0, self.res, self.nx, self.ny = meta["x0"], meta["y0"], 30.0, 512, 512
+        self.fwd = pyproj.Transformer.from_crs("EPSG:4326", "EPSG:32652", always_xy=True)
+        self.inv = pyproj.Transformer.from_crs("EPSG:32652", "EPSG:4326", always_xy=True)
+    def lonlat_to_xy(self, lon, lat): return self.fwd.transform(lon, lat)          # ndarray 허용
+    def xy_to_rc(self, x, y):
+        return (np.floor((self.y0 - y) / self.res).astype(int), np.floor((x - self.x0) / self.res).astype(int))
+    def rc_to_lonlat(self, r, c):
+        return self.inv.transform(self.x0 + (c + 0.5) * self.res, self.y0 - (r + 0.5) * self.res)
+    def cell_centers(self):  # X, Y (512,512) UTM
+        return np.meshgrid(self.x0 + (np.arange(self.nx) + 0.5) * 30, self.y0 - (np.arange(self.ny) + 0.5) * 30)
+```
+
+### 6.1 모델 A — 동심원 사전확률 (`core/model_a.py`)
+
+| 항목 | 내용 |
+|---|---|
+| 입력 | IPP 경위도, 프로필(`q25_m, q50_m, q75_m, q95_m`, `_assumptions.v_cap_ms`), `elapsed_h`, `terminal, sea`, `ipp_sigma_m`(선택, 기본 0 = 합성곱 생략. 사분위가 수백 m~km라 σ 50 m는 2차 효과; Tier 1에서 켠다) |
+| 출력 | `Distribution(P_A, residual_A, detail)` — `.check()` 통과. `detail = {"tail_q95": 0.05, "grid_edge": …, "sea": …}` |
+| 파라미터 | 링 질량 `[0.25, 0.25, 0.25, 0.20]`, q95 밖 꼬리 0.05(모델링하지 않은 질량, `tail_q95`; 격자 밖 잘림 `grid_edge`·해상 `sea`와 분리 표시), `sea_mass: "outside"`(기본; `"to_land"`는 민감도 비교용) |
+| 주의 | 사분위 값이 null이면 400 오류로 거부(지어낸 값으로 돌리지 않는다). 사분위는 Koester 2008 또는 오픈액세스 [10]·[11]에서 옮겨 적은 값만 허용, `_source` 필수. 경과 시간 상한은 **밀도 절단 후 전체 재정규화**(링별 질량 보존이 아니다: reach가 링을 자르면 링 질량도 면적 비례 `m_r = m·(hi_r²−lo²)/(hi²−lo²)`로 함께 잘라 링 안 밀도를 유지하고, 잘린 질량은 마지막 재정규화가 안쪽에 비례 재배분). IPP 주변에 도달 가능한 `terminal` 셀이 없으면 400. 실행 추정(실측 전) < 50 ms |
+
+```json
+// params/subject_profiles.json — 사분위는 원문 대조 전까지 null. 출처 없는 숫자는 _assumptions로 격리
+{"dementia": {"label": "치매 노인",
+              "q25_m": null, "q50_m": null, "q75_m": null, "q95_m": null,
+              "_source": "Koester 2008 Dementia 온대 육상 표 p.__ | 대체: [11] Lin & Goodrich 2010 Table __ (ISRID 인용) | [10] Hashimoto 2022 Fig/Table __ (팀원 __ 대조 9/__)",
+              "p_route": null, "p_downhill": null, "p_stay": null,
+              "_behavior_note": "출처 있는 값만 적는다. null이면 params/model_b.json의 팀 가정값을 쓴다",
+              "_assumptions": {"mobility": 0.5, "v_cap_ms": 0.7, "t_move_median_h": 2.0, "t_move_sigma": 0.7},
+              "_note": "_assumptions는 팀 가정, 민감도 분석 대상. 화면 배지 '이동 파라미터: 팀 가정'"},
+ "hiker": {"label": "등산·탐방객(성인)", "...": null}, "child_4_6": {"...": null}, "despondent": {"...": null}}
+```
+
+`core/profiles.py`의 `load_profile(category)`는 위 JSON을 읽어 `prof` dict를 돌려주고, 사분위 4개 중 하나라도 null이면 `ProfileIncomplete`(→ 400)를 던진다. 화면의 카테고리 select는 `GET /api/base/profiles`의 `complete: true`인 항목만 활성화한다.
+
+```python
+def model_a(ipp_lonlat, prof, G, T, elapsed_h, sea_mass="outside", ipp_sigma_m=0.0):
+    X, Y = G.cell_centers(); x, y = G.lonlat_to_xy(*ipp_lonlat)
+    d = np.hypot(X - x, Y - y)
+    edges = [0, prof["q25_m"], prof["q50_m"], prof["q75_m"], prof["q95_m"]]; mass = [.25, .25, .25, .20]
+    P = np.zeros((G.ny, G.nx), np.float32)
+    res = {"tail_q95": 0.05, "grid_edge": 0.0, "sea": 0.0}          # 잔여 사유 분리
+    reach = max(prof["_assumptions"]["v_cap_ms"] * elapsed_h * 3600, 60.0)   # 경과 시간 상한. 링 정의에 넣어 잔여 회계와 밀도 절단을 같은 지지집합에서 한다
+    for lo, hi, m in zip(edges[:-1], edges[1:], mass):
+        hi_r = min(hi, reach)
+        if hi_r <= lo: continue                                          # 도달 불가 링: 질량 m 전체가 잘려 나감 → 아래 전체 재정규화가 비례 재배분
+        m_r = m * (hi_r**2 - lo**2) / (hi**2 - lo**2)                  # 링 질량을 면적 비례로 절단(밀도 유지). 잘린 m − m_r은 잔여가 아니라 재정규화 몫
+        ring = (d >= lo) & (d < hi_r); n_ring = int(ring.sum())
+        f_in = min(1.0, n_ring * 900.0 / (np.pi * (hi_r**2 - lo**2)))  # 격자 안 링 비율(reach 절단 후)
+        res["grid_edge"] += m_r * (1 - f_in)                            # 격자 밖 잘림(절단된 링 질량 기준)
+        if n_ring == 0: continue
+        f_sea = (ring & T.sea).sum() / n_ring                           # 링 안 해상 비율
+        if sea_mass == "outside":
+            res["sea"] += m_r * f_in * f_sea; m_land = m_r * f_in * (1 - f_sea)
+        else:                                                           # "to_land": 민감도 비교용
+            m_land = m_r * f_in
+        cells = ring & T.terminal                                       # 내륙 수역·절벽 포함, 바다 제외. reach는 링 정의(hi_r)에 이미 들어 있다
+        if cells.any(): P[cells] += m_land / cells.sum()                # 링 전체가 바다면 아래 재정규화가 비례 재배분
+    # (P[d > reach] = 0 줄은 없다 — ring 정의에 포함. 링 질량을 면적 비례(m_r)로 잘라 링 안 밀도를 유지하고,
+    #  잘린 질량(m − m_r, 도달 불가 링의 m)은 마지막 P *= (1 − residual)/P.sum() 이 안쪽에 비례 재배분한다
+    #  = 밀도 절단 후 전체 재정규화. 링별 질량 보존이 아니므로 잘린 링에 '고리 스파이크'가 생기지 않는다)
+    if ipp_sigma_m > 0:                                                 # IPP 위치 오차 = 링 분포와 가우시안의 합성곱 (Tier 1)
+        P = gaussian_filter(P, ipp_sigma_m / 30.0); P[~T.terminal] = 0
+    residual = sum(res.values())
+    if P.sum() <= 0: raise ModelInputError("IPP 주변에 도달 가능한 육지 셀이 없다")   # → 400
+    P *= (1 - residual) / P.sum()
+    return Distribution(P, residual, res).check()
+```
+
+테스트(`tests/test_model_a.py`): (a) `check()` 통과(합 = 1, `residual == sum(detail)`); (b) 바다 셀 0, 저수지 셀 `P_A > 0`; (c) 해안 IPP(한림항 인근 육지)에서 `res["sea"] > 0`, 내륙 IPP(금악)에서 `res["sea"] == 0`; (d) `sea_mass="to_land"`와 `"outside"`의 `P.sum()` 차이 == `res["sea"]`; (e) `reach`가 링 중간을 자를 때 잘리지 않은 안쪽 셀들의 `P/P.sum()` 비율이 reach 없이 돌린 값과 같다(스파이크 없음); (f) IPP를 바다 셀에 두고 `elapsed_h=0`이면 400; (g) null 프로필 → 400; (h) `elapsed_h`를 줄이면 `res['sea']`·`res['grid_edge']`가 늘지 않는다(잔여는 reach 절단 후 링에서 절단된 질량 `m_r` 기준으로만 계산 — `sea = m·n_sea_trunc·900/area_full`이라 reach에 단조); (i) reach가 링 [lo, hi)를 자를 때 `P[ring].sum() ≈ m_r·f_in·(1−f_sea)·(1−residual)/P_raw.sum()`, 즉 잘린 링에 원래 질량 `m`이 몰리지 않는다(고리 스파이크 없음).
+
+### 6.2 모델 B — 비용 격자 위 몬테카를로 (`core/model_b.py`)
+
+| 항목 | 내용 |
+|---|---|
+| 입력 | IPP row/col, 프로필(`_assumptions` + 출처 있는 행동 비율), `params/model_b.json`, Terrain(`dem, lc_speed, road_attract, traversable, terminal`), `elapsed_s`, `seed`, `bprime: bool`, `ipp_sigma_m`(요청값, 없으면 `model_b.json` 기본 50) |
+| 출력 | `Distribution(P_B, residual_B, {"grid_edge": exited.mean(), "sea": 0.0})`, 통계(`n, steps, alive_end, truncated_frac, start_snapped_frac, sea_smooth_leak, exit_by_side, t_max_over_budget, runtime_s`). `_note: "해상 진입은 모델링하지 않으며(sea 0은 가정) 평활 누출 n%는 육지에 재배분했다"`(n = `sea_smooth_leak`). `/compute` 응답·`ParamPanel`은 `sea_smooth_leak > 0.02`면 "해안 평활 재배분 n%(가정)" 배지 |
+| 알고리즘 | 입자마다 8방향 이웃 하나를 소프트맥스로 고르고, 그 이웃까지의 **초 단위 이동 시간 τ**를 예산에서 차감. 남은 예산으로 셀을 완주할 수 없으면 종료. 경사·토지피복이 시간 소모로 자동 반영되므로 "경과 시간"이 시뮬레이션 길이와 직결된다 |
+| 파라미터(`model_b.json`) | `n_particles 20000, max_steps 3000(안전장치), tau0_s 40, kappa 1.5, ipp_sigma_m 50, smooth_sigma_cells 1.0, seed 42`; **행동 비율(팀 가정) `p_route 0.5, p_downhill 0.5, p_stay 0.1`, `_note: "팀 가정, 국내 미검증. 프로필에 출처 있는 값이 있을 때만 덮어씀"**; B′만 `route_alpha 2.0, downhill_gamma 1.0, p_reverse 0.05`, 11월 `p_fall 0.02`(임무 `search_tags_json`에 '물가 위험 가중'이 있으면 `p_fall_water_tag 0.10`) |
+| 종료 | 루프는 **활성 입자가 0이 될 때(`idx.size == 0`)** 끝난다. `max_steps 3000`은 안전장치일 뿐이다(τ 30~60 s면 3000스텝 ≈ 25~50 h). 그래도 잘리면 `truncated_frac`(예산이 남았는데 멈춘 입자 비율)을 통계에 기록하고 화면 배지에 띄운다 |
+| 성능 | 추정(실측 전): (20k,8) fancy indexing 6~7회 → 스텝당 5~10 ms. 예산 중앙값 2 h·τ 40 s ≈ 180스텝, 상위 5% ≈ 600스텝 → 활성 입자가 줄어들며 3~6 s(W2 실측값으로 `docs/bench.md`에 교체). 데모는 B′를 `params_override.n_particles 10000`으로 돌려 전체 8 s 이내. 입자별 `for` 루프 금지 |
+| 주의 | 방향 경사는 `dem[이웃] − dem[현재]`로 직접 계산하므로 `np.gradient` 부호 문제 없음. 사방이 막힌 입자는 제자리에서 60 s 소모. 가장자리 셀 도달 = 이탈(어느 변인지 `exit_by_side`에 기록). 평활 후 **반드시** `P[~terminal] = 0`(바다만 0) → 재정규화 순서. IPP가 `traversable`이 아니면 400(한림항 클릭 대비). **평활(`smooth_sigma_cells 1.0`)은 장벽을 인지하지 않는다.** 바다는 마스크→재정규화로 막고, 폭 1~2셀 불통과 띠 반대편 누출은 σ=1셀에서 인접 셀 질량의 수 % 이하 — 선언된 한계(기획서 12절 한 줄). 본선 Tier 1: 정규화 마스크 합성곱 `P = gaussian_filter(hist*m, s) / np.maximum(gaussian_filter(m, s), 1e-6)`(m = terminal float)으로 해안 셀 하향 편향 제거. `t`와 `budget`은 둘 다 float64(dtype이 다르면 `t = budget` 대입 뒤 `budget − t > 0`이 참으로 남아 입자가 `max_steps`까지 영원히 활성 상태가 된다) |
+
+```python
+DIRS = np.array([[-1,0],[-1,1],[0,1],[1,1],[1,0],[1,-1],[0,-1],[-1,-1]])  # 북부터 시계방향 (drow, dcol)
+DIST = np.where(np.arange(8) % 2 == 0, 30.0, 30.0 * np.sqrt(2))
+ANG  = np.arange(8) * np.pi / 4
+
+def simulate(ipp_rc, prof, p, T, elapsed_s, seed, bprime, ipp_sigma_m=None, p_fall=0.0):
+    rng = np.random.default_rng(seed); N = p["n_particles"]; A = prof["_assumptions"]
+    if not T.traversable[ipp_rc]: raise ModelInputError("IPP가 통행 불가 셀(바다·수역·급경사)")   # → 400
+    beh = {k: (prof.get(k) if prof.get(k) is not None else p[k])           # 출처 있는 프로필 값만 팀 가정값을 덮어쓴다
+           for k in ("p_route", "p_downhill", "p_stay")}
+    sig = (ipp_sigma_m if ipp_sigma_m is not None else p["ipp_sigma_m"]) / 30.0
+    row = ipp_rc[0] + np.round(rng.normal(0, sig, N)).astype(int)
+    col = ipp_rc[1] + np.round(rng.normal(0, sig, N)).astype(int)
+    exited = (row <= 0) | (row >= T.ny-1) | (col <= 0) | (col >= T.nx-1)   # 처음부터 격자 밖 → 잔여
+    side = np.full(N, -1, np.int8)                                           # 0 북 1 동 2 남 3 서, -1 미이탈
+    side[exited] = np.select([row[exited] <= 0, col[exited] >= T.nx-1, row[exited] >= T.ny-1], [0, 1, 2], default=3)
+    row = np.clip(row, 1, T.ny-2); col = np.clip(col, 1, T.nx-2)
+    bad = ~T.traversable[row, col]; row[bad] = ipp_rc[0]; col[bad] = ipp_rc[1]   # 불통과 셀 시작 → IPP 셀로
+    head = rng.integers(0, 8, N); t = np.zeros(N)                            # float64. budget과 dtype 통일
+    budget = np.minimum(rng.lognormal(np.log(A["t_move_median_h"]*3600), A["t_move_sigma"], N), float(elapsed_s))
+    budget[rng.random(N) < beh["p_stay"]] = 0                                # 제자리 대기
+    f_route = rng.random(N) < (beh["p_route"] if bprime else 0.0)           # 경로 추종 입자
+    f_down  = rng.random(N) < (beh["p_downhill"] if bprime else 0.0)
+    step = 0
+    while True:
+        idx = np.flatnonzero((t < budget) & ~exited)
+        if idx.size == 0 or step >= p["max_steps"]: break                    # 정상 종료는 idx.size == 0
+        r0, c0 = row[idx], col[idx]
+        rc = np.clip(r0[:, None] + DIRS[:, 0], 0, T.ny-1); cc = np.clip(c0[:, None] + DIRS[:, 1], 0, T.nx-1)  # (m,8)
+        dz = T.dem[rc, cc] - T.dem[r0, c0][:, None]                           # 진행 방향 고도차(m), 부호 포함
+        v = 1.667 * np.exp(-3.5 * np.abs(dz / DIST + 0.05)) * T.lc_speed[rc, cc] * A["mobility"]  # Tobler m/s
+        tau = DIST / np.maximum(v, 1e-3)
+        logw = -tau / p["tau0_s"] + p["kappa"] * np.cos(ANG[None, :] - ANG[head[idx]][:, None])
+        if bprime:
+            logw += f_route[idx, None] * p["route_alpha"] * T.road_attract[rc, cc]
+            logw += f_down[idx, None] * p["downhill_gamma"] * (-dz / 30.0)
+        logw[~T.traversable[rc, cc]] = -np.inf
+        blocked = ~np.isfinite(logw).any(1); logw[blocked] = 0.0
+        w = np.exp(logw - logw.max(1, keepdims=True)); w /= w.sum(1, keepdims=True)
+        k = (w.cumsum(1) > rng.random((idx.size, 1))).argmax(1)               # 다항 추출
+        if bprime:                                                            # 되돌아가기
+            k = np.where(rng.random(idx.size) < p["p_reverse"], (head[idx] + 4) % 8, k)
+        ar = np.arange(idx.size)
+        tgt_ok = ~blocked & T.traversable[rc[ar, k], cc[ar, k]]
+        enough = tau[ar, k] <= budget[idx] - t[idx]                           # 남은 예산으로 셀을 완주할 수 있나
+        move = tgt_ok & enough
+        row[idx] = np.where(move, rc[ar, k], r0); col[idx] = np.where(move, cc[ar, k], c0); head[idx] = k
+        t[idx] = np.where(move, t[idx] + tau[ar, k],
+                          np.where(tgt_ok, budget[idx], np.minimum(t[idx] + 60.0, budget[idx])))   # 예산 부족 → 종료(t=budget), 막힘 → 60 s 대기(대기도 예산을 넘지 않는다)
+        edge = (row[idx] == 0) | (row[idx] == T.ny-1) | (col[idx] == 0) | (col[idx] == T.nx-1)
+        newly = idx[edge]
+        side[newly] = np.select([row[newly] == 0, col[newly] == T.nx-1, row[newly] == T.ny-1], [0, 1, 2], default=3)
+        exited[newly] = True; step += 1
+    alive = ~exited
+    if p_fall > 0:                                                            # 11월 B′: 인접 내륙 수역·절벽으로 추락·익수 (팀 가정)
+        row, col = fall_step(row, col, alive, T, p_fall, rng)                 # terminal & ~traversable 8이웃이 있는 입자를 확률 p_fall로 그 셀로 옮김
+    truncated_frac = float(((budget - t) > 0)[alive].mean()) if alive.any() else 0.0   # 정상 종료면 0
+    hist = np.bincount(row[alive] * T.nx + col[alive], minlength=T.ny * T.nx).reshape(T.ny, T.nx)
+    P = gaussian_filter(hist.astype(np.float32), p["smooth_sigma_cells"])
+    leak = float(P[~T.terminal].sum() / max(P.sum(), 1e-12))                  # 평활이 바다로 번진 비율(재배분 전) — 통계로 남긴다
+    P[~T.terminal] = 0                                                        # 평활이 바다로 번진 질량 제거(바다만 0) → 아래 재정규화가 육지에 비례 재배분
+    residual = float(exited.mean()); s = float(P.sum())
+    if s <= 0: residual = 1.0                                                 # 전부 이탈 → 지도 안 0, nan 금지
+    else: P *= (1 - residual) / s
+    stats = {"n": N, "steps": step, "seed": seed, "alive_end": int(alive.sum()), "truncated_frac": truncated_frac,
+             "start_snapped_frac": float(bad.mean()), "sea_smooth_leak": leak,
+             "t_max_over_budget": float(np.maximum(t - budget, 0)[alive].max()) if alive.any() else 0.0,
+             "exit_by_side": (np.bincount(side[exited], minlength=4) / max(1, int(exited.sum()))).tolist()}
+    return Distribution(P, residual, {"grid_edge": residual, "sea": 0.0}).check(), stats
+```
+
+`fall_step`(11월 W9, 약 8줄; 10절 W9·13절 P1에 배정): alive 입자 중 8이웃에 `terminal & ~traversable`(내륙 수역·절벽) 셀이 있는 입자를 확률 `p_fall`로 그 셀 하나로 옮긴다(`(w.cumsum(1) > rng.random(...)).argmax(1)` 다항 추출 패턴 재사용). **기획서 9절 '물가 위험 가중' 태그가 모델에 실제로 연결되는 유일한 지점** — `ParamPanel`에 '물가 가중: 태그 적용' 배지.
+
+테스트(`tests/test_model_b.py`): (1) seed 1·2 두 번 돌려 상위 50% 질량 영역 Jaccard ≥ 0.9(입자 수 충분성), (2) 평지·균일 토지피복 합성 지형에서 등방 분포, (3) 도로 1개 합성 지형 + `p_route=1`이면 도로 인접 셀 질량 ≥ 80%, (4) 경사면 + `p_downhill=1`이면 저지대 질량 우세, (5) **바다 셀 확률 0이고 `P.sum() == 1 − sum(res.values())`** — 해안에 IPP를 두고 `smooth_sigma_cells 2.0`으로 돌려 마스크→재정규화 순서를 검증(내륙 수역 셀 값은 평활 결과에 따르므로 9월에는 단정하지 않는다), (6) `max_steps=5`로 강제하면 `truncated_frac > 0`, 기본값이면 0, (7) 종료 후 `t_max_over_budget == 0`, (8) IPP를 바다 셀에 두면 400, (9) IPP를 가장자리 1셀 안에 두면 `residual > 0`이고 `steps` 0에서도 nan 없음, (10) `elapsed_s`가 커서 전부 이탈해도 `P.sum()==0, residual==1`로 nan 없이 반환, `exit_by_side` 합 = 1.
+
+### 6.3 모델 B′ — 행동 규칙 스위치
+
+별도 코드 없음. `simulate(..., bprime=True)` 한 인자다.
+
+| 규칙(기획서 5.1) | 구현 | 켜는 값(`model_b.json`) |
+|---|---|---|
+| 경로 추종 | `logw += route_alpha · road_attract[이웃]` (입자 비율 `p_route`) | `route_alpha 2.0`, `p_route 0.5`(팀 가정) |
+| 내리막 선호 | `logw += downhill_gamma · (−dz/30)` (입자 비율 `p_downhill`) | `downhill_gamma 1.0`, `p_downhill 0.5`(팀 가정) |
+| 되돌아가기 | 스텝마다 `p_reverse` 확률로 진행 방향 반전 | `p_reverse 0.05` |
+| 제자리 대기 | `budget = 0` 비율 `p_stay` (B·B′ 공통) | `p_stay 0.1`(팀 가정) |
+| 추락·익수(11월) | 루프 종료 후 인접 내륙 수역·절벽 셀로 확률 `p_fall` 이동(6.2 `fall_step`) | `p_fall 0.02`, 물가 위험 가중 태그 시 `0.10`(팀 가정) |
+
+행동 비율은 프로필이 아니라 `model_b.json`의 **팀 선언 가정값**이 기본이다(프로필에 출처 있는 값이 있을 때만 덮어쓴다). 행동 비율이 null이면 B′ 스위치가 사실상 꺼져 B′ = B가 되어 행동 가설을 검토할 수 없으므로, 팀 선언값을 기본으로 쓰고 배지로 표시한다. 선언값은 결과를 보고 바꾸지 않는다. `ParamPanel` 배지에 '행동 비율: 팀 가정'을 상시 표시하고, 프로필 값으로 덮어쓴 경우에만 '행동 비율: 문헌(출처)'로 바뀐다. B와 B′ 결과 차이가 곧 "행동 가설에 따른 불일치"다. 차이가 작으면 그것도 결과다("이 사건에서는 행동 가정이 분포를 크게 바꾸지 않음"으로 배지·자막에 표기). B′는 B와 지형·속도·예산을 공유하므로 독립 모델이 아니라 **B 계열의 시나리오**로 취급한다(6.4 가중치). 민감도 분석(11절)도 같은 함수로 돈다.
+
+### 6.4 합의·불일치·잔여확률 (`core/consensus.py`)
+
+| 항목 | 내용 |
+|---|---|
+| 입력 | `D_A, D_B, D_B′`(`Distribution`; v0는 사전, 이후 버전은 `post_*`), `consensus.json` |
+| 출력 | `cls (512,512) uint8` 0 저확률 / 1 한 모델 / 2 두 모델 / 3 합의, `top_a, top_b, top_b2` 마스크, `D_C` 결합 `Distribution` |
+| 알고리즘 | **결합은 원질량으로, 마스크는 임시 사본으로.** (1) 결합: `w = consensus.json.weights`(A 1/2, B 1/4, B′ 1/4, 합 1), `P_C = Σ w_M · D_M.grid`, `r_C = Σ w_M · D_M.outside`, 사유별 `detail_C[k] = Σ w_M · D_M.detail[k]` → `Σ w_M(1 − r_M) + Σ w_M r_M = 1`이므로 `Distribution(P_C, r_C, detail_C).check()`가 자동으로 통과한다. 재정규화본을 결합하면 `P_C.sum() = 1`이 되어 r_C와 합쳐 1을 넘으므로 **금지**. (2) 마스크: 모델마다 `D_M.in_map_normalized()`를 내림차순 누적해 `mass_frac 0.5`까지의 셀 집합 `top_M` → `cls = top_a + top_b + top_b2`(0~3). '상위 50% 질량'은 **지도 안 질량 기준**임을 `params.json`에 기록. 바다 셀은 입력에서 이미 0 |
+| P_C의 용도 | '결합' 레이어, 9/27 단순 추천 점수, 11절 '다중모델' 비교 **전용**. 구역 표·보고서의 정본은 모델별 `poa_a/poa_b/poa_b2`와 그 범위 `poa_min~poa_max`다(기획서 5.3 '추정 범위') |
+| 표시 | 주 라벨은 기획서 5.1 용어 그대로: **합의 구역**(cls=3, 부제 '세 가설 공통 고우선') 진한 색 / **불일치 구역**(cls 1~2, 부제 '가설 의존') 빗금 / 0 무채색. 빗금은 두 가지로 구분: `top_a`만 또는 `top_a`+B 계열 하나 = 'A vs 지형' 빗금, `top_b & top_b2 & ~top_a` = 'B 계열만' 빗금(한 가족이 두 표를 낸 것이므로 합의로 보이지 않게). 레이어 이름(`constants.js`): `A 거리 통계` / `B 지형 이동` / `B′ 행동 규칙(B 변형)` / `합의·불일치` / `결합(가중)` / `수색 기록(그림자)`. 배지(`ResidualBadge`)는 모델별 잔여를 사유별로: 예시(실측 아님) "잔여 A 18% — 격자 밖 6% · 꼬리 5% · 해상 7%(모델 밖·해경 영역)", "잔여 B r% (북 n·동 e·남 s·서 w%)". 어느 모델이든 `detail["sea"] ≥ 0.10`이면 좌측 패널 상단 고정 경고: "IPP가 해안에 인접합니다. 해상 가능성은 이 도구의 모델 밖입니다 — 해경 신고 여부를 확인하세요."(`constants.js`, 9/27 포함) |
+| 주의 | 잔여확률은 갱신에서 **POD 0인 가상 구역 0번**이다(6.7). 수색 실패 시 자동으로 커지고, 그 값이 `residuals.json["post"]`와 `map_versions.residual_*`에 기록돼 배지에 뜬다 |
+
+```python
+# core/consensus.py
+def combine(dists, w):                                   # dists: {"a","b","b2"} → Distribution, w: consensus.json.weights
+    grid = sum(w[m] * dists[m].grid for m in dists).astype(np.float32)
+    outside = float(sum(w[m] * dists[m].outside for m in dists))
+    keys = set().union(*(d.detail for d in dists.values()))
+    detail = {k: float(sum(w[m] * dists[m].detail.get(k, 0.0) for m in dists)) for k in keys}
+    return Distribution(grid, outside, detail).check()
+
+def top_mass_mask(d, frac=0.5):
+    Pn = d.in_map_normalized().ravel()
+    if Pn.sum() <= 0: return np.zeros(d.grid.shape, bool)         # 지도 안 질량 0(outside=1) → 투표 없음
+    order = np.argsort(Pn)[::-1]
+    k = int(np.searchsorted(np.cumsum(Pn[order]), frac)) + 1
+    mask = np.zeros(Pn.size, bool); mask[order[:k]] = True
+    return mask.reshape(d.grid.shape)
+```
+
+테스트(`tests/test_consensus.py`): r = (0.05, 0.20, 0.10), w = (1/2, 1/4, 1/4) → `P_C.sum() ≈ 0.9`, `r_C ≈ 0.1`, `check()` 통과; 재정규화본을 넣으면 `check()`가 실패하는 것을 `pytest.raises(AssertionError)`로 고정; 마스크 합 0~3, `cls==3`인 셀은 세 `top_*`가 모두 참; `outside=1`(전부 이탈)인 `Distribution`은 마스크 전부 False(질량 0인 모델이 표를 던지지 않는다).
+
+### 6.5 구역 생성과 POA (`core/zones.py`)
+
+| 항목 | 내용 |
+|---|---|
+| 입력 | `Distribution`(모델별 4개), `zone_px 16`, `zone_valid.npy` |
+| 출력 | `poa[model] (1024,)`, 합 = 1 − outside (`Distribution.zone_poa()`) |
+| 알고리즘 | **reshape 한 가지로 통일**: `POA = P.reshape(32,16,32,16).sum(axis=(1,3)).ravel()`. 인덱스 i = `row_block·32 + col_block` = `zones_id.npy`의 값과 같다(`bincount` 방식은 쓰지 않는다 — 두 방식을 섞으면 구역이 하나씩 밀린다). `zone_valid == False`(`terminal` 20% 미만)인 구역은 POA를 계산은 하되 표·추천에서 제외하고 회색으로 그린다 |
+| 면적 | `A_i = area_m2 = terminal 셀 수 × 900`(실종자가 있을 수 있는 면적). POA가 terminal 셀에만 있으므로 커버리지 분모도 같은 면적이어야 한다. 도보 수색으로 덮을 수 있는 최대 비율은 `walk_frac`이며, 수역·절벽이 큰 구역은 지상 트랙만으로 POD가 높아지지 않는다 — 이것이 정직한 결과다(전문팀 필요) |
+| 구역별 합의 | 모델별 POA 내림차순 누적 50% 포함 여부 `top_a, top_b, top_b2`(bool 3개)를 저장. `consensus_n`은 합(0~3)이지만 화면 ZoneTable에는 숫자 대신 `A ✓ B ✓ B′ ✗` 체크로 표시 — B·B′만 겹친 2와 A·B가 겹친 2를 구분 |
+| 접근 라벨(10월 W8) | `access_i = AGENCY_ONLY`(`walk_frac_i < agency_walk_frac(0.7)` 또는 `hazard_p90_i ≥ hazard_gate(0.6)`) / `CAUTION`(`hazard_p90_i ≥ hazard_caution(0.5)`) / `OPEN`. 임계값은 `params/hazard.json`·`recommend.json`, '팀 가정' 배지. **계산 주체**: `core/zones.py`가 서버 시작 시 `walk_frac`·`hazard_p90`와 `hazard.json`·`recommend.json` 임계로 `access`를 만들어 `/api/base/zones.geojson` 응답에 붙인다(파이프라인 산출물 `data/hallim/zones.geojson`에는 없음). 조정자 덮어쓰기는 `zones_state.access`가 정본이고 `/api/base`는 초기값이다. 조정자가 [승인]/[제외]로 덮어쓸 수 있고 덮어쓴 것은 결정 장부에 남는다 |
+| 상태 | `PROPOSED → APPROVED → ASSIGNED → SEARCHED`, 별도 `EXCLUDED`(사유지·위험) — 5개. **배정은 APPROVED 구역에만 가능** — 기획서 6절 "조정자 승인" 게이트. `access == AGENCY_ONLY`면 조정자가 `reason`과 함께 APPROVED로 덮어쓴 경우만 배정 가능 |
+| 본선 stretch | (만들지 않는 것으로 이동) OSM 도로를 벽으로 한 연결성분 구역 — 정사각 고정 |
+
+`zones.geojson` feature properties는 두 묶음이다. **지형 속성**(`zone_id, valid, area_m2(terminal), area_total_m2, terminal_frac, walk_frac, slope_mean, hazard_p90, w0_mean, lc_major`)은 `data/hallim/zones.geojson`에 있고 `/api/base/zones.geojson`으로 누구나 받는다(개인정보·임무 정보 없음; `access`(10월 W8)는 `core/zones.py`가 서버 시작 시 계산해 이 응답에만 붙인다 — 위 접근 라벨 행). **임무 속성**(`poa_a, poa_b, poa_b2, poa_c, poa_c_low, poa_c_high, poa_min, poa_max, top_a, top_b, top_b2, consensus_n, C_low, C_mid, C_high, pod_low, pod_mid, pod_high, pos_low, pos_mid, pos_high, cover_frac, gap_frac, track_len_m, stop_s, spacing_mean_m, spacing_max_m, gap_flag, score, rank, status`)은 버전별 `data/missions/<id>/v<N>/zones.geojson`에만 있고 **조정자만** 받는다. 봉사자·가족에게 이 파일을 주는 경로는 없다(7절 매트릭스·8절 files). `pod_*`는 6.6의 사전가중 정의(결합 사전 `P_C` 기준)이며 `poa_c_low` = **C_low 밴드**로 계산한 사후 POA, `poa_c_high` = **C_high 밴드** 값(컬럼 이름 = 밴드 이름, 상·하한이 아니다). 수색 구역에서는 `poa_c_low ≥ poa_c_high`, 미수색 구역에서는 반대다(다른 구역의 질량이 덜 빠져 정규화 상수가 커진다). 화면·PDF의 '추정 범위'는 `min(poa_c_low, poa_c_high)~max(...)`로 표시한다. `poa_min = min(poa_a, poa_b, poa_b2)`, `poa_max = max(...)`; ZoneTable POA 열은 `poa_c` 옆에 `poa_min–poa_max` 병기.
+
+테스트(`tests/test_zones.py`): reshape 인덱스가 `zones_id`와 일치(임의 셀에 질량 1을 두고 그 셀의 `zones_id` 구역만 POA 1), `area_m2 == terminal 셀 수 × 900`, `walk_frac ≤ 1`.
+
+### 6.6 트랙 → 셀 커버리지 → POD 구간 환산 (`core/tracks.py`, `core/pod.py`)
+
+| 항목 | 내용 |
+|---|---|
+| 입력 | GPX(경위도·시각·정확도) 또는 점 배열, `pod.json`, `lc_w0, slope_deg, terminal, zones_id`, 일출·일몰 표(KST), 같은 임무·같은 소티의 동시 트랙 |
+| 출력 | 트랙 통계(`length_m, median_speed, stop_s, night_frac, acc_mean, acc_max, flags, sortie_id`), 트랙 커버리지 래스터 `C_trk_{low,mid,high} (512,512)`, 구역별 파생 통계 `(C_low, C_mid, C_high, L_m, stop_s, spacing_mean, spacing_max, gap_flag)`. `POST /tracks` 응답의 `zone_pod` 미리보기 `pod_*`는 `zone_pod_preview`가 `zone_stats`로 계산한다(확정 후 `zones_state.pod_*`와 같은 셀 단위 사전가중 정의, 사전은 현재 버전; `track_zone`의 C_i로 1−exp(−C_i)를 만들지 않는다) |
+| 9/27 임시판 | `W_k = lc_w0[x_k] × f_d(주간 1.0)`, 정지(<0.2 m/s 30 s)·차량(>2.5 m/s) 구간은 `W_k = 0`, 나머지 인자(f_v·f_s·f_sync) 1, `acc_mean`은 GPX `<hdop>`가 없으면 `acc_default_m 10`, ±30% 구간. 화면에 "임시 파라미터" 표기 |
+
+전처리 규칙(`tracks.py`):
+1. `np.interp`로 5 s 등간격 재표본. 60 s 이상 점 공백은 `gap`으로 잘라 세그먼트를 만들지 않는다(그림자 레이어에서 점선으로 표시).
+2. **시각대**: GPX 타임스탬프는 UTC(`Z`)다. 재표본 직후 `ts = ts.astimezone(ZoneInfo("Asia/Seoul"))`로 바꾼 뒤에만 일출·일몰 표(KST)와 비교한다. 그대로 비교하면 9시간 어긋나 주간 트랙이 야간으로 계산된다.
+3. 속도 = 5점 이동중앙값. **정지**: `v < 0.2 m/s`가 30 s 이상 연속 → 커버리지 0, `stop_s` 구역별 집계(기획서 5.2의 정지 시간). **차량**: `v > 2.5 m/s` → 커버리지 0, `flag vehicle`.
+4. GPS 정확도: 평균 `acc > 20 m` → `flag low_gps`. 평균·최대를 `tracks` 표에 저장(인계 패키지의 "GPS 오차").
+5. 대원 간격: 같은 임무에 시간이 겹치는 트랙이 있으면 각 점에서 ±60 s 안 다른 트랙 최근접 거리 `s` → `spacing_mean, spacing_max`. `spacing_max > gap_factor(2.0)·W_mean`이면 `gap_flag`(빈틈 가능). **소티** = 같은 `team`이고 `[started_at, ended_at]`이 겹치는 트랙 묶음(업로드 시 `tracks.sortie_id` 부여, 겹치는 기존 트랙이 있으면 그 id 재사용). f_sync의 이웃은 같은 임무의 다른 트랙 중 ±`sync_window_s`(60 s) 안의 점만이다. 띠 모형상 s > W면 이미 빈틈이지만 탐지곡선이 W/2 밖에서도 0이 아니고 GPS 오차가 있어 플래그 임계는 2W로 둔다(s = 2W 정확히는 플래그 없음). 셀 단위 래스터를 쓰므로 빈틈은 지도(그림자 레이어)에서 직접 보이고 이 플래그는 구역 표의 요약 경고다.
+
+점별 유효탐지폭과 셀 래스터(`pod.py`):
+
+```
+W_base  = lc_w0[x_k] · f_v · f_s · f_d
+f_v     = 1.0 (v ≤ v_sweep) … 0.6 (v ≥ v_hasty), 사이는 선형.  적합 전: v_sweep 0.39, v_hasty 0.53 m/s (경계 0.46)
+          적합 후: v_sweep(s) = exp(a_sweep − b|s|), v_hasty(s) = exp(a_hasty − b|s|)
+          ※ 0.39/0.53은 [9]의 속도 중앙값일 뿐 "탐지폭이 60%로 준다"는 근거가 아니다. pod.json에
+            f_v_note: "경계는 [9] 중앙값을 빌린 팀 가정, 0.6 하한도 가정"을 넣고 화면에 '팀 가정' 배지, 민감도 결과 표에 함께 보고
+f_s     = max(0.7, 1 − 0.01·slope_deg[x_k])
+f_d     = 1.0 주간 / 0.7 시민박명 / 0.4 야간   (제주 월별 일출·일몰 표 KST 하드코딩, 트랙 시각은 KST로 변환 후 비교)
+f_sync  = (min(s_L, W_base) + min(s_R, W_base)) / (2·W_base)   if team_overlap == "union" else 1
+          s_L, s_R = 같은 임무·같은 소티(±60 s 안)의 다른 트랙 점까지 진행 방향 좌·우 최근접 거리(없으면 W_base)
+          → 나란히 걷는 n명의 W 합 = 띠 합집합 폭 W + Σ min(s_k, W).  둘이면 W + min(s, W)
+          같은 트랙의 왕복 레그(60 s 이상 떨어짐)와 다른 소티는 그대로 합산(반복 수색 독립 가정)
+W_k     = W_base · f_sync                                 (정지·차량 구간은 W_k = 0)
+ds_k    = 점 k−1 → k 이동거리(m)                          (5 s × ≤2.5 m/s ≤ 12.5 m < 30 m 셀이므로 셀을 건너뛰지 않는다)
+E(x)    = Σ_{k: x_k = x} W_k · ds_k                        (셀에 쌓인 '훑은 면적' m²)
+σ_m     = sqrt(acc_mean² + W̄²/12)                         (GPS 오차 + 탐지 띠 반폭의 균일분포 분산, 트랙당 1개)
+C_trk(x)= gaussian_filter(E, σ_m/30, mode="constant", cval=0) / 900   (무차원 커버리지. 질량 보존 Σ_x C(x)·900 ≤ Σ_k W_k·ds_k — 격자 안에서 등호, 가장자리 3σ 안 트랙은 격자 밖으로 번진 만큼 작다: 지도 밖 커버리지는 버린다, `grid_edge` 잔여와 같은 의미론)
+C_low   = (1 − 0.3)·C_mid,  C_high = (1 + 0.3)·C_mid       (w0_uncert가 전역 스칼라인 동안은 곱하기만)
+
+누적:  C_cum(x) = Σ_{APPLIED 트랙} C_trk(x)                 (3벌, 덧셈이므로 순서 무관)
+셀 사후: P′_M(x) ∝ P_M(x) · exp(−C_cum(x))                (모든 모델 M에 같은 C_cum, 6.7)
+
+구역 집계(6.5 reshape 규약, terminal 셀만):
+n_i     = terminal 셀 수,  A_i = n_i · 900
+C_i     = Σ_{x∈i, terminal} C_cum(x) / n_i                 (= 종전 Σ W·len / A_i 와 동일한 값 — 표 호환)
+POS_i   = Σ_{x∈i} P_C(x) · (1 − exp(−C_cum(x)))            (이 구역에서 발견했을 확률, 정확식; P_C = 결합 사전)
+POD_i   = POS_i / POA_C,i                                  (사전가중 탐지확률; POA_C,i = 0이면 NaN → 표에서 '—')
+cover_i = Σ_{x∈i, terminal} (1 − exp(−C_cum(x))) / n_i     (면적가중 '훑은 비율', 가족 화면·빈틈 판단용)
+gap_i   = 1 − cover_i
+gap_flag_i = (track_len_m_i > 0) ∧ (gap_i > 0.5 ∨ spacing_max_i > gap_factor·W̄)      # 트랙이 지난 구역에만(미수색 구역은 cover 0이지만 플래그 없음)
+```
+
+좌·우 판별은 진행 벡터 `(dx,dy)`와 이웃 점 벡터의 외적 부호(`dx·(y_n−y) − dy·(x_n−x)`)로 한다. 이웃 후보는 5 s 재표본 점 중 `|Δt| ≤ 60 s`인 점만(트랙당 최대 25점, 브루트포스 NumPy로 충분). 점별 침적(가산 구조)에 f_sync를 곱하는 방식이므로 소티 내 셀별 max는 쓰지 않는다(이중 보정 금지).
+
+이 정의에서 기획서 5.2의 pᵢ′ = pᵢ(1−dᵢ)/Σⱼpⱼ(1−dⱼ)는 구역 수준에서 정확히 재현된다: Σ_{x∈i}P(x)e^{−C(x)} = POA_i·(1−POD_i). 구역 안 사전과 C가 균일하면 POD_i = 1−exp(−C_i)로 종전식과 일치한다(테스트 유지). 노력이 구역 일부에 몰리면 구역식 1−exp(−C_i)는 실제보다 큰 값을 주므로(Jensen) 셀 단위 계산이 필요하다.
+
+두 사람이 W=30 m(밭), 각 L=1,000 m를 나란히 걸은 `terminal` 230,400 m² 구역의 계산 예시(POD = 1−exp(−C), 실측 아님):
+
+| 간격 s | 구 f_sync(폐기) | sum(독립 합) | union(기본) |
+|---|---|---|---|
+| 0 m | C 0.000 → POD **0.00**(오류) | 0.260 → 0.23 | 0.130 → 0.12 (= 한 사람분) |
+| W/2 = 15 m | 0.130 → 0.12(33% 과소) | 0.260 → 0.23 | 0.195 → 0.18 |
+| W = 30 m | 0.260 → 0.23 | 0.260 → 0.23 | 0.260 → 0.23 |
+| 2W = 60 m | 0.260 → 0.23 | 0.260 → 0.23 | 0.260 → 0.23, 두 띠 사이 30 m 빈틈(`gap_flag`는 s > 2W부터) |
+
+코드(`core/pod.py`, 9/27판 포함):
+
+```python
+def rasterize_track(pts, G, T, W_pt, W_base, acc_mean, u=0.3):
+    """pts: (N,2) 경위도 5 s 재표본, W_pt: (N,) 점별 유효탐지폭 W_base·f_sync(정지·차량 0) — 침적량에만 쓴다,
+    W_base: (N,) f_sync를 곱하기 전 띠 폭 — 블러 σ의 기하에만 쓴다. 반환 dict low/mid/high (512,512) float32"""
+    x, y = G.lonlat_to_xy(pts[:, 0], pts[:, 1])
+    r, c = G.xy_to_rc(x, y)
+    inside = (r >= 0) & (r < G.ny) & (c >= 0) & (c < G.nx)
+    ds = np.hypot(np.diff(x, prepend=x[0]), np.diff(y, prepend=y[0]))
+    E = np.bincount((r[inside] * G.nx + c[inside]), weights=(W_pt * ds)[inside],
+                    minlength=G.ny * G.nx).reshape(G.ny, G.nx).astype(np.float32)
+    W_bar = W_base[W_base > 0].mean() if (W_base > 0).any() else 0.0   # σ는 탐지 띠의 기하(W_base)에서, f_sync는 침적량(합집합 몫)에만
+    sigma_cells = np.sqrt(max(acc_mean, 5.0) ** 2 + W_bar ** 2 / 12) / G.res
+    C_mid = gaussian_filter(E, sigma_cells, mode="constant", cval=0.0) / (G.res ** 2)   # 격자 밖으로 번진 몫은 버린다(지도 밖)
+    return {"low": (1 - u) * C_mid, "mid": C_mid, "high": (1 + u) * C_mid}
+
+def zone_stats(C, P_c, T, zone_px=16):          # C: (512,512) 누적 커버리지, P_c: 결합 사전 grid
+    nb = T.ny // zone_px
+    blk = lambda a: a.reshape(nb, zone_px, nb, zone_px).sum(axis=(1, 3)).ravel()
+    n_land = blk(T.terminal.astype(np.float32))
+    surv = np.exp(-C)
+    C_i   = blk(np.where(T.terminal, C, 0)) / np.maximum(n_land, 1)
+    POA_i = blk(P_c)
+    POS_i = blk(P_c * (1 - surv))
+    POD_i = np.where(POA_i > 0, POS_i / np.maximum(POA_i, 1e-12), np.nan)
+    cover = blk(np.where(T.terminal, 1 - surv, 0)) / np.maximum(n_land, 1)
+    has_track = blk((C > 0).astype(np.float32)) > 0                        # 트랙이 지난 구역만 gap_flag 후보
+    return C_i, POA_i, POS_i, POD_i, cover, has_track
+
+def rasterize_from_gpx(raw, mission_id):
+    """GPX 바이트 → (C_trk 3벌, 트랙 통계). parse_gpx(실패·점<2·bbox 밖·개설 전 → 400) → preprocess → W_points(→ W_pt, W_base) → rasterize_track 래퍼.
+    업로드·apply·recompute_coverage가 모두 이것만 부른다(같은 작업에 이름 하나)"""
+    pts = tracks.parse_gpx(raw, mission=mission_id); stats = tracks.preprocess(pts, mission=mission_id)
+    W_pt, W_base = W_points(pts, stats)
+    return rasterize_track(pts, G, T, W_pt, W_base, stats["acc_mean"]), stats
+
+def zone_pod_preview(C_trk, C_par, P_c, T):
+    """업로드 미리보기 pod_*: zone_stats(C_par[k] + C_trk[k], P_c) 3벌 → 확정(apply)했을 때 zones_state.pod_*와 같은 사전가중 정의.
+    track_zone의 C_i로 1−exp(−C_i)를 만들지 않는다(구역 균일식은 Jensen으로 과대)"""
+    return {k: zone_stats(C_par[k] + C_trk[k], P_c, T)[3] for k in BANDS}
+```
+
+다른 소티(같은 길을 나중에 다시 걷는 경우 포함)는 커버리지를 더한다(`C_cum = Σ C_k`, `1 − Π(1 − d_k)`와 동치). 같은 소티 안의 동시 이웃만 f_sync로 합집합 몫을 나눈다. 점별 침적은 여전히 전부 가산이므로 순서 무관·`recompute_coverage`는 그대로다. 출력 예시(실측 아님): 구역 17, 트랙 3개, L 2,340 m, W 12~22 m, C 0.31~0.57, POD 0.27~0.43, 플래그 [night].
+
+성능(검증자 추정, 팀 미실측): 512×512, 20k점(5 s 재표본 ≈ 28 h) 트랙에서 `bincount` 0.6 ms + `gaussian_filter` 2 ms + 사후 exp 2 ms + 집계 0.1 ms ≈ 5 ms. 실제 소티 4 h = 2,880점. W3 9/20 동결 전에 `docs/bench.md`에 M1 실측값(트랙 1개 `rasterize_track`, `/compute` 3단계 합계)을 기록하고 이 절의 수치를 실측으로 교체한다. 실측이 5 ms를 크게 넘으면 트랙별 래스터 캐시를 W7에 추가한다. 래스터 1 MB × 3벌/버전, 버전 20개 = 60 MB(기존 prior/post 8 MB/버전에 더해 3 MB).
+
+테스트(`tests/test_pod.py`): (1) 구역 전체 균일 잔디깎기 `L = A/W` → `POD_i ≈ 0.632`(반쪽 바다 구역도 terminal 면적 기준으로 동일); (2) **같은 L의 트랙을 구역 1/4에 몰면 POD_i < 0.632이고 나머지 3/4 셀의 C_cum ≈ 0**; (3) 질량 보존 `C.sum()*900 ≈ Σ W·ds`(블러 전후; 가장자리에서 3σ 이상 떨어진 트랙에서 등호, 가장자리 트랙은 `≤`); (4) 구역 경계선을 따라 걷는 트랙은 양쪽 구역에 C가 나뉜다; (5) 정지 구간 제외; (6) 두 소티 가산·순서 무관; (7) **정오 KST(UTC 03:00 `Z`) 트랙은 f_d = 1.0**, UTC 12:00 `Z`(KST 21시) 트랙은 야간; (8) 동일 경로·동시 트랙 2개(s=0) → `C` = 트랙 1개와 같음(union), `team_overlap="sum"`이면 2배; (9) s = W 나란히 2개 → 2배(두 모드 모두); (10) 같은 경로를 10분 뒤 다시 걸은 트랙(소티 다름) → 2배(두 모드 모두); (11) 3명 s = W/2 나란히 → 트랙 1개의 2배(합집합 폭 W + 2·W/2 = 2W, 좌·우 판별 검증); (12) `test_gap_vs_buffer` — 함수 첫 줄 `shapely = pytest.importorskip('shapely')`로 서버 venv에서는 건너뛰고, `.venv-pipeline`에서 `pytest backend/tests/test_pod.py -k gap_vs_buffer`로 W7에 1회 실행(11절 교차 검증): 단일 직선 트랙에서 `C_cum_mid < 0.05` 셀 면적과 shapely W/2 버퍼 합집합 기반 빈틈 면적의 차이 < 10%; (13) 업로드 응답 `zone_pod.pod_mid` == apply 후 `zones_state.pod_mid`(단일 트랙, C_cum=0 출발 — 미리보기와 확정 값이 같은 정의); (14) `gap_flag`는 트랙이 지난 구역에만 붙는다(미수색 구역은 cover 0이어도 false).
+
+파라미터 재적용(`pod.py`의 `recompute_coverage(mission_id)`): 모든 `APPLIED` 트랙 GPX를 현재 `pod.json`·`searcher_speed.json`으로 다시 `rasterize_from_gpx` → `C_cum` 3벌 재합산 → `track_zone` 파생 통계 재기록. 트랙당 추정(실측 전) 5 ms 이하라 9월에는 트랙별 래스터를 캐시하지 않는다(인계 전에는 GPX가 존재; 실측이 크게 넘으면 W7에 캐시 추가). 10월 `searcher_speed.json` 적합이나 `w0` 배율 보정 뒤에는 `POST /recompute`(trigger=manual)가 이 함수를 먼저 부른다(6.7 표의 manual 행).
+
+공개 데이터 적합(`pipeline/09_fit_speed.py`, 10월 W6, **필수 1개**):
+1. Zenodo [9] 다운로드 → 파일 구조·컬럼을 `DATA_NOTES.md`에 기록(예상: 트랙별 CSV 시각·위경도·고도 + 메타 hasty/sweep; 다르면 로더만 수정).
+2. 위 전처리 규칙 재사용 → 10 s 창마다 `v`, `s = Δele/Δdist`(고도 없으면 Copernicus에서 샘플).
+3. `ln v = a_task − b·|s|`, `X = [is_hasty, is_sweep, −|s|]`, `np.linalg.lstsq`. 트랙 단위 5-fold RMSE. 중앙값이 논문의 0.53/0.39 m/s와 맞는지 기록.
+4. `searcher_speed.json = {a_hasty, a_sweep, b_slope, v_med_hasty, v_med_sweep, n_tracks, rmse_cv, fit_date, data_doi}`.
+5. 사용처: `f_v` 경계, 추천의 표준 소티 속도 `v_sweep(구역 평균 경사)`, 정지 임계(속도 분포 하위 10%). 동시 트랙 데이터가 있으면 간격 분포로 `2·W` 임계를 경험값으로 교체(W5에 원문 대조한 대원 간 평균 간격 참고), 없으면 그대로 두고 기록. 적합 후 `recompute`로 기존 임무의 커버리지를 재계산한다. **[9]가 검증하는 것과 하지 않는 것:** [9]는 61트랙의 속도·경사·팀 동기성(hasty 0.53 / sweep 0.39 m/s, 경사 효과 대칭 — 기획서 [9] 확인값; 사건 수·경사 계수·대원 간 평균 간격은 W5 원문 대조 후 `DATA_NOTES.md`에 기입, 대조 전에는 서류·화면에 쓰지 않는다)을 측정했고 POD·탐지폭은 측정하지 않았다. 따라서 회귀는 (a) 속도로 hasty/sweep을 나누는 경계, (b) 추천의 계획 속도, (c) 정지 임계, (d) 간격 플래그 임계(원문 대조 값 참고)에만 쓰고, `f_v`의 0.6 배율과 `lc_w0`는 어떤 공개 데이터로도 검증되지 않은 팀 가정으로 남는다. 탐지폭 보정은 11.1 모의 실험의 w0 배율뿐이다. 저자의 지역 일반화 주의도 서류에 인용한다.
+6. 실패(형식 불일치·시간 부족) 시에만 문헌 상수(0.53/0.39, b=0)로 두고 화면·서류에 각주 "적합 미완, 문헌 요약값 사용".
+
+**트랙 상태와 반영 규칙.** 트랙은 '걸었다'는 기록이고, 미발견 갱신의 우도 exp(−C)는 '수색했는데 못 찾았다'에만 성립한다. 그래서 업로드와 반영을 분리한다.
+
+| `tracks.status` | 뜻 | 들어가는 방법 | C_cum 합산 |
+|---|---|---|---|
+| `UPLOADED` | 저장·검증·커버리지 미리보기·`track_zone` 계산 완료, 지도 미반영 | `POST /tracks` 성공 | X |
+| `APPLIED` | 조정자가 미발견 확정, `trigger=track:<id>` 버전 생성 | `POST /tracks/{tid}/apply` | **O** |
+| `REJECTED` | 조정자 기각(잘못된 파일·차량 이동·타 임무) | `POST /tracks/{tid}/reject`(10월) | X |
+| `FOUND` | 이 소티에서 실종자 발견. 버전 없음, 임무 `CLOSED(close_reason=FOUND)` | `apply`에 `outcome:"FOUND"`(11월) | X |
+
+- 전이는 `UPLOADED → APPLIED | REJECTED | FOUND` 뿐이다. 되돌리기 없음(잘못 확정했으면 `/recompute`가 아니라 기각 후 재업로드 — 9월엔 안 만든다).
+- **중단된 소티도 별도 상태가 아니다.** 걸은 구간은 걸은 만큼 미발견 증거이고, 이동·정지 구간은 위 규칙으로 이미 커버리지 0이다.
+- 검증은 업로드 시 동기 처리로 끝낸다(영속 상태 없음). **400 거부**: GPX 파싱 실패, 유효 점 < 2, 격자 bbox 안 점 0개, 모든 타임스탬프가 임무 `created_at` 이전. 나머지(차량·저정확도·야간)는 플래그만 달고 받는다.
+- **중복**: 업로드 바이트의 `sha256`을 `tracks.sha256`에 저장, `UNIQUE(mission_id, sha256)`. 같은 파일이 다시 오면 409 `{duplicate_of, status}`를 돌려주고 프런트는 그 track_id를 그대로 쓴다(데모 더블클릭·모바일 재전송 방지). 별도 Idempotency-Key 헤더는 두지 않는다 — 파일 해시가 곧 키다.
+- 모의 수색 실험(11절)에서 표식을 '발견'해도 실종자 발견이 아니므로 모든 실험 트랙은 `NO_FIND`로 확정한다.
+
+### 6.7 베이지안 갱신과 다음 구역 점수 (`core/bayes.py`, `core/recommend.py`, `core/versions.py`)
+
+갱신은 항상 **현재 사전(`prior_*`)과 누적 커버리지(`C_cum`, 셀 래스터)** 두 가지로 한 번에 재계산한다. 단서와 파라미터 변경은 사전을 바꾸고, 확정된 트랙은 커버리지를 바꾼다. 어느 쪽도 다른 쪽을 지우지 않는다.
+
+| 트리거 | 읽는 것 | 계산 | 새 버전 디렉터리에 저장 |
+|---|---|---|---|
+| `prior`(v0, `/compute`) | 파라미터·프로필 | `prior_M = 모델 M 결과`, `C_cum = 0`, `post_M = prior_M` | `prior_*.npy`, `prior_base_*.npy`, `post_*.npy`, `C_cum_* = 0`, `residuals.json` |
+| `track:<id>` | 부모의 `prior_*`, 부모 `C_cum` + `status`가 UPLOADED→APPLIED로 바뀌는 그 트랙의 `C_trk` | `C_cum ← C_cum + C_trk`(3벌, (512,512)); `post_M = prior_M × exp(−C_cum)` 정규화(잔여 포함). **사전은 복사만** | `prior_*`(그대로 복사), `C_cum_*`(갱신), `post_*`, `residuals.json` |
+| `clue:<id>` | 부모의 `prior_*`, 부모 `C_cum`, 우도 `L` | `prior_M ← apply_clue(prior_M, L, L_out=1)`; `post_M = 새 prior_M × exp(−C_cum)`. **C_cum은 그대로** | `prior_*`(새 값), `C_cum_*`(복사), `post_*`, `residuals.json` |
+| `manual`(`/recompute`) | 새 파라미터, 장부의 `status=APPLIED` 단서, **`status=APPLIED` 트랙만** | 모델 재계산 → `prior_base_M`, `prior_M`; 적용된 단서 `L`을 다시 곱함; `recompute_coverage` → `C_cum` 재합산(부모 값에 더하지 않고 재합산본으로 **교체**, `C_add=`로 전달); `post_M`. `/recompute`는 모델 원출력 4개를 `prior=`로, `status=APPLIED` 단서 우도의 곱 `L = Π L_i`(곱셈이라 순서 무관)를 `L=`로 넘긴다; `prior_base`는 `prior` 인자 그대로(단서 곱하기 전) 저장된다 | 전부 새로 |
+
+```python
+# core/bayes.py
+def apply_clue(prior: Distribution, L, L_out=1.0):
+    """L (512,512) ≥ 0. 지도 밖은 단서 정보가 없으므로 L_out = 1 (규약).
+    L = 1 + w·exp(−d²/2σ²) ≥ 1 이면 지도 안 질량이 상대적으로 커져 잔여가 줄어든다 — 의도된 결과."""
+    num = prior.grid * L; Z = float(num.sum()) + prior.outside * L_out
+    detail = {k: v * L_out / Z for k, v in prior.detail.items()}
+    return Distribution((num / Z).astype(np.float32), prior.outside * L_out / Z, detail).check()
+
+def posterior_cells(prior: Distribution, C_cum):
+    """C_cum (512,512). surv = 1 − d(x), 미수색 셀 d = 0, 가상 구역 0번 d_0 = 0."""
+    num = prior.grid * np.exp(-C_cum); Z = float(num.sum()) + prior.outside
+    detail = {k: v / Z for k, v in prior.detail.items()}
+    return Distribution((num / Z).astype(np.float32), prior.outside / Z, detail).check()
+    # pᵢ′ = pᵢ(1−dᵢ) / (Σⱼ pⱼ(1−dⱼ) + p_out) — 기획서 5.2 식에 잔여 구역 0번을 더한 형태(셀 단위)
+    # 항등식: Z = 1 − Σ_x P(x)·(1−e^{−C(x)}) = 1 − 누적 POS  → 테스트에 사용
+
+# core/versions.py — 트리거마다 이 함수만 호출한다. 부모 결정→계산→저장→등록이 락 안에서 한 번에 일어난다
+import os, uuid, shutil, threading, json
+VERSION_LOCK = threading.Lock()                     # 프로세스 전역. uvicorn 워커는 1개만(README·config.py에 명시)
+MODELS = ("a", "b", "b2", "c"); BANDS = ("low", "mid", "high")
+
+def sweep_pending(missions_dir):                   # main.py 시작 시 1회
+    for d in missions_dir.glob("*/pending_*"): shutil.rmtree(d, ignore_errors=True)
+    with db.connect() as conn: conn.execute("UPDATE tracks SET status='UPLOADED' WHERE status='APPLYING'")   # 중단된 apply 복구
+
+def make_version(mission_id, trigger, *, stage_dir=None, prior=None, C_add=None, L=None, params=None):
+    mdir = MISSIONS / str(mission_id)
+    with VERSION_LOCK:                                                    # (1) writer 직렬화
+        with db.connect() as conn:                                        # (2) INSERT + UPDATE 한 트랜잭션
+            parent = conn.execute("SELECT current_version FROM missions WHERE id=?", (mission_id,)).fetchone()[0]
+            n = 0 if parent is None else conn.execute(
+                "SELECT version_no FROM map_versions WHERE id=?", (parent,)).fetchone()[0] + 1
+            P = prior if prior is not None else load_prior(parent)        # {m: Distribution} — prior_*.npy + residuals.json["prior"]
+            if trigger == "prior":
+                assert prior is not None, "prior 트리거는 모델 결과 4개를 받아야 한다"
+                C = {k: np.zeros((T.ny, T.nx), np.float32) for k in BANDS}          # 표: C_cum = 0
+            elif trigger == "manual":
+                assert C_add is not None, "manual은 recompute_coverage가 APPLIED 트랙만 재합산한 C_cum 3벌을 C_add로 받는다"
+                C = C_add                                                            # 부모 C_cum을 읽지 않는다(교체)
+            else:
+                C = load_C(parent)                                                   # track/clue: 부모 C_cum
+                if C_add is not None: C = {k: C[k] + C_add[k] for k in BANDS}        # track: 부모 + 이 트랙
+            base = P if trigger in ("prior", "manual") else load_prior_base(parent)     # 단서 곱하기 전 원출력(6.8 토글용). 반드시 apply_clue 앞에서 잡는다
+            if L is not None:      P = {m: apply_clue(P[m], L) for m in MODELS}        # clue / manual: 사전만
+            post = {m: posterior_cells(P[m], C["mid"]) for m in MODELS}                # 래스터는 mid 한 벌
+            poa_band = {k: {m: posterior_cells(P[m], C[k]).zone_poa() for m in MODELS} for k in BANDS}   # 구역 표용 3벌
+            zstats = {k: zone_stats(C[k], P["c"].grid, T) for k in BANDS}              # C_i, POA_i, POS_i, POD_i, cover, has_track
+            tmp = stage_dir or mdir / f"pending_{uuid.uuid4().hex}"        # (3) 임시 디렉터리에 전부 쓴다
+            res_json = {tag: {m: {"total": D[m].outside, **D[m].detail} for m in MODELS} for tag, D in (("prior", P), ("post", post))}
+            save(tmp, prior=P, prior_base=base, post=post, C_cum=C, residuals=res_json)   # residuals.json = {prior:{a:{total,grid_edge,tail_q95,sea},…}, post:{…}}
+            cons = consensus.classify({m: post[m] for m in ("a", "b", "b2")}, CONS["mass_frac"])   # top_*, cls (사후 기준; CONS = params/consensus.json, 시작 시 로드)
+            rec = recommend.score(poa_band["mid"], zstats["mid"], access=db.zone_access(mission_id))   # score, rank(9/27 단순형)
+            render_pngs(tmp, post, C["mid"], cons["cls"])                      # 6장: post_{a,b,b2,c}.png, consensus.png, shadow.png
+            write_zones_geojson(tmp, P, post, poa_band, zstats, cons, rec)     # gap_flag는 zstats.has_track인 구역에만
+            final = mdir / f"v{n}"; os.rename(tmp, final)                 # (3) 같은 파일시스템 → 원자적
+            vid = conn.execute(
+                "INSERT INTO map_versions(mission_id, version_no, parent_id, trigger, dir_path, params_json, "
+                "residual_a, residual_b, residual_b2, residual_c, residual_json) VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                (mission_id, n, parent, trigger, str(final), json.dumps(params or {}),
+                 *(post[m].outside for m in MODELS), json.dumps({m: post[m].detail for m in MODELS}))).lastrowid  # (4) UNIQUE 위반 = 락이 빠진 버그 신호
+            conn.execute("UPDATE missions SET current_version=? WHERE id=?", (vid, mission_id))
+            insert_zones_state(conn, vid, poa_band, zstats, cons, rec, status=db.zone_status(mission_id))
+    return vid, n
+```
+
+락 범위는 "부모 읽기 → 계산 → 저장 → 등록"뿐이다. GPX 파싱·`rasterize_track`(추정(실측 전) 수 ms~수백 ms)과 모델 B 시뮬레이션(추정(실측 전) 3~6 s)은 락 **밖**에서 끝내고 결과만 들고 들어온다. 그래도 `/compute` 중 다른 임무의 `/tracks/{tid}/apply`가 잠깐 기다릴 수 있는데, 임무는 한 번에 하나만 돌리므로(1절) 문제 없다.
+
+- 기획서 5.2의 `pᵢ′ = pᵢ(1−dᵢ)/Σⱼ pⱼ(1−dⱼ)`에 잔여 구역 0번을 더한 형태. 모델 A·B·B′·C 사전 4개에 같은 `C_cum`을 적용해 사후 4개를 유지하고, 합의 분류를 사후 기준으로 다시 계산한다. **결합 모델의 사후는 `post_a/b/b2`를 다시 섞지 않고 `prior_c`에 갱신을 적용한다**(혼합 사전의 사후 = Σ w P_M e^{−C} / Σ w Z_M 이므로 사후끼리 섞으면 정규화 상수가 달라 틀린다).
+- **래스터 `post_*`는 mid 한 벌만 저장**(결정 #4). low/high는 `posterior_cells(P[m], C[k]).zone_poa()`로 구역 표에만 계산·저장한다. `poa_c_low` = C_low 밴드로 계산한 사후 POA, `poa_c_high` = C_high 밴드 값 — 컬럼 이름 = 밴드 이름이며 상·하한이 아니다(수색 구역은 `poa_c_low ≥ poa_c_high`, 미수색 구역은 반대). '추정 범위'는 `min~max`로 표시한다(6.5).
+- `map_versions.residual_*`는 **사후 잔여**(`residuals.json["post"]`, 배지·인계가 읽는 값), `residual_json`은 그 사유별 분해. 사전 잔여는 디렉터리의 `residuals.json["prior"]`에서만 읽는다(clue·manual 트리거용).
+- 테스트(`tests/test_bayes.py`, `tests/test_versions.py`): ① 모든 트리거 뒤 `prior_*`·`post_*` 8개가 `.check()` 통과 ② 한 구역 전 셀 C = 큰 값(d ≈ 1) → 그 구역 0, 나머지 비례 확대, 잔여 증가, **`post.outside > prior.outside`가 `map_versions.residual_*`에 실제로 기록됨** ③ `1 − Σ_i POS_i(mid) ≈ Z_c`(누적 POS 항등식) ④ clue 후 잔여 감소(L ≥ 1일 때), `prior.outside`는 `residuals.json["prior"]`에 남아 있음 ⑤ **clue 뒤 track을 넣어도 clue의 우도가 살아 있음(v_clue의 `prior_*` == v_track의 `prior_*`)** ⑥ track 두 개는 순서를 바꿔도 같은 사후 ⑦ 트랙이 지나지 않은 셀의 사후/사전 비율은 지난 셀보다 크다(모서리 트랙 테스트) ⑦-1 한 구역만 수색했을 때 그 구역은 `poa_c_low > poa_c_high`, 나머지 구역은 `poa_c_low < poa_c_high`(밴드 부호 반전) ⑧ `ThreadPoolExecutor(2)`로 `make_version(..., C_add=C1)`과 `(..., C_add=C2)`를 동시에 호출 → `version_no`가 1·2로 다르고, 마지막 버전의 `C_cum == C1 + C2`, `v1/`·`v2/` 둘 다 존재, `pending_*` 없음 ⑨ `save`가 예외를 던지게 monkeypatch → `map_versions` 행 없음, `current_version` 그대로, `pending_*`만 남고 `sweep_pending()`이 지운다 ⑩ `VERSION_LOCK` 없이 같은 `version_no`를 두 번 INSERT하면 `sqlite3.IntegrityError` ⑪ 같은 GPX 두 번 업로드 → 두 번째는 409, track 행 1개 ⑫ `apply` 두 번 → 두 번째는 409, 버전 1개 ⑬ manual 뒤 `C_cum_mid == Σ_{APPLIED} C_trk`(부모 C_cum과의 이중 합산이 아니며 `REJECTED` 트랙은 빠진다) ⑭ v0 → track apply → 재-`/compute`(prior) → 새 버전의 `C_cum_mid.sum() == 0`이고 `post_c == prior_c`(표의 `prior` 행: 부모 C_cum을 읽지 않는다) ⑮ `make_version(trigger="manual", prior=P_raw, L=L)` 뒤 저장된 `prior_base_c`가 단서 없는 모델 출력 `P_raw["c"]`와 같고(`prior_c`는 `apply_clue(P_raw["c"], L)`), 6.8의 `post_noclue_c`가 단서 우도를 포함하지 않는다.
+- 단서 반영(10월)도 같은 함수 형태: `L = 1 + w·exp(−d²/2σ²)`, σ = max(위치 정확도, `clue_sigma_min_m`), w = `clue_weight[confidence]`. **값은 `params/ledger.json`에 둔다**(`{"clue_weight": {"1": 0.3, "2": 0.6, "3": 0.9}, "clue_sigma_min_m": 100, "_note": "팀 가정. 출처 없음. 민감도 분석 대상. 화면 배지 '단서 가중치: 팀 가정'"}`). `apply_clue(prior, L, L_out=1)`로 곱하고 잔여 포함 정규화, L_out = 1 규약을 `params_json`에 기록, `trigger="clue:<id>"`. C_cum은 그대로 물려받는다.
+
+**추천 변화(Decision Delta 단순형, 9/27):** `POST /tracks/{tid}/apply` 응답에 `recommended_prev:[zone_id×3]`(부모 버전의 추천)을 함께 돌려주고, `TrackReplay` 결과 패널에 한 줄: `갱신으로 추천이 바뀜 — 새로 진입: {…} · 빠짐: {…} · 유지: {…}`(세 목록이 모두 비면 "추천 유지").
+
+**결정 델타(10월 W7, `VersionList`와 함께):**
+
+```python
+def decision_delta(version_id, n=5):
+    v, parent = get_version(version_id), get_parent(version_id)
+    cur  = {z: r for z, r in query("SELECT zone_id, rank FROM zones_state WHERE version_id=?", version_id)}
+    prev = {z: r for z, r in query("SELECT zone_id, rank FROM zones_state WHERE version_id=?", parent)}
+    zs = {z for z, r in cur.items() if r <= n} | {z for z, r in prev.items() if r <= n}
+    return {"trigger": v.trigger, "rows": [{"zone_id": z, "rank_prev": prev.get(z), "rank_now": cur.get(z)} for z in sorted(zs)]}
+```
+
+`GET /api/missions/{id}/versions/{v}/delta`. 화면 문장 템플릿: `{trigger 설명} 반영으로 구역 {z}: {rank_prev}위 → {rank_now}위`. `ledger`의 `kind=decision` 행에 delta JSON을 같이 저장해 인계 보고서 '결정 기록'에 그대로 출력.
+
+다음 구역 점수(조정자 승인 전 "추천"일 뿐이다, 10월 W8; 임계값은 `params/recommend.json`):
+
+```
+L_plan_i    = 팀원수 × 계획 시간(s) × v_sweep(slope_mean_i)        (적합 전 0.4 m/s, 기본 4명·1 h)
+POD_plan_i  = 1 − exp(−w0_mean_i · L_plan_i / A_i)                    (A_i = terminal 면적)
+gm_i        = POA_A,i^w_A · POA_B,i^w_B · POA_B′,i^w_B′               # w = consensus.json.weights (1/2, 1/4, 1/4). 가중 기하평균 = B 계열을 하나의 가설로 셈. 사후 POA. 한 모델만 높으면 급락 (여러 가설에서 모두 유효)
+spread_i    = max_M POA_M,i − min_M POA_M,i                          # 여기서 찾거나 못 찾으면 가설이 갈린다 (불확실성 감소)
+access_i    = AGENCY_ONLY | CAUTION | OPEN                            (6.5. 시간대와 무관한 hard gate. 임계값 '팀 가정' 배지)
+후보        = valid & status ≠ EXCLUDED & pod_mid_i ≤ pod_cum_max(0.8) & access_i ≠ AGENCY_ONLY & (주간 or hazard_p90_i ≤ hazard_night(0.4))   # 밴드는 mid 고정, params/recommend.json에 "pod_cum_band":"mid" 기록
+score_i     = (gm_i + spread_w(0.3)·spread_i) · POD_plan_i · (1 − hazard_soft(0.5)·hazard_p90_i)   # 기획서 5.2 '지형 위험 낮음' — OPEN·CAUTION 후보 안의 순위에만 쓴다
+agency      = valid & access == AGENCY_ONLY, POA_C 내림차순 → 별도 표 "전문팀·해경 요청 권고" (확률을 그대로 보인다. 0으로 만들지 않는다)
+```
+
+(1−POD_cum)은 곱하지 않는다(사후 POA에 이미 반영). `recommend(n=5)`는 각 항의 값을 함께 반환해 "왜 이 구역인가" 표를 만들고, `agency_needed: [{zone_id, poa_c, reason: "수역 40%" | "절벽 30%" | "hazard_p90 0.9"}]`를 함께 돌려준다. `assignments` 생성은 `access == AGENCY_ONLY`면 422(조정자가 `status=APPROVED`로 덮어쓰며 `reason`을 적은 경우만 허용, 장부 `kind=decision`에 "위험 게이트 무시" 기록). `sensitivity.py`에 `hazard_gate ±20%`를 추가. **9/27**: `score = poa_c_post × POD_plan`(상수 W, access 없음)만 — poa_c가 이미 가중 결합이다.
+
+테스트(`tests/test_recommend.py`): (1) 9/27 단순형 — `poa_c_post`가 같으면 `POD_plan`이 큰 구역이 앞선다, `valid=false`·`pod_mid > pod_cum_max` 구역 제외, `apply` 응답의 `recommended`·`recommended_prev` 길이 3; (2) 본선 — `access==AGENCY_ONLY` 구역은 `recommended`에 없고 `agency_needed`에 POA 원값 그대로, 야간 입력에서 `hazard_p90 > hazard_night` 제외, AGENCY_ONLY 구역 `POST /assignments` → 422.
+
+**가정 스트레스 투표(11월, W12 `sensitivity.py`와 같은 함수, 제품 안에서는 캐시).** 표본 설계(기획서 8절 ±20% 목록과 동일, **K = 12**):
+
+| k | 섭동 |
+|---|---|
+| 1~10 | `tau0, kappa, route_alpha, p_route, t_move_median_h` 각각 −20% / +20% (일변량) |
+| 11~12 | 파라미터 동일, seed만 변경(seed 잡음 기준선) |
+
+계산 규칙(핵심: 섭동은 **사전**만 바꾸고 트랙은 C_cum만 바꾸므로 표본은 한 번만 돈다):
+
+```
+/compute stage b2 완료 또는 /recompute 직후 → FastAPI BackgroundTasks:
+  for k in 1..K: simulate(..., n_particles=10000, **perturb_k) → POA_B,k, POA_B′,k  (각 (1024,) float32)
+  저장: data/missions/<id>/v<N>/stress/poa_{b,b2}_{k}.npy + residual_{k}.json({"b": r_B,k, "b2": r_B′,k})   (K×2×4 KB)
+  map_versions.params_json.stress = {"K": K, "n_particles": 10000, "ready": true, "runtime_s": …}
+이후 버전 v마다(트랙·단서 반영 시, 동기·즉시):
+  surv_i        = 1 − POD_i(mid)                             (zone_stats의 사전가중 값, 구역 안 형태는 P_C를 따른다는 근사)
+  post_zone_M,k = POA_M,k,i · surv_i / Z_k,   Z_k = Σ_i POA_M,k,i · surv_i + r_M,k
+                  (M ∈ {B,B′}; A는 고정; r_M,k = 표본 k의 outside, stress/에 함께 저장. 셀 단위 POD_i를 구역 생존율로 쓰는 근사 — exp(−C_i)는 쓰지 않는다)
+  score_k       = 위 점수식을 (POA_A, post_zone_B,k, post_zone_B′,k)로 재계산
+  vote_i        = #{k : rank_k(i) ≤ 3} / K
+  most_sensitive = argmax_param |rank(+20%) − rank(−20%)| (상위 3 구역 기준)
+```
+
+비용(추정, 실측 전): 12 × 2 × (1만 입자 1.5~3 s) ≈ 40~70 s 백그라운드 1회/사전. 버전당 투표는 (1024,)×24 곱셈이라 무시 가능. `recommend` 응답에 `vote`, `stress_ready`, `most_sensitive` 추가. 추천 카드 문구 템플릿(숫자는 반드시 계산 결과): `구역 {z}: 가정 표본 {K}개 중 {n}회 상위 3 · 세 시나리오 순위 {rA}/{rB}/{rB′} · 계획 POD {lo}~{hi} · 위험 게이트 {통과|전문팀}`. `stress_ready=false`면 카드에 "가정 검사 계산 중". seed 표본(11~12)에서 상위 3이 바뀌면 `vote` 옆에 "seed만 바꿔도 {m}회 변동" 병기 — 입자 수 불충분을 숨기지 않는다. 점수식 자체(gm + spread)는 유지하고 최악 후회로 교체하지 않는다.
+
+### 6.8 근거 장부 (`core/ledger.py`, 10월)
+
+| 항목 | 내용 |
+|---|---|
+| 원칙 | 제보·단서는 **기록만** 된다. 자동 반영 없음. 조정자가 검토·신뢰도(1~3)를 매긴 뒤 [지도에 반영]을 누를 때만 새 `map_version(trigger="clue:<id>")`이 생긴다 |
+| 필드(기획서 5.3) | `source`(FAMILY/VOLUNTEER/RESIDENT/SNS/AGENCY), `observed_at`, `entered_at`, `is_original`, `lon, lat, accuracy_m`, `has_evidence, evidence_path`, `evidence_type`(PHOTO/ITEM/SIGHTING/RUMOR), `confidence`, `status`(LOGGED/REVIEWED/APPLIED/REJECTED), `applied_version_id`, `note`, `entered_by` |
+| 반영 수식 | 6.7의 `apply_clue`를 **현재 사전 `prior_*`에** 적용(`make_version(..., L=L)`), C_cum은 그대로. `params_json`에 `{clue_id, w, sigma, L_out: 1}` 기록. 이후 트랙이 들어와도 우도는 사전에 남아 있다. w·σ는 `params/ledger.json`의 팀 가정(배지 '단서 가중치: 팀 가정', 11절 민감도 대상) |
+| 반영 전/후 비교 | 새 코드 없이 `VersionList`에서 부모 버전과 `clue:<id>` 버전을 나란히 본다(Ledger 화면 [반영] 결과 행에 "v{n} → v{n+1}, 잔여 x% → y%, 상위 5 구역 변화" 한 줄). 11월 토글: 버전 디렉터리의 `prior_base_*.npy`(마지막 `prior`/`manual` 시점의 모델 원출력, 단서 미반영)로 단서 없는 세계의 사후 `post_noclue_M = posterior_cells(prior_base_M, C_cum)`을 요청 시 계산(래스터 4장, 수십 ms). `GET /versions/{v}/files/post_noclue_c.png`, MissionMap 토글 "단서 #{id} 반영 전 / 후". 6.7 delta와 합쳐 "단서 #{id} 반영으로 구역 {z}: {a}위 → {b}위" 문장 출력 — 기획서 5.3 'SNS 소문 한 건이 수색 전체를 옮기는 일'을 화면에서 그대로 보여 준다 |
+| 결정 기록 | `kind=decision` 행으로 구역 승인·제외·위험 게이트 무시·트랙 확정·기각·일괄 중지·재개도 같은 표에 남긴다(인계 보고서의 "왜 그 구역을 수색했는가"). delta JSON 포함 |
+
+### 6.9 인계 패키지 (`core/handover.py`, `screens/Report.jsx`, 11월)
+
+| 항목 | 내용 |
+|---|---|
+| PDF | `/m/:id/report` 인쇄용 React 페이지(`@media print`) → 브라우저 "PDF로 저장". 지도는 MapLibre `preserveDrawingBuffer:true` + `getCanvas().toDataURL()` 캡처. 한 페이지 흐름: 임무 요약 → 최종 확률지도(합의·불일치·수색 그림자) → 구역별 POA 구간(`poa_c_low~high`)·POD 구간·POS 구간 표(기획서 5.3 "추정 범위") → 미수색 구역과 잔여확률(사유별: 격자 밖·꼬리·해상; "전문팀 필요 미수색 구역 POA 합계 n%" 한 줄) → 트랙 요약(길이·속도·정지·간격·GPS 오차 평균/최대·야간 비율) → 단서 장부 → 결정 기록(델타 포함) → 모델·파라미터 버전(`sea_mass`, `hazard.json`, `consensus.weights` 포함) → 매니페스트 해시 → 고정 문구 |
+| 화면 흐름 | **① [PDF로 저장](브라우저 인쇄) → ② [PDF 첨부](`POST /api/missions/{id}/packages/attach`, multipart pdf → `packages/report.pdf`, 크기·페이지 수 표시) → ③ [패키지 생성](`POST /api/missions/{id}/packages`; ②가 없으면 경고 '보고서 PDF 없음 — 인계 패키지에 사람이 읽는 상황보고서가 빠집니다'를 띄우고 zip에 `report.html`만 넣음, `packages.pdf_missing=1`) → ④ zip 다운로드 → "보관했음" 체크 → [인계 완료](`pdf_path` 없으면 확인 대화상자에 같은 경고 한 번 더)**. 브라우저가 만든 PDF는 사용자 다운로드 폴더에만 생기므로 ②가 없으면 패키지가 불완전하다(기획서 5.3 "사람이 읽는 PDF 상황보고서" 포함) |
+| zip (`GET /api/missions/{id}/packages/{pid}/handover.zip`, 표준 `zipfile`) | **`report.pdf`**(없으면 `report.html`; PDF가 있으면 `report.html`은 넣지 않는다), `zones.geojson`(최종 버전), `zones.csv`, `unsearched_zones.csv`(`access, walk_frac` 열 포함), `tracks/*.gpx`(가명, **기획서 5.3의 '수색자 트랙' — 기관에 전달되는 사본**), `tracks.csv`(`status, applied_version_id, applied_at, applied_by(가명)` 열), `ledger.csv`, `decisions.csv`(트랙 확정·기각 행 포함), `versions.csv`(버전·트리거·잔여확률 사유별), `params.json`(seed·프로필 출처·팀 가정 목록·W 표·searcher_speed·`sea_mass`·`hazard.json`), `overlays/*.png`(`shadow.png` 포함), `subject.json`(인상착의 5항목·태그·`coordinator_note`, 건강 원문 없음), **`manifest.json`**, `README.txt`(출처·라이선스·고정 문구·매니페스트 해시·"서버 측 삭제" 안내) |
+| 재현 매니페스트(W10) | `manifest.json`: `{"code_commit": "<git rev-parse HEAD>", "python": "3.12.x", "numpy": "<np.__version__>", "terrain": {"meta_sha256": …, "npy": {"dem.npy": …, "traversable.npy": …, "terminal.npy": …, …}}, "params": {"model_b.json": …, "pod.json": …, "subject_profiles.json": …, "searcher_speed.json": …, "consensus.json": …, "hazard.json": …, "recommend.json": …, "ledger.json": …}, "versions": [{"v": 0, "trigger": "prior", "parent": null, "seed": 42, "files": {"prior_b.npy": …, "post_c.npy": …, "C_cum_mid.npy": …}, "track_sha256": null}, …], "zip_files": {"report.pdf": …, "zones.geojson": …, "tracks/V-03.gpx": …}}`. `manifest_sha256 = sha256(json.dumps(manifest, sort_keys=True))`를 `README.txt` 마지막 줄과 `report.pdf` 하단에 인쇄. `python -m app.cli verify handover.zip`: zip 안 모든 파일의 sha256을 manifest와 대조, 불일치 파일명 출력 + exit 1. 본선 발표 5초 컷: 헥스 에디터로 `zones.csv` 한 바이트 수정 → `verify` 실패. QR·블록체인은 넣지 않는다. `packages.sha256`은 manifest_sha256이다 |
+| 삭제(기획서 9절) | `HANDED_OVER` 전이 시 `purge_mission()`: ① `tracks/*.gpx`·`track_points`·`evidence/` 삭제 ② **`packages/handover_*.zip` 삭제**(`packages.sha256`만 남겨 기관 사본 무결성 검증용) ③ `tracks.member_id = NULL`(집계 컬럼·`status·applied_at·sha256`은 유지), `members.display_name` 가명 덮어쓰기 ④ 역할 코드 전부 `revoked_at` ⑤ **`PRAGMA secure_delete=ON`(연결 시 항상) + `VACUUM`** ⑥ 브라우저 쪽은 `/state`가 `HANDED_OVER`를 돌려주면 `localStorage["sp_code_<id>"]` 삭제. 전이 가드: 패키지 생성(`zip_path`) + "다운로드해 보관했음" 체크(`downloaded_ack_at`). **정직한 라벨: 이것은 '서버 측 삭제'다. 기관에 넘긴 zip과 조정자가 내려받은 사본은 기관·조정자 책임이며, 동의 화면과 README.txt에 그렇게 적는다.** 모의 실험 임무는 참가자 동의 하에 `research_keep_raw = 1`로 GPX를 보존(8절 분석 원자료) |
+| 사례 축적(기획서 12절) | 인계 zip의 `versions.csv`·`zones.csv`·`tracks.csv`·`params.json`이 사례 1건의 축적 단위. 기관이 발견 위치를 `found.json {lon, lat, found_at}`으로 되돌려 주면 `compare_models.py`의 '사람 생성 정답' 형식으로 읽는다. 절차·동의 범위는 `docs/case_accumulation.md` 1쪽(본선, P3) |
+
+---
+
+## 7. 데이터 모델
+
+SQLite 1파일(`schema.sql`). 시각은 ISO 8601 UTC 문자열, JSON 컬럼은 TEXT. 확률 래스터는 DB에 넣지 않고 `data/missions/<id>/v<N>/`에 둔다. 9/27은 `missions, subjects(최소), map_versions, tracks, track_zone, zones_state`만 쓴다. `db.py`의 `connect()`는 요청마다 새 연결(`sqlite3.connect(DB, timeout=10)`, `row_factory=sqlite3.Row`)을 돌려주고, 시작 시 `PRAGMA journal_mode=WAL; PRAGMA foreign_keys=ON; PRAGMA secure_delete=ON`. 쓰기는 `with conn:` 블록 하나 = 트랜잭션 하나. `BEGIN IMMEDIATE`·`isolation_level=None`은 쓰지 않는다(락이 이미 직렬화한다).
+
+| 표 | 주요 컬럼 | 비고 |
+|---|---|---|
+| `missions` | `id, name, case_ref, status(DRAFT/ACTIVE/PAUSED/CLOSED/HANDED_OVER), created_at, closed_at, close_reason, rally_point_json, checkin_interval_min(20), current_version, research_keep_raw(0)` | 상태 전이는 `POST /transition` 한 곳 |
+| `subjects` | `mission_id UNIQUE, category, age_band, mobility, ipp_lon, ipp_lat, ipp_type(LKP/PLS), ipp_sigma_m, last_seen_at, search_tags_json, description_min_json, coordinator_note, submitted_by_role, verified_by_coordinator` | **건강 정보 자유 입력란 없음.** `coordinator_note`는 조정자 전용 운영 메모(집결·연락 수단 등)이며 UI 라벨에 "지병·건강 정보 기재 금지(태그 사용)"를 고정 표시. `search_tags_json`은 `constants.js` 사전에서만 선택(치매·인지 저하 / 물가 위험 가중 / 약물 지원 필요 / 야간 저체온 취약 / 차량 이용 가능 / 특정 장소 애착). '물가 위험 가중'은 B′의 `p_fall`에 연결된다(6.2). `description_min_json` = 성별·나이대·상의·하의·소지품 5항목. 실명·주민번호 컬럼 없음. `ipp_sigma_m`은 모델 A(선택)·B에 실제로 전달된다 |
+| `map_versions` | `id, mission_id, version_no, parent_id, trigger(prior/track:<id>/clue:<id>/manual), created_at, params_json, residual_a, residual_b, residual_b2, residual_c, residual_json, truncated_frac_b, truncated_frac_b2, dir_path, UNIQUE(mission_id, version_no)` | 체인의 핵심. `residual_*` = **사후 잔여**(`residuals.json["post"]`), `residual_json` = 사유별 분해(격자 밖·꼬리·해상). 사전 잔여는 디렉터리의 `residuals.json["prior"]`에서만 읽는다. `dir_path`는 rename이 끝난 `v<N>`만 가리킨다(행이 있으면 파일도 있다). `dir_path`에 `prior_*`·`post_*`·**`C_cum_*` (512,512) float32 래스터**·`residuals.json`이 항상 있다 |
+| `zones_state` | `mission_id, version_id, zone_id, valid, poa_a, poa_b, poa_b2, poa_c`(= mid 밴드 사후 POA), `poa_c_low, poa_c_high`(= 각각 **C_low·C_high 밴드**로 계산한 결합 모델 사후 POA; 컬럼 이름 = 밴드 이름, 상·하한이 아니다. 표의 '추정 범위'는 `min~max`, 6.5), `poa_min, poa_max, top_a, top_b, top_b2, consensus_n, C_low, C_mid, C_high, pod_low, pod_mid, pod_high, pos_low, pos_mid, pos_high, cover_frac, gap_frac, access, score, rank, status, PRIMARY KEY(version_id, zone_id)` | "v3 시점의 구역 17"을 재현. `status`는 최신 버전 값이 정본. `rank`는 결정 델타의 원자료 |
+| `tracks` | `id, mission_id, member_id NULL, assignment_id NULL, team, sortie_id, source(replay/upload/live), sha256, status(UPLOADED/APPLIED/REJECTED/FOUND; 요청 처리 중 임시값 APPLYING — 응답 전 반드시 APPLIED 또는 UPLOADED로 복귀, 서버 시작 시 남은 APPLYING은 UPLOADED로 되돌린다), applied_at, applied_by_member_id NULL, reject_reason NULL, started_at, ended_at, gpx_path, length_m, median_speed_mps, stop_s, night_frac, acc_mean_m, acc_max_m, flags_json, consent_version, applied_version_id, UNIQUE(mission_id, sha256)` | `applied_version_id`는 `status=APPLIED`일 때만 NOT NULL. 갱신·recompute는 `status='APPLIED'`만 읽는다. 같은 GPX 재업로드는 새 트랙·새 버전을 만들지 않는다. `gpx_path`·`member_id`는 인계 시 삭제/NULL, `status·applied_at·sha256`과 집계 컬럼은 남긴다(인계 `tracks.csv`에 포함). `track_points`를 붙이는 경우에만 `RECORDING` 값 추가 |
+| `track_zone` | `track_id, zone_id, L_m, C_low, C_mid, C_high, stop_s, spacing_mean_m, spacing_max_m, gap_flag, pod_params_hash` | **보고서·표시용 파생 통계.** 갱신은 이 표를 읽지 않고 버전 디렉터리의 `C_cum_*.npy`를 읽는다. `C_*`는 그 트랙의 `rasterize_track` 결과를 구역 terminal 셀 평균으로 집계한 값(종전 Σ W·len/A_i와 같은 수). 트랙 트리거는 부모 `C_cum` + 이 트랙의 `C_trk`를 더하고(6.7), `manual`만 APPLIED 트랙 전체를 재래스터화한다. `pod_params_hash`가 다르면 `recompute_coverage`가 다시 채운다 |
+| `track_points` (선택, 실시간 GPS를 붙일 때만) | `track_id, seq, ts, lon, lat, alt, acc_m, UNIQUE(track_id, seq)` | 재전송 멱등. 인계 시 삭제 |
+| `members` | `id, mission_id, role(coordinator/volunteer/family), code, team, display_name, pseudonym(V-03), consent_version, consent_at, last_seen_at, pause_ack_at, revoked_at, purged_at` | (W5 생성, 9/27 미사용) 전화번호 컬럼 없음. 조정자가 자기 수단으로 연락. 조정자 코드도 이 표의 한 행. `revoked_at`으로 폐기·재발급 |
+| `assignments` | `id, mission_id, zone_id, member_id/team, assigned_at, target_spacing_m, instructions, hazard_note, status(ASSIGNED/ACTIVE/HOLD/DONE)` | 구역 `APPROVED`일 때만 생성 가능. `access == AGENCY_ONLY`면 422(조정자 `reason` 덮어쓰기 시만 허용) |
+| `checkins` | `id, mission_id, member_id, responded_at, lon, lat` | 지연 판정은 읽을 때 계산(`now − last_seen_at > interval + 5 min`) |
+| `alerts` | `id, mission_id, type(HAZARD_ENTRY/CHECKIN_OVERDUE/PAUSE_ACK), member_id, zone_id, payload_json, created_at, acked_at` | SOS 없음(기획서 9절에 없음; 긴급 상황은 전화) |
+| `ledger` | 6.8 필드 + `kind(clue/report/decision)`, `delta_json` | 추가 전용(UPDATE는 `status, confidence, applied_version_id`만) |
+| `packages` | `id, mission_id, pdf_path NULL, pdf_missing(0), pdf_attached_at, generated_at, zip_path, sha256(= manifest_sha256), downloaded_ack_at` | HANDED_OVER 가드: `zip_path`·`downloaded_ack_at` 둘. `pdf_path` 없으면 경고만 |
+
+정보 노출 매트릭스(서버 `require_role`이 응답을 거른다. 봉사자·가족 코드로 모든 GET을 호출해 본문에 `poa`, `pod`, `score`, `coordinator_note`, `.gpx` 문자열이 없음을 `tests/test_roles.py`가 확인한다):
+
+| 데이터 | 조정자 | 봉사자 | 가족 | 인계 패키지 |
+|---|---|---|---|---|
+| 신고번호·`coordinator_note` | O | X | X | O(`subject.json`) |
+| 인상착의 5항목 | O | O | O(본인 입력) | O |
+| 건강 관련 | 태그 | 태그→지시 문장("물가 주변 우선 확인") | 태그 | 태그(원문 없음) |
+| 확률지도 원본·숫자 | O | X(**배정 구역 폴리곤과 목표 간격만, 순위·확률 없음**) | X(**수색 기록 3단계만**) | O |
+| 봉사자 위치·트랙 | O(가명) | 본인 것 | X | 가명 GPX(**기관 사본**; 연구 보존 제외 시 서버 삭제) |
+| 단서 사진 | O | 본인 제출분 | X | O |
+| 버전 파일(PNG·GeoJSON) | `/files/{name}` 경로로 O | **X(`/assignments`로 자기 구역 폴리곤만)** | X | O |
+
+---
+
+## 8. API 설계
+
+실시간은 **폴링**이다(WebSocket 없음). 계산은 전부 동기이며 `/compute`는 A·B·B′·합의·렌더를 합쳐 **추정(실측 전) 6~12 s**(B와 B′ 각 3~6 s; W2 실측을 `docs/bench.md`에 기록해 교체)다. 촬영 중 무응답이 화면 멈춤처럼 보이지 않도록 `/compute`는 `stage` 세 단계(`a → b → b2`)로 나눠 순서대로 호출하고 각 응답마다 `ComputeProgress`에 "A 완료 → B 완료 → B′ 완료"를 띄운다. 데모용 `params_override`로 B′는 `n_particles 10000`을 허용해 전체 8 s 이내를 목표로 한다. 인증은 헤더 `X-Role-Code`; 9/27은 `AUTH_DISABLED=1`로 끈다(경로 화이트리스트는 처음부터 둔다). `AUTH_DISABLED=1`일 때 `require_role()`은 `Role(role="coordinator", member_id=None)` 스텁을 돌려주며 `tracks.applied_by_member_id`는 NULL로 남는다(`members` 표·역할 코드는 W5·W9). 조정자 전용 mutation의 멱등성은 상태 가드로 둔다: `/ledger/{lid}/apply`는 `status==REVIEWED`일 때만(아니면 409), `/transition`은 허용된 전이만, `/zones/{zid}/status`는 같은 값이면 no-op, `/tracks/{tid}/apply`는 `status==UPLOADED`일 때만.
+
+| 시기 | 메서드 | 경로 | 역할 | 설명 |
+|---|---|---|---|---|
+| 9/27 | GET | `/api/base/meta`, `/api/base/roads.geojson`, `/api/base/zones.geojson`, `/api/base/profiles` | 전체 | `data/hallim/`만 정적 마운트(개인정보·임무 정보 없음; `zones.geojson`은 지형 속성만). `profiles`는 카테고리별 `complete`·`assumed_fields` 목록 |
+| 9/27 | POST | `/api/missions` | 조정자 | `{name}` → `{id, url:"/m/<id>"}`. 9/27은 `AUTH_DISABLED=1`이므로 코드 발급 없음(코드·`#code=` URL은 W9 `POST /members`에서 시작; 그때부터 프런트는 fragment의 코드를 `localStorage["sp_code_<id>"]`에 저장하고 `api.js`가 모든 요청에 `X-Role-Code`로 붙인다). `run_demo.sh`가 시드 임무 자동 생성 후 이 URL을 연다 |
+| 9/27 | POST | `/api/missions/{id}/compute` | 조정자 | `stage:"a"`: 본문 `{ipp, ipp_sigma_m, category, elapsed_h, seed, params_override}` → `pending_<cid>/inputs.json`에 **동결** + 모델 A → `prior_a.npy`·`post_a.png`(v0는 post = prior) → 응답 `{compute_id, stage:"a", residual:{a:{total, grid_edge, tail_q95, sea}}, heat:{a: "/api/missions/{id}/versions/pending_<cid>/files/post_a.png"}}`. `stage:"b"`·`"b2"`: 본문 **`{compute_id}`만** — 서버가 `inputs.json`을 읽으므로 단계 사이에 IPP·파라미터가 섞일 수 없다. `ipp_sigma_m` 요청값은 `simulate(..., ipp_sigma_m=…)`로 전달. `b2`는 B′·합의·구역까지 쓴 뒤 `make_version(mission_id, "prior", stage_dir=pending_<cid>, params=inputs)` → rename → 행 등록 → `{version, residual:{a,b,b2,c}(각 total + 사유별), exit_by_side:{b,b2}, truncated_frac:{b,b2}, start_snapped_frac:{b,b2}, sea_smooth_leak:{b,b2}, heat:{a,b,b2,c,consensus,shadow}(v<N> URL, `post_*.png` 6장), zones_url, runtime_s, assumed:["행동 비율","이동 파라미터"]}`. 모르는 `compute_id` → 404 "다시 계산하세요". IPP 통행 불가·도달 가능 셀 없음 → 400 + 화면 토스트 "IPP를 육지에 찍어 주세요". `stage:"all"`은 CLI용. 이미 버전이 있는 임무에 다시 `/compute`하면 `trigger=prior`인 새 버전이 생기고 `C_cum=0`이다 — 트랙을 보존하려면 10월 `/recompute`(manual)를 쓴다. 11월: b2 완료 후 `BackgroundTasks`로 스트레스 표본 K=12 계산 |
+| 9/27 | POST | `/api/missions/{id}/tracks` | 조정자·봉사자 | multipart GPX + `{team, source}` → sha256 중복 검사(409 `{duplicate_of, status}`) → 파싱·검증(400) → 트랙 저장(KST 변환, `status=UPLOADED`, `sortie_id`) → `rasterize_track`(락 밖) → `track_zone` 파생 통계. **버전을 만들지 않는다.** 응답 `{track_id, status:"UPLOADED", track_stats, zone_pod:[{zone_id, L_m, C_low, C_mid, C_high, pod_low, pod_mid, pod_high, flags}]}` — 화면은 이 값으로 POD 표를 먼저 보여 준다 |
+| 9/27 | POST | `/api/missions/{id}/tracks/{tid}/apply` | 조정자 | `{outcome:"NO_FIND"}`(9월은 이 값만). `status='UPLOADED'`가 아니면 409. `make_version(mission_id, trigger="track:<tid>", C_add=rasterize_from_gpx(GPX))` → `tracks` 갱신(`APPLIED, applied_version_id, applied_at, applied_by`) → 응답 `{version, zones_url, heat, residual, recommended:[zone_id×3], recommended_prev:[zone_id×3]}` |
+| 9/27 | GET | `/api/missions/{id}/versions/{v}/files/{name}` | **조정자만** | `name`은 `^[a-z0-9_]+\.(png|geojson)$`만 허용, `v`는 `^(v\d+|pending_[0-9a-f]{32})$`만 허용(계산 진행 중 A·B PNG를 먼저 보여 주기 위해), `Path(dir, name).resolve()`가 버전 디렉터리 안인지 확인. `data/missions/`를 통째로 마운트하지 않는다 — `tracks/*.gpx`·`evidence/`가 URL로 열리면 기획서 9절 위반 |
+| 9/27 | GET | `/api/missions/{id}/state` | 전체 | `{version, status, overdue:[…], pause_pending:n}` — 폴링 엔드포인트. `version`은 `apply`·clue·manual 때만 오른다. 봉사자·가족 역할에는 `overdue: []`, `pause_pending: 0` |
+| 9/27 | GET | `/api/missions/{id}/versions`, `/versions/{v}` | 조정자 | 버전 목록·메타·files URL 묶음 |
+| 10월 | GET | `/api/missions/{id}/tracks?status=UPLOADED` | 조정자 | 확정 대기 트랙 목록(팀·가명·길이·플래그·POD 미리보기) |
+| 10월 | POST | `/api/missions/{id}/tracks/{tid}/reject` | 조정자 | `{reason}` → `REJECTED`, 결정 장부 `kind=decision, ref="track:<tid>"` |
+| 10월 | POST | `/api/missions/{id}/recompute` | 조정자 | 파라미터 변경 → 모델 재계산 → 적용 단서 재곱 → `recompute_coverage`(APPLIED 트랙만) → C_cum 재합산 → `trigger=manual` |
+| 10월 | GET | `/api/missions/{id}/recommend?n=5` | 조정자 | 점수 상위 n + 항별 분해 + `agency_needed` + (11월) `vote, stress_ready, most_sensitive` |
+| 10월 | POST | `/api/missions/{id}/zones/{zid}/status` | 조정자 | `{status: APPROVED/EXCLUDED, reason}` → 결정 장부 기록(AGENCY_ONLY 승인은 `reason` 필수) |
+| 10월 | POST/GET | `/api/missions/{id}/assignments` | 조정자(생성)/봉사자(자기 것) | APPROVED 구역만, AGENCY_ONLY는 422. 봉사자 응답은 `{zone_id, geometry(4326), target_spacing_m, instructions, hazard_note}`만(`poa_*, pod_*, pos, score, rank` 키 삭제) |
+| 10월 | POST/GET | `/api/missions/{id}/ledger` | 전체(POST)/조정자(GET) | 단서 기록. multipart 사진 |
+| 10월 | PATCH | `/api/ledger/{lid}` | 조정자 | `{status, confidence}` |
+| 10월 | POST | `/api/ledger/{lid}/apply` | 조정자 | `status==REVIEWED`일 때만. 우도를 현재 사전에 곱함 → 새 버전(C_cum 유지) |
+| 10월 | POST | `/api/missions/{id}/members`, `/api/members/{mid}/revoke` | 조정자 | `{role, team, max_uses}` → 코드 발급(`secrets.token_urlsafe`); 폐기·재발급 |
+| 10월 | POST | `/api/join` | 익명 | `{code, role_hint, display_name, consent_version}` → `{mission_id, role, pseudonym, assignment{zone_id, geometry, target_spacing_m, instructions, hazard_note}, description_min, instructions, hazards_url, redirect}`. 실패 IP당 10회/10분 → 429. 조정자 코드면 `redirect: "/m/<id>#code=…"` |
+| 10월 | PUT/GET | `/api/missions/{id}/subject` | 가족(PUT)·조정자(PUT+검증)·전체(GET 역할별 필터) | `verify=true`는 조정자만. `coordinator_note`는 조정자 PUT/GET만 |
+| 10월 | GET | `/api/missions/{id}/versions/{v}/delta` | 조정자 | 결정 델타(6.7, W7) |
+| 11월 | GET | `/api/missions/{id}/versions/{v}/files/post_noclue_c.png` | 조정자 | 단서 미반영 세계의 사후(6.8, 요청 시 계산) |
+| 11월 | POST | `/api/missions/{id}/tracks/{tid}/apply` (확장) | 조정자 | `outcome:"FOUND"` 허용 → 버전 없음, `status=FOUND`, `POST /transition {to:"CLOSED", reason:"FOUND"}`와 동일 처리, 결정 장부 기록. 봉사자 `POST /tracks`는 `UPLOADED`까지만(역할 코드로 `apply` 차단) |
+| 11월 | POST | `/api/missions/{id}/checkin` | 봉사자 | `last_seen_at` 갱신 |
+| 11월 | POST | `/api/missions/{id}/transition` | 조정자 | `{to, reason, rally_point, broadcast_confirmed}` — ACTIVE⇄PAUSED(`PAUSED`는 `broadcast_confirmed: true` 필수 = 전화·무전 전파 확인란), CLOSED, HANDED_OVER(가드: 패키지 + 보관 확인; PDF 없으면 경고) |
+| 11월 | POST | `/api/missions/{id}/pause_ack` | 봉사자 | 중지 확인 |
+| 11월 | POST/GET | `/api/missions/{id}/alerts` | 봉사자(POST)/조정자 | 위험구역 진입 |
+| 선택 | POST | `/api/tracks/{id}/points` | 봉사자 | 실시간 GPS를 붙일 때만(W9에 시간이 남을 때). `[{seq, ts, lon, lat, acc}]`, seq 중복 무시 |
+| 11월 | GET | `/api/missions/{id}/report-data` | 조정자 | 보고서 데이터 |
+| 11월 | POST | `/api/missions/{id}/packages/attach` | 조정자 | multipart `report.pdf`(≤20 MB, `%PDF` 매직 확인) → `packages/report.pdf` |
+| 11월 | POST/GET | `/api/missions/{id}/packages`, `/packages/{pid}/handover.zip` | 조정자 | zip 생성(PDF 없으면 경고 + `pdf_missing=1`)·`manifest.json`·다운로드·`downloaded_ack` |
+| 11월 | GET | `/api/missions/{id}/family-status` | 가족 | 구역 등급 3단계(**수색 기록 있음** = status SEARCHED 또는 `cover_frac > 0` / **수색 진행 중** = ASSIGNED / **수색 기록 없음** = 그 외) + 고정 각주 '수색 기록이 있어도 발견을 놓쳤을 수 있습니다' + 타임라인. POD 임계 없음 |
+
+라우터 골격(`routers/tracks.py`, 9/27):
+
+```python
+@router.post("/missions/{mid}/tracks")
+def upload_track(mid: int, file: UploadFile, team: str = Form(...), source: str = Form("upload"),
+                 _=Depends(require_role("coordinator", "volunteer"))):
+    raw = file.file.read(); h = hashlib.sha256(raw).hexdigest()
+    if dup := db.one("SELECT id, status FROM tracks WHERE mission_id=? AND sha256=?", (mid, h)):
+        raise HTTPException(409, {"duplicate_of": dup["id"], "status": dup["status"]})
+    C_trk, stats = pod.rasterize_from_gpx(raw, mid)   # 락 밖. parse_gpx(실패·점<2·bbox 밖·개설 전 → 400) → preprocess(재표본·KST·정지·차량; 소티·간격은 10월 W7) → W_points → rasterize_track
+    cur = db.current_version(mid)
+    if cur is None: raise HTTPException(409, "확률지도를 먼저 계산하세요")          # 미리보기 POD에 현재 사전이 필요
+    C_par = versions.load_C(cur); P_c = versions.load_prior(cur)["c"].grid       # 현재 버전의 C_cum 3벌·결합 사전, 읽기만
+    zone_pod = pod.zone_pod_preview(C_trk, C_par, P_c, T)   # zone_stats(C_par[k] + C_trk[k], P_c) 3벌 → 반영했을 때와 같은 사전가중 pod_*
+    rows = pod.track_zone_rows(C_trk, T, zone_pod)          # 이 트랙만의 C_*·L_m + 위 pod_*(구역식 1−exp(−C_i)는 만들지 않는다)
+    tid = db.insert_track(mid, sha256=h, status="UPLOADED", team=team, source=source, gpx=raw, **stats)
+    db.insert_track_zone(tid, rows)
+    return {"track_id": tid, "status": "UPLOADED", "track_stats": stats, "zone_pod": rows}
+
+@router.post("/missions/{mid}/tracks/{tid}/apply")
+def apply_track(mid: int, tid: int, body: ApplyBody, role=Depends(require_role("coordinator"))):
+    n = db.exec("UPDATE tracks SET status='APPLYING' WHERE id=? AND mission_id=? AND status='UPLOADED'", (tid, mid))
+    if n == 0: raise HTTPException(409, "already applied/rejected")
+    try:
+        C_trk, _ = pod.rasterize_from_gpx(db.gpx_of(tid), mid)                             # 락 밖
+        vid, vno = versions.make_version(mid, trigger=f"track:{tid}", C_add=C_trk)          # 락 안
+    except Exception:
+        db.exec("UPDATE tracks SET status='UPLOADED' WHERE id=?", (tid,)); raise
+    db.exec("UPDATE tracks SET status='APPLIED', applied_version_id=?, applied_at=?, applied_by_member_id=? WHERE id=?",
+            (vid, now_utc(), role.member_id, tid))
+    return versions.payload(vid, with_prev_recommend=True)
+```
+
+(`APPLYING`은 rowcount 잠금용 중간값이며 실패 시 `UPLOADED`로 되돌린다. 단일 uvicorn 워커에서 더블클릭을 막는 가장 짧은 방법이다.)
+
+---
+
+## 9. 화면 구성
+
+**모든 화면 하단 고정 문구(`Disclaimer.jsx`, 두 문장 그대로):**
+> 본 시스템은 판단 보조 도구입니다. 수색·수사의 최종 판단은 기관과 현장 책임자가 합니다. 낮은 확률은 부재의 증거가 아닙니다.
+
+**출처 표기(`Attribution.jsx`, 지도 우하단 고정):** `© OpenStreetMap contributors (ODbL) · Copernicus DEM © ESA · ESA WorldCover 2021` (환경부 사용 시 "환경부 토지피복도").
+**파라미터 패널 배지(`ParamPanel`, 세 종류를 구분해 표시):** "가설 출처: 해외 문헌 기반 · 국내 미검증" / POD 임시판일 때 "임시 파라미터" / 출처 없는 값을 쓸 때 **"팀 가정"** 배지를 항목별로 — "행동 비율: 팀 가정", "이동 파라미터: 팀 가정", "f_v 경계: 팀 가정", "결합 가중치: 팀 가정", "위험 임계: 팀 가정"(`hazard_gate`·`hazard_caution`·`hazard_night`·`hazard_soft`), "단서 가중치: 팀 가정"(10월), "물가 가중: 태그 적용"(11월). `truncated_frac > 0`이면 "입자 예산 잘림 n%", `start_snapped_frac > 0`이면 "IPP 인접 불통과 셀 보정 n%", `sea_smooth_leak > 0.02`면 "해안 평활 재배분 n%(가정)" 경고 배지. `kappa=0` 폴백 시 "방향 지속성 꺼짐".
+**해안 경고(`constants.js`, 9/27):** 어느 모델이든 잔여 `sea ≥ 0.10`이면 좌측 패널 상단 고정 한 문장 "IPP가 해안에 인접합니다. 해상 가능성은 이 도구의 모델 밖입니다 — 해경 신고 여부를 확인하세요."
+
+**역할 코드 진입 규칙:** `/m/:id#code=…`·`/join#code=…`로 들어오면 `window.location.hash`에서 코드를 읽어 `localStorage["sp_code_<id>"]`에 저장하고 `history.replaceState`로 fragment를 지운다. fragment는 서버·Referer에 전송되지 않는다. `api.js`의 `request()`가 저장된 코드를 모든 요청에 `X-Role-Code` 헤더로 붙인다. 코드 없이 오면 `Join.jsx`(역할 select: 조정자/봉사자/가족 + 코드 입력 → `/api/join` → `redirect`). `dangerouslySetInnerHTML` 금지.
+
+### 조정자
+
+| 화면 | 시기 | 핵심 컴포넌트 |
+|---|---|---|
+| `/m/:id` MissionMap (9/27 유일 화면) | 9월 | 좌측 패널 320 px: `SubjectForm`(카테고리 select — `complete=false` 프로필은 비활성, 경과 시간 slider, IPP = 지도 클릭, ipp_sigma) → [확률지도 계산] → `ComputeProgress`(stage a/b/b2 순서 호출, a 응답의 `compute_id`를 b·b2에 넘긴다, "A 완료 → B 완료 → B′ 완료" 3단계 텍스트 + 경과 초; 계산 중에는 `SubjectForm`·지도 클릭·[확률지도 계산] 비활성); `LayerToggle` A 거리 통계/B 지형 이동/B′ 행동 규칙(B 변형)/합의·불일치/결합(가중)/수색 기록(그림자)/구역/트랙; `ResidualBadge` 모델별·사유별(+B·B′ 이탈 방향, Tier 1); 해안 경고; `ZoneTable` 상위 10(POA `poa_c` + `poa_min–poa_max`·POD 구간·POS 구간·합의 `A ✓ B ✓ B′ ✗` 체크, 행 클릭 하이라이트, `valid=false` 제외); `TrackReplay` [팀1 재생][팀2 재생] — **클릭 즉시 `POST /tracks`(저장·커버리지 계산, 버전 없음) → 응답의 `zone_pod`로 POD 구간 표 표시 → 60배속 애니메이션 → 재생 끝에 [완료·미발견 확정] 버튼 활성화(Tier 1이 되면 트랙 선 대신 수색 그림자 레이어가 남는다; 미완 시 트랙 선 유지)**; [완료·미발견 확정] = `POST /tracks/{tid}/apply {outcome:"NO_FIND"}` → 지도·구역 표·잔여확률 배지·추천 3개 갱신(+Tier 1: "추천 변화" 한 줄), 버튼은 "반영됨 v<N>"으로 잠김. 같은 트랙 409면 기존 track_id로 이어 간다. 요청이 진행 중이면 버튼 비활성(`busy`). 갱신 전/후 토글(부모·자식 버전 PNG). 지도: 베이스맵 + roads + image source×6(`/files/*.png`: `post_{a,b,b2,c}`·`consensus`·`shadow`) + zones fill + tracks + IPP 마커 |
+| MissionMap 확장 | 10월 | `ParamPanel`(B′ 스위치 3개, 행동 비율 3개 + '팀 가정' 배지, 입자 수, seed), `VersionList`(클릭 시 그 버전 PNG·구역으로 전환, 트리거 종류 아이콘, `DecisionDelta` 문장), 구역 [승인]/[제외] 토글(AGENCY_ONLY 승인은 사유 필수), 팀·배정 폼, 역할 코드 발급(조정자용 URL 복사 버튼 포함), 추천 표 "왜 이 구역인가" 항별 분해 + "전문팀·해경 요청 권고" 별도 표(확률 유지), 확정 대기 트랙 목록(봉사자 업로드분, 행별 [확정][기각]) |
+| MissionMap 상황판 | 11월 | 체크인 표(가명·팀·마지막 연락, 지연 노랑, 15분 초과 빨강), 경보 피드, **[일괄 수색 중지]**(확인 대화상자: 집결지 좌표 + **'전화·무전으로도 전파했음' 체크 필수**) / [재개], 중지 미확인 n명(`pause_pending`) → **이름 클릭 시 '직접 연락하세요' 안내**(앱 알림은 보조). [발견] 버튼 = `apply {outcome:"FOUND"}` → 확인 대화상자 → 임무 CLOSED. 추천 카드에 가정 스트레스 투표·`most_sensitive`. 단서 반영 전/후 토글. 체크인 지연·중지 미확인은 폴링 지연(최대 10 s)과 폰 절전에 영향을 받는다. 정본 연락은 전화 |
+| `/m/:id/ledger` Ledger | 10월 | 표 + 입력 폼 + 행별 [검토][반영](신뢰도·σ 입력 → 새 버전, 결과 행에 "v{n} → v{n+1}, 잔여 x% → y%, 상위 5 구역 변화")[기각]. 결정 기록 탭 |
+| `/m/:id/report` Report | 11월 | 인쇄용 페이지. 상단 단계 표시 ① [PDF로 저장](`window.print()`) → ② [PDF 첨부](파일 선택 → `/packages/attach`, 첨부 완료 시 파일명·크기 표시) → ③ [패키지 생성](②가 없으면 경고 후 진행) → zip 다운로드 + 매니페스트 해시 표시 → "보관했음" 체크 → [인계 완료](서버 삭제 경고 + 기관·조정자 사본 책임 안내) |
+
+### 봉사자 (`/join#code=…`, 모바일 웹, 11월)
+
+| 화면 | 핵심 컴포넌트 |
+|---|---|
+| Join | 코드 입력, 표시 이름, `ConsentForm` 항목별 체크(위치정보 수집 / 목적을 이 수색으로 한정 / **인계 후 서버의 원본 트랙 삭제, 가명 트랙은 인계 패키지로 기관 전달** / 위험 안내 / **이 앱은 안전 보조 도구이며 무전·전화를 대체하지 않음**), `consent_version` 저장. 동의 직후 앱 셸·베이스맵 PNG·도로 GeoJSON 캐시 확인(실패해도 계속) |
+| MyZone | 지도: 내 구역 폴리곤(`/api/join`의 `assignment.geometry`), 위험구역 빗금(`hazards.geojson`), `access == AGENCY_ONLY` 구역은 배정 목록에 나오지 않고 지도에 빗금 + "전문팀 구역", 오프라인 베이스맵 PNG, 내 트랙. **확률·순위·다른 구역 표시 없음.** 하단: 인상착의 5항목, 태그→지시 문장, 목표 간격, 조정자 지시. 버튼: [GPX 업로드](기본 경로, `UPLOADED`까지만) / [전경 기록 시작](선택, HTTPS일 때만 표시, Wake Lock, 30 s마다 points 전송) / [단서 제보]. 하단 고정 문구: "긴급 상황은 119(`tel:119` 링크) 또는 조정자에게 전화하세요. 이 앱의 알림은 보조 수단입니다."(앱이 발신하지 않는다, 사용자가 누른다) |
+| `CheckinTimer` | 카운트다운(임무 간격), 만료 1분 전 표시, [이상 없음] 한 번 탭 → `/checkin`. 조정자 쪽은 `last_seen_at` 기준 지연 판정(서버 스케줄러 없음). 공통 문구: "화면이 꺼지거나 통신이 끊기면 알림·중지 명령이 오지 않을 수 있습니다. 정본 연락은 전화·무전입니다." |
+| `HazardBanner` | 전경 GPS 위치가 위험 폴리곤(20 m 버퍼) 안이면 `@turf/boolean-point-in-polygon` 한 줄로 배너 + `/alerts`(구역당 5분 1회). 서버 사후 검사는 만들지 않는다 |
+| `PauseOverlay` | 10 s 폴링(`/state`)으로 `status == PAUSED`면 전체 화면 빨간 오버레이 "수색 중지 — 집결지로 복귀", 집결지 좌표·거리, [확인] → `/pause_ack`. 재개 전까지 닫히지 않음. 조정자 화면은 같은 응답의 `pause_pending`으로 미확인 인원을 센다. 위 공통 문구 표시 |
+
+정직한 한계(화면 문구): iOS Safari는 화면이 꺼지면 GPS가 멈춘다 → "수색 중 화면을 켜 두세요". 정본 기록은 항상 GPX 업로드다.
+
+### 가족 (`/join#code=…`, 11월)
+
+| 화면 | 핵심 컴포넌트 |
+|---|---|
+| Join | 가족 코드, 관계, 동의(입력 정보 용도 한정) |
+| Intake | IPP 지도 클릭, 유형, 마지막 확인 시각, 인상착의 5항목, 태그 선택만(자유 입력란 없음, "지병·건강 정보는 태그로만" 안내). 제출 → `verified_by_coordinator=false`로 저장, 조정자 검증 대기 |
+| Status | 구역 3색(**수색 기록 있음 / 수색 진행 중 / 수색 기록 없음**) + 각주 '수색 기록이 있어도 발견을 놓쳤을 수 있습니다'. 확률 숫자·봉사자 위치 없음. 타임라인(개설·시작·구역 완료 수·갱신 횟수·중지/재개·종료), 참여 인원 수 |
+
+### 90초 데모 대본(`demo/storyboard.md`, 9/27)
+
+| 초 | 화면 | 구분 |
+|---|---|---|
+| 0–7 | 자막 "어디를 걸었는가와 어디를 충분히 찾았는가는 다릅니다." + 한림읍 지도 | 자막 |
+| 7–22 | IPP 클릭 → 프로필 → [확률지도 계산] → `ComputeProgress` "A 완료 → B 완료 → B′ 완료"(경과 초) + 터미널 엔진 3초 PIP | **실제 계산**(기획서 12절) |
+| 22–34 | 레이어 A/B/B′ → 합의(진한)·불일치(빗금) → 모델별 잔여 배지(사유별, +B 이탈 방향 Tier 1 시). 자막 "가설 셋(모델 A, B, B의 행동 변형 B′)이 모두 높은 곳 = 합의, 갈리는 곳 = 불일치, 지도 밖 잔여 n%" | 실제 |
+| 34–48 | [팀1 재생] → 업로드·POD 구간 표(실제 계산) → 60배속 재생(자막 "모의 트랙 재생") → 수색 그림자 레이어(Tier 1; 그림자 미완 시 구역 POD 구간 표로 대체 — W3 '막히면'과 동일) | 실제 계산 + 재생 연출 |
+| 48–60 | 조정자 [완료·미발견 확정] 클릭 → 지도가 바뀌고 잔여확률이 커진다. 자막 "업로드만으로는 지도가 바뀌지 않습니다. 조정자가 '미발견'을 확정할 때만 반영됩니다." | 실제 |
+| 60–72 | 갱신 전/후 토글(부모·자식 버전 PNG) + "추천 변화" 한 줄(Tier 1) + 추천 3개 외곽선 | 실제(추천 변화 미완 시 추천 3개 외곽선만) |
+| 72–82 | `ZoneTable` POD 구간 low/high, '임시 파라미터'·'팀 가정'·'국내 미검증' 배지, 고정 문구 클로즈업 | 실제 화면(기획서 6절 과신 방지 4겹) |
+| 82–90 | 자막 "SearchProof는 정답을 증명하지 않습니다. 어떤 가정으로 어디를 수색했고, 어디가 아직 남았는지를 증명합니다." + "10~11월 구현: 근거 장부·인계 패키지·가정 스트레스 검사·모의 수색 실험" | 자막 |
+
+---
+
+## 10. 개발 일정
+
+역할: **P1** 백엔드·모델(Python), **P2** 프런트·지도(React), **P3** 데이터·문서·영상, **P4**(있으면) 검증·실험·인터뷰. 2명이면 P1=P1+P3, P2=P2+P4. 3명이면 P4 업무를 P3와 P1이 나눈다.
+
+```
+┌─ 9/27 데모 최소 범위(Tier 0, 이것만은 반드시) ───────────────────────────────────────────┐
+│ 실제로 도는 것: 한림읍 실제 지형 격자(Copernicus/WorldCover/OSM 전처리본), 모델 A·B·B′   │
+│   실시간 계산(3단계 호출 합계 추정(실측 전) 6~12 s, 데모는 B′ 1만 입자로 8 s 이내, 진행 텍스트), │
+│   합의·불일치 PNG(가중 결합), 모델별·사유별 잔여확률 숫자, 480 m 구역 POA 표(terminal 면적),│
+│   GPX 업로드(sha256 중복 차단) → 셀 커버리지 → 구역 POD 구간(임시 W, ±30%) 표 →            │
+│   조정자 [완료·미발견 확정] → 갱신(C_cum + 가상 구역 0) → 추천 3개                         │
+│ 재생·모의인 것: GPS 트랙은 팀이 만든 team1/team2.gpx. [팀1 재생] 클릭 → 즉시 업로드·POD   │
+│   계산(실제) → 응답 후 60배속 애니메이션(연출) → 재생 끝에 POD 표 → 확정 버튼(그림자 레이어는  │
+│   Tier 1, 되면 트랙 선 대신 표시).                                                          │
+│   영상 자막은 "모의 트랙 재생"으로 표기하고 실제/재생 구분을 이 순서대로 적는다              │
+│ 없는 것(영상에 "10~11월 구현" 자막): 역할 코드, 봉사자·가족 화면, 장부, 인계, 안전 기능    │
+│ Tier 1(9/22까지 되면): B′ 토글 별도 표시, 버전 목록, 추천 변화 한 줄(6.7 `recommended_prev`), │
+│   B·B′ 잔여 이탈 방향                                                                     │
+│   배지(6.2), 모델 A ipp_sigma 합성곱, 수색 그림자 PNG 레이어(9/27 우선 포함 목표)            │
+│ Tier 2(남는 시간만): 입자 애니메이션(frames), 1시간 스냅샷, hillshade 레이어               │
+│ 안전망: Tier 0 라이브 → Tier 1' `python -m app.cli run-demo`로 LKP 3곳 사전계산 정적     │
+│   파일(public/demo/scenario_k) → Tier 2' index.html 한 장. 9/22 리허설 녹화본 보관        │
+└──────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+| 주 | 기간 | 마일스톤(주 마지막 날 확인) | 담당 | 막히면 이렇게 |
+|---|---|---|---|---|
+| W1 | 9/2(수)–9/8(화) | 14절 Day-1 체크리스트(9/3까지). `00~05, 07` 파이프라인 → `data/hallim/` 커밋(`traversable`·`terminal`·`sea`), 미리보기 10장 육안 확인. `core/dist.py` + `test_dist.py`. `model_a.py` + 불변식 테스트(사유별 잔여). `MapView` 한림 + roads + IPP 클릭. `subject_profiles.json` 원문 대조(최소 2 카테고리, Koester 없으면 [10]·[11]). `files` 라우터 화이트리스트. **9/8: 동심원 PNG가 지도 위에 뜬다** | P1 파이프라인·A, P2 MapView, P3 데이터 확보·프로필 대조·가입 시도 | 9/6 저녁 go/no-go 3항목: ① 국내 포털 미확보 → Copernicus + WorldCover 확정 ② **프로필 2개(치매 노인·성인 탐방객) 사분위 채움** — Koester 못 구하면 [10]·[11]의 표에서, 그래도 없으면 해당 카테고리 select 비활성 유지(A가 돌 카테고리가 최소 1개는 있어야 한다) ③ rasterio 설치 실패 → miniforge → Colab. Overpass 실패 → overpass-turbo 내보내기 |
+| W2 | 9/9–9/15 | `model_b.py` 벡터화 + B′ 플래그 + `model_b.json` 팀 가정 행동 비율 + seed Jaccard·바다 0·truncated·예산·IPP 가드 테스트, `consensus.py`(가중 결합, `test_consensus.py`), `render.py`, `POST /compute`(stage 3단계, `compute_id` 동결, pending 디렉터리), `ComputeProgress`, `LayerToggle`, `ResidualBadge`(사유별), 해안 경고, `Disclaimer`, `Attribution`, '팀 가정' 배지. 9/13(일) 중간 점검. **9/15: Tier 0 지도 부분 완성, A/B/B′ 세 레이어가 실제 IPP에서 각각 뜨고 `test_model_b.py` (3)(4)가 통과한다(B′ 스위치 동작 증명)**. `/compute` 3단계 실측 초를 `docs/bench.md`에 기록(6.2·8절 추정치 교체) | P1 B·API, P2 토글·배지·진행 표시, P3 스토리보드·자막 초안·기획서 수정 문구 | 9/13에 B가 링 모양·바다 침투 → `p_stay`, `traversable`, `tau0` 조정, 미리보기로 원인 확인. 최후엔 `kappa=0`(모델 정의 변경이므로 `params.json`에 기록하고 ParamPanel 배지 '방향 지속성 꺼짐' 표시). 전체 12 s 초과 → B′ N 1만(데모 기본), 그래도 초과 → B도 1만 |
+| W3 | 9/16–9/22 | `zones.py` POA 표(reshape·terminal 면적, `test_zones.py`), `08_demo_tracks.py`, `TrackReplay`(업로드→표→애니메이션→확정 순서), `tracks.py`(9/27판: 재표본·KST 변환·길이·정지·sha256) + `pod.py`(`rasterize_track` 임시 W, `zone_stats`), `bayes.py`·`versions.py`(prior/post/C_cum/residuals.json 저장, **`VERSION_LOCK`·`pending_`→rename·`UNIQUE`·GPX sha256**, 갱신 후 잔여 증가가 배지에 뜨는 것까지) + [완료·미발견 확정](apply 엔드포인트), 추천 3개(+Tier 1: 추천 변화 한 줄), `shadow.png` 레이어(Tier 1), `run_demo.sh`, Tier 1' 사전계산 파일. **9/20(일) 저녁 기능 동결** → 9/21–22 데모 경로 연속 3회 무사고 통과 + 리허설 녹화([팀1 재생] 두 번 눌러 409 확인, B 계산 중 지도 클릭이 막히는지 확인) | P1 zones·pod·bayes·versions, P2 재생·표·갱신 UI, P3 자막 대본·목업 슬라이드·기획서 빈칸 | 9/20 미완 항목은 영상에서 뺀다. 재생·갱신 미완 → 영상 48–72초 구간을 정적 목업으로. 그림자 레이어 미완 → 구역 POD 구간 표만. 애니메이션은 애초에 Tier 2 |
+| W4 | 9/23(수)–9/27(일) | 9/23 촬영(QuickTime/OBS 1080p, 2회 이상, 터미널에서 엔진 도는 3초 컷 포함), 9/24 편집(자막 위주, iMovie 단일 트랙), **9/25(금) 제출**(기획서 수정 문구 16절 반영), 9/26(토) 예비, 9/27(일) 마감 | P3 편집, P1·P2 촬영 지원 | 촬영 당일 타일 장애 → OSM 래스터 스타일(보는 타일만). 서버 장애 → Tier 1' 정적 파일. 편집 시간 부족 → 컷 편집만 |
+| W5 | 9/28–10/4 | 회고, 테스트 보강, 진짜 폰 GPX(팀원이 학교 운동장 걷기) 업로드 확인(셀 래스터가 운동장 한 바퀴를 정확히 그리는지), `members`·`ledger` 표 추가(빈 채로), Zenodo 다운로드 + `DATA_NOTES.md`([9] 원문에서 사건 수·경사 계수·대원 간격 통계를 페이지와 함께 옮겨 적기, P3 — 대조 전에는 6.6에 숫자를 쓰지 않는다), **사전 인터뷰 질문지 확정(3문항 고정: ① 지금 민간 수색에서 무엇을 어디에 기록하는가 ② 기관 인계 때 무엇이 빠지는가 ③ 어떤 형식이면 받겠는가)**, 섭외 연락 시작(소방·산악구조·의용소방대), 실험 장소 후보 조사 | 전원 가볍게 | Zenodo 형식이 예상과 다르면 로더만 다시 |
+| W6 | 10/5–10/11 | **중간고사 가능 주간 — 학교 일정 확인 후 저부하.** `09_fit_speed.py` 회귀 1개 → `searcher_speed.json` | P1 회귀 / **P3·P4 사전 인터뷰 1~2명(전화·메신저 15분, `docs/interview_notes/pre_*.md`)** | 10/11까지 못 하면 W7로, 그래도 못 하면 문헌 상수 + 각주(조건부). 인터뷰 0명이면 '사전 인터뷰 미확보' 기재, W8 장부·W10 보고서 설계는 기획서 5.3 목록으로 진행 |
+| W7 | 10/12–10/18 | (시험 주간이면 후반만) `tracks.py`·`pod.py` 전체 인자(f_v·f_s·f_d·f_sync 좌·우 판별·소티·정지·차량·gap·정확도·간격), `f_v_note`, 다중 트랙 `C_cum` 3벌, `recompute_coverage` + `/recompute`(manual 규칙), `VersionList` + `DecisionDelta`, 확정 대기 목록·[기각], 수색 그림자 GPS 공백 점선 | P1 pod, P2 타임라인 | 일몰 표는 월별 상수. 좌·우 판별이 안 되면 최근접 이웃 하나로 `f_sync = 0.5 + 0.5·min(1, s/W)`(둘일 때 정확, 3명 이상은 ≤ n/2배 과대), 그것도 안 되면 `team_overlap=sum` + `gap_flag`만 |
+| W8 | 10/19–10/25 | 장부 CRUD + `Ledger.jsx` + [반영](현재 사전에 곱함, `params/ledger.json` 팀 가정), 구역 승인/제외 게이트 + `access` 라벨 + 배정(AGENCY_ONLY 422), `recommend.py` 전체 인자(게이트 + 연성 항) + 분해 표 + 전문팀 권고 표, `analysis/experiment_plan.md`(11.1 사전 등록 양식: 라틴 방진 배정표·코스 분리·Poisson-binomial+Brier·표식 해시), `place_markers.py`, `?exp=A|B|C` 플래그, 실험 장소 허가 신청·표식 준비 | P1 ledger·recommend, P2 Ledger·승인 UI, P3/P4 실험 계획 | 장부 UI 미완 → 표 + 폼만. 추천은 9월 단순형 + 게이트만 유지 |
+| W9 | 10/26–11/1 | 역할 코드(fragment) + `require_role` + rate limit + 폐기 + Join 조정자 모드, Volunteer·Family 화면(수색 기록 3단계), `ConsentForm`, `06_hazards.py` + `HazardBanner`, `CheckinTimer` + 조정자 지연 표, 일괄 중지(전파 확인란) + `PauseOverlay`, 보조 채널 문구, `tests/test_roles.py`(노출 경계), `fall_step`(p_fall, 물가 태그 → 0.10) + `test_model_b` (11) 저수지 인접 IPP에서 `terminal & ~traversable` 셀 질량 > 0, (선택) `cloudflared` HTTPS로 폰 테스트(실험 한정, 개발·테스트용 터널임을 서류에 명시) | P1 권한·safety 라우터, P2 봉사자·가족 화면 | 실시간 GPS는 선택이라 손해 없음(GPX 업로드가 정본). 소리 알림은 만들지 않는다 |
+| W10 | 11/2–11/8 | `Report.jsx` 인쇄 + [PDF 첨부] + `handover.zip`(report.pdf 또는 경고 + `manifest.json` + `cli verify`) + `purge_mission`(zip 삭제·VACUUM), HANDED_OVER 가드, `tests/test_handover.py`, PWA 앱 셸 + `10_basemap.py` + PNG precache(`--export-a-png` 합성 함수 재사용, 반나절), 조건 B용 A4 인쇄물(폰 부족 시)·조건 A는 베이스맵만, **11/7(토)–8(일) 모의 수색 실험 1차 + 촬영**(3팀 × 3코스 × 3라운드 라틴 방진, 표식 24~30개(스크립트 배치·해시 봉인), 소티 15분×3 + 사이 GPX 업로드, 실험 전날 `experiment_plan.md` 봉인 태그) | P1 handover·cli, P2 Report·PWA, P3/P4 실험 운영·인쇄물 | 우천·허가 지연 → 11/14–15 예비. PWA는 컷 리스트 2번(앱 셸 + manifest만, 기획서 7절 문구 수정). 10명 미만이면 2×2 교차(팀 2·코스 2·조건 A·C) |
+| W11 | 11/9–11/15 | `analysis/experiment_metrics.py`로 1차 분석(중복률·빈틈·표식 단위 Poisson-binomial + Brier), K1로만 `w0` 보정, K2·K3 고정 평가, 보정 전/후 병기 → `recompute`, 결과 해시 태그, 예비 실험, 인터뷰 3~5명 실시(사전 인터뷰 응답을 보고서 샘플에 반영했는지 확인) | P3/P4 분석·인터뷰, P1 스크립트 | 인터뷰 1명뿐이면 "1명"으로 정직 기재. 결과가 목표 미달이어도 그대로 보고 |
+| W12 | 11/16–11/22 | `compare_models.py --logo`, `sensitivity.py` 표·차트, 가정 스트레스 투표(`stress/` 캐시), 발표 자료(chaos demo 5초 컷 포함), 데모 리허설 2회, **11/21(토) 코드 동결**, 11/22 인터넷 없이 로컬 실행 확인 | 전원 | 민감도는 파라미터 3개(tau0, w0, route_alpha) + `team_overlap`·`consensus.weights`·`sea_mass`만. 스트레스 투표 미완 → 카드에 "가정 검사 미구현" |
+| — | 11/23(월) 최종 리허설, **11/24(화) 본선** | 발표용 노트북 로컬 실행 + 예비 노트북 | | |
+
+---
+
+## 11. 검증 계획과 연결
+
+기획서 8절의 지표를 이 구조에서 어떤 로그·스크립트로 뽑는지 못 박는다. 모든 원자료는 DB(`map_versions.params_json`, `zones_state`, `tracks`, `track_zone`)와 버전 디렉터리의 `C_cum_*.npy`, `research_keep_raw=1` 임무의 GPX에 이미 있다. `analysis/*.py`는 `.venv-pipeline`에서 실행한다(shapely·pandas·gpxpy; 서버 venv에는 shapely가 없다).
+
+| 지표 | 정의 | 원자료 | 스크립트·출력 |
+|---|---|---|---|
+| 발견 개수·소요 시간·이동 거리 | 소티(라운드×팀)별 표식 발견 로그(`markers.csv`: id, lon, lat, hidden_zone, course, found_by_team, found_at), `tracks.length_m` | 실험 운영 기록 + 각 팀 GPX(세 조건 모두 로거로 기록) | `experiment_metrics.py --mission <id> --markers markers.csv` → `results/summary.csv` |
+| **중복 수색률** | 트랙을 `W/2`로 버퍼링(shapely, 분석 전용) → `A_k`, 합집합 `A_union`. 중복률 = `(Σ A_k − A_union) / A_union`. 이 합집합 의미론은 엔진의 `team_overlap=union` 규칙과 같다 | GPX | 같은 스크립트, 소티별·구역별 |
+| **빈틈 면적** | `C_cum_mid < 0.05`인 배정 구역 terminal 셀 수 × 900(런타임과 같은 정의); shapely 버퍼 합집합(`area_m2 − A_union`)은 교차 검증용 | `C_cum_mid.npy` + `zones.geojson` + GPX | 같은 스크립트 |
+| 예측 POD vs 실제 | **표식 단위 Poisson-binomial로 판정하고 적정 점수 규칙을 함께 보고한다.** 표식 j가 숨겨진 구역의 예측 `p_j = pod_mid`(해당 소티 트랙으로 `pod.py` 재계산, **세 조건의 모든 팀 트랙 사용** — POD는 트랙→발견 관계라 지도 조건과 무관), 발견 여부 `y_j∈{0,1}`. (1) 예측 구간: DP로 `P(K=k)`를 구해 `[q_0.025, q_0.975]` 안에 실제 `K=Σy_j`가 들면 '구간 적중'. p_low/p_high 판은 민감도로 병기. (2) Brier = `mean((y_j−p_j)²)`, 기준 Brier_ref = `mean((y_j−ȳ)²)`(상수 예측), skill = `1 − Brier/Brier_ref`. (3) log score = `Σ[y·ln p + (1−y)·ln(1−p)]`(p는 [0.02,0.98]로 클립). **통과 기준 = 평가 코스에서 구간 적중 AND skill > 0**(예측이 상수보다 나은가). 평균 p 이항 판정은 실제 POD가 예측의 두 배인 모델도 높은 확률로 통과시키므로 구간 적중만으로는 판정하지 않는다. 표본이 작아(표식 ≤30, 소티 9) 강한 검정이 아님을 `experiment_plan.md`에 미리 적는다 | 모든 팀의 GPX, `markers.csv` | `experiment_metrics.py --markers markers.csv --split calib=course1 eval=course2,course3` → `results/pod_calibration.csv`(보정 전/후, 코스별, 합산) + 신뢰도 도표(p_j 3구간별 실제 발견률, 참고용) |
+| 목표(기획서 11절) | SearchProof 조건의 중복률·빈틈이 일반 지도 조건 대비(같은 팀의 짝지은 차이 기준) 30% 이상 감소, 평가 코스 POD 판정 통과(구간 적중 AND skill > 0) | | 통과 기준은 `experiment_plan.md`에 실험 전 선언·봉인, 실패해도 보고 |
+| **모델 비교 4종** | 균일 / 동심원(A) / 지형 최소비용(IPP에서 8연결 격자 Dijkstra 최소 이동시간 `T_min`, `P ∝ exp(−T_min/τ)·terminal`, `scipy.sparse.csgraph.dijkstra`) / 다중모델. **정답 생성기 4개(A·B·B′·최소비용) × 평가 모델 4개의 leave-one-generator-out 행렬.** 가상 사건 10개(IPP 무작위, seed 고정). 정답은 표본점이 아니라 생성기 g의 분포 `P_g`(다른 seed) 자체이고, 적중 = `Σ_cells P_g · 1[cell ∈ top_X(P_m)]`(상위 10·20·30% **면적**(terminal 셀 수) 마스크 안에 든 정답 질량 — 6.4 `top_mass_mask`의 질량 마스크와 다르다; 면적 마스크여야 균일 정답의 기대값이 X%가 된다). 다중모델을 생성기 g로 평가할 때는 **g를 뺀 결합 `C_−g`**(A·B·B′ 중 g 제외, 균등 가중)을 쓴다. 보고: 4×4 행렬 + 각 모델의 '최악 생성기에서의 적중'(강건성). **실험 표식 위치는 균일 무작위라 모델 비교 정답으로 쓰지 않는다**(균일 정답에는 모든 모델의 상위 X% 적중 기대값이 X%). 여력이 있으면 팀원 2명이 IPP에서 프로필대로 15분 걸어 멈춘 지점 5곳을 '사람 생성 정답'으로 추가. 결합 가중치 `consensus.json`은 B′ 표본을 정답으로 쓰면 B 계열에 유리하므로 자기 검증임을 명시 | `core/*` 직접 호출 | `compare_models.py --logo` → `results/compare_matrix.csv`. 문구 "생성기와 평가 모델이 같은 칸(대각선)은 참고용, 판단은 대각선 제외 평균과 최악값" |
+| **±20% 민감도** | `tau0, kappa, route_alpha, p_route·p_downhill·p_stay(팀 가정), mobility·t_move(팀 가정), lc_speed 배율, w0 배율, f_v 경계(팀 가정), team_overlap union/sum(하한·상한 비교), sea_mass outside/to_land, p_fall on/off, agency_walk_frac, hazard_gate, hazard_caution, clue_weight·clue_sigma(팀 가정), consensus.weights (1/2,1/4,1/4) vs (1/3,1/3,1/3)`를 ±20%(또는 on/off) → 추천 상위 5 구역 Jaccard, POD 구간 폭 변화, 잔여확률 변화, 다중모델 상위 10·20·30% 적중 차이(결합 가중치가 결론을 바꾸는지 보고). 결과 표에 '팀 가정' 항목을 같은 열로 묶어 보고 | `simulate()`, `pod.py` | `sensitivity.py` → `results/sensitivity.csv` + 막대 차트. 제품 안 스트레스 투표(6.7)와 같은 함수 |
+| 입자 수 충분성 | seed 2개 상위 50% 질량 Jaccard ≥ 0.9, `truncated_frac == 0`, `t_max_over_budget == 0` | | `tests/test_model_b.py` |
+| 수색자 속도 회귀 [9] | 트랙 5-fold RMSE, 중앙값이 0.53/0.39와 맞는가 | Zenodo | `09_fit_speed.py` → `searcher_speed.json`. **탐지폭·POD를 검증하지 않음(6.6 문구)** |
+| 노출 경계 테스트 | 봉사자·가족 코드로 모든 GET을 호출해 응답 본문에 `poa`, `pod`, `score`, `coordinator_note`, `.gpx` 문자열이 없음을 확인. 동의 케이스: `consent_version` 없는 `/api/join` → 400, 성공 시 `members.consent_at` 기록, `consent_version`이 `constants.js`의 현재 판과 다르면 재동의 요구(R9-1) | `tests/test_roles.py` | pytest, W9 |
+| 수용성 인터뷰 | 사전 인터뷰(W5–W6, 3문항) + 화면·인계 보고서 샘플(`docs/handover_sample/`, report.pdf 포함)을 보여 주고 "받을 가치가 있는 정보인가"(W11) | | `docs/interview_notes/` — 인용하되 공식 자문·승인으로 표현하지 않음 |
+
+`analysis/experiment_metrics.py`의 Poisson-binomial DP:
+
+```python
+import numpy as np
+def poisson_binomial_pmf(ps):
+    f = np.zeros(len(ps) + 1); f[0] = 1.0
+    for p in ps:                                   # 표식 하나씩 합성곱
+        f[1:] = f[1:] * (1 - p) + f[:-1] * p
+        f[0] *= (1 - p)
+    return f                                       # f[k] = P(K = k)
+def predictive_interval(ps, a=0.025):
+    cdf = np.cumsum(poisson_binomial_pmf(ps))
+    return int(np.searchsorted(cdf, a)), int(np.searchsorted(cdf, 1 - a))
+def scores(ps, ys):
+    ps = np.clip(ps, 0.02, 0.98); ys = np.asarray(ys, float)
+    brier = np.mean((ys - ps) ** 2); ref = np.mean((ys - ys.mean()) ** 2)
+    logs = np.sum(ys * np.log(ps) + (1 - ys) * np.log(1 - ps))
+    skill = 1 - brier / ref if ref > 0 else float("nan")   # 결과가 한 종류뿐이면(전부 발견/전부 미발견) skill 미정의
+    return brier, skill, logs
+```
+
+`compare_models.py` 핵심:
+
+```python
+def hit(P_truth, P_model, frac, terminal):          # 상위 frac 면적(terminal 셀 수 기준), 기획서 8절
+    pm = np.where(terminal, P_model, -1.0).ravel()  # 바다 셀은 후보 제외
+    k = int(round(frac * terminal.sum()))
+    order = np.argsort(pm)[::-1][:k]
+    mask = np.zeros(pm.size, bool); mask[order] = True
+    return float(P_truth.ravel()[mask].sum() / P_truth.sum())
+# 결합 C_−g: models = {k: v for k, v in priors.items() if k != g}; P_C = sum(models.values()) / len(models)
+```
+
+### 11.1 모의 수색 실험 설계(기획서 8절 강화)
+
+**조건(기획서 8절 그대로 세 가지, 팀이 아니라 조건에 이름을 붙인다):**
+- 조건 A '일반 지도': 베이스맵 + 480 m 구역 격자·번호. 확률·POD·추천 없음
+- 조건 B '동심원 확률지도': A + 모델 A 히트맵
+- 조건 C 'SearchProof': A + 다중모델·합의·POD 구간·미발견 갱신·추천
+
+**매체 통일(권장):** 세 조건 모두 같은 MissionMap 화면을 쓰고 `?exp=A|B|C` 플래그로 레이어를 잠근다(`LayerToggle`에서 A: 히트 전부 off·ZoneTable·TrackReplay 숨김, B: prior_a만 on, C: 전부). 프런트 20줄. 화면·배정 절차가 같아지므로 남는 차이는 '정보'뿐이다. 폰이 부족하면 조건 A·B를 인쇄물(`run_demo --export-a-png`: 모델 A PNG + hillshade·도로 베이스맵 A4, 조건 A는 베이스맵만)로 가되 결과 표에 "매체(종이/화면) 교락 있음"을 명시한다.
+
+**배정·갱신 절차(세 조건 동일):** 조정자 1명(수색 안 함)이 그 조건에서 보이는 정보만으로 구역을 배정한다. 소티 45분을 15분 × 3으로 나누고 사이 3분에 팀 전원 GPX를 업로드한다. C 조건만 업로드·확정 후 지도·추천이 바뀐다(A·B는 업로드만 하고 화면 변화 없음). 실시간 GPS는 되면 쓰고 안 돼도 실험은 성립한다. 터널이 죽으면 종이 배정표 + 전화 전파로 계속한다.
+
+**교차 배정(라틴 방진):** 팀 3개(T1~T3), 코스 3개(K1~K3, 각 2~3 구역), 라운드 3회.
+
+| 라운드 | T1 | T2 | T3 |
+|---|---|---|---|
+| 1 | K1·A | K2·B | K3·C |
+| 2 | K2·C | K3·A | K1·B |
+| 3 | K3·B | K1·C | K2·A |
+
+각 팀이 세 조건을 모두 겪고, 각 코스가 세 조건을 모두 겪으며, 같은 코스를 두 번 가지 않는다. 팀·코스 효과가 상쇄된다. 라운드 사이 표식은 그대로 두고(코스가 다르므로), 발견한 표식은 제자리에 둔다(발견 기록만). 총 3라운드 × 50분 ≈ 3시간 + 준비 → 토요일 오전~오후, 일요일은 예비. 10명 미만이면 팀 2개 × 코스 2개 × 조건 A·C의 2×2 교차(T1: K1·A→K2·C, T2: K1·C→K2·A).
+
+**표식:** 코스당 8~10개, 총 24~30개(색 천은 비용 0). 위치는 사람이 고르지 않고 `analysis/place_markers.py --seed N`이 코스 구역의 `terminal & traversable` 셀에서 균일 무작위로 뽑는다(기획서 8절 "무작위로 숨기고"를 스크립트로 실현). 숨기는 사람은 P3/P4 1명, 수색자·조정자에게 보이지 않는다. 숨기기 완료 직후 `shasum -a 256 markers.csv`를 `experiment_plan.md`와 팀 채팅에 올린다(봉인). `markers.csv`는 실험 종료 후 공개한다.
+
+**보정/평가 분리:** `w0` 전역 배율 1개는 **K1 표식·트랙으로만** 적합(`w0_scale = argmin Brier` 격자 탐색 0.5~2.0). K2·K3는 w0 고정(보정 전 파라미터)으로 판정한다. 보정 전 결과와 보정 후 K1 결과도 같은 표에 나란히 보고한다. 시간이 있으면 leave-one-course-out 3회의 평균을 추가한다.
+
+**팀 비교 지표(기획서 8절·11절):** 발견 개수·시간·거리·중복률·빈틈은 소티(라운드×팀) 단위로 계산하고, 팀별 짝지은 차이 `Δ_T = 지표(C) − 지표(A)`를 보고한다. 목표 판정 = 세 팀 Δ_T 중앙값이 −30% 이하. 소티 9개로 p값은 내지 않고, 부트스트랩(팀 단위 재표본 1,000회)으로 Δ의 구간만 그린다. 방향이 갈리면 그대로 쓴다.
+
+**사전 등록과 봉인(`analysis/experiment_plan.md`, W8에 작성, 실험 전 커밋):**
+> 이 문서는 실험 전에 커밋되며(커밋 해시 `____`), 실험 후 수정하지 않는다. 가설 H1: 조건 C의 중복률·빈틈이 조건 A 대비 30% 이상 작다. H2: POD 예측은 평가 코스(K2·K3)에서 Poisson-binomial 95% 예측 구간에 들고 Brier skill > 0이다. 평가 코스 발견률이 0 또는 1이면 skill은 미정의로 보고하고 구간 적중·log score만 판정한다. 분석 코드는 `analysis/experiment_metrics.py` 커밋 `____`으로 고정한다. 파라미터는 `params/*.json` 커밋 `____`이며 w0 배율만 K1으로 보정한다. 표식 파일 SHA-256: `____`. 결과는 H1·H2 각각 '충족/미충족'과 위 표 형식으로 본선 서류에 그대로 싣고, 미충족이어도 삭제·재분석하지 않는다. 표본이 작아(표식 ≤30, 소티 9) 이 실험은 모델의 결함을 찾는 실험이지 정확성을 증명하는 실험이 아니다.
+
+```
+실험 전날: sha256(experiment_plan.md) 와 sha256(markers.csv, 운영자만 보관)을 experiment_plan.md 끝 '봉인' 절에 기록
+          → git commit → git tag exp1-sealed-YYYYMMDD → 태그 커밋 해시를 발표 자료에 기재
+실험 직후: sha256(versions.csv, zones_state 덤프)을 같은 방식으로 exp1-result-YYYYMMDD 태그
+실험 후:  markers.csv 공개 → 해시 대조. 결과가 목표 미달이어도 그대로 보고(기획서 8절)
+```
+
+---
+
+## 12. 리스크와 잘라내기 순서
+
+| 리스크 | 징후 | 대응(결정 시한) |
+|---|---|---|
+| 국토지리정보원·환경부 가입·승인 지연 | 9/6 저녁까지 파일 없음 | Copernicus + WorldCover 확정. 기획서 7절 문구 수정. 본선에 오면 `01/02` 입력 경로만 교체(9/6) |
+| Koester 원문 미확보 | 9/6까지 사분위 없음 | [10]·[11] 표에서 옮겨 적고 `_source`에 논문·표 번호. 그래도 없는 카테고리는 select 비활성. 모델 A가 돌 카테고리 최소 1개 확보가 예선 필수(9/6) |
+| Copernicus/WorldCover URL 불일치 | `curl -I` 404 | AWS 버킷 목록에서 타일명 재확인 → 최후 AWS Terrarium 표고 타일(z12) 스티칭, 또는 한 명이 국토정보플랫폼 수동 다운로드(9/6) |
+| rasterio 설치 실패(Mac) | `import rasterio` 오류 | miniforge 파이프라인 전용 환경 → Colab. 서버는 영향 없음(9/4) |
+| pyproj 설치 실패 | 서버 기동 실패 | 휠 재설치(`pip install --only-binary :all: pyproj`) → miniforge(9/4) |
+| 모델 B가 링 모양·바다로 감·너무 느림 | 9/13 미리보기 | `07_check` 레이어 확인 → `traversable`·`p_stay`·`tau0` 조정 → B′ N 1만(데모 기본) → B도 1만. 바다 확률은 마스크→재정규화 순서 테스트로 잡는다. IPP 통행 불가 400 가드, `start_snapped_frac` 배지(9/13) |
+| B와 B′가 구분 안 됨 | 9/15 지도 | ① `model_b.json` 행동 비율이 0/null로 읽히는지, `bprime=True`가 라우터에서 실제로 전달되는지 확인 ② 합성 지형 테스트 (3) 도로 인접 질량 ≥ 80%, (4) 저지대 우세 통과 확인 ③ 둘 다 정상인데도 갈리지 않으면 그것이 결과다 — 선언값 유지, 배지·자막 '이 사건에서는 행동 가정이 분포를 크게 바꾸지 않음'. A vs B 계열 불일치는 여전히 그려진다. **결과를 보고 `route_alpha`·`p_route`를 올리지 않는다**(9/15) |
+| `/compute` 12 s 초과로 촬영 중 멈춘 듯 보임 | 9/22 리허설 | stage 진행 텍스트 확인, B′ 1만 입자, 그래도 길면 Tier 1' 사전계산(9/22) |
+| 데모 중 더블클릭·계산 중 지도 클릭으로 버전 꼬임 | 9/22 리허설에서 같은 `version_no` 두 개 또는 A와 B의 IPP 불일치 | `VERSION_LOCK`·`compute_id`·sha256 409·버튼 비활성은 W3 필수. 리허설 체크: [팀1 재생] 두 번 눌러 409 확인, B 계산 중 지도 클릭이 막히는지 확인(9/20) |
+| 트랙 재생·갱신 미완 | 9/20 동결 시점 | 영상 48–72초를 정적 목업으로(9/20) |
+| 서버가 촬영 직전 죽음 | 9/23 | Tier 1' 사전계산 정적 파일 + 터미널 엔진 컷, 9/22 리허설 녹화본(9/22) |
+| 베이스맵 타일 장애 | 촬영 당일 | OSM 래스터 스타일 JSON 폴백(보는 타일만)(9/22) |
+| Zenodo 데이터 형식 불일치·회귀 실패 | 10/11 | 문헌 상수 + 각주(조건부). 회귀 실패 사실을 서류에 기재(10/18) |
+| 중간고사 | 10월 초·중순 | W6·W7 저부하로 계획됨. 밀리면 W8 항목 중 추천 고급 인자 컷(게이트는 유지) |
+| 폰 실시간 GPS(HTTPS·iOS) | 11/1 | GPX 로거 업로드가 기본 경로. 실시간은 선택(11/1) |
+| 모의 실험 우천·허가·인원 | 10/25 장소 미확정 | 예비 주말 11/14–15, 장소는 10월 중 확정, 인원 10명 미만이면 2×2 교차(팀 2·코스 2·조건 A·C)(10/25) |
+| 인터뷰 섭외 실패 | 11/15 | 9월 말부터 연락, 최소 1명, 없으면 "미확보" 기재(11/15) |
+| 팀원 이탈·시험 | 상시 | Tier 0만 보장, 컷 리스트 순서대로 |
+| 과신(화면이 "정답 지도"처럼 보임) | 리뷰 | 합의/불일치 빗금·잔여 배지·POD 구간·고정 문구·출처 배지·'팀 가정' 배지는 절대 못 자르는 것 |
+
+**밀리면 먼저 자를 것(위에서부터)**
+1. 입자 애니메이션, 1시간 스냅샷, hillshade 레이어(이미 '만들지 않는 것')
+2. PWA 베이스맵 PNG precache(앱 셸 + manifest만 남기고 **기획서 7절을 '앱 셸 오프라인 캐시(지도는 온라인)'로 고쳐 제출**)
+3. 실시간 폰 GPS·`track_points`(선택 항목, GPX 업로드로 대체)
+4. 가정 스트레스 투표(`sensitivity.py` 결과 표로만 보고)
+5. 버전 타임라인 UI(버전 목록 select + 델타 문장으로 축소)
+6. 추천 점수 고급 인자(`poa_c × POD_plan`으로 축소, 단 spread·hazard 연성 항과 **위험 게이트는 본선에 있어야 함**)
+7. 단서 반영 전/후 토글(`VersionList` 나란히 보기로 대체), 매체 통일 `?exp=` 플래그(잘라도 되나 교락 명시)
+8. 민감도 파라미터 수(전체 → 3 + on/off 3), 모델 비교 가상 사건 수(10 → 5). 라틴 방진은 2×2까지만 줄이고 교차 자체는 자르지 않는다
+9. 가족 화면(코드 발급 + 3단계 지도만으로 축소)
+10. Zenodo 회귀(**조건부**: 형식 불일치·시간 부족일 때만 문헌 상수 + 각주)
+
+**절대 못 자르는 것**
+- 실제 한림읍 지형 위에서 모델 A·B·B′가 진짜로 계산되는 장면, 합의·불일치(세 가설을 각각 실제로 계산해 그리는 것 — 갈리지 않으면 갈리지 않는다고 표시), 숫자로 표시된 모델별 잔여확률
+- 잔여확률 사유별 표시(해상 포함)와 해안 인접 경고 문구
+- GPX가 셀 커버리지와 구역별 POD **구간**으로 바뀌고, 갱신은 조정자 확정 버튼으로만 일어나며(업로드만으로 지도가 바뀌지 않는다), 미발견 갱신으로 지도가 실제로 바뀌는 장면(잔여확률이 커지는 것 포함)
+- `Distribution.check()` 불변식(`grid.sum() + outside == 1`)이 모든 모델·결합·갱신 함수 끝에 있는 것
+- 고정 문구 두 문장, 출처 표기, "해외 문헌 기반·국내 미검증" 배지, "임시 파라미터" 표기, "팀 가정" 배지
+- 프로필 사분위 null 원칙(지어낸 국내 통계 없음), 출처 없는 값의 `_assumptions`·`model_b.json`·`ledger.json` 격리, 영상·서류의 실제/재생/미구현 정직 구분
+- **숫자 규칙:** 설계서·자막·서류·화면의 모든 숫자는 (a) 출처 있는 문헌값, (b) '팀 가정' 배지가 붙은 파라미터, (c) 실제 실행 로그에서 복사한 값 셋 중 하나여야 한다. 형식 설명용 숫자에는 반드시 "예시(실측 아님)"를 붙인다. 외부 검토문의 `84회`·`18%`·`72%`는 옮기지 않는다
+- 버전 파일 화이트리스트(트랙·증거 파일이 URL로 열리지 않음), `VERSION_LOCK`·`UNIQUE`·pending→rename
+- 본선: 조정자 승인 게이트, 장부 자동 반영 금지, 동의 화면, 태그 저장(건강 원문 없음), 인계 시 원본 트랙 **서버** 삭제(zip 포함), **위험 게이트(hazard_gate 이상·walk_frac 미만 구역 봉사자 배정 금지)와 AGENCY_ONLY 구역 별도 표(확률 유지)**, **봉사자·가족 화면 문구 '안전 보조 도구, 무전·전화 대체 아님'**, 일괄 중지, 체크인 지연의 조정자 통보, 인계 zip(report.pdf·GPS 오차·미수색 구역·잔여확률·파라미터 버전·manifest 포함), 모의 수색 실험 1회와 실패 포함 보고, 실험 전 커밋된 `experiment_plan.md`(커밋 해시·표식 해시 포함)와 보정/평가 코스 분리, 모델 비교 표, `tests/test_roles.py`·`tests/test_handover.py`
+
+---
+
+## 13. 팀 역할 분담 제안
+
+| 역할 | 담당 | 9월 | 10~11월 |
+|---|---|---|---|
+| P1 백엔드·모델 | Python | 파이프라인(water·sea 정본·traversable·terminal·water_dist·zone_valid), `dist.py`, `model_a/b`(팀 가정 분리·사유별 잔여·예산·IPP 가드·이탈 방향), `consensus`(가중 결합), `zones`, `pod`(셀 래스터), `bayes`·`versions`(Distribution·락·pending·UNIQUE), API(stage compute `compute_id`·tracks 두 단계·files 화이트리스트), 테스트 | `09_fit_speed`, POD 전체 인자(f_sync 좌·우·소티), `fall_step`(W9, p_fall·물가 태그), `recompute_coverage`, ledger(`ledger.json`), recommend(게이트+점수+스트레스 투표), 권한(fragment·rate limit), handover(PDF 첨부·zip·manifest·verify·purge), `--export-a-png`, `10_basemap`, 분석 스크립트(Poisson-binomial·LOGO) |
+| P2 프런트·지도 | React·MapLibre | MapView, 레이어(그림자 포함)·배지(사유별)·해안 경고·표, `ComputeProgress`(compute_id), 재생(업로드→표→애니메이션→확정 순서), 추천 변화 한 줄(Tier 1), 갱신 전/후 토글, 폴백 스타일, `api.js` 헤더·fragment 규칙 | 타임라인 + 델타, Ledger, 승인·배정 UI(AGENCY_ONLY), 확정 대기 목록, Join 조정자 모드, 봉사자·가족 화면(수색 기록 3단계·보조 채널 문구), 안전 UI, Report 3단계 흐름(경고형), PWA 베이스맵 precache, `?exp=` 플래그, 스트레스 카드 |
+| P3 데이터·문서·영상 | 조사·편집 | 데이터 소스 확보·가입 시도, 프로필 원문 대조([10]·[11] 대체 포함), `DATA_NOTES.md`, 스토리보드·자막·촬영·편집, 기획서 수정 문구(16절) | 사전 인터뷰(W5–W6), 실험 계획(11.1 사전 등록·봉인)·장소 허가·표식 스크립트 배치·인쇄물, 인터뷰 섭외·실시, 발표 자료(chaos demo 컷) |
+| P4 검증·실험 | (있으면) | 데모 경로 3회 테스트(409·버튼 비활성 확인), GPX 수집, 기획서 빈칸 | 실험 운영·기록(라틴 방진), `experiment_metrics` 결과 정리, 민감도·비교 표 |
+
+2명: P1+P3 / P2+P4. 3명: P4 업무를 P3(실험·인터뷰)와 P1(분석 스크립트)이 나눈다. 매일 커밋, 주 1회(일요일 저녁) 마일스톤 확인 30분.
+
+---
+
+## 14. 첫 주에 당장 할 일 (9/2–9/8)
+
+- [ ] 9/2 GitHub 저장소 생성, 4절 폴더 뼈대, `.gitignore`(`data/raw/`, `data/missions/`, `.venv*`, `node_modules/`)
+- [ ] 9/2 `python3.12 -m venv .venv && pip install -r backend/requirements.txt` → `python -c "import numpy, scipy, pyproj, PIL; print('ok')"`; 파이프라인 venv 별도(`requirements-pipeline.txt`에 pandas·gpxpy 포함) → `import rasterio, shapely, pandas` 확인(실패 시 miniforge/Colab 경로로 즉시 전환)
+- [ ] 9/2 Copernicus·WorldCover URL `curl -I` 200 확인 후 `data/raw/`에 다운로드
+- [ ] 9/2 Koester 『Lost Person Behavior』 확보 시도(도서관·구매)와 병행해 [10] Hashimoto 2022 Sci Rep·[11] Lin & Goodrich 2010 PDF를 내려받아 IPP 거리 사분위 표가 있는 페이지·표 번호를 `DATA_NOTES.md`에 적는다
+- [ ] 9/3 Overpass 질의 실행 → `data/raw/overpass.json` way 1,000개 이상 확인
+- [ ] 9/3 `npm create vite@latest frontend -- --template react` + `maplibre-gl` → OpenFreeMap 스타일로 한림(33.40, 126.27) 지도가 뜬다
+- [ ] 9/3 한 명이 국토정보플랫폼·egis 가입 시도(병행). 9/6 저녁 go/no-go
+- [ ] 9/4 geojson.io로 격자 중심·범위 확인 → `00_grid.py` 고정 → `meta.json`
+- [ ] 9/4 `params/model_b.json`에 팀 가정 행동 비율(`p_route 0.5, p_downhill 0.5, p_stay 0.1`, `_note`)과 `max_steps 3000` 기록; `params/hazard.json`·`consensus.json`(weights 1/2·1/4·1/4) 작성; `subject_profiles.json` 뼈대에 `_assumptions` 하위 객체 분리
+- [ ] 9/6 `01~05, 07` 실행 → `data/hallim/` 커밋(`water.npy`·`sea.npy`는 02 산출물, `traversable.npy`·`terminal.npy`·`water_dist.npy`·`zone_valid.npy` 포함), `preview/*.png` 10장 팀 전원 육안 확인(바다 비어 있나, `sea.png`에서 저수지가 하늘색인가, 도로 보이나, 경사 방향 맞나, 수역 거리가 해안에서 0인가)
+- [ ] 9/6 **go/no-go: `subject_profiles.json` 최소 2 카테고리(치매 노인, 성인 탐방객) 사분위 채움** — Koester 또는 [10]·[11]에서 옮겨 적고 `_source`에 논문·표 번호·페이지. 채우지 못한 카테고리는 null 유지(select 비활성)
+- [ ] 9/7 `core/dist.py` + `tests/test_dist.py`(check 통과/실패 케이스) 통과
+- [ ] 9/7 `model_a.py` + `test_model_a.py`(합 = 1 − 잔여, `residual == sum(detail)`, 바다 0, 저수지 > 0, 해안 IPP `sea > 0`, reach 스파이크 없음, null 프로필 → 400) 통과
+- [ ] 9/7 `schema.sql`에 `UNIQUE(mission_id, version_no)`·`UNIQUE(mission_id, sha256)`·`tracks.status` 포함, README 실행법에 "uvicorn app.main:app --port 8000 (워커 1개, --workers 금지)" 명시
+- [ ] 9/7 `routers/files.py` 화이트리스트(`png|geojson`, `v\d+|pending_*`, 경로 이탈 차단) + `api.js`의 `X-Role-Code` 헤더·fragment 규칙(9/27은 `AUTH_DISABLED=1`이라 헤더가 비어도 통과)
+- [ ] 9/8 지도 클릭 → `/compute`(stage a만, `compute_id` 반환) → 동심원 PNG가 `/files/post_a.png`(v0는 post = prior) image source로 뜬다. 스크린샷을 `docs/`에 저장
+- [ ] 9/8 `demo/storyboard.md` 초안(9절 대본 표를 초 단위로, 실제/재생/정적 구분 열 포함; 재생 장면은 "업로드·표 → 애니메이션 → 확정 → 결과" 순서로 기록), 인터뷰 대상 명단 초안, 사전 인터뷰 3문항 초안
+
+---
+
+## 15. 요구사항 추적표
+
+ID 규칙: `R<기획서 절>-<번호>`. 기획서 §6은 근거 3개를 R6-A1~A3(시뮬레이션·베이지안 갱신·파라미터 적합), 과신 방지 4겹을 R6-G1~G4(다중모델·POD 구간·잔여·고지+승인)로 나눈다. '테스트' 열의 **없음**은 `backend/tests/` 목록에 해당 테스트 파일이 없다는 뜻이며 본선 전 추가 대상이다. '영상' 열은 9절 대본 표의 초를 적고 나머지는 `storyboard.md`(9/8 초안)에서 확정한다.
+
+### 9/27 예선
+
+| ID | 기획서 요구 | 설계서 절 | API | 테스트 | 90초 영상 시점 |
+|---|---|---|---|---|---|
+| R5.1-1 | 모델 A 동심원 사전확률 | 6.1 | `POST /compute stage=a` | `test_dist`, `test_model_a`(합=1−잔여, 사유별, 바다 0, 저수지>0, null→400) | 7–22초 |
+| R5.1-2 / R6-A1 | 모델 B 이동비용 격자 몬테카를로 | 5.3(04_cost), 6.2 | `POST /compute stage=b` | `test_model_b` (1)(2)(5)~(10) | 7–22초 + 터미널 엔진 3초 컷 |
+| R5.1-3 | B′ = B의 파라미터 스위치 | 6.3 | `POST /compute stage=b2` | `test_model_b` (3)(4) | 7–22초 |
+| R5.1-4 | 합의 구역·불일치 구역 구분 | 6.4 | `stage=b2` 응답 `heat.consensus`, `/versions/{v}/files/*.png` | `test_consensus`(마스크 합 0~3, 가중 결합 `check()`) | 22–34초 |
+| R5.1-5 / R6-G3 | 지도 밖·모델 밖 잔여확률 숫자 상시 표시(사유별) | 6.1·6.2·6.4, 9 `ResidualBadge`·해안 경고 | `/compute` 응답 `residual:{a,b,b2,c}` | `test_model_a`, `test_model_b`(5) | 22–34초 |
+| R5.1-6 / R6-G4(고지) / R9-9 | 고정 문구(판단 보조·낮은 확률≠부재) | 9 `Disclaimer` | — | 없음(육안) | 전 구간, 72–82초 클로즈업 |
+| R4-3 | 구역 분할·우선순위 | 5.3(05_zones), 6.5 | `stage=b2` 응답 `zones_url` | `test_zones`(reshape 인덱스 = `zones_id`) | 60–72초 |
+| R4-5 | 휴대폰 GPS 트랙 기록(예선은 모의 GPX) | 5.3(08_demo_tracks), 9 `TrackReplay` | `POST /tracks` | `test_versions` ⑪(sha256 409) | 34–48초, 자막 "모의 트랙 재생" |
+| R4-6 / R5.2-2 | 트랙마다 셀 커버리지·구역 POD **구간** 계산 | 6.6 임시판(±30%), `rasterize_track`·`zone_stats` | `POST /tracks` 응답 `zone_pod` | `test_pod` (1)~(7) | 34–48초 |
+| R5.2-4 / R6-A2 | 미발견 베이지안 갱신(잔여 포함, 조정자 확정) | 6.6 트랙 상태, 6.7 `posterior_cells` | `POST /tracks/{tid}/apply` → `trigger=track:<id>` | `test_bayes`, `test_versions` ①~⑬ | 48–60초 |
+| R4-6(후반) | 다음 우선 구역 재추천 | 6.7 "9/27: `score = poa_c_post × POD_plan`", 추천 변화 한 줄(Tier 1) | `apply` 응답 `recommended[3]`, `recommended_prev` | `test_recommend` | 60–72초 |
+| R6-G1 / R6-G2 | 다중 모델 표시·POD 구간 표시 | 6.4 표시, 9 `LayerToggle`·`ZoneTable` | — | 없음(육안) | 22–34초, 72–82초 |
+| R5.2-1(선) | 지나간 선 대신 수색 기록(그림자) | 2 렌더, 6.6, 9 `LayerToggle` | `/files/shadow.png` | `test_pod` (2) | 34–48초(Tier 1) |
+| R7-3 | 데이터 소스·ODbL 출처 표기 | 5.1, 9 `Attribution` | `GET /api/base/meta` | `07_check` 육안 10장 | 지도 우하단 상시 |
+| R7-5 | 한림읍 한 곳 고정 | 5.2 | `GET /api/base/meta` | `test_grid` | — |
+| R12 | 모델 A·B가 실제로 도는 90초 영상 | 10 Tier 0, 9 대본 | — | 9/21–22 데모 경로 3회 | 전체 |
+
+### 11/24 본선
+
+| ID | 기획서 요구 | 설계서 절 | API | 테스트 | 시연 |
+|---|---|---|---|---|---|
+| R4-1 | 조정자가 신고번호 확인 후 임무 개설 | 7 `missions.case_ref`, 9 | `POST /api/missions`, `/members` | **없음** | 본선 |
+| R4-2 | 가족이 위치·유형·경과 시간 입력 | 9 가족 Intake | `PUT /subject`(가족) | `test_roles`(역할별 필터) | 본선 |
+| R4-4 / R9-5 | 봉사자 참여 코드·배정 구역·최소 인상착의 | 9 봉사자 MyZone, 7 노출 매트릭스 | `POST /api/join`, `/assignments` | `test_roles`(`require_role`, 확률 키 없음) | 본선 |
+| R4-6(확정) | 트랙 확정·기각 대기 목록 | 6.6, 8 | `GET /tracks?status=UPLOADED`, `/reject` | `test_versions` ⑬ | 본선 |
+| R5.2-1 | 간격·속도·정지·경사·일몰 인자, 같은 소티 합집합 | 6.6 전체 | `POST /tracks`, `/recompute` | `test_pod` (8)~(11) | 본선 |
+| R5.2-3 / R6-A3 | Zenodo [9] 파라미터 적합(속도·경사만) | 6.6 `09_fit_speed.py` | — | `rmse_cv` 기록 | 본선 표 |
+| R5.2-5 | 다중가설·위험·불확실성 추천 점수(위험 게이트 + 연성 항) | 6.5 `access`, 6.7 | `GET /recommend` | `test_recommend`(AGENCY_ONLY 제외·별도 표) | 본선 |
+| R5.3-1 / R5.3-2 | 장부 필드·자동 반영 금지 | 6.8 | `/ledger`, `PATCH`, `/apply` | `test_versions` ⑤(clue 뒤 track) | 본선 |
+| R6-A2(단서) | 단서 베이지안 반영(팀 가정 w) | 6.7 `apply_clue`·6.8, `params/ledger.json` | `POST /ledger/{lid}/apply` | `test_bayes` ④ | 본선(반영 전/후 토글) |
+| R5.3-3 | 패키지(PDF·GPX·GeoJSON·표·GPS 오차·장부·미수색·잔여·파라미터 버전) + 재현 매니페스트 | 6.9 | `/packages/attach`, `/packages`, `handover.zip`, `cli verify` | `test_handover`(zip 목록·manifest·verify) | 본선(chaos demo 5초) |
+| R6-G4(승인) | 구역 확정은 조정자 승인 | 6.5 상태, 6.8 결정 기록 | `/zones/{zid}/status`, `/assignments` | `test_recommend`(422) | 본선 |
+| R7-2 | PWA 오프라인 캐시(자체 렌더 베이스맵) | 3 PWA, 5.3 `10_basemap.py` | — | — | 기획서 7절 문구 수정 |
+| R7-4 | SQLite + 역할 기반 접근 제어 | 3 인증, `deps.py` | `X-Role-Code`, `/revoke` | `test_roles` | 본선 |
+| R8-1 | 모의 수색 실험(사전 선언·봉인·실패 보고) | 11, 11.1 | — | `experiment_metrics.py` | 본선 영상 |
+| R8-2 | 모델 4종 비교(LOGO) | 11 | — | `compare_models.py --logo` | 본선 표 |
+| R8-3 | ±20% 민감도(+스트레스 투표) | 11, 6.7 | `/recommend` `vote` | `sensitivity.py` | 본선 표 |
+| R8-4 | 수용성 인터뷰 3~5명 | 11, 10 W5–W6(사전)·W11 | — | `docs/interview_notes/` | 본선 |
+| R9-1 | 위치정보 명시 동의 | 9 `ConsentForm` | `/api/join consent_version` | `test_roles`(동의 케이스 추가: `consent_version` 없는 `/api/join` → 400, 성공 시 `members.consent_at` 기록, `consent_version`이 `constants.js`의 현재 판과 다르면 재동의 요구) | 본선 |
+| R9-2 | 종료 시 원본 트랙 삭제(서버 측, zip 포함) | 6.9 `purge_mission` | `/transition HANDED_OVER` | `test_handover`(purge 후 gpx·zip 부재) | 본선 |
+| R9-3 / R9-4 | 그룹 내 노출 제한·건강 태그 저장(물가 태그 → `p_fall`) | 7 `subjects`, 노출 매트릭스, 6.2 | `GET /subject` 역할 필터 | `test_roles` | 본선 |
+| R9-6 | 위험구역 진입 경고 | 5.3 `06_hazards`, 9 `HazardBanner` | `/alerts` | **없음** | 본선(보조 채널 문구) |
+| R9-7 | 체크인 타이머·조정자 통보 | 9 `CheckinTimer`, 7 `checkins` | `/checkin`, `/state.overdue` | **없음** | 본선(보조 채널 문구) |
+| R9-8 | 조정자 일괄 수색 중지 | 9 `PauseOverlay` | `/transition PAUSED`(전파 확인란), `/pause_ack` | **없음** | 본선(보조 채널 문구) |
+| R12-1 | 국내 사례 축적 절차 설계 | 6.9 | — | — | 본선 서류 1쪽 |
+
+본선 행의 '없음'은 W8–W10에 `tests/test_roles.py`(노출 매트릭스), `tests/test_handover.py`(zip 목록·purge)로 채운다. 최소 이 두 파일은 절대 못 자르는 것에 들어 있다.
+
+---
+
+## 16. 검토 반영 기록
+
+2026-09-02 외부 검토 12개 항목에 대한 검증자 판정과 이 설계서에 반영한 결과다. 판정은 반영·수정 반영·미반영 셋이며, 한 항목 안에서 채택하지 않은 부분은 별도 행으로 적었다.
+
+| 검토 항목 | 판정 | 한 줄 이유 | 바뀐 절 |
+|---|---|---|---|
+| 1. `passable` 하나에 개념 혼합 | 수정 반영 | 이동(`traversable`)과 존재(`terminal`) 두 장으로 분리, 확률 0은 바다뿐, 해상 질량은 '모델 밖' 잔여로 표시, 위험은 라벨 게이트 + 연성 항 | 결정표 #12·#18, 1, 4, 5.2, 5.3, 6.1, 6.2, 6.5, 6.7, 6.9, 9, 11, 12 |
+| 1-가. 네 층(`subject_move_cost/terminal_possible/team_accessibility/hazard_gate`) 분리 | 미반영 | 수색대 위험(`hazard.npy`·`hazards.geojson`·`EXCLUDED`·야간 규칙)은 이미 확률과 분리돼 있어 마스크 두 장 + `access` 라벨이면 충분, 네 층은 과설계 | — |
+| 1-나. 위험은 점수항이 아니라 hard gate만 | 미반영(결합) | 기획서 5.2가 '지형 위험이 낮으며'를 점수 기준으로 명시하므로 게이트(임계 이상) + 연성 항(임계 미만) 결합. 항목 1의 0.8과 항목 9의 0.6 중 엄격한 0.6을 `hazard_gate`로 통일 | 6.5, 6.7 |
+| 2. 480 m 구역 단위 할인 | 수정 반영 | 셀 래스터 `C_cum(x)` (512,512)로 전환, 구역 POD는 사전가중 집계, 기획서 5.2 식은 구역 수준에서 그대로 재현 | 결정표 #4, 2, 6.5, 6.6, 6.7, 7, 9, 11 |
+| 2-가. 구역 POD 공식 자체가 틀렸다 | 미반영 | 1−exp(−WL/A)는 무작위 수색 표준식이며 기획서 수식과 일치. 문제는 균일 적용이었고 셀 단위로 해결 | — |
+| 3. `f_sync = min(1, s/W)` 반례 | 수정 반영 | 같은 소티 안 합집합 몫 계수 `(min(s_L,W)+min(s_R,W))/(2W)`, 소티 간 합산, `team_overlap` 파라미터, 구 식 폐기 | 결정표 #3, 4, 6.6, 7, 10 W7, 11 |
+| 3-가. 상관 고려 누적 생존도·셀별 max | 미반영 | 추정 데이터가 없는 과설계이고 30 m 셀에서 s≈W 합집합을 절반으로 깎는다. 점별 침적에 계수 곱이 정확하고 가산 구조 유지 | — |
+| 4. 업로드 = 미발견 증거 모순 | 수정 반영 | `POST /tracks`는 저장·POD 미리보기만, `POST /tracks/{tid}/apply`([완료·미발견 확정])만 버전 생성. `tracks.status` 4값, `sha256` UNIQUE | 결정표 #16·#21, 1, 6.6, 6.7, 7, 8, 9, 10, 12, 15 |
+| 4-가. 6단계 상태기계·VALIDATED·ABORTED·Idempotency-Key 헤더 | 미반영 | 검증은 업로드 시 동기 400, 중단 소티도 걸은 만큼 증거, 파일 해시가 곧 키 | — |
+| 5. 확률 불변식 위반 | 수정 반영 | `Distribution(grid, outside, detail)` + `check()`, 원질량 결합, `apply_clue(L_out=1)`, `posterior_cells` 반환 정리, `residuals.json` 사전·사후, 구역 표에 POA·POS 구간 컬럼 | 2, 4, 6 공통, 6.4, 6.7, 7, 8, 14 |
+| 5-가. 사후 래스터 low/high 3벌 저장 | 미반영 | 결정 #4대로 래스터는 mid 한 벌, low/high는 구역 표에만(파생값 12장 저장은 과설계) | — |
+| 6. 모델 A·B 의사코드 오류 | 수정 반영 | reach 절단 후 재정규화, 잔여 사유 분리, `tau ≤ remaining`(dtype 통일), 초기 격자 밖 입자 잔여 처리, IPP 통행 불가·`P.sum()==0` 가드, `ipp_sigma_m` 실제 전달, 평활 한계 명시 | 5.1, 6.1, 6.2, 8, 12, 14 |
+| 6-가. 장벽 비인지 평활 제거 | 미반영 | σ=0이면 2만 입자 히스토그램이 그대로 그려져 히트맵이 깨진다. 9/27은 한계 명시, 본선 정규화 마스크 합성곱 | — |
+| 7. B′ 이중 투표·`route_alpha` 사후 튜닝 | 수정 반영 | 가중치 A 1/2·B 1/4·B′ 1/4, 가중 기하평균, `top_*` 저장·체크 표시, 튜닝 문구 삭제, "갈리지 않으면 그것이 결과" | 결정표 #20, 4, 6.3, 6.4, 6.5, 6.7, 10 W2, 11, 12 |
+| 7-가. 평균을 없애고 최악값·범위로만 결정, 라벨 전면 교체 | 미반영 | 기획서 8절 '다중모델' 비교와 `compare_models.py`에 단일 순위장이 필요하고 '합의/불일치'는 기획서 5.1 확정 용어. P_C는 레이어·단순 점수·비교 전용으로 격하, 새 표현은 부제로만 | — |
+| 8. 검증 계획이 통과하기 쉬움 | 수정 반영 | 표식 단위 Poisson-binomial + Brier/log score, 라틴 방진 교차, 매체 통일, 표식 스크립트 배치·해시 봉인, 보정/평가 코스 분리, LOGO 모델 비교, 사전 등록, [9]의 검증 범위 명시 | 6.6, 10 W8·W10·W11, 11, 11.1, 12, 13 |
+| 8-가. 3팀 실험·4모델 비교 폐기 | 미반영 | 기획서 8절 필수. 없애지 않고 강화 | — |
+| 9. 안전·보안 설명과 설계 충돌 | 수정 반영 | 코드 fragment 전달 + rate limit + 폐기, 봉사자 `/files` 차단·확률 키 제거, purge에 zip·VACUUM, 가족 라벨 '수색 기록 있음/진행 중/없음', 위험 hard gate, 보조 채널 문구, OSM prefetch 삭제 → 자체 베이스맵 PNG, Quick Tunnel 실험 한정 | 결정표 #7·#8, 1, 2, 3, 4, 6.5, 6.7, 6.9, 7, 8, 9, 10, 11, 12 |
+| 9-가. JWT 도입, 안전 기능 기반으로 터널 제시했다는 주장 | 미반영 | JWT는 11/24 범위 밖(링크 소지자 인증으로 정직하게 라벨). 설계서는 이미 GPX 업로드를 정본으로 두었고 터널은 실험 한정 | — |
+| 10. 버전 저장 원자성·동시성 없음 | 수정 반영 | 전역 `VERSION_LOCK`, `UNIQUE(mission_id, version_no)`, `pending_*`→`os.rename`, `compute_id` 입력 동결, GPX sha256, 워커 1개 + sync def, `with conn:` | 결정표 #19, 1, 2, 3, 6.7, 7, 8, 9, 10 W3, 12, 14 |
+| 10-가. `BEGIN IMMEDIATE`·부모 CAS·범용 idempotency key·PREPARING/READY/FAILED | 미반영 | 단일 프로세스 락이 이미 직렬화, 행은 rename 뒤에만 생겨 '존재 = READY'. 초보 팀에 개념만 는다 | 1(만들지 않는 것) |
+| 11. 추천 기능 7종·대본 | 수정 반영 | 이탈 방향 배지·추천 변화 한 줄(9/27 Tier 1), 수색 그림자·결정 델타·스트레스 투표(K=12 캐시)·단서 전/후 토글·재현 매니페스트+`verify`·봉인 절차(11월), 0–72초 대본 채택, 숫자 규칙 | 4, 6.2, 6.6, 6.7, 6.8, 6.9, 8, 9, 10, 11.1, 12 |
+| 11-가. 가정 표본 50~100개·최악 후회·단서 우도 삭제·72–90초 대본 | 미반영 | 표본 100개는 10~20분이라 불가(K=12 캐시로 대체), 기하평균이 이미 '여러 가설에서 유효' 구현, 우도 삭제는 기획서 6절 베이지안 갱신 위반, 72–90초 기능은 9/27에 없음 | — |
+| 12. 범위 축소·추적표 | 수정 반영 | SOS·실시간 GPS·도로 경계 구역·Tier 2 연출·소리·서버 사후 검사·`report.html` 사본을 '만들지 않는 것/선택'으로 이동, 단서 우도 `ledger.json` 팀 가정 격리, PDF 409 → 경고, 사전 인터뷰 W5–W6, 추적표 신설 | 1, 3, 6.7, 6.8, 6.9, 7, 8, 9, 10, 12, 15 |
+| 12-가. 가족 포털·체크인·단서 반영·PDF 첨부 연기, W1–W2 인터뷰, 기능 30% 삭감 | 미반영 | 기획서 4·5.3·6·9절 명시 약속이라 얇게 유지. W1–W2는 Tier 0 위험으로 부적절해 W5–W6. 30%는 기획서 문장을 고쳐야 가능한 숫자라 좇지 않는다 | — |
+
+**항목 간 조정(검증자 지시가 겹친 곳):** 잔여 사유 키는 `grid_edge/tail_q95/sea`로 통일(항목 1·6). `C_cum`은 (512,512) 래스터(항목 2가 항목 5·10의 (1024,) 표기를 대체). f_sync는 점별 침적에 곱한다(항목 2·3 양립 규칙). 위험 임계는 `hazard_gate 0.6` 하나(항목 1의 0.8, 항목 9의 0.6 중 엄격한 값). 가족 등급은 status + `cover_frac`(항목 2·9·12). PWA는 자체 베이스맵 PNG precache(항목 9가 항목 12를 우선). SOS는 삭제하되 `tel:119` 안내 문구는 유지(항목 9·12). 그림자 레이어는 `shadow.png = 1 − exp(−C_cum_mid)` 하나(항목 2·11).
+
+**기획서 수정 필요 문구(9/25 제출본에 반영):**
+1. §7 표 프런트엔드 행 "React, MapLibre GL, PWA 오프라인 지도 타일 캐시" → "React, MapLibre GL, PWA 오프라인 지도 캐시(임무 지역 자체 렌더 베이스맵; OSM 타일 사전 다운로드 없음)". 컷 리스트 2번 적용 시 "PWA(앱 셸 오프라인 캐시; 지도는 온라인)".
+2. §7 데이터 행 "국토지리정보원 DEM(…)" → "국토지리정보원 DEM 또는 Copernicus GLO-30(30 m)"; "실종자 행동 문헌의 공개 요약 통계" → "실종자 행동 문헌의 공개 요약 통계([10][11], 가능하면 Koester 2008)"; §7 데이터 행 '환경부 토지피복도' → '환경부 토지피복도 또는 ESA WorldCover 2021(10 m)'.
+3. §4 "트랙이 들어올 때마다 시스템이 구역별 탐지확률을 계산해 확률지도를 갱신하고 다음 우선 구역을 다시 추천한다" → "트랙이 들어올 때마다 시스템이 구역별 탐지확률을 계산하고, 조정자가 미발견을 확정하면 확률지도를 갱신해 다음 우선 구역을 다시 추천한다"(§6 '구역 확정은 조정자의 승인을 거치게 한다'와 같은 원칙).
+4. §6 "셋째, 그 갱신에 쓰는 탐지확률 파라미터를 실측 공개 데이터에서 적합한다" → "셋째, 탐지확률 계산에 들어가는 수색자 속도·경사 파라미터를 실측 공개 데이터[9]에서 적합하고, 탐지폭 자체는 모의 수색 실험으로 보정한다".
+4-1. §3 "자원봉사자의 휴대폰 GPS를 실측 데이터로 보정한 탐지확률로 환산하고" → "자원봉사자의 휴대폰 GPS를 공개 실측 데이터[9]로 적합한 속도·경사 파라미터와 모의 수색 실험으로 보정한 탐지폭으로 탐지확률로 환산하고"(탐지폭 `lc_w0`·`f_v`는 공개 데이터로 검증되지 않은 팀 가정, 6.6).
+5. §8 "A팀은 일반 지도, B팀은 동심원 확률지도, C팀은 SearchProof를 쓴다" → "세 조건(일반 지도 / 동심원 확률지도 / SearchProof)을 세 팀이 세 코스에서 번갈아 쓴다(라틴 방진). 표식 위치는 스크립트로 무작위 배치하고 해시로 봉인해 수색자·조정자에게 숨긴다". §8 모델 비교 문장 끝에 "사례는 생성기별 leave-one-generator-out 가상 사건" 추가.
+6. §11 "모의 실험에서 C팀의 중복 수색률과 빈틈 면적을 A팀 대비 30% 이상 줄이는 것" → "모의 실험에서 SearchProof 조건의 중복 수색률과 빈틈 면적을 일반 지도 조건 대비(같은 팀의 짝지은 차이 기준) 30% 이상 줄이는 것"; "시스템 예측 POD와 실제 발견률의 차이를 구간 안에 넣는 것" → "보정에 쓰지 않은 코스에서 시스템 예측 POD의 예측 구간 안에 실제 발견 수가 들고, 예측이 상수 예측보다 나은 것(Brier skill > 0)".
+7. §9 "자원봉사자의 실시간 트랙은 개인위치정보다." → "자원봉사자의 GPS 트랙은 개인위치정보다."; "임무 종료 시 원본 트랙과 영상은 삭제하고 집계된 수색 결과만 남긴다" → "인계 후 서버의 원본 트랙과 영상은 삭제하고, 가명 처리한 트랙과 집계된 수색 결과만 인계 패키지에 남겨 기관에 전달한다"; "…조정자의 일괄 수색 중지 기능을 넣는다." 뒤에 "이 기능들은 조정자의 전화·무전 연락을 보조하는 수단이며 안전필수 통신을 대체하지 않는다." 추가.
+8. §12 한계 문단에 "Copernicus GLO-30은 DSM이라 산림·건물에서 경사가 과대평가될 수 있다. 모델 B의 평활(σ 30 m)은 얇은 지형 장벽을 인지하지 않는다." 추가.
+9. (선택) §5.1 "지도 밖에 남는 잔여확률도 항상 숫자로 표시한다" → "지도 밖과 모델 밖(해상 등)에 남는 잔여확률도 사유별로 항상 숫자로 표시한다". §5.2 첫 문장 뒤 "탐지확률은 30 m 셀 단위로 계산해 구역으로 집계한다". §5.2 갱신식 분모에 "+ 지도 밖 잔여확률".
+10. §7 저장·권한 행 "역할 기반 접근 제어(조정자·봉사자·가족)" → "임무별 역할 코드 링크에 의한 역할 기반 접근 제어(조정자·봉사자·가족; 링크 소지자 인증, 로그인 계정 없음)"(3절 인증 행·결정표 #7의 '서류에 명시').
+11. §11 "등록 단체 실사용을 거쳐" 앞에 "(실사용에는 개발·테스트용 터널이 아닌 별도 배포가 필요하며)" 삽입(3절 현장 HTTPS 행).
+12. (선택) §5.1 "수만 개 입자" → "2만 개 입자(데모는 B′ 1만)".
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script>
+(function () {
+  var src = document.getElementById('src').textContent;
+  var target = document.getElementById('doc');
+  if (window.marked) {
+    marked.use({ gfm: true, breaks: false, mangle: false, headerIds: false });
+    target.innerHTML = marked.parse(src);
+  } else {
+    var pre = document.createElement('pre'); pre.textContent = src; target.appendChild(pre);
+  }
+  Array.prototype.forEach.call(target.querySelectorAll('table'), function (t) {
+    var w = document.createElement('div'); w.className = 'table-wrap';
+    t.parentNode.insertBefore(w, t); w.appendChild(t);
+  });
+  var toc = document.getElementById('toc-list');
+  var heads = target.querySelectorAll('h2');
+  var used = {};
+  Array.prototype.forEach.call(heads, function (h, i) {
+    var base = 's' + (i + 1), id = base, n = 1;
+    while (used[id]) { id = base + '-' + (++n); }
+    used[id] = true; h.id = id;
+    var li = document.createElement('li'), a = document.createElement('a');
+    a.href = '#' + id; a.textContent = h.textContent.replace(/^\d+[.)]?\s*/, '');
+    li.appendChild(a); toc.appendChild(li);
+  });
+  var links = toc.querySelectorAll('a');
+  if ('IntersectionObserver' in window && heads.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          var current = e.target.id;
+          Array.prototype.forEach.call(links, function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+    Array.prototype.forEach.call(heads, function (h) { io.observe(h); });
+  }
+  var c = document.getElementById('contour');
+  function draw() {
+    var head = c.parentNode, w = head.clientWidth, h = head.clientHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    c.width = w * dpr; c.height = h * dpr;
+    var ctx = c.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, w, h);
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--contour').trim() || 'rgba(31,122,140,0.2)';
+    ctx.lineWidth = 1;
+    var cx = w * 0.86, cy = h * 0.55, rings = 14;
+    for (var r = 1; r <= rings; r++) {
+      var base = 22 + r * 26; ctx.beginPath();
+      for (var a = 0; a <= 360; a += 3) {
+        var t = a * Math.PI / 180;
+        var wob = Math.sin(t * 3 + r * 0.7) * 6 + Math.cos(t * 5 - r * 1.3) * 4 + Math.sin(t * 2 + r) * 3;
+        var rad = base + wob, x = cx + Math.cos(t) * rad * 1.15, y = cy + Math.sin(t) * rad * 0.72;
+        if (a === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.closePath(); ctx.globalAlpha = 1 - r / (rings + 4); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+  draw();
+  window.addEventListener('resize', draw);
+  if (window.matchMedia) { var mq = window.matchMedia('(prefers-color-scheme: dark)'); if (mq.addEventListener) mq.addEventListener('change', draw); }
+  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,64 @@
+{
+  "region": "제주도",
+  "nx": 3200,
+  "ny": 2368,
+  "res_m": 30,
+  "crs": "EPSG:32652",
+  "x0": 224490,
+  "y0": 3727230,
+  "corners": [
+    [
+      126.02927863540621,
+      33.64928210230114
+    ],
+    [
+      127.06375641215722,
+      33.66982678744319
+    ],
+    [
+      127.07788642173126,
+      33.029419544516784
+    ],
+    [
+      126.05093578781444,
+      33.00936601217657
+    ]
+  ],
+  "legacy_window": {
+    "row0": 704,
+    "col0": 448
+  },
+  "window_cells": 512,
+  "window_lattice_cells": 64,
+  "sources": [
+    {
+      "name": "dem",
+      "url": "https://copernicus-dem-30m.s3.amazonaws.com/Copernicus_DSM_COG_10_N33_00_E126_00_DEM/Copernicus_DSM_COG_10_N33_00_E126_00_DEM.tif",
+      "sha256": "25688fe1fda931deed2f6f92c5cbd0e969ac23e471c8a62b6c4f914ddd053a29",
+      "file": "dem.npz"
+    },
+    {
+      "name": "landcover",
+      "url": "https://esa-worldcover.s3.eu-central-1.amazonaws.com/v200/2021/map/ESA_WorldCover_10m_2021_v200_N33E126_Map.tif",
+      "sha256": "168eb03f07e4b5614c8f3aca77c0fbbb1634520a02038276140e399bd657ac73",
+      "file": "landcover.npz"
+    },
+    {
+      "name": "roads",
+      "url": "https://www.openstreetmap.org/copyright",
+      "sha256": "3f4be341ed017fde36b9d01a1c438564a8c77f0cfeab045b6ed87f203830d75e",
+      "file": "roads.geojson.gz",
+      "hash_scope": "roads.geojson.gz local OSM extract",
+      "endpoint": "https://overpass.openstreetmap.fr/api/interpreter"
+    }
+  ],
+  "road_count": 36938,
+  "prepared_at": "2026-09-20T04:19:26.570030+00:00",
+  "attribution": "Copernicus DEM GLO-30 © DLR e.V. 2010–2014 / © Airbus Defence and Space GmbH 2014–2018; ESA WorldCover 2021 © ESA (CC BY 4.0); © OpenStreetMap contributors (ODbL)",
+  "limitations": [
+    "DSM에는 건물과 식생 높이가 포함됩니다.",
+    "WorldCover 2021은 현재 토지 상태와 다를 수 있습니다.",
+    "접근성은 현장 확인이 필요한 지형 기반 초안입니다.",
+    "127°E 동쪽 가장자리(우도 동쪽 바다)는 표고 타일 밖이라 해수면·물로 채웠습니다."
+  ]
+}

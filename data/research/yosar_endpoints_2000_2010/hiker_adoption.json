@@ -1,0 +1,48 @@
+{
+  "prepared_at": "2026-09-19T05:56:12.245700+00:00",
+  "source_selection": {
+    "path": "hiker_object_ids.json",
+    "url": "https://services5.arcgis.com/ZY2TU3F6m1lSbSrn/ArcGIS/rest/services/YOSAR_MissingPersonData_v1/FeatureServer/2/query?f=json&where=SubjectC%3D%27Hiker%27&returnIdsOnly=true",
+    "bytes": 525,
+    "sha256": "958d36c1b5d44deef30985f410be21e4fc6cc9c1fc26015a5704532f56816e86"
+  },
+  "source_sha256": "f0b396a5db20b0cb23bcad04f3d062315a2a810a9d0c0d8e0303cfd493a02dd2",
+  "prepared_sha256": "032ec29074ed5a91c322c1c7316ba41f3ed799b9fbf4c8e6255180170ffca067",
+  "protocol_sha256": "a298f271253dcd4d8aed4296cde135f3206095c4f3248b498b504fca0bfa2e3e",
+  "code_sha256": "60f1b745b7bd58455fd300bd8e30a344608d631dcb8b8220c78c2b00f80ee254",
+  "attribution": "Paul J. Doherty and Jared Doke, NSF #1031914",
+  "license": "CC-BY-NC-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "report": {
+    "hiker_source_rows": 134,
+    "hiker_case_keys": 133,
+    "used_case_keys": 132,
+    "zero_distance_retained": 18,
+    "excluded_rows": [
+      {
+        "source_oid": 217,
+        "case_key": "a59df240e292ac3eb168",
+        "reasons": [
+          "MULTIPLE_ENDPOINTS_UNRESOLVED",
+          "NON_PRIMARY_ENDPOINT"
+        ]
+      },
+      {
+        "source_oid": 218,
+        "case_key": "a59df240e292ac3eb168",
+        "reasons": [
+          "MULTIPLE_ENDPOINTS_UNRESOLVED",
+          "NON_PRIMARY_ENDPOINT"
+        ]
+      }
+    ],
+    "spatial_blocks": 27,
+    "paper_hiker_n": 130,
+    "paper_service_count_match": false,
+    "scope": "SINGLE_PRIMARY_HIKER_ENDPOINTS_NOT_TIME_TRAJECTORIES",
+    "uncertainty_units": "METERS_INFERRED_FROM_SOURCE_PAPER_NOT_FIELD_DICTIONARY",
+    "interval_interpretation": "GEOMETRIC_BOUNDS_NOT_CONFIDENCE_INTERVAL"
+  },
+  "changes": "Hiker-only single primary endpoint intervals; GRS80 distance; zero distances retained. No time labels.",
+  "status": "PREPARED_FOR_SEPARATE_EXPERIMENTAL_ENDPOINT_FIT"
+}

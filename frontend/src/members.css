@@ -1,0 +1,15 @@
+.members-panel{display:flex;flex-direction:column;gap:14px}
+.mission-status-card{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #cfe0e2;background:#eef6f6}
+.mission-status-card strong{display:block;font-size:14px}.mission-status-card small{color:#6d7c88;font-size:11px}
+.mission-status-card.PAUSED{background:#fff4e3;border-color:#efd3a3}.mission-status-card.HANDED_OVER{background:#e9edf3;border-color:#c9d3df}
+.status-buttons{display:flex;gap:6px;flex-wrap:wrap}.status-buttons .button{min-height:33px;padding:6px 10px;font-size:12px}
+.button.subtle.danger{color:#8f3a2c;border-color:#e8c9c1}
+.handover-confirm{display:flex;gap:10px;padding:12px;border-radius:10px;background:#fff1ea;border:1px solid #f0c3b3;color:#6f2f22;font-size:12.5px}.handover-confirm p{margin:4px 0 8px;line-height:1.55}
+.member-form{display:flex;flex-direction:column;gap:10px}
+.issued-code{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:10px;background:#13315a;color:#e6eef7}.issued-code code{font-size:26px;letter-spacing:4px;font-weight:700;font-family:Manrope,monospace}.issued-code small{font-size:11px;color:#b9cbe0;line-height:1.5}.issued-code .mono{font-family:monospace;overflow-wrap:anywhere;color:#d9e6f3}.issued-code .text-button{color:#fff;justify-content:flex-start}
+.member-card{border:1px solid #dfe6ea;border-radius:10px;padding:12px;background:#fff;display:flex;flex-direction:column;gap:7px}.member-card.revoked{opacity:.6}
+.member-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.status-chip.OVERDUE{background:#fde9e5;color:#a2412f}
+.assign-row{display:flex;align-items:center;gap:8px;font-size:12px}.assign-row select{width:auto;flex:1;padding:6px 8px}
+.status-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px}.status-pill.paused{background:#fff0d6;color:#9a6318}.status-pill.handed{background:#e6ebf2;color:#33507a}
+.team-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}.team-inputs label{font-size:12px;color:#556a7a;display:flex;flex-direction:column;gap:5px}

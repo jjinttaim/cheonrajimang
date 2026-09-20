@@ -1,0 +1,1222 @@
+{
+  "rows": [
+    {
+      "source_oid": 2,
+      "case_key": "79128ee6171937cadd7f",
+      "distance_m": 1292.5108718582069,
+      "uncertainty_sum_m_assumed": 589.7270000000001,
+      "lower_m": 702.7838718582068,
+      "upper_m": 1882.237871858207,
+      "spatial_block": "-1199:377"
+    },
+    {
+      "source_oid": 4,
+      "case_key": "a3e07238f884a6ed104a",
+      "distance_m": 1763.77551230513,
+      "uncertainty_sum_m_assumed": 1430.727,
+      "lower_m": 333.04851230512986,
+      "upper_m": 3194.50251230513,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 6,
+      "case_key": "6256579dc8ed243737e4",
+      "distance_m": 1822.6170561272863,
+      "uncertainty_sum_m_assumed": 902.88021,
+      "lower_m": 919.7368461272863,
+      "upper_m": 2725.4972661272864,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 8,
+      "case_key": "f46f6769cc72c7935f55",
+      "distance_m": 2967.536203336971,
+      "uncertainty_sum_m_assumed": 1712.2105199999999,
+      "lower_m": 1255.3256833369712,
+      "upper_m": 4679.746723336971,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 9,
+      "case_key": "dc03722534817088823f",
+      "distance_m": 3024.57311144872,
+      "uncertainty_sum_m_assumed": 138.727,
+      "lower_m": 2885.84611144872,
+      "upper_m": 3163.3001114487197,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 13,
+      "case_key": "53cfb4ca8389a9d0f56b",
+      "distance_m": 1451.1675446560942,
+      "uncertainty_sum_m_assumed": 1816.2820499999998,
+      "lower_m": 0.0,
+      "upper_m": 3267.4495946560937,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 14,
+      "case_key": "51b2d3306874602fb554",
+      "distance_m": 425.01261401728505,
+      "uncertainty_sum_m_assumed": 97.73,
+      "lower_m": 327.282614017285,
+      "upper_m": 522.7426140172851,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 21,
+      "case_key": "25222fec6ec1019b1560",
+      "distance_m": 3498.1818945459418,
+      "uncertainty_sum_m_assumed": 591.721,
+      "lower_m": 2906.4608945459418,
+      "upper_m": 4089.9028945459418,
+      "spatial_block": "-1198:378"
+    },
+    {
+      "source_oid": 22,
+      "case_key": "64e395bff66954d0c6b1",
+      "distance_m": 1684.7353234186903,
+      "uncertainty_sum_m_assumed": 954.6846499999999,
+      "lower_m": 730.0506734186904,
+      "upper_m": 2639.4199734186905,
+      "spatial_block": "-1194:377"
+    },
+    {
+      "source_oid": 24,
+      "case_key": "59cf420c2ce0ee1d64a2",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.722,
+      "lower_m": 0.0,
+      "upper_m": 82.722,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 25,
+      "case_key": "27ef94ff128b740ebd4d",
+      "distance_m": 17033.149246341793,
+      "uncertainty_sum_m_assumed": 2111.7219999999998,
+      "lower_m": 14921.427246341793,
+      "upper_m": 19144.87124634179,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 28,
+      "case_key": "fd157895b3245f8b22b5",
+      "distance_m": 5698.19297460717,
+      "uncertainty_sum_m_assumed": 1682.54346,
+      "lower_m": 4015.64951460717,
+      "upper_m": 7380.73643460717,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 29,
+      "case_key": "8efe983dd2c7c62d290b",
+      "distance_m": 10010.76960183458,
+      "uncertainty_sum_m_assumed": 2540.737,
+      "lower_m": 7470.0326018345795,
+      "upper_m": 12551.506601834579,
+      "spatial_block": "-1195:376"
+    },
+    {
+      "source_oid": 31,
+      "case_key": "b3030616ab6ab286e899",
+      "distance_m": 2625.468580554752,
+      "uncertainty_sum_m_assumed": 3979.709,
+      "lower_m": 0.0,
+      "upper_m": 6605.177580554751,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 32,
+      "case_key": "17793df09b728d4be88e",
+      "distance_m": 73.57102898966615,
+      "uncertainty_sum_m_assumed": 104.732,
+      "lower_m": 0.0,
+      "upper_m": 178.30302898966613,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 35,
+      "case_key": "c0af2872b8423ecfa688",
+      "distance_m": 1497.0404095499712,
+      "uncertainty_sum_m_assumed": 887.89721,
+      "lower_m": 609.1431995499712,
+      "upper_m": 2384.9376195499713,
+      "spatial_block": "-1196:375"
+    },
+    {
+      "source_oid": 37,
+      "case_key": "83da57a9f7cf35ee1bb6",
+      "distance_m": 47194.92376551849,
+      "uncertainty_sum_m_assumed": 787.716,
+      "lower_m": 46407.20776551849,
+      "upper_m": 47982.63976551849,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 38,
+      "case_key": "b2d9da52ee511bc21748",
+      "distance_m": 2894.4529122924555,
+      "uncertainty_sum_m_assumed": 673.54408,
+      "lower_m": 2220.9088322924554,
+      "upper_m": 3567.9969922924556,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 41,
+      "case_key": "0e81eacb1ef0c8169415",
+      "distance_m": 14661.90880097469,
+      "uncertainty_sum_m_assumed": 5058.719999999999,
+      "lower_m": 9603.18880097469,
+      "upper_m": 19720.62880097469,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 42,
+      "case_key": "470d391d5a913566b50e",
+      "distance_m": 3395.998678178438,
+      "uncertainty_sum_m_assumed": 82.713,
+      "lower_m": 3313.2856781784376,
+      "upper_m": 3478.711678178438,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 43,
+      "case_key": "467f60f020aede9f4842",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 1926.708,
+      "lower_m": 0.0,
+      "upper_m": 1926.708,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 44,
+      "case_key": "0d8f21ff2f96daff7135",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.728,
+      "lower_m": 0.0,
+      "upper_m": 82.728,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 45,
+      "case_key": "70246dff1acd516aa407",
+      "distance_m": 1279.3786991680477,
+      "uncertainty_sum_m_assumed": 2211.64292,
+      "lower_m": 0.0,
+      "upper_m": 3491.0216191680474,
+      "spatial_block": "-1194:379"
+    },
+    {
+      "source_oid": 47,
+      "case_key": "9377a9889be8e7c5a86b",
+      "distance_m": 347.3039615454716,
+      "uncertainty_sum_m_assumed": 244.13541,
+      "lower_m": 103.16855154547162,
+      "upper_m": 591.4393715454717,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 48,
+      "case_key": "88203c06c4987d741eb5",
+      "distance_m": 17511.59862745507,
+      "uncertainty_sum_m_assumed": 70.545,
+      "lower_m": 17441.053627455072,
+      "upper_m": 17582.14362745507,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 49,
+      "case_key": "aff16d0f82f06a1bb7e0",
+      "distance_m": 794.3203894502078,
+      "uncertainty_sum_m_assumed": 57.782000000000004,
+      "lower_m": 736.5383894502078,
+      "upper_m": 852.1023894502079,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 51,
+      "case_key": "0ed7dda3b8e1fe09fa93",
+      "distance_m": 1558.4485234562019,
+      "uncertainty_sum_m_assumed": 655.7270000000001,
+      "lower_m": 902.7215234562018,
+      "upper_m": 2214.175523456202,
+      "spatial_block": "-1199:377"
+    },
+    {
+      "source_oid": 52,
+      "case_key": "a5c54beda9bf302e0598",
+      "distance_m": 3306.8738570623555,
+      "uncertainty_sum_m_assumed": 881.6158,
+      "lower_m": 2425.2580570623554,
+      "upper_m": 4188.489657062355,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 53,
+      "case_key": "4f308d85181971f6c79a",
+      "distance_m": 3639.046253596848,
+      "uncertainty_sum_m_assumed": 897.729,
+      "lower_m": 2741.317253596848,
+      "upper_m": 4536.775253596848,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 56,
+      "case_key": "bbe0c7bd67fe19eb186b",
+      "distance_m": 90.71383440456526,
+      "uncertainty_sum_m_assumed": 97.732,
+      "lower_m": 0.0,
+      "upper_m": 188.44583440456526,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 57,
+      "case_key": "c0b1f5a4865c70676c97",
+      "distance_m": 2300.2723319387933,
+      "uncertainty_sum_m_assumed": 72.729,
+      "lower_m": 2227.5433319387935,
+      "upper_m": 2373.001331938793,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 58,
+      "case_key": "0d9b81e1094b9976f4f8",
+      "distance_m": 2471.942949418528,
+      "uncertainty_sum_m_assumed": 492.733,
+      "lower_m": 1979.209949418528,
+      "upper_m": 2964.675949418528,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 59,
+      "case_key": "24b26fc120e32caffa3d",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 302.732,
+      "lower_m": 0.0,
+      "upper_m": 302.732,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 61,
+      "case_key": "f3cc4e281b2fae8f9180",
+      "distance_m": 3190.072541443113,
+      "uncertainty_sum_m_assumed": 2552.55246,
+      "lower_m": 637.5200814431132,
+      "upper_m": 5742.625001443113,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 62,
+      "case_key": "339f3ba3d11a5272df64",
+      "distance_m": 1703.8890967953196,
+      "uncertainty_sum_m_assumed": 92.734,
+      "lower_m": 1611.1550967953197,
+      "upper_m": 1796.6230967953195,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 63,
+      "case_key": "1a67b92033a8c9b3f552",
+      "distance_m": 1394.7648335481767,
+      "uncertainty_sum_m_assumed": 1971.177,
+      "lower_m": 0.0,
+      "upper_m": 3365.941833548177,
+      "spatial_block": "-1196:376"
+    },
+    {
+      "source_oid": 66,
+      "case_key": "2e48391687cb49804198",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.714,
+      "lower_m": 0.0,
+      "upper_m": 82.714,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 69,
+      "case_key": "3e268c9efb79c3e2da86",
+      "distance_m": 3439.9716364297437,
+      "uncertainty_sum_m_assumed": 92.17099999999999,
+      "lower_m": 3347.800636429744,
+      "upper_m": 3532.1426364297436,
+      "spatial_block": "-1194:377"
+    },
+    {
+      "source_oid": 71,
+      "case_key": "29c4045d208f14c0ac52",
+      "distance_m": 10078.994121604783,
+      "uncertainty_sum_m_assumed": 297.725,
+      "lower_m": 9781.269121604782,
+      "upper_m": 10376.719121604783,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 73,
+      "case_key": "74c00dbed3246d0bc08f",
+      "distance_m": 5467.138272980717,
+      "uncertainty_sum_m_assumed": 260.729,
+      "lower_m": 5206.409272980717,
+      "upper_m": 5727.867272980718,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 74,
+      "case_key": "dfa5abdf7d853801d1a3",
+      "distance_m": 1703.8890967953196,
+      "uncertainty_sum_m_assumed": 92.734,
+      "lower_m": 1611.1550967953197,
+      "upper_m": 1796.6230967953195,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 75,
+      "case_key": "c600fc0fb7d4e4a193de",
+      "distance_m": 4891.490803911507,
+      "uncertainty_sum_m_assumed": 138.703,
+      "lower_m": 4752.787803911507,
+      "upper_m": 5030.1938039115075,
+      "spatial_block": "-1198:380"
+    },
+    {
+      "source_oid": 76,
+      "case_key": "79e27ccfd403550bbaf6",
+      "distance_m": 4212.92969254768,
+      "uncertainty_sum_m_assumed": 1030.728,
+      "lower_m": 3182.20169254768,
+      "upper_m": 5243.65769254768,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 81,
+      "case_key": "67770734c6fbbbe26815",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 278.732,
+      "lower_m": 0.0,
+      "upper_m": 278.732,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 83,
+      "case_key": "cbd63ca35856e3ee3b4c",
+      "distance_m": 960.0286629912158,
+      "uncertainty_sum_m_assumed": 469.735,
+      "lower_m": 490.2936629912158,
+      "upper_m": 1429.7636629912158,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 86,
+      "case_key": "6c4fec5ad714cc033355",
+      "distance_m": 4050.605902934194,
+      "uncertainty_sum_m_assumed": 4219.719,
+      "lower_m": 0.0,
+      "upper_m": 8270.324902934193,
+      "spatial_block": "-1193:378"
+    },
+    {
+      "source_oid": 89,
+      "case_key": "262b885ef71bf99d81f0",
+      "distance_m": 902.4726781583513,
+      "uncertainty_sum_m_assumed": 207.73200000000003,
+      "lower_m": 694.7406781583513,
+      "upper_m": 1110.2046781583513,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 91,
+      "case_key": "f45b12979cf4a2892629",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.71,
+      "lower_m": 0.0,
+      "upper_m": 82.71,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 92,
+      "case_key": "c5116f58a333efe9bd06",
+      "distance_m": 2048.3062050201015,
+      "uncertainty_sum_m_assumed": 467.731,
+      "lower_m": 1580.5752050201015,
+      "upper_m": 2516.0372050201013,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 93,
+      "case_key": "9e3a076b6319fda3adb6",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.73,
+      "lower_m": 0.0,
+      "upper_m": 82.73,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 94,
+      "case_key": "63e7bc87dfb7d62415c0",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.714,
+      "lower_m": 0.0,
+      "upper_m": 82.714,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 95,
+      "case_key": "b553ce761574aa2ae0ca",
+      "distance_m": 1186.1157917602227,
+      "uncertainty_sum_m_assumed": 150.54000000000002,
+      "lower_m": 1035.5757917602227,
+      "upper_m": 1336.6557917602227,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 96,
+      "case_key": "0215a61be41ce2d518d2",
+      "distance_m": 1097.651397655708,
+      "uncertainty_sum_m_assumed": 2155.7290000000003,
+      "lower_m": 0.0,
+      "upper_m": 3253.3803976557083,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 98,
+      "case_key": "51f140398e70767ff8c5",
+      "distance_m": 912.7394816455001,
+      "uncertainty_sum_m_assumed": 882.88221,
+      "lower_m": 29.857271645500077,
+      "upper_m": 1795.6216916455,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 101,
+      "case_key": "ad5504e34149ed5b7119",
+      "distance_m": 1638.0909644763763,
+      "uncertainty_sum_m_assumed": 2023.714,
+      "lower_m": 0.0,
+      "upper_m": 3661.804964476376,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 102,
+      "case_key": "bdb60253ba15c238c492",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 432.73,
+      "lower_m": 0.0,
+      "upper_m": 432.73,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 103,
+      "case_key": "32c80b82a231e123b456",
+      "distance_m": 331.6330085417319,
+      "uncertainty_sum_m_assumed": 472.73,
+      "lower_m": 0.0,
+      "upper_m": 804.3630085417319,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 104,
+      "case_key": "c971372d66adf1dea604",
+      "distance_m": 3920.5143913762654,
+      "uncertainty_sum_m_assumed": 492.73,
+      "lower_m": 3427.7843913762654,
+      "upper_m": 4413.244391376265,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 105,
+      "case_key": "11b7fbf4c7be00ff0fce",
+      "distance_m": 118.61400101828531,
+      "uncertainty_sum_m_assumed": 153.727,
+      "lower_m": 0.0,
+      "upper_m": 272.3410010182853,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 106,
+      "case_key": "32136bd9e406cb0b55af",
+      "distance_m": 1673.5653990286078,
+      "uncertainty_sum_m_assumed": 1737.7050000000002,
+      "lower_m": 0.0,
+      "upper_m": 3411.270399028608,
+      "spatial_block": "-1195:379"
+    },
+    {
+      "source_oid": 107,
+      "case_key": "e3b995f9ccaf5ba1f981",
+      "distance_m": 2166.474924553177,
+      "uncertainty_sum_m_assumed": 925.731,
+      "lower_m": 1240.743924553177,
+      "upper_m": 3092.2059245531773,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 109,
+      "case_key": "2575b748bf6b5e8a47de",
+      "distance_m": 11286.026178321677,
+      "uncertainty_sum_m_assumed": 1319.699,
+      "lower_m": 9966.327178321677,
+      "upper_m": 12605.725178321678,
+      "spatial_block": "-1194:380"
+    },
+    {
+      "source_oid": 110,
+      "case_key": "a9f3cc07b537266b8573",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 417.73,
+      "lower_m": 0.0,
+      "upper_m": 417.73,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 111,
+      "case_key": "6f3345bf685b6193f409",
+      "distance_m": 2311.483678558911,
+      "uncertainty_sum_m_assumed": 259.731,
+      "lower_m": 2051.7526785589107,
+      "upper_m": 2571.214678558911,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 112,
+      "case_key": "44293abc3b3fd7590123",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.73,
+      "lower_m": 0.0,
+      "upper_m": 82.73,
+      "spatial_block": "-1198:377"
+    },
+    {
+      "source_oid": 113,
+      "case_key": "3bb80a242ff9eb908dcc",
+      "distance_m": 3309.576170297776,
+      "uncertainty_sum_m_assumed": 2061.746,
+      "lower_m": 1247.830170297776,
+      "upper_m": 5371.322170297776,
+      "spatial_block": "-1194:376"
+    },
+    {
+      "source_oid": 114,
+      "case_key": "38be6254c42abdbec115",
+      "distance_m": 3775.0228949725424,
+      "uncertainty_sum_m_assumed": 342.769,
+      "lower_m": 3432.253894972542,
+      "upper_m": 4117.791894972543,
+      "spatial_block": "-1196:379"
+    },
+    {
+      "source_oid": 115,
+      "case_key": "18d193d1f697a7d69fa3",
+      "distance_m": 1970.3065758820849,
+      "uncertainty_sum_m_assumed": 82.718,
+      "lower_m": 1887.5885758820848,
+      "upper_m": 2053.0245758820847,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 116,
+      "case_key": "5eb2efdfe2bde079e68d",
+      "distance_m": 1375.3324160510933,
+      "uncertainty_sum_m_assumed": 92.733,
+      "lower_m": 1282.5994160510934,
+      "upper_m": 1468.0654160510933,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 117,
+      "case_key": "f83a41c603b632b94076",
+      "distance_m": 16965.535986278348,
+      "uncertainty_sum_m_assumed": 2099.728,
+      "lower_m": 14865.807986278349,
+      "upper_m": 19065.263986278347,
+      "spatial_block": "-1194:377"
+    },
+    {
+      "source_oid": 122,
+      "case_key": "0739d052c30b826908a2",
+      "distance_m": 18808.115269498852,
+      "uncertainty_sum_m_assumed": 82.754,
+      "lower_m": 18725.36126949885,
+      "upper_m": 18890.869269498853,
+      "spatial_block": "-1197:375"
+    },
+    {
+      "source_oid": 123,
+      "case_key": "fa06bfeff5eadf8c0ea5",
+      "distance_m": 1464.7037095387927,
+      "uncertainty_sum_m_assumed": 270.729,
+      "lower_m": 1193.9747095387927,
+      "upper_m": 1735.4327095387928,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 126,
+      "case_key": "d1186db19a2acb382587",
+      "distance_m": 2893.455490384116,
+      "uncertainty_sum_m_assumed": 97.69999999999999,
+      "lower_m": 2795.755490384116,
+      "upper_m": 2991.1554903841156,
+      "spatial_block": "-1198:379"
+    },
+    {
+      "source_oid": 127,
+      "case_key": "14bff2a70f96682e37cb",
+      "distance_m": 6506.808659862908,
+      "uncertainty_sum_m_assumed": 1692.5404600000002,
+      "lower_m": 4814.268199862908,
+      "upper_m": 8199.349119862909,
+      "spatial_block": "-1195:379"
+    },
+    {
+      "source_oid": 128,
+      "case_key": "3efe52cf803eda09c10b",
+      "distance_m": 1432.6837089376304,
+      "uncertainty_sum_m_assumed": 1506.731,
+      "lower_m": 0.0,
+      "upper_m": 2939.41470893763,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 129,
+      "case_key": "60a051440c4b06689bcb",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 1014.714,
+      "lower_m": 0.0,
+      "upper_m": 1014.714,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 130,
+      "case_key": "50d987b9ec3132365734",
+      "distance_m": 1108.202245797902,
+      "uncertainty_sum_m_assumed": 2497.70267,
+      "lower_m": 0.0,
+      "upper_m": 3605.904915797902,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 131,
+      "case_key": "7214ab06c97bfea29a15",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 146.732,
+      "lower_m": 0.0,
+      "upper_m": 146.732,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 134,
+      "case_key": "7c4e0ad34d717ffb463c",
+      "distance_m": 825.5912743215985,
+      "uncertainty_sum_m_assumed": 102.712,
+      "lower_m": 722.8792743215985,
+      "upper_m": 928.3032743215985,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 135,
+      "case_key": "9af586dac508c80fd775",
+      "distance_m": 802.518874111104,
+      "uncertainty_sum_m_assumed": 82.754,
+      "lower_m": 719.764874111104,
+      "upper_m": 885.272874111104,
+      "spatial_block": "-1195:375"
+    },
+    {
+      "source_oid": 136,
+      "case_key": "be794ac1f16604149d3d",
+      "distance_m": 16819.52845661886,
+      "uncertainty_sum_m_assumed": 82.714,
+      "lower_m": 16736.81445661886,
+      "upper_m": 16902.24245661886,
+      "spatial_block": "-1197:378"
+    },
+    {
+      "source_oid": 137,
+      "case_key": "976c761fdc1ce0ad51cd",
+      "distance_m": 1805.1356189831358,
+      "uncertainty_sum_m_assumed": 589.731,
+      "lower_m": 1215.4046189831358,
+      "upper_m": 2394.8666189831356,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 138,
+      "case_key": "f27f29bc3c723657e7b0",
+      "distance_m": 16915.89358631645,
+      "uncertainty_sum_m_assumed": 2255.73,
+      "lower_m": 14660.163586316452,
+      "upper_m": 19171.62358631645,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 139,
+      "case_key": "510e56969e38e65e9ac6",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 82.74,
+      "lower_m": 0.0,
+      "upper_m": 82.74,
+      "spatial_block": "-1197:376"
+    },
+    {
+      "source_oid": 142,
+      "case_key": "8845473f2fec86d11227",
+      "distance_m": 693.6884005892771,
+      "uncertainty_sum_m_assumed": 302.729,
+      "lower_m": 390.9594005892771,
+      "upper_m": 996.4174005892771,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 143,
+      "case_key": "b1afe5414fa0867e3560",
+      "distance_m": 2534.5128464667946,
+      "uncertainty_sum_m_assumed": 97.731,
+      "lower_m": 2436.7818464667944,
+      "upper_m": 2632.243846466795,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 144,
+      "case_key": "4eb1cc6e5f248187038a",
+      "distance_m": 1092.4449190344185,
+      "uncertainty_sum_m_assumed": 1855.63686,
+      "lower_m": 0.0,
+      "upper_m": 2948.0817790344186,
+      "spatial_block": "-1196:375"
+    },
+    {
+      "source_oid": 146,
+      "case_key": "44d23ff106ecd99d0fa6",
+      "distance_m": 6808.563512032902,
+      "uncertainty_sum_m_assumed": 82.713,
+      "lower_m": 6725.850512032902,
+      "upper_m": 6891.276512032901,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 149,
+      "case_key": "065041d8f8cb8031f212",
+      "distance_m": 1303.909431347736,
+      "uncertainty_sum_m_assumed": 122.732,
+      "lower_m": 1181.177431347736,
+      "upper_m": 1426.641431347736,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 150,
+      "case_key": "b1e77a5ec8c85cd67e74",
+      "distance_m": 12030.82257363191,
+      "uncertainty_sum_m_assumed": 107.71199999999999,
+      "lower_m": 11923.11057363191,
+      "upper_m": 12138.534573631909,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 151,
+      "case_key": "8331d272757d9937cf7c",
+      "distance_m": 8238.247856806263,
+      "uncertainty_sum_m_assumed": 4653.731,
+      "lower_m": 3584.5168568062636,
+      "upper_m": 12891.978856806263,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 152,
+      "case_key": "9e8bf4c25e8935141597",
+      "distance_m": 7092.253503697539,
+      "uncertainty_sum_m_assumed": 282.78200000000004,
+      "lower_m": 6809.4715036975385,
+      "upper_m": 7375.035503697539,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 153,
+      "case_key": "cea2510ccd5299bcabaa",
+      "distance_m": 1541.9696073481282,
+      "uncertainty_sum_m_assumed": 415.73,
+      "lower_m": 1126.2396073481282,
+      "upper_m": 1957.6996073481282,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 154,
+      "case_key": "9c257a2171c0d4d24ee3",
+      "distance_m": 1379.5781762909296,
+      "uncertainty_sum_m_assumed": 221.73200000000003,
+      "lower_m": 1157.8461762909296,
+      "upper_m": 1601.3101762909296,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 155,
+      "case_key": "c09b1a1cba5e9a9e0d21",
+      "distance_m": 2181.5487450724786,
+      "uncertainty_sum_m_assumed": 188.21123999999998,
+      "lower_m": 1993.3375050724785,
+      "upper_m": 2369.7599850724787,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 156,
+      "case_key": "8d177661b88004ab0d55",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 458.73,
+      "lower_m": 0.0,
+      "upper_m": 458.73,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 157,
+      "case_key": "2b66e1d76a35e3e80514",
+      "distance_m": 531.690520185041,
+      "uncertainty_sum_m_assumed": 490.54408,
+      "lower_m": 41.146440185041,
+      "upper_m": 1022.234600185041,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 158,
+      "case_key": "8d3dea69adba8fdd1f7c",
+      "distance_m": 1621.422217510991,
+      "uncertainty_sum_m_assumed": 87.732,
+      "lower_m": 1533.690217510991,
+      "upper_m": 1709.154217510991,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 159,
+      "case_key": "85cc6fbeafb0b9b6c138",
+      "distance_m": 2048.3062050201015,
+      "uncertainty_sum_m_assumed": 447.731,
+      "lower_m": 1600.5752050201015,
+      "upper_m": 2496.0372050201013,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 160,
+      "case_key": "ec14b2943eed388d923f",
+      "distance_m": 3369.0393582673746,
+      "uncertainty_sum_m_assumed": 1152.87921,
+      "lower_m": 2216.1601482673746,
+      "upper_m": 4521.918568267374,
+      "spatial_block": "-1193:377"
+    },
+    {
+      "source_oid": 161,
+      "case_key": "4c5d5a99ad4e57fa9935",
+      "distance_m": 1109.5111119294265,
+      "uncertainty_sum_m_assumed": 419.72,
+      "lower_m": 689.7911119294265,
+      "upper_m": 1529.2311119294266,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 163,
+      "case_key": "98ae47b93e78bcdbded4",
+      "distance_m": 11659.317278334222,
+      "uncertainty_sum_m_assumed": 729.726,
+      "lower_m": 10929.591278334221,
+      "upper_m": 12389.043278334222,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 165,
+      "case_key": "34cf52cc119c02ff85fd",
+      "distance_m": 1501.3963359911063,
+      "uncertainty_sum_m_assumed": 1565.7189999999998,
+      "lower_m": 0.0,
+      "upper_m": 3067.115335991106,
+      "spatial_block": "-1195:378"
+    },
+    {
+      "source_oid": 166,
+      "case_key": "fa8aa9e457983dc69f7e",
+      "distance_m": 4967.666269920731,
+      "uncertainty_sum_m_assumed": 887.8782100000001,
+      "lower_m": 4079.788059920731,
+      "upper_m": 5855.544479920731,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 167,
+      "case_key": "469a1c0f0a728a83470c",
+      "distance_m": 4076.3018415934575,
+      "uncertainty_sum_m_assumed": 77.71000000000001,
+      "lower_m": 3998.5918415934575,
+      "upper_m": 4154.011841593458,
+      "spatial_block": "-1195:379"
+    },
+    {
+      "source_oid": 168,
+      "case_key": "447580d652964910e3d1",
+      "distance_m": 1219.147826416467,
+      "uncertainty_sum_m_assumed": 147.73,
+      "lower_m": 1071.417826416467,
+      "upper_m": 1366.877826416467,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 169,
+      "case_key": "6d30d7380bcfd73cfc52",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 88.73,
+      "lower_m": 0.0,
+      "upper_m": 88.73,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 171,
+      "case_key": "118514ce15e39657618a",
+      "distance_m": 6008.046248884946,
+      "uncertainty_sum_m_assumed": 545.732,
+      "lower_m": 5462.314248884946,
+      "upper_m": 6553.778248884946,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 173,
+      "case_key": "48afe2671cd3a57c9601",
+      "distance_m": 7423.3333350507155,
+      "uncertainty_sum_m_assumed": 150.56300000000002,
+      "lower_m": 7272.770335050715,
+      "upper_m": 7573.896335050716,
+      "spatial_block": "-1197:375"
+    },
+    {
+      "source_oid": 176,
+      "case_key": "189129bb4b160ba8a000",
+      "distance_m": 1159.5879157186444,
+      "uncertainty_sum_m_assumed": 72.71,
+      "lower_m": 1086.8779157186443,
+      "upper_m": 1232.2979157186444,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 178,
+      "case_key": "6ac8de13e224d33062eb",
+      "distance_m": 17192.67532915364,
+      "uncertainty_sum_m_assumed": 2903.718,
+      "lower_m": 14288.95732915364,
+      "upper_m": 20096.39332915364,
+      "spatial_block": "-1194:378"
+    },
+    {
+      "source_oid": 179,
+      "case_key": "e43403b6b110583eaadf",
+      "distance_m": 8295.927423000488,
+      "uncertainty_sum_m_assumed": 2044.45998,
+      "lower_m": 6251.467443000489,
+      "upper_m": 10340.387403000488,
+      "spatial_block": "-1196:378"
+    },
+    {
+      "source_oid": 181,
+      "case_key": "8df1449e7199222e1bb6",
+      "distance_m": 5440.347007742939,
+      "uncertainty_sum_m_assumed": 72.735,
+      "lower_m": 5367.61200774294,
+      "upper_m": 5513.082007742939,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 183,
+      "case_key": "7f421c64375c196bdb65",
+      "distance_m": 14444.025774507489,
+      "uncertainty_sum_m_assumed": 3333.89796,
+      "lower_m": 11110.127814507488,
+      "upper_m": 17777.923734507487,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 187,
+      "case_key": "d0b53b1c41827e4e996a",
+      "distance_m": 1404.309323206571,
+      "uncertainty_sum_m_assumed": 464.73400000000004,
+      "lower_m": 939.5753232065709,
+      "upper_m": 1869.0433232065711,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 190,
+      "case_key": "11984e993823cc1bff77",
+      "distance_m": 248.51672455105003,
+      "uncertainty_sum_m_assumed": 918.732,
+      "lower_m": 0.0,
+      "upper_m": 1167.24872455105,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 191,
+      "case_key": "fe0ac7cccce5b30f18ca",
+      "distance_m": 1357.8927297695218,
+      "uncertainty_sum_m_assumed": 588.743,
+      "lower_m": 769.1497297695217,
+      "upper_m": 1946.6357297695217,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 192,
+      "case_key": "8bdb8d0fbf5f241a8690",
+      "distance_m": 3326.140383914638,
+      "uncertainty_sum_m_assumed": 1837.5494600000002,
+      "lower_m": 1488.5909239146376,
+      "upper_m": 5163.689843914638,
+      "spatial_block": "-1194:377"
+    },
+    {
+      "source_oid": 193,
+      "case_key": "3e7facd8c80fe2c56660",
+      "distance_m": 0.0,
+      "uncertainty_sum_m_assumed": 690.73,
+      "lower_m": 0.0,
+      "upper_m": 690.73,
+      "spatial_block": "-1198:377"
+    },
+    {
+      "source_oid": 194,
+      "case_key": "7d291b5630397ebf4110",
+      "distance_m": 1355.8163461321542,
+      "uncertainty_sum_m_assumed": 1479.732,
+      "lower_m": 0.0,
+      "upper_m": 2835.548346132154,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 201,
+      "case_key": "92b9afcdb52d131eb29e",
+      "distance_m": 3998.443816894869,
+      "uncertainty_sum_m_assumed": 257.736,
+      "lower_m": 3740.707816894869,
+      "upper_m": 4256.179816894869,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 202,
+      "case_key": "5906acb427c298d2b944",
+      "distance_m": 2261.8308692716255,
+      "uncertainty_sum_m_assumed": 3196.697,
+      "lower_m": 0.0,
+      "upper_m": 5458.527869271626,
+      "spatial_block": "-1198:379"
+    },
+    {
+      "source_oid": 203,
+      "case_key": "c9170bb49fe4b8222f92",
+      "distance_m": 261.3555795308719,
+      "uncertainty_sum_m_assumed": 301.73,
+      "lower_m": 0.0,
+      "upper_m": 563.0855795308719,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 204,
+      "case_key": "d239c9036ed7e8e6be19",
+      "distance_m": 5373.185566710593,
+      "uncertainty_sum_m_assumed": 174.16337,
+      "lower_m": 5199.022196710593,
+      "upper_m": 5547.348936710593,
+      "spatial_block": "-1195:377"
+    },
+    {
+      "source_oid": 205,
+      "case_key": "c708c4dc79c404aaf2fa",
+      "distance_m": 3367.4672023862236,
+      "uncertainty_sum_m_assumed": 3135.706,
+      "lower_m": 231.76120238622343,
+      "upper_m": 6503.173202386224,
+      "spatial_block": "-1194:379"
+    },
+    {
+      "source_oid": 206,
+      "case_key": "0b1eb920a4f95601ecb2",
+      "distance_m": 6292.955530097264,
+      "uncertainty_sum_m_assumed": 440.72400000000005,
+      "lower_m": 5852.231530097264,
+      "upper_m": 6733.679530097264,
+      "spatial_block": "-1196:377"
+    },
+    {
+      "source_oid": 209,
+      "case_key": "4e09554b366cdaac25e8",
+      "distance_m": 5243.486617516352,
+      "uncertainty_sum_m_assumed": 547.73,
+      "lower_m": 4695.756617516352,
+      "upper_m": 5791.216617516353,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 210,
+      "case_key": "c47098bd4dc756d8eec4",
+      "distance_m": 2142.7161252516053,
+      "uncertainty_sum_m_assumed": 550.55308,
+      "lower_m": 1592.1630452516051,
+      "upper_m": 2693.2692052516054,
+      "spatial_block": "-1195:376"
+    },
+    {
+      "source_oid": 211,
+      "case_key": "93a5787e8c44f75c033f",
+      "distance_m": 919.5110892841947,
+      "uncertainty_sum_m_assumed": 186.597,
+      "lower_m": 732.9140892841947,
+      "upper_m": 1106.1080892841946,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 212,
+      "case_key": "71b62a301daa2480eb03",
+      "distance_m": 4690.661496870779,
+      "uncertainty_sum_m_assumed": 133.73,
+      "lower_m": 4556.9314968707795,
+      "upper_m": 4824.391496870779,
+      "spatial_block": "-1197:377"
+    },
+    {
+      "source_oid": 213,
+      "case_key": "e687813558edb5f97fb1",
+      "distance_m": 3600.6092950509305,
+      "uncertainty_sum_m_assumed": 253.695,
+      "lower_m": 3346.9142950509304,
+      "upper_m": 3854.3042950509307,
+      "spatial_block": "-1199:379"
+    },
+    {
+      "source_oid": 216,
+      "case_key": "eae1115ef5cec157c5e4",
+      "distance_m": 7368.758994965225,
+      "uncertainty_sum_m_assumed": 137.782,
+      "lower_m": 7230.976994965225,
+      "upper_m": 7506.540994965225,
+      "spatial_block": "-1196:377"
+    }
+  ],
+  "report": {
+    "hiker_source_rows": 134,
+    "hiker_case_keys": 133,
+    "used_case_keys": 132,
+    "zero_distance_retained": 18,
+    "excluded_rows": [
+      {
+        "source_oid": 217,
+        "case_key": "a59df240e292ac3eb168",
+        "reasons": [
+          "MULTIPLE_ENDPOINTS_UNRESOLVED",
+          "NON_PRIMARY_ENDPOINT"
+        ]
+      },
+      {
+        "source_oid": 218,
+        "case_key": "a59df240e292ac3eb168",
+        "reasons": [
+          "MULTIPLE_ENDPOINTS_UNRESOLVED",
+          "NON_PRIMARY_ENDPOINT"
+        ]
+      }
+    ],
+    "spatial_blocks": 27,
+    "paper_hiker_n": 130,
+    "paper_service_count_match": false,
+    "scope": "SINGLE_PRIMARY_HIKER_ENDPOINTS_NOT_TIME_TRAJECTORIES",
+    "uncertainty_units": "METERS_INFERRED_FROM_SOURCE_PAPER_NOT_FIELD_DICTIONARY",
+    "interval_interpretation": "GEOMETRIC_BOUNDS_NOT_CONFIDENCE_INTERVAL"
+  }
+}

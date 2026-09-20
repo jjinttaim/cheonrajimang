@@ -1,0 +1,17 @@
+.facility-panel{margin:0 0 20px;padding:14px;background:#f5f8f7;border:1px solid #dfe9e5;border-radius:12px}
+.facility-heading{display:flex;align-items:center;gap:7px;font-size:13px;color:#245649}
+.facility-heading>span:not(.info-tip){margin-left:auto;font-size:10px;background:#e6eae7;color:#50665c;padding:3px 6px;border-radius:4px}
+.facility-panel p,.facility-controls p{font-size:11px;line-height:1.65;color:#617169;margin:9px 0}
+.facility-panel summary{font-size:11px;cursor:pointer;color:#356751}
+.facility-counts{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px;margin-top:9px}
+.facility-counts span{display:flex;justify-content:space-between;font-size:11px;color:#617169}
+.facility-panel .facility-caution,.facility-controls .facility-caution{color:#806c3a}
+.facility-caution svg{vertical-align:-2px}
+.facility-panel .button{min-height:32px;font-size:11px;margin-top:4px}
+.facility-controls{padding:12px 14px;border:1px solid #dfe9e5;border-radius:10px;background:#f5f8f7;margin-bottom:16px}
+.mission-form .facility-controls .toggle-row{display:flex;align-items:center;justify-content:space-between;margin:0}
+.facility-controls input[type=checkbox]{width:18px;height:18px;accent-color:#28775e}
+.facility-popup{font-family:inherit;font-size:12px;line-height:1.7;max-width:240px}
+.facility-map-key{display:flex;gap:10px;font-size:10px;color:#617169;margin:8px 0}
+.facility-map-key i{display:inline-block;width:6px;height:6px;border-radius:50%;background:#746694;margin-right:4px}
+.facility-map-key i.supplies{background:#886341}

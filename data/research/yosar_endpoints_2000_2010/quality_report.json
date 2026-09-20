@@ -1,0 +1,53 @@
+{
+  "source_rows": 218,
+  "unique_source_case_keys": 213,
+  "cases_with_multiple_pairs": 4,
+  "all_lines_are_two_vertex_endpoint_links": true,
+  "cross_case_joins": 0,
+  "candidate_single_pair_endpoints": 182,
+  "row_exclusion_counts": {
+    "ZERO_DISTANCE_CENSORED": 27,
+    "MULTIPLE_PAIRS_PER_CASE": 9,
+    "NON_PRIMARY_ENDPOINT_TYPE": 9
+  },
+  "date_fields": {
+    "DateTime": {
+      "non_null": 218,
+      "at_utc_midnight": 218
+    },
+    "DateTime_1": {
+      "non_null": 218,
+      "at_utc_midnight": 218
+    },
+    "DateTime_2": {
+      "non_null": 218,
+      "at_utc_midnight": 218
+    },
+    "DateTIme_3": {
+      "non_null": 218,
+      "at_utc_midnight": 218
+    }
+  },
+  "total_fields": {
+    "TotalTim": {
+      "negative": 7,
+      "zero": 10,
+      "units_verified": false
+    },
+    "TotalSea": {
+      "negative": 13,
+      "zero": 15,
+      "units_verified": false
+    }
+  },
+  "training_status": "QUARANTINED_NOT_USED_TO_FIT_OR_SELECT_MODEL",
+  "reasons": [
+    "Two-vertex links are not actual paths.",
+    "Time-of-day is not preserved in date fields; total-time fields require source clarification.",
+    "Multiple endpoint pairs are not independent incidents.",
+    "Georeferencing uncertainty must be modeled; zero distances are not arbitrary epsilon values.",
+    "Overlap with existing 65 incident endpoints must be checked before external evaluation.",
+    "CC BY-NC-SA 4.0 restrictions differ from existing training sources."
+  ],
+  "possible_existing_overlap_within_1km_both_endpoints": 0
+}

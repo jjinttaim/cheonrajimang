@@ -1,0 +1,16 @@
+.join{max-width:560px;margin:0 auto;padding:14px 14px 40px;display:flex;flex-direction:column;gap:12px;min-height:100dvh;background:#f4f8f8}
+.join-header{display:flex;align-items:center;gap:10px;padding:6px 2px}.join-header img{width:40px;height:40px}.join-header strong{display:block;font-size:18px;color:#13315a;letter-spacing:-.5px}.join-header small{color:#6d7c88;font-size:12px}
+.join-card{background:#fff;border:1px solid #dde5ea;border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}.join-card h1{font-size:19px;color:#13315a;letter-spacing:-.5px}.join-card.mission{background:#13315a;color:#fff;border-color:#13315a}.join-card.mission h1,.join-card.mission .muted{color:#fff}.join-card.mission .eyebrow{color:#a9c3d6}
+.join-card .section-label{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;color:#13315a}.join-card .section-label span{display:flex;align-items:center;gap:5px}
+.join-card input,.join-card textarea{font-size:16px}
+.join-error{display:flex;align-items:center;gap:6px;color:#a2412f;font-size:13px;background:#fdece8;padding:8px 10px;border-radius:7px}
+.join-foot{font-size:11px;color:#7b8a96;line-height:1.6;text-align:center;padding:0 8px}.join-foot .text-button{display:inline;font-size:11px;text-decoration:underline}
+.join-banner{display:flex;align-items:center;gap:8px;padding:12px 14px;border-radius:10px;font-weight:700;font-size:14px;line-height:1.4}.join-banner small{font-weight:400;display:block;font-size:12px}
+.join-banner.paused{background:#fbe3d6;color:#8a2e1d;border:1px solid #f0b8a3}.join-banner.handed{background:#e6ebf2;color:#33507a;border:1px solid #c9d3df}
+.consent-text{font-size:13.5px;line-height:1.7;background:#f5f8f8;padding:12px;border-radius:8px;color:#2f4457}.consent-check{display:flex;gap:9px;align-items:flex-start;font-size:13.5px;line-height:1.5}.consent-check input{width:20px;height:20px;flex-shrink:0;margin-top:1px}
+.join-map{height:240px;border-radius:10px;overflow:hidden;border:1px solid #d6dfe5}
+.brief{background:#f5f8f8;border-radius:8px;padding:10px 12px;font-size:13.5px}.brief strong{display:block;font-size:11.5px;color:#6d7c88;margin-bottom:3px}
+.safety{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:#7a4b12;background:#fff4e3;border:1px solid #efd3a3;padding:9px 11px;border-radius:8px;line-height:1.5}
+.checkin .overdue{color:#a2412f}
+.progress-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.progress-grid div{background:#f5f8f8;border-radius:8px;padding:10px 12px}.progress-grid span{display:block;font-size:11px;color:#6d7c88}.progress-grid strong{font-size:20px;color:#13315a}
+.join .toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:5}

@@ -1,0 +1,2481 @@
+[
+  {
+    "source_oid": 1,
+    "case_key": "942b50f459b4214b38ba",
+    "distance_m": 1341.2492511837577,
+    "ipp_uncertainty_source": 336.371,
+    "found_uncertainty_source": 158.372,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 2,
+    "case_key": "79128ee6171937cadd7f",
+    "distance_m": 1292.5108718729734,
+    "ipp_uncertainty_source": 526.363,
+    "found_uncertainty_source": 63.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 3,
+    "case_key": "5e7b9135b1937bf4082b",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 56.365,
+    "found_uncertainty_source": 56.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 4,
+    "case_key": "a3e07238f884a6ed104a",
+    "distance_m": 1763.775512329712,
+    "ipp_uncertainty_source": 126.364,
+    "found_uncertainty_source": 1304.363,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 5,
+    "case_key": "fbf6f3a20e240a731901",
+    "distance_m": 505.8242896779036,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 48.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 6,
+    "case_key": "6256579dc8ed243737e4",
+    "distance_m": 1822.6170561160052,
+    "ipp_uncertainty_source": 846.51521,
+    "found_uncertainty_source": 56.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 7,
+    "case_key": "a01575071fc8425dc34c",
+    "distance_m": 649.0125100746441,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 198.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 8,
+    "case_key": "f46f6769cc72c7935f55",
+    "distance_m": 2967.5362033796964,
+    "ipp_uncertainty_source": 51.367,
+    "found_uncertainty_source": 1660.84352,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 9,
+    "case_key": "dc03722534817088823f",
+    "distance_m": 3024.573111455257,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 97.362,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 10,
+    "case_key": "9170c5b7bac19ad28818",
+    "distance_m": 1807.233071967071,
+    "ipp_uncertainty_source": 431.366,
+    "found_uncertainty_source": 376.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 11,
+    "case_key": "c90abc0ef7c8b14313ed",
+    "distance_m": 225.68591148590357,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 56.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 12,
+    "case_key": "aeb5ac8131137b54d3b9",
+    "distance_m": 3466.5481233067308,
+    "ipp_uncertainty_source": 56.357,
+    "found_uncertainty_source": 46.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 13,
+    "case_key": "53cfb4ca8389a9d0f56b",
+    "distance_m": 1451.1675446693023,
+    "ipp_uncertainty_source": 176.36,
+    "found_uncertainty_source": 1639.92205,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 14,
+    "case_key": "51b2d3306874602fb554",
+    "distance_m": 425.0126140241514,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 56.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 15,
+    "case_key": "c69c8b59be4d66c1e82a",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 73.364,
+    "found_uncertainty_source": 73.364,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 16,
+    "case_key": "4a03574c98e171a2b7fd",
+    "distance_m": 3821.5262408215594,
+    "ipp_uncertainty_source": 96.365,
+    "found_uncertainty_source": 186.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 17,
+    "case_key": "980ae7253539bccea045",
+    "distance_m": 1702.8327687400047,
+    "ipp_uncertainty_source": 41.382,
+    "found_uncertainty_source": 41.382,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 18,
+    "case_key": "321e1ea8e7d0d3ea5f08",
+    "distance_m": 4582.009086519892,
+    "ipp_uncertainty_source": 41.382,
+    "found_uncertainty_source": 66.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 19,
+    "case_key": "2049092aee89aa0092fe",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 20,
+    "case_key": "7eafc860abcb76522971",
+    "distance_m": 1332.1082876037408,
+    "ipp_uncertainty_source": 41.364,
+    "found_uncertainty_source": 44.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 21,
+    "case_key": "25222fec6ec1019b1560",
+    "distance_m": 3498.1818945898062,
+    "ipp_uncertainty_source": 494.359,
+    "found_uncertainty_source": 97.362,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 22,
+    "case_key": "64e395bff66954d0c6b1",
+    "distance_m": 1684.735323438208,
+    "ipp_uncertainty_source": 226.362,
+    "found_uncertainty_source": 728.32265,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 23,
+    "case_key": "4fc2902ae51aee736710",
+    "distance_m": 51.758232581620824,
+    "ipp_uncertainty_source": 66.37,
+    "found_uncertainty_source": 66.37,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 24,
+    "case_key": "59cf420c2ce0ee1d64a2",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.361,
+    "found_uncertainty_source": 41.361,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 25,
+    "case_key": "27ef94ff128b740ebd4d",
+    "distance_m": 17033.149246413734,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 2070.357,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 26,
+    "case_key": "43bfda278066a6365de0",
+    "distance_m": 2028.5448364993742,
+    "ipp_uncertainty_source": 479.364,
+    "found_uncertainty_source": 41.364,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 27,
+    "case_key": "43bfda278066a6365de0",
+    "distance_m": 1618.359880282362,
+    "ipp_uncertainty_source": 479.364,
+    "found_uncertainty_source": 158.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 28,
+    "case_key": "fd157895b3245f8b22b5",
+    "distance_m": 5698.192974639056,
+    "ipp_uncertainty_source": 31.356,
+    "found_uncertainty_source": 1651.18746,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 29,
+    "case_key": "8efe983dd2c7c62d290b",
+    "distance_m": 10010.769601980943,
+    "ipp_uncertainty_source": 2026.372,
+    "found_uncertainty_source": 514.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 30,
+    "case_key": "d7c8cbc44215ca7a339f",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 63.366,
+    "found_uncertainty_source": 63.366,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 31,
+    "case_key": "b3030616ab6ab286e899",
+    "distance_m": 2625.468580561997,
+    "ipp_uncertainty_source": 3943.355,
+    "found_uncertainty_source": 36.354,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 32,
+    "case_key": "17793df09b728d4be88e",
+    "distance_m": 73.57102898932288,
+    "ipp_uncertainty_source": 63.366,
+    "found_uncertainty_source": 41.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 33,
+    "case_key": "88efe7f8ff430e377ec4",
+    "distance_m": 1516.7568845750504,
+    "ipp_uncertainty_source": 364.366,
+    "found_uncertainty_source": 41.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 34,
+    "case_key": "b7bdb0f0527a588bc0c5",
+    "distance_m": 3454.963015108808,
+    "ipp_uncertainty_source": 73.366,
+    "found_uncertainty_source": 16.417,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 35,
+    "case_key": "c0af2872b8423ecfa688",
+    "distance_m": 1497.0404095510537,
+    "ipp_uncertainty_source": 41.382,
+    "found_uncertainty_source": 846.51521,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 36,
+    "case_key": "5390e1277219b23f452d",
+    "distance_m": 4874.02165755247,
+    "ipp_uncertainty_source": 71.367,
+    "found_uncertainty_source": 811.368,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 37,
+    "case_key": "83da57a9f7cf35ee1bb6",
+    "distance_m": 47194.923765265376,
+    "ipp_uncertainty_source": 579.355,
+    "found_uncertainty_source": 208.361,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 38,
+    "case_key": "b2d9da52ee511bc21748",
+    "distance_m": 2894.452912300475,
+    "ipp_uncertainty_source": 444.17908,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 39,
+    "case_key": "3d72caedca6669200cff",
+    "distance_m": 247.51083501181975,
+    "ipp_uncertainty_source": 56.356,
+    "found_uncertainty_source": 166.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 40,
+    "case_key": "cedbe1d1e7187edf90cd",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 36.366,
+    "found_uncertainty_source": 36.366,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 41,
+    "case_key": "0e81eacb1ef0c8169415",
+    "distance_m": 14661.908801112178,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 5017.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 42,
+    "case_key": "470d391d5a913566b50e",
+    "distance_m": 3395.9986782254464,
+    "ipp_uncertainty_source": 41.355,
+    "found_uncertainty_source": 41.358,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 43,
+    "case_key": "467f60f020aede9f4842",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 963.354,
+    "found_uncertainty_source": 963.354,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 44,
+    "case_key": "0d8f21ff2f96daff7135",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.364,
+    "found_uncertainty_source": 41.364,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 45,
+    "case_key": "70246dff1acd516aa407",
+    "distance_m": 1279.3786991706024,
+    "ipp_uncertainty_source": 301.351,
+    "found_uncertainty_source": 1910.29192,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 46,
+    "case_key": "9c785fc871c78b806566",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.358,
+    "found_uncertainty_source": 41.358,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 47,
+    "case_key": "9377a9889be8e7c5a86b",
+    "distance_m": 347.3039615458845,
+    "ipp_uncertainty_source": 41.358,
+    "found_uncertainty_source": 202.77741,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 48,
+    "case_key": "88203c06c4987d741eb5",
+    "distance_m": 17511.598627428575,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 29.179,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 49,
+    "case_key": "aff16d0f82f06a1bb7e0",
+    "distance_m": 794.3203894601851,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 16.417,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 50,
+    "case_key": "e96389a5ae9c7c472fdc",
+    "distance_m": 4860.672654604539,
+    "ipp_uncertainty_source": 197.94937,
+    "found_uncertainty_source": 97.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 51,
+    "case_key": "0ed7dda3b8e1fe09fa93",
+    "distance_m": 1558.4485234571096,
+    "ipp_uncertainty_source": 614.364,
+    "found_uncertainty_source": 41.363,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 52,
+    "case_key": "a5c54beda9bf302e0598",
+    "distance_m": 3306.8738570813516,
+    "ipp_uncertainty_source": 835.2498,
+    "found_uncertainty_source": 46.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 53,
+    "case_key": "4f308d85181971f6c79a",
+    "distance_m": 3639.046253576513,
+    "ipp_uncertainty_source": 856.364,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 54,
+    "case_key": "c53746bccbcb115b4542",
+    "distance_m": 8036.699376630822,
+    "ipp_uncertainty_source": 41.371,
+    "found_uncertainty_source": 1117.372,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 55,
+    "case_key": "ea929aeddc12e955e933",
+    "distance_m": 10621.275789888236,
+    "ipp_uncertainty_source": 41.371,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 56,
+    "case_key": "bbe0c7bd67fe19eb186b",
+    "distance_m": 90.713834405503,
+    "ipp_uncertainty_source": 36.366,
+    "found_uncertainty_source": 61.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 57,
+    "case_key": "c0b1f5a4865c70676c97",
+    "distance_m": 2300.272331953027,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 31.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 58,
+    "case_key": "0d9b81e1094b9976f4f8",
+    "distance_m": 2471.9429494080587,
+    "ipp_uncertainty_source": 126.367,
+    "found_uncertainty_source": 366.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 59,
+    "case_key": "24b26fc120e32caffa3d",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 151.366,
+    "found_uncertainty_source": 151.366,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 60,
+    "case_key": "1ed791d30622e647db18",
+    "distance_m": 988.793797794349,
+    "ipp_uncertainty_source": 226.365,
+    "found_uncertainty_source": 576.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 61,
+    "case_key": "f3cc4e281b2fae8f9180",
+    "distance_m": 3190.0725414375697,
+    "ipp_uncertainty_source": 901.365,
+    "found_uncertainty_source": 1651.18746,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 62,
+    "case_key": "339f3ba3d11a5272df64",
+    "distance_m": 1703.8890967850357,
+    "ipp_uncertainty_source": 41.367,
+    "found_uncertainty_source": 51.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 63,
+    "case_key": "1a67b92033a8c9b3f552",
+    "distance_m": 1394.764833546366,
+    "ipp_uncertainty_source": 1862,
+    "found_uncertainty_source": 109.177,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 64,
+    "case_key": "591a1faf0683b29e875a",
+    "distance_m": 1521.5020099941898,
+    "ipp_uncertainty_source": 1175.365,
+    "found_uncertainty_source": 207.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 65,
+    "case_key": "feffce7fc10188108d2a",
+    "distance_m": 581.7737304572933,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 577.75468,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 66,
+    "case_key": "2e48391687cb49804198",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.357,
+    "found_uncertainty_source": 41.357,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 67,
+    "case_key": "214d4fe8869f3fea02b5",
+    "distance_m": 1946.7588645824824,
+    "ipp_uncertainty_source": 1540.381,
+    "found_uncertainty_source": 46.38,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 68,
+    "case_key": "6bfeb7873e56dbfec597",
+    "distance_m": 226.3332126244317,
+    "ipp_uncertainty_source": 41.371,
+    "found_uncertainty_source": 139.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 69,
+    "case_key": "3e268c9efb79c3e2da86",
+    "distance_m": 3439.9716364175697,
+    "ipp_uncertainty_source": 41.363,
+    "found_uncertainty_source": 50.808,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 70,
+    "case_key": "8545570df5af48edb5c6",
+    "distance_m": 849.2309012102253,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 666.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 71,
+    "case_key": "29c4045d208f14c0ac52",
+    "distance_m": 10078.994121651638,
+    "ipp_uncertainty_source": 41.36,
+    "found_uncertainty_source": 256.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 72,
+    "case_key": "1582d5faced4e3bf325e",
+    "distance_m": 462.7555530589763,
+    "ipp_uncertainty_source": 277.367,
+    "found_uncertainty_source": 260.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 73,
+    "case_key": "74c00dbed3246d0bc08f",
+    "distance_m": 5467.138272957723,
+    "ipp_uncertainty_source": 31.364,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 74,
+    "case_key": "dfa5abdf7d853801d1a3",
+    "distance_m": 1703.8890967850357,
+    "ipp_uncertainty_source": 51.367,
+    "found_uncertainty_source": 41.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 75,
+    "case_key": "c600fc0fb7d4e4a193de",
+    "distance_m": 4891.490803882528,
+    "ipp_uncertainty_source": 41.344,
+    "found_uncertainty_source": 97.359,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 76,
+    "case_key": "79e27ccfd403550bbaf6",
+    "distance_m": 4212.929692572494,
+    "ipp_uncertainty_source": 844.363,
+    "found_uncertainty_source": 186.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 77,
+    "case_key": "b467014eea4593e1dc55",
+    "distance_m": 1791.6289480647804,
+    "ipp_uncertainty_source": 36.37,
+    "found_uncertainty_source": 326.37,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 78,
+    "case_key": "b467014eea4593e1dc55",
+    "distance_m": 2986.9039062590077,
+    "ipp_uncertainty_source": 36.37,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 79,
+    "case_key": "0a0335cea84d9be7a884",
+    "distance_m": 997.903867517968,
+    "ipp_uncertainty_source": 192.371,
+    "found_uncertainty_source": 577.75468,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 80,
+    "case_key": "aece4408cead8578dac0",
+    "distance_m": 7239.778633001,
+    "ipp_uncertainty_source": 466.369,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 81,
+    "case_key": "67770734c6fbbbe26815",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 139.366,
+    "found_uncertainty_source": 139.366,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 82,
+    "case_key": "fd7bce4ffbc84b7fe9ca",
+    "distance_m": 893.4523989240788,
+    "ipp_uncertainty_source": 920.374,
+    "found_uncertainty_source": 36.374,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 83,
+    "case_key": "cbd63ca35856e3ee3b4c",
+    "distance_m": 960.0286629894895,
+    "ipp_uncertainty_source": 51.367,
+    "found_uncertainty_source": 418.368,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 84,
+    "case_key": "d8411fabea67f5e89f49",
+    "distance_m": 95.50828930100121,
+    "ipp_uncertainty_source": 41.371,
+    "found_uncertainty_source": 77.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 85,
+    "case_key": "1acb1242fb4140819f38",
+    "distance_m": 532.9554912567255,
+    "ipp_uncertainty_source": 246.365,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 86,
+    "case_key": "6c4fec5ad714cc033355",
+    "distance_m": 4050.6059029445355,
+    "ipp_uncertainty_source": 91.36,
+    "found_uncertainty_source": 4128.359,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 87,
+    "case_key": "0c43c6ffdce38893468d",
+    "distance_m": 4462.959666969393,
+    "ipp_uncertainty_source": 31.362,
+    "found_uncertainty_source": 76.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 88,
+    "case_key": "c805df4c2e798a52f51b",
+    "distance_m": 3633.373275377957,
+    "ipp_uncertainty_source": 191.348,
+    "found_uncertainty_source": 41.349,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 89,
+    "case_key": "262b885ef71bf99d81f0",
+    "distance_m": 902.4726781531992,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 166.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 90,
+    "case_key": "8dd07de790cf8ee0d625",
+    "distance_m": 330.5274068406511,
+    "ipp_uncertainty_source": 178.365,
+    "found_uncertainty_source": 246.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 91,
+    "case_key": "f45b12979cf4a2892629",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.355,
+    "found_uncertainty_source": 41.355,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 92,
+    "case_key": "c5116f58a333efe9bd06",
+    "distance_m": 2048.3062050356243,
+    "ipp_uncertainty_source": 316.365,
+    "found_uncertainty_source": 151.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 93,
+    "case_key": "9e3a076b6319fda3adb6",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 94,
+    "case_key": "63e7bc87dfb7d62415c0",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.357,
+    "found_uncertainty_source": 41.357,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 95,
+    "case_key": "b553ce761574aa2ae0ca",
+    "distance_m": 1186.1157917597695,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 109.174,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 96,
+    "case_key": "0215a61be41ce2d518d2",
+    "distance_m": 1097.6513976617543,
+    "ipp_uncertainty_source": 1466.364,
+    "found_uncertainty_source": 689.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 97,
+    "case_key": "3bdf22c35ada5520be09",
+    "distance_m": 1730.7841092682395,
+    "ipp_uncertainty_source": 1627.37,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 98,
+    "case_key": "51f140398e70767ff8c5",
+    "distance_m": 912.7394816531768,
+    "ipp_uncertainty_source": 846.51521,
+    "found_uncertainty_source": 36.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 99,
+    "case_key": "a31f5bac1f2629ebeb45",
+    "distance_m": 3332.4600894781242,
+    "ipp_uncertainty_source": 192.371,
+    "found_uncertainty_source": 209.37,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 100,
+    "case_key": "fad50eeeff6f8ec12168",
+    "distance_m": 1665.189027653394,
+    "ipp_uncertainty_source": 98.365,
+    "found_uncertainty_source": 56.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 101,
+    "case_key": "ad5504e34149ed5b7119",
+    "distance_m": 1638.09096449926,
+    "ipp_uncertainty_source": 1516.357,
+    "found_uncertainty_source": 507.357,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 102,
+    "case_key": "bdb60253ba15c238c492",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 56.365,
+    "found_uncertainty_source": 376.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 103,
+    "case_key": "32c80b82a231e123b456",
+    "distance_m": 331.63300854233216,
+    "ipp_uncertainty_source": 96.365,
+    "found_uncertainty_source": 376.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 104,
+    "case_key": "c971372d66adf1dea604",
+    "distance_m": 3920.514391359201,
+    "ipp_uncertainty_source": 376.365,
+    "found_uncertainty_source": 116.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 105,
+    "case_key": "11b7fbf4c7be00ff0fce",
+    "distance_m": 118.6140010166846,
+    "ipp_uncertainty_source": 56.365,
+    "found_uncertainty_source": 97.362,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 106,
+    "case_key": "32136bd9e406cb0b55af",
+    "distance_m": 1673.565399044061,
+    "ipp_uncertainty_source": 1696.352,
+    "found_uncertainty_source": 41.353,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 107,
+    "case_key": "e3b995f9ccaf5ba1f981",
+    "distance_m": 2166.4749245688604,
+    "ipp_uncertainty_source": 376.365,
+    "found_uncertainty_source": 549.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 108,
+    "case_key": "9beb92d28afcaa7b5e0c",
+    "distance_m": 2059.77287991555,
+    "ipp_uncertainty_source": 36.356,
+    "found_uncertainty_source": 41.355,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 109,
+    "case_key": "2575b748bf6b5e8a47de",
+    "distance_m": 11286.0261784398,
+    "ipp_uncertainty_source": 1278.346,
+    "found_uncertainty_source": 41.353,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 110,
+    "case_key": "a9f3cc07b537266b8573",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 376.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 111,
+    "case_key": "6f3345bf685b6193f409",
+    "distance_m": 2311.483678567619,
+    "ipp_uncertainty_source": 31.366,
+    "found_uncertainty_source": 228.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 112,
+    "case_key": "44293abc3b3fd7590123",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 113,
+    "case_key": "3bb80a242ff9eb908dcc",
+    "distance_m": 3309.576170327856,
+    "ipp_uncertainty_source": 1207.374,
+    "found_uncertainty_source": 854.372,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 114,
+    "case_key": "38be6254c42abdbec115",
+    "distance_m": 3775.0228949522075,
+    "ipp_uncertainty_source": 246.353,
+    "found_uncertainty_source": 96.416,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 115,
+    "case_key": "18d193d1f697a7d69fa3",
+    "distance_m": 1970.3065758752002,
+    "ipp_uncertainty_source": 41.359,
+    "found_uncertainty_source": 41.359,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 116,
+    "case_key": "5eb2efdfe2bde079e68d",
+    "distance_m": 1375.3324160692066,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 51.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 117,
+    "case_key": "f83a41c603b632b94076",
+    "distance_m": 16965.535986201747,
+    "ipp_uncertainty_source": 2026.362,
+    "found_uncertainty_source": 73.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 118,
+    "case_key": "646d61c0c75594ab9eda",
+    "distance_m": 1969.3800550032588,
+    "ipp_uncertainty_source": 56.382,
+    "found_uncertainty_source": 41.382,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 119,
+    "case_key": "54d63c9520cc68c2c1c4",
+    "distance_m": 2580.7913005541527,
+    "ipp_uncertainty_source": 901.371,
+    "found_uncertainty_source": 3384.45148,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 120,
+    "case_key": "024a5381aa8d028057ac",
+    "distance_m": 1160.3738565851231,
+    "ipp_uncertainty_source": 846.51521,
+    "found_uncertainty_source": 109.18,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 121,
+    "case_key": "e57fe7080bf9bcbfb4e9",
+    "distance_m": 567.6228812367484,
+    "ipp_uncertainty_source": 734.37,
+    "found_uncertainty_source": 354.05579,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 122,
+    "case_key": "0739d052c30b826908a2",
+    "distance_m": 18808.11526947436,
+    "ipp_uncertainty_source": 41.38,
+    "found_uncertainty_source": 41.374,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 123,
+    "case_key": "fa06bfeff5eadf8c0ea5",
+    "distance_m": 1464.7037095595842,
+    "ipp_uncertainty_source": 41.364,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 124,
+    "case_key": "6ab4a81175b4495d604c",
+    "distance_m": 1019.4401932419283,
+    "ipp_uncertainty_source": 419.366,
+    "found_uncertainty_source": 41.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 125,
+    "case_key": "c7064fb1a09369239879",
+    "distance_m": 526.9138790412586,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 31.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 126,
+    "case_key": "d1186db19a2acb382587",
+    "distance_m": 2893.4554904149168,
+    "ipp_uncertainty_source": 56.351,
+    "found_uncertainty_source": 41.349,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 127,
+    "case_key": "14bff2a70f96682e37cb",
+    "distance_m": 6506.808659909776,
+    "ipp_uncertainty_source": 41.353,
+    "found_uncertainty_source": 1651.18746,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 128,
+    "case_key": "3efe52cf803eda09c10b",
+    "distance_m": 1432.6837089421956,
+    "ipp_uncertainty_source": 56.366,
+    "found_uncertainty_source": 1450.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 129,
+    "case_key": "60a051440c4b06689bcb",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 507.357,
+    "found_uncertainty_source": 507.357,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 130,
+    "case_key": "50d987b9ec3132365734",
+    "distance_m": 1108.2022458100182,
+    "ipp_uncertainty_source": 1651.18746,
+    "found_uncertainty_source": 846.51521,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 131,
+    "case_key": "7214ab06c97bfea29a15",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 73.366,
+    "found_uncertainty_source": 73.366,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 132,
+    "case_key": "a3ccd1236f8858c0027c",
+    "distance_m": 1197.0584713508413,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 51.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 133,
+    "case_key": "4d9089ecec70cce985a0",
+    "distance_m": 1433.782356761936,
+    "ipp_uncertainty_source": 41.364,
+    "found_uncertainty_source": 41.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 134,
+    "case_key": "7c4e0ad34d717ffb463c",
+    "distance_m": 825.5912743166773,
+    "ipp_uncertainty_source": 46.356,
+    "found_uncertainty_source": 56.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 135,
+    "case_key": "9af586dac508c80fd775",
+    "distance_m": 802.5188741123701,
+    "ipp_uncertainty_source": 41.377,
+    "found_uncertainty_source": 41.377,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 136,
+    "case_key": "be794ac1f16604149d3d",
+    "distance_m": 16819.528456534295,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 41.358,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 137,
+    "case_key": "976c761fdc1ce0ad51cd",
+    "distance_m": 1805.1356189947307,
+    "ipp_uncertainty_source": 158.365,
+    "found_uncertainty_source": 431.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 138,
+    "case_key": "f27f29bc3c723657e7b0",
+    "distance_m": 16915.89358621264,
+    "ipp_uncertainty_source": 2026.365,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 139,
+    "case_key": "510e56969e38e65e9ac6",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.37,
+    "found_uncertainty_source": 41.37,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 140,
+    "case_key": "b4bd75e8bc3695bd7477",
+    "distance_m": 2281.645451570862,
+    "ipp_uncertainty_source": 945.349,
+    "found_uncertainty_source": 56.351,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 141,
+    "case_key": "1f266350e25202c0f3e7",
+    "distance_m": 1832.7197548893841,
+    "ipp_uncertainty_source": 41.371,
+    "found_uncertainty_source": 1100.372,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 142,
+    "case_key": "8845473f2fec86d11227",
+    "distance_m": 693.6884005975057,
+    "ipp_uncertainty_source": 91.365,
+    "found_uncertainty_source": 211.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 143,
+    "case_key": "b1afe5414fa0867e3560",
+    "distance_m": 2534.512846472509,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 56.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 144,
+    "case_key": "4eb1cc6e5f248187038a",
+    "distance_m": 1092.4449190507123,
+    "ipp_uncertainty_source": 674.378,
+    "found_uncertainty_source": 1181.25886,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 145,
+    "case_key": "f3cefa57caef6173c356",
+    "distance_m": 4875.730839872425,
+    "ipp_uncertainty_source": 56.367,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 146,
+    "case_key": "44d23ff106ecd99d0fa6",
+    "distance_m": 6808.5635120048355,
+    "ipp_uncertainty_source": 41.357,
+    "found_uncertainty_source": 41.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 147,
+    "case_key": "85ccc915f9a58564e71c",
+    "distance_m": 2433.79291989574,
+    "ipp_uncertainty_source": 346.366,
+    "found_uncertainty_source": 56.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 148,
+    "case_key": "cede2b8b4e213c2925a0",
+    "distance_m": 580.8148254537103,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 56.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 149,
+    "case_key": "065041d8f8cb8031f212",
+    "distance_m": 1303.909431339622,
+    "ipp_uncertainty_source": 56.366,
+    "found_uncertainty_source": 66.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 150,
+    "case_key": "b1e77a5ec8c85cd67e74",
+    "distance_m": 12030.822573572497,
+    "ipp_uncertainty_source": 66.357,
+    "found_uncertainty_source": 41.355,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 151,
+    "case_key": "8331d272757d9937cf7c",
+    "distance_m": 8238.247856760709,
+    "ipp_uncertainty_source": 4450.365,
+    "found_uncertainty_source": 203.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 152,
+    "case_key": "9e8bf4c25e8935141597",
+    "distance_m": 7092.253503658501,
+    "ipp_uncertainty_source": 186.365,
+    "found_uncertainty_source": 96.417,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 153,
+    "case_key": "cea2510ccd5299bcabaa",
+    "distance_m": 1541.9696073580608,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 374.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 154,
+    "case_key": "9c257a2171c0d4d24ee3",
+    "distance_m": 1379.5781762857616,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 180.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 155,
+    "case_key": "c09b1a1cba5e9a9e0d21",
+    "distance_m": 2181.548745078079,
+    "ipp_uncertainty_source": 116.365,
+    "found_uncertainty_source": 71.84624,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 156,
+    "case_key": "8d177661b88004ab0d55",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 229.365,
+    "found_uncertainty_source": 229.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 157,
+    "case_key": "2b66e1d76a35e3e80514",
+    "distance_m": 531.6905201852373,
+    "ipp_uncertainty_source": 46.365,
+    "found_uncertainty_source": 444.17908,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 158,
+    "case_key": "8d3dea69adba8fdd1f7c",
+    "distance_m": 1621.4222175012617,
+    "ipp_uncertainty_source": 51.366,
+    "found_uncertainty_source": 36.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 159,
+    "case_key": "85cc6fbeafb0b9b6c138",
+    "distance_m": 2048.3062050356243,
+    "ipp_uncertainty_source": 276.366,
+    "found_uncertainty_source": 171.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 160,
+    "case_key": "ec14b2943eed388d923f",
+    "distance_m": 3369.0393583148907,
+    "ipp_uncertainty_source": 306.364,
+    "found_uncertainty_source": 846.51521,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 161,
+    "case_key": "4c5d5a99ad4e57fa9935",
+    "distance_m": 1109.5111119246212,
+    "ipp_uncertainty_source": 41.36,
+    "found_uncertainty_source": 378.36,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 162,
+    "case_key": "a4b3cfe13d1398f0f120",
+    "distance_m": 225.68591148590357,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 335.682,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 163,
+    "case_key": "98ae47b93e78bcdbded4",
+    "distance_m": 11659.317278400613,
+    "ipp_uncertainty_source": 634.36,
+    "found_uncertainty_source": 95.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 164,
+    "case_key": "70f54797ea302cf6b615",
+    "distance_m": 1880.9917480292142,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 134.342,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 165,
+    "case_key": "34cf52cc119c02ff85fd",
+    "distance_m": 1501.3963360104824,
+    "ipp_uncertainty_source": 1524.36,
+    "found_uncertainty_source": 41.359,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 166,
+    "case_key": "fa8aa9e457983dc69f7e",
+    "distance_m": 4967.666269992146,
+    "ipp_uncertainty_source": 41.363,
+    "found_uncertainty_source": 846.51521,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 167,
+    "case_key": "469a1c0f0a728a83470c",
+    "distance_m": 4076.3018416163536,
+    "ipp_uncertainty_source": 36.354,
+    "found_uncertainty_source": 41.356,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 168,
+    "case_key": "447580d652964910e3d1",
+    "distance_m": 1219.147826435078,
+    "ipp_uncertainty_source": 56.365,
+    "found_uncertainty_source": 91.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 169,
+    "case_key": "6d30d7380bcfd73cfc52",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 44.365,
+    "found_uncertainty_source": 44.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 170,
+    "case_key": "3bfd2405369fb162a8e8",
+    "distance_m": 3408.5707476439284,
+    "ipp_uncertainty_source": 209.37,
+    "found_uncertainty_source": 283.81141,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 171,
+    "case_key": "118514ce15e39657618a",
+    "distance_m": 6008.046248850271,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 504.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 172,
+    "case_key": "51665523642a8d23a8f0",
+    "distance_m": 605.4685922770994,
+    "ipp_uncertainty_source": 52.371,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 173,
+    "case_key": "48afe2671cd3a57c9601",
+    "distance_m": 7423.333335129576,
+    "ipp_uncertainty_source": 41.38,
+    "found_uncertainty_source": 109.183,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 174,
+    "case_key": "4a11262b41c5cff0810a",
+    "distance_m": 56.54785925224633,
+    "ipp_uncertainty_source": 41.364,
+    "found_uncertainty_source": 41.364,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 175,
+    "case_key": "796d37dc4d451fbdf15c",
+    "distance_m": 902.6447421684898,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 134.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 176,
+    "case_key": "189129bb4b160ba8a000",
+    "distance_m": 1159.5879157206948,
+    "ipp_uncertainty_source": 41.355,
+    "found_uncertainty_source": 31.355,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 177,
+    "case_key": "a24f50f2790c7533b2a3",
+    "distance_m": 930.4997437959373,
+    "ipp_uncertainty_source": 186.365,
+    "found_uncertainty_source": 178.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 178,
+    "case_key": "6ac8de13e224d33062eb",
+    "distance_m": 17192.67532919636,
+    "ipp_uncertainty_source": 2623.355,
+    "found_uncertainty_source": 280.363,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 179,
+    "case_key": "e43403b6b110583eaadf",
+    "distance_m": 8295.927423076766,
+    "ipp_uncertainty_source": 1775.10698,
+    "found_uncertainty_source": 269.353,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 180,
+    "case_key": "0e69ac05674600da9cb8",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 41.356,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 181,
+    "case_key": "8df1449e7199222e1bb6",
+    "distance_m": 5440.3470078013515,
+    "ipp_uncertainty_source": 41.366,
+    "found_uncertainty_source": 31.369,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 182,
+    "case_key": "18df2bf3c368a7ef3639",
+    "distance_m": 881.3033071362765,
+    "ipp_uncertainty_source": 56.365,
+    "found_uncertainty_source": 97.362,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 183,
+    "case_key": "7f421c64375c196bdb65",
+    "distance_m": 14444.025774424843,
+    "ipp_uncertainty_source": 73.366,
+    "found_uncertainty_source": 3260.53196,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 184,
+    "case_key": "0a6a377f18a9b1132512",
+    "distance_m": 1923.1272506993873,
+    "ipp_uncertainty_source": 780.53208,
+    "found_uncertainty_source": 1743.369,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 185,
+    "case_key": "9f2575e3c5903d957a2f",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 86.365,
+    "found_uncertainty_source": 86.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 186,
+    "case_key": "8e5cc283b197771ff7ba",
+    "distance_m": 33316.72361022018,
+    "ipp_uncertainty_source": 41.353,
+    "found_uncertainty_source": 91.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 187,
+    "case_key": "d0b53b1c41827e4e996a",
+    "distance_m": 1404.3093232179228,
+    "ipp_uncertainty_source": 31.367,
+    "found_uncertainty_source": 433.367,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 188,
+    "case_key": "a78c20cab872474fabcc",
+    "distance_m": 832.7639115540791,
+    "ipp_uncertainty_source": 936.366,
+    "found_uncertainty_source": 107.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 189,
+    "case_key": "94c3aa7865db64b818dd",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 86.365,
+    "found_uncertainty_source": 86.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 190,
+    "case_key": "11984e993823cc1bff77",
+    "distance_m": 248.5167245493796,
+    "ipp_uncertainty_source": 855.366,
+    "found_uncertainty_source": 63.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 191,
+    "case_key": "fe0ac7cccce5b30f18ca",
+    "distance_m": 1357.892729788871,
+    "ipp_uncertainty_source": 454.367,
+    "found_uncertainty_source": 134.376,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 192,
+    "case_key": "8bdb8d0fbf5f241a8690",
+    "distance_m": 3326.140383959224,
+    "ipp_uncertainty_source": 186.362,
+    "found_uncertainty_source": 1651.18746,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 193,
+    "case_key": "3e7facd8c80fe2c56660",
+    "distance_m": 0.0,
+    "ipp_uncertainty_source": 345.365,
+    "found_uncertainty_source": 345.365,
+    "endpoint_candidate": false,
+    "flags": [
+      "ZERO_DISTANCE_CENSORED"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 194,
+    "case_key": "7d291b5630397ebf4110",
+    "distance_m": 1355.8163461302734,
+    "ipp_uncertainty_source": 146.366,
+    "found_uncertainty_source": 1333.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 195,
+    "case_key": "59ebcd01d3ac2c22c655",
+    "distance_m": 194.5288952881208,
+    "ipp_uncertainty_source": 192.371,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 196,
+    "case_key": "9d3ae0f92f5a2ab51c53",
+    "distance_m": 4875.941461978477,
+    "ipp_uncertainty_source": 41.372,
+    "found_uncertainty_source": 36.374,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 197,
+    "case_key": "efb4fceca0ec8b916b62",
+    "distance_m": 1963.2508289557754,
+    "ipp_uncertainty_source": 192.371,
+    "found_uncertainty_source": 577.75468,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 198,
+    "case_key": "c3d3f75240d20651e8ca",
+    "distance_m": 2945.7859502466135,
+    "ipp_uncertainty_source": 36.37,
+    "found_uncertainty_source": 276.371,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 199,
+    "case_key": "c3d3f75240d20651e8ca",
+    "distance_m": 3041.876445171058,
+    "ipp_uncertainty_source": 36.37,
+    "found_uncertainty_source": 41.372,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 200,
+    "case_key": "c3d3f75240d20651e8ca",
+    "distance_m": 1861.4167922035435,
+    "ipp_uncertainty_source": 36.37,
+    "found_uncertainty_source": 41.371,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 201,
+    "case_key": "92b9afcdb52d131eb29e",
+    "distance_m": 3998.443816893143,
+    "ipp_uncertainty_source": 51.367,
+    "found_uncertainty_source": 206.369,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 202,
+    "case_key": "5906acb427c298d2b944",
+    "distance_m": 2261.830869283553,
+    "ipp_uncertainty_source": 3155.348,
+    "found_uncertainty_source": 41.349,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 203,
+    "case_key": "c9170bb49fe4b8222f92",
+    "distance_m": 261.35557952933385,
+    "ipp_uncertainty_source": 236.365,
+    "found_uncertainty_source": 65.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 204,
+    "case_key": "d239c9036ed7e8e6be19",
+    "distance_m": 5373.185566679329,
+    "ipp_uncertainty_source": 41.361,
+    "found_uncertainty_source": 132.80237,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 205,
+    "case_key": "c708c4dc79c404aaf2fa",
+    "distance_m": 3367.4672023682374,
+    "ipp_uncertainty_source": 3094.353,
+    "found_uncertainty_source": 41.353,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 206,
+    "case_key": "0b1eb920a4f95601ecb2",
+    "distance_m": 6292.955530170726,
+    "ipp_uncertainty_source": 126.364,
+    "found_uncertainty_source": 314.36,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 207,
+    "case_key": "495da15ded43426b896b",
+    "distance_m": 404.22852424202034,
+    "ipp_uncertainty_source": 41.379,
+    "found_uncertainty_source": 959.16932,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 208,
+    "case_key": "2b816f2b8eac4c6e4654",
+    "distance_m": 20973.284624309723,
+    "ipp_uncertainty_source": 41.356,
+    "found_uncertainty_source": 1651.18746,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 209,
+    "case_key": "4e09554b366cdaac25e8",
+    "distance_m": 5243.486617486819,
+    "ipp_uncertainty_source": 451.365,
+    "found_uncertainty_source": 96.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 210,
+    "case_key": "c47098bd4dc756d8eec4",
+    "distance_m": 2142.7161252808914,
+    "ipp_uncertainty_source": 106.374,
+    "found_uncertainty_source": 444.17908,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 211,
+    "case_key": "93a5787e8c44f75c033f",
+    "distance_m": 919.5110892802824,
+    "ipp_uncertainty_source": 145.239,
+    "found_uncertainty_source": 41.358,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 212,
+    "case_key": "71b62a301daa2480eb03",
+    "distance_m": 4690.6614968436525,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 92.365,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 213,
+    "case_key": "e687813558edb5f97fb1",
+    "distance_m": 3600.6092950359753,
+    "ipp_uncertainty_source": 212.347,
+    "found_uncertainty_source": 41.348,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 214,
+    "case_key": "bedb944fed26e3fb6b76",
+    "distance_m": 215.1946766741687,
+    "ipp_uncertainty_source": 186.365,
+    "found_uncertainty_source": 176.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 215,
+    "case_key": "9fc1a0cb39b37a21de37",
+    "distance_m": 773.7556509919207,
+    "ipp_uncertainty_source": 96.417,
+    "found_uncertainty_source": 41.366,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 216,
+    "case_key": "eae1115ef5cec157c5e4",
+    "distance_m": 7368.7589949357225,
+    "ipp_uncertainty_source": 41.365,
+    "found_uncertainty_source": 96.417,
+    "endpoint_candidate": true,
+    "flags": [],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 217,
+    "case_key": "a59df240e292ac3eb168",
+    "distance_m": 4032.273177222786,
+    "ipp_uncertainty_source": 41.36,
+    "found_uncertainty_source": 104.171,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  },
+  {
+    "source_oid": 218,
+    "case_key": "a59df240e292ac3eb168",
+    "distance_m": 4835.353810836269,
+    "ipp_uncertainty_source": 41.36,
+    "found_uncertainty_source": 1290.69429,
+    "endpoint_candidate": false,
+    "flags": [
+      "MULTIPLE_PAIRS_PER_CASE",
+      "NON_PRIMARY_ENDPOINT_TYPE"
+    ],
+    "time_training_eligible": false,
+    "trajectory_training_eligible": false
+  }
+]

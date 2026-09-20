@@ -1,0 +1,34 @@
+{
+  "available": true,
+  "snapshot": "0a49367399f1b88ff7545c40bd7b3bb640d9bedf9d7c1c586f4d65938e7cb6e7",
+  "count": 12906,
+  "region": "제주도",
+  "eligible_count": 12840,
+  "categories": {
+    "식당·카페": 6122,
+    "음수대": 28,
+    "편의점·마트": 862,
+    "쉼터·숙박": 782,
+    "정류장·터미널": 4421,
+    "병원·약국": 629,
+    "경찰·소방": 62
+  },
+  "retrieved_at": "2026-09-20T04:24:56.348768+00:00",
+  "osm_timestamp": "2026-09-20T04:24:01Z",
+  "source": "https://overpass.openstreetmap.fr/api/interpreter",
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "source_url": "https://www.openstreetmap.org/copyright",
+  "query": "[out:json][timeout:180];(\n      nwr[\"shop\"~\"^(convenience|supermarket)$\"](33.00936601217657,126.02927863540621,33.66982678744319,127.07788642173126);\n      nwr[\"amenity\"~\"^(restaurant|cafe|fast_food|drinking_water|bus_station|shelter|hospital|clinic|pharmacy|police|fire_station)$\"](33.00936601217657,126.02927863540621,33.66982678744319,127.07788642173126);\n      nwr[\"highway\"=\"bus_stop\"](33.00936601217657,126.02927863540621,33.66982678744319,127.07788642173126);\n      nwr[\"tourism\"~\"^(hotel|hostel|guest_house)$\"](33.00936601217657,126.02927863540621,33.66982678744319,127.07788642173126);\n    );out center tags;",
+  "potential_scale_seconds": 900.0,
+  "potential_scope": "per analysis window, 64-cell margin",
+  "category_weights": "equal, nearest facility only",
+  "status": "UNCALIBRATED_ASSUMPTION",
+  "opening_status": "UNKNOWN_NOT_LIVE",
+  "terrain_sha256": {
+    "dem.npz": "25688fe1fda931deed2f6f92c5cbd0e969ac23e471c8a62b6c4f914ddd053a29",
+    "landcover.npz": "168eb03f07e4b5614c8f3aca77c0fbbb1634520a02038276140e399bd657ac73",
+    "slope.npz": "65358ee1cc41a2087d9ec0ba04fcb85d7621f7d856e5faf78edb5b118e74b8bd",
+    "road_distance.npz": "4bae016a9c0ca34fb5bb95422e67f1b5d0c75a42fef9d582753a5e7125c78303"
+  }
+}

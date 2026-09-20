@@ -1,0 +1,886 @@
+{
+  "sampling": "FULL_FILES",
+  "model_training_performed": false,
+  "tables": {
+    "lost_hikers_2022/41598_2022_9502_MOESM2_ESM.csv": {
+      "rows": 65,
+      "columns": [
+        "incident_index",
+        "RW",
+        "RT",
+        "DT",
+        "SP",
+        "VE",
+        "BT"
+      ],
+      "dtypes": {
+        "incident_index": "int64",
+        "RW": "float64",
+        "RT": "float64",
+        "DT": "float64",
+        "SP": "float64",
+        "VE": "float64",
+        "BT": "int64"
+      },
+      "nulls": {
+        "incident_index": 0,
+        "RW": 0,
+        "RT": 0,
+        "DT": 0,
+        "SP": 0,
+        "VE": 0,
+        "BT": 0
+      },
+      "unique": {
+        "incident_index": 65,
+        "RW": 3,
+        "RT": 5,
+        "DT": 5,
+        "SP": 2,
+        "VE": 2,
+        "BT": 1
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "incident_index": {
+          "count": 65.0,
+          "mean": 33.0,
+          "std": 18.9076704012,
+          "min": 1.0,
+          "1%": 1.64,
+          "25%": 17.0,
+          "50%": 33.0,
+          "75%": 49.0,
+          "99%": 64.36,
+          "max": 65.0
+        },
+        "RW": {
+          "count": 65.0,
+          "mean": 0.0487179487,
+          "std": 0.091870403,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 0.1666666667,
+          "99%": 0.2866666667,
+          "max": 0.5
+        },
+        "RT": {
+          "count": 65.0,
+          "mean": 0.3666666667,
+          "std": 0.4137397196,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.1666666667,
+          "75%": 1.0,
+          "99%": 1.0,
+          "max": 1.0
+        },
+        "DT": {
+          "count": 65.0,
+          "mean": 0.5794871795,
+          "std": 0.380865804,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.8333333333,
+          "75%": 0.8333333333,
+          "99%": 0.8933333333,
+          "max": 1.0
+        },
+        "SP": {
+          "count": 65.0,
+          "mean": 0.0025641026,
+          "std": 0.0206724558,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 0.0,
+          "99%": 0.06,
+          "max": 0.1666666667
+        },
+        "VE": {
+          "count": 65.0,
+          "mean": 0.0025641026,
+          "std": 0.0206724558,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 0.0,
+          "99%": 0.06,
+          "max": 0.1666666667
+        },
+        "BT": {
+          "count": 65.0,
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "1%": 0.0,
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 0.0,
+          "99%": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "lost_hikers_2022/41598_2022_9502_MOESM3_ESM.csv": {
+      "rows": 65,
+      "columns": [
+        "incident_index",
+        "IPP_lat",
+        "IPP_lon",
+        "find_lat",
+        "find_lon"
+      ],
+      "dtypes": {
+        "incident_index": "int64",
+        "IPP_lat": "float64",
+        "IPP_lon": "float64",
+        "find_lat": "float64",
+        "find_lon": "float64"
+      },
+      "nulls": {
+        "incident_index": 0,
+        "IPP_lat": 0,
+        "IPP_lon": 0,
+        "find_lat": 0,
+        "find_lon": 0
+      },
+      "unique": {
+        "incident_index": 65,
+        "IPP_lat": 65,
+        "IPP_lon": 65,
+        "find_lat": 64,
+        "find_lon": 65
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "incident_index": {
+          "count": 65.0,
+          "mean": 33.0,
+          "std": 18.9076704012,
+          "min": 1.0,
+          "1%": 1.64,
+          "25%": 17.0,
+          "50%": 33.0,
+          "75%": 49.0,
+          "99%": 64.36,
+          "max": 65.0
+        },
+        "IPP_lat": {
+          "count": 65.0,
+          "mean": 36.9134812297,
+          "std": 4.8579601119,
+          "min": 31.39708335,
+          "1%": 31.4175313436,
+          "25%": 33.38884999,
+          "50%": 34.86666667,
+          "75%": 42.34432,
+          "99%": 45.6631064,
+          "max": 48.1103
+        },
+        "IPP_lon": {
+          "count": 65.0,
+          "mean": -99.7544092308,
+          "std": 17.3382815938,
+          "min": -121.4917,
+          "1%": -116.7335112,
+          "25%": -111.65395,
+          "50%": -110.91017,
+          "75%": -75.15748,
+          "99%": -73.6322476,
+          "max": -73.45475
+        },
+        "find_lat": {
+          "count": 65.0,
+          "mean": 36.9175755846,
+          "std": 4.8623319177,
+          "min": 31.406333,
+          "1%": 31.42117076,
+          "25%": 33.4012,
+          "50%": 34.866667,
+          "75%": 42.36077,
+          "99%": 45.6762272,
+          "max": 48.142
+        },
+        "find_lon": {
+          "count": 65.0,
+          "mean": -99.756132,
+          "std": 17.3421820911,
+          "min": -121.4739,
+          "1%": -116.775052,
+          "25%": -111.6975,
+          "50%": -110.88017,
+          "75%": -75.16148,
+          "99%": -73.6400108,
+          "max": -73.46259
+        }
+      }
+    },
+    "lost_hikers_2022/41598_2022_9502_MOESM1_ESM.csv": {
+      "rows": 32500,
+      "columns": [
+        "incident_index",
+        "rep",
+        "closestpt_lat",
+        "closestpt_lon",
+        "closestpt_time_hr"
+      ],
+      "dtypes": {
+        "incident_index": "int64",
+        "rep": "int64",
+        "closestpt_lat": "float64",
+        "closestpt_lon": "float64",
+        "closestpt_time_hr": "float64"
+      },
+      "nulls": {
+        "incident_index": 0,
+        "rep": 0,
+        "closestpt_lat": 0,
+        "closestpt_lon": 0,
+        "closestpt_time_hr": 0
+      },
+      "unique": {
+        "incident_index": 65,
+        "rep": 500,
+        "closestpt_lat": 13492,
+        "closestpt_lon": 13340,
+        "closestpt_time_hr": 18478
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "incident_index": {
+          "count": 32500.0,
+          "mean": 33.0,
+          "std": 18.7619516869,
+          "min": 1.0,
+          "1%": 1.0,
+          "25%": 17.0,
+          "50%": 33.0,
+          "75%": 49.0,
+          "99%": 65.0,
+          "max": 65.0
+        },
+        "rep": {
+          "count": 32500.0,
+          "mean": 250.5,
+          "std": 144.3394992467,
+          "min": 1.0,
+          "1%": 5.99,
+          "25%": 125.75,
+          "50%": 250.5,
+          "75%": 375.25,
+          "99%": 495.01,
+          "max": 500.0
+        },
+        "closestpt_lat": {
+          "count": 32500.0,
+          "mean": 36.915972847,
+          "std": 4.8225356348,
+          "min": 31.3958473108,
+          "1%": 31.406278996,
+          "25%": 33.3964306352,
+          "50%": 34.8665141174,
+          "75%": 42.3607343114,
+          "99%": 48.1215662,
+          "max": 48.154605
+        },
+        "closestpt_lon": {
+          "count": 32500.0,
+          "mean": -99.7550480179,
+          "std": 17.2065772764,
+          "min": -121.5216839386,
+          "1%": -121.4747765977,
+          "25%": -111.6970515812,
+          "50%": -110.8878543274,
+          "75%": -75.1549938193,
+          "99%": -73.462627898,
+          "max": -73.4505264882
+        },
+        "closestpt_time_hr": {
+          "count": 32500.0,
+          "mean": 26.0021086335,
+          "std": 28.4611912219,
+          "min": 0.0011764706,
+          "1%": 0.0023529412,
+          "25%": 3.1044117647,
+          "50%": 13.9870588235,
+          "75%": 41.3564705882,
+          "99%": 98.8788235294,
+          "max": 100.0023529412
+        }
+      }
+    },
+    "sar_searchers_2026/SARsearchertracks.csv": {
+      "rows": 45202,
+      "columns": [
+        "search_type",
+        "team_id",
+        "searcher_id",
+        "track_id",
+        "time_s",
+        "time_sec",
+        "latitude",
+        "longitude",
+        "elevation_m"
+      ],
+      "dtypes": {
+        "search_type": "object",
+        "team_id": "int64",
+        "searcher_id": "int64",
+        "track_id": "object",
+        "time_s": "object",
+        "time_sec": "float64",
+        "latitude": "float64",
+        "longitude": "float64",
+        "elevation_m": "int64"
+      },
+      "nulls": {
+        "search_type": 0,
+        "team_id": 0,
+        "searcher_id": 0,
+        "track_id": 0,
+        "time_s": 0,
+        "time_sec": 0,
+        "latitude": 0,
+        "longitude": 0,
+        "elevation_m": 0
+      },
+      "unique": {
+        "search_type": 3,
+        "team_id": 8,
+        "searcher_id": 5,
+        "track_id": 61,
+        "time_s": 17971,
+        "time_sec": 25709,
+        "latitude": 43200,
+        "longitude": 43874,
+        "elevation_m": 868
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "team_id": {
+          "count": 45202.0,
+          "mean": 4.620392903,
+          "std": 2.0381492547,
+          "min": 1.0,
+          "1%": 1.0,
+          "25%": 3.0,
+          "50%": 5.0,
+          "75%": 6.0,
+          "99%": 8.0,
+          "max": 8.0
+        },
+        "searcher_id": {
+          "count": 45202.0,
+          "mean": 2.1708110261,
+          "std": 1.130890568,
+          "min": 1.0,
+          "1%": 1.0,
+          "25%": 1.0,
+          "50%": 2.0,
+          "75%": 3.0,
+          "99%": 5.0,
+          "max": 5.0
+        },
+        "time_sec": {
+          "count": 45202.0,
+          "mean": 7810.991091965,
+          "std": 5835.7346455298,
+          "min": 0.0,
+          "1%": 98.76834,
+          "25%": 2958.0,
+          "50%": 6499.0,
+          "75%": 11607.0,
+          "99%": 22190.22235,
+          "max": 23214.265
+        },
+        "latitude": {
+          "count": 45202.0,
+          "mean": 37.9166064236,
+          "std": 0.6672130586,
+          "min": 36.6351767164,
+          "1%": 36.6402615837,
+          "25%": 37.0932828239,
+          "50%": 38.1028571399,
+          "75%": 38.620758485,
+          "99%": 38.6345592398,
+          "max": 38.63836801
+        },
+        "longitude": {
+          "count": 45202.0,
+          "mean": -78.373210273,
+          "std": 0.6165511805,
+          "min": -80.5998822581,
+          "1%": -80.5925641659,
+          "25%": -78.7782960059,
+          "50%": -78.3155510389,
+          "75%": -78.2854187675,
+          "99%": -76.5831287132,
+          "max": -76.579426378
+        },
+        "elevation_m": {
+          "count": 45202.0,
+          "mean": 520.2334631211,
+          "std": 310.6304876641,
+          "min": -2.0,
+          "1%": 16.0,
+          "25%": 153.0,
+          "50%": 673.0,
+          "75%": 749.0,
+          "99%": 990.0,
+          "max": 1071.0
+        }
+      }
+    }
+  },
+  "incident_endpoints": {
+    "count": 65,
+    "distance_m": {
+      "count": 65.0,
+      "mean": 3106.325139172069,
+      "std": 2251.989349570896,
+      "min": 733.5051800770021,
+      "25%": 1374.0430256292645,
+      "50%": 2215.020461358886,
+      "75%": 4423.746536346024,
+      "max": 9685.122559783793
+    },
+    "straight_line_under_1km": 6,
+    "missing_required_labels": [
+      "actual_trajectory",
+      "elapsed_time",
+      "incident_date",
+      "facility_visit",
+      "subject_demographics"
+    ],
+    "split_group": "incident_index",
+    "warning": "65 selected US hiker incidents. Simulation outputs and fitted profiles use found locations and are NOT independent labels or predictor inputs."
+  },
+  "searcher_segments": {
+    "tracks": 61,
+    "search_types": {
+      "hasty": 20,
+      "paired": 18,
+      "sweep": 23
+    },
+    "segments": 45141,
+    "quality_flags": {
+      "CANDIDATE": 45118,
+      "GAP_OVER_120S": 17,
+      "SPEED_OVER_3MPS": 6
+    },
+    "grade_missing_or_nonfinite": 113,
+    "speed_mps_quantiles": {
+      "0.0": 0.0,
+      "0.01": 0.018009937892986633,
+      "0.25": 0.18140120830382114,
+      "0.5": 0.3652504201222771,
+      "0.75": 0.6431741098048519,
+      "0.99": 1.4934331433792425,
+      "1.0": 8.399330197672088
+    },
+    "relative_time_only": true,
+    "duplicate_track_times": 0,
+    "warning": "Not lost-person behavior or POD. Thresholds are QA assumptions, not research findings. No incident ID is provided; track-only splits can leak shared incident/team terrain."
+  },
+  "exercise_workbook": {
+    "Sheet0": {
+      "rows": 4011,
+      "columns": [
+        "user_team_mission_id",
+        "geom",
+        "timestamp"
+      ],
+      "dtypes": {
+        "user_team_mission_id": "int64",
+        "geom": "object",
+        "timestamp": "datetime64[ns]"
+      },
+      "nulls": {
+        "user_team_mission_id": 0,
+        "geom": 0,
+        "timestamp": 0
+      },
+      "unique": {
+        "user_team_mission_id": 9,
+        "geom": 3261,
+        "timestamp": 4010
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "user_team_mission_id": {
+          "count": 4011.0,
+          "mean": 351.1710296684,
+          "std": 5.1444634949,
+          "min": 342.0,
+          "1%": 342.0,
+          "25%": 346.0,
+          "50%": 348.0,
+          "75%": 356.0,
+          "99%": 359.0,
+          "max": 359.0
+        }
+      }
+    }
+  },
+  "exercise": {
+    "observations": 4011,
+    "responders": 9,
+    "date_min": "2022-05-22T06:25:03.000000",
+    "date_max": "2022-05-22T07:50:00.024000",
+    "duplicate_responder_times": 0,
+    "source_coordinate_order": "latitude longitude (per publisher info.txt)",
+    "warning": "One exercise, not nine independent incidents. No UTC conversion without verified timezone."
+  },
+  "derived_profiles": {
+    "prepared/exercise_traces.csv": {
+      "rows": 4011,
+      "columns": [
+        "responder_id",
+        "latitude",
+        "longitude",
+        "local_timestamp",
+        "timezone_status",
+        "source_row"
+      ],
+      "dtypes": {
+        "responder_id": "int64",
+        "latitude": "float64",
+        "longitude": "float64",
+        "local_timestamp": "object",
+        "timezone_status": "object",
+        "source_row": "int64"
+      },
+      "nulls": {
+        "responder_id": 0,
+        "latitude": 0,
+        "longitude": 0,
+        "local_timestamp": 0,
+        "timezone_status": 0,
+        "source_row": 0
+      },
+      "unique": {
+        "responder_id": 9,
+        "latitude": 2864,
+        "longitude": 2962,
+        "local_timestamp": 4010,
+        "timezone_status": 1,
+        "source_row": 4011
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "responder_id": {
+          "count": 4011.0,
+          "mean": 351.1710296684,
+          "std": 5.1444634949,
+          "min": 342.0,
+          "1%": 342.0,
+          "25%": 346.0,
+          "50%": 348.0,
+          "75%": 356.0,
+          "99%": 359.0,
+          "max": 359.0
+        },
+        "latitude": {
+          "count": 4011.0,
+          "mean": 34.6998883142,
+          "std": 0.0027744705,
+          "min": 34.6928698,
+          "1%": 34.69795859,
+          "25%": 34.69884075,
+          "50%": 34.6994177,
+          "75%": 34.70031655,
+          "99%": 34.71132639,
+          "max": 34.7639148
+        },
+        "longitude": {
+          "count": 4011.0,
+          "mean": 32.5309050114,
+          "std": 0.0055440622,
+          "min": 32.4844036,
+          "1%": 32.51970834,
+          "25%": 32.52870305,
+          "50%": 32.5296848,
+          "75%": 32.5330359,
+          "99%": 32.53571798,
+          "max": 32.6042517
+        },
+        "source_row": {
+          "count": 4011.0,
+          "mean": 2007.0,
+          "std": 1158.0202934319,
+          "min": 2.0,
+          "1%": 42.1,
+          "25%": 1004.5,
+          "50%": 2007.0,
+          "75%": 3009.5,
+          "99%": 3971.9,
+          "max": 4012.0
+        }
+      }
+    },
+    "prepared/incident_endpoints.csv": {
+      "rows": 65,
+      "columns": [
+        "incident_index",
+        "IPP_lat",
+        "IPP_lon",
+        "find_lat",
+        "find_lon",
+        "straight_line_distance_m",
+        "source_file",
+        "row_kind"
+      ],
+      "dtypes": {
+        "incident_index": "int64",
+        "IPP_lat": "float64",
+        "IPP_lon": "float64",
+        "find_lat": "float64",
+        "find_lon": "float64",
+        "straight_line_distance_m": "float64",
+        "source_file": "object",
+        "row_kind": "object"
+      },
+      "nulls": {
+        "incident_index": 0,
+        "IPP_lat": 0,
+        "IPP_lon": 0,
+        "find_lat": 0,
+        "find_lon": 0,
+        "straight_line_distance_m": 0,
+        "source_file": 0,
+        "row_kind": 0
+      },
+      "unique": {
+        "incident_index": 65,
+        "IPP_lat": 65,
+        "IPP_lon": 65,
+        "find_lat": 64,
+        "find_lon": 65,
+        "straight_line_distance_m": 65,
+        "source_file": 1,
+        "row_kind": 1
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "incident_index": {
+          "count": 65.0,
+          "mean": 33.0,
+          "std": 18.9076704012,
+          "min": 1.0,
+          "1%": 1.64,
+          "25%": 17.0,
+          "50%": 33.0,
+          "75%": 49.0,
+          "99%": 64.36,
+          "max": 65.0
+        },
+        "IPP_lat": {
+          "count": 65.0,
+          "mean": 36.9134812297,
+          "std": 4.8579601119,
+          "min": 31.39708335,
+          "1%": 31.4175313436,
+          "25%": 33.38884999,
+          "50%": 34.86666667,
+          "75%": 42.34432,
+          "99%": 45.6631064,
+          "max": 48.1103
+        },
+        "IPP_lon": {
+          "count": 65.0,
+          "mean": -99.7544092308,
+          "std": 17.3382815938,
+          "min": -121.4917,
+          "1%": -116.7335112,
+          "25%": -111.65395,
+          "50%": -110.91017,
+          "75%": -75.15748,
+          "99%": -73.6322476,
+          "max": -73.45475
+        },
+        "find_lat": {
+          "count": 65.0,
+          "mean": 36.9175755846,
+          "std": 4.8623319177,
+          "min": 31.406333,
+          "1%": 31.42117076,
+          "25%": 33.4012,
+          "50%": 34.866667,
+          "75%": 42.36077,
+          "99%": 45.6762272,
+          "max": 48.142
+        },
+        "find_lon": {
+          "count": 65.0,
+          "mean": -99.756132,
+          "std": 17.3421820911,
+          "min": -121.4739,
+          "1%": -116.775052,
+          "25%": -111.6975,
+          "50%": -110.88017,
+          "75%": -75.16148,
+          "99%": -73.6400108,
+          "max": -73.46259
+        },
+        "straight_line_distance_m": {
+          "count": 65.0,
+          "mean": 3106.3251391721,
+          "std": 2251.9893495709,
+          "min": 733.505180077,
+          "1%": 756.2703505339,
+          "25%": 1374.0430256293,
+          "50%": 2215.0204613589,
+          "75%": 4423.746536346,
+          "99%": 8912.960983483,
+          "max": 9685.1225597838
+        }
+      }
+    },
+    "prepared/searcher_segments.csv": {
+      "rows": 45141,
+      "columns": [
+        "track_id",
+        "search_type",
+        "team_id",
+        "source_row",
+        "delta_seconds",
+        "distance_m",
+        "speed_mps",
+        "grade",
+        "quality_flag"
+      ],
+      "dtypes": {
+        "track_id": "object",
+        "search_type": "object",
+        "team_id": "int64",
+        "source_row": "int64",
+        "delta_seconds": "float64",
+        "distance_m": "float64",
+        "speed_mps": "float64",
+        "grade": "float64",
+        "quality_flag": "object"
+      },
+      "nulls": {
+        "track_id": 0,
+        "search_type": 0,
+        "team_id": 0,
+        "source_row": 0,
+        "delta_seconds": 0,
+        "distance_m": 0,
+        "speed_mps": 0,
+        "grade": 113,
+        "quality_flag": 0
+      },
+      "unique": {
+        "track_id": 61,
+        "search_type": 3,
+        "team_id": 8,
+        "source_row": 45141,
+        "delta_seconds": 355,
+        "distance_m": 45029,
+        "speed_mps": 45029,
+        "grade": 19224,
+        "quality_flag": 3
+      },
+      "duplicate_rows": 0,
+      "numeric": {
+        "team_id": {
+          "count": 45141.0,
+          "mean": 4.6203894464,
+          "std": 2.037992018,
+          "min": 1.0,
+          "1%": 1.0,
+          "25%": 3.0,
+          "50%": 5.0,
+          "75%": 6.0,
+          "99%": 8.0,
+          "max": 8.0
+        },
+        "source_row": {
+          "count": 45141.0,
+          "mean": 22606.5744888239,
+          "std": 13049.0926817516,
+          "min": 3.0,
+          "1%": 454.4,
+          "25%": 11306.0,
+          "50%": 22607.0,
+          "75%": 33909.0,
+          "99%": 44751.6,
+          "max": 45203.0
+        },
+        "delta_seconds": {
+          "count": 45141.0,
+          "mean": 17.3897572052,
+          "std": 9.5982340432,
+          "min": 0.134,
+          "1%": 2.0,
+          "25%": 12.0,
+          "50%": 16.0,
+          "75%": 21.0,
+          "99%": 46.0,
+          "max": 387.0
+        },
+        "distance_m": {
+          "count": 45141.0,
+          "mean": 6.4806290562,
+          "std": 4.8566766442,
+          "min": 0.0,
+          "1%": 0.3237191455,
+          "25%": 2.9044974711,
+          "50%": 5.3705389182,
+          "75%": 8.7539573052,
+          "99%": 22.6120261747,
+          "max": 52.6951528191
+        },
+        "speed_mps": {
+          "count": 45141.0,
+          "mean": 0.4564758255,
+          "std": 0.3598923061,
+          "min": 0.0,
+          "1%": 0.0180099379,
+          "25%": 0.1814012083,
+          "50%": 0.3652504201,
+          "75%": 0.6431741098,
+          "99%": 1.4934331434,
+          "max": 8.3993301977
+        },
+        "grade": {
+          "count": 45028.0,
+          "mean": -0.0015181755,
+          "std": 1.8798525732,
+          "min": -271.5473352834,
+          "1%": -0.837409837,
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 0.0,
+          "99%": 0.9287841171,
+          "max": 87.0471895211
+        }
+      }
+    }
+  },
+  "derived_files": [
+    {
+      "path": "prepared/exercise_traces.csv",
+      "sha256": "98a29895370c8cf4ed5b8d8ff35cef0a7e46b3ae5366695e760b5581b1718461",
+      "bytes": 334974
+    },
+    {
+      "path": "prepared/incident_endpoints.csv",
+      "sha256": "afa73cc1cec264aad7b65f8da9cfd19fdbf702b29ad683f9d8372d9149781e21",
+      "bytes": 8793
+    },
+    {
+      "path": "prepared/searcher_segments.csv",
+      "sha256": "da1cf5589c55a5a09abfa2d9c24968b2d65a559bcedba68da9c8bf3f741eee4d",
+      "bytes": 4169154
+    }
+  ]
+}
